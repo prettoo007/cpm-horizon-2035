@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CPM Horizon 2035 — Analyse données SAP</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>* { margin: 0; padding: 0; box-sizing: border-box; } body { font-family: 'Roboto', system-ui, sans-serif; -webkit-font-smoothing: antialiased; } button { font-family: inherit; }</style>
+</head>
+<body>
+    <div id="root"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
+    <script type="text/babel">
+const { useState } = React;
+
+const C = {
+  corail: "#D86F6F", noir: "#1D1D1B", rose: "#E372A6",
+  fondClair: "#F9F5F4", fondRose: "#FDF0EE", white: "#FFFFFF",
+  text: "#2C2C2C", muted: "#8A7F7F", border: "#E8DEDD",
+  green: "#5BA67D", amber: "#D4A843", steel: "#6B7F94",
+  violet: "#7C6BAA", blue: "#4A90B8", red: "#C0392B",
+};
+
+const pannesParMois = [
+  { mois: "Jan", val: 18 }, { mois: "Fév", val: 64 }, { mois: "Mar", val: 146 },
+  { mois: "Avr", val: 254 }, { mois: "Mai", val: 119 }, { mois: "Juin", val: 136 },
+  { mois: "Juil", val: 149 }, { mois: "Août", val: 107 }, { mois: "Sept", val: 174 },
+  { mois: "Oct", val: 80 }, { mois: "Nov", val: 40 }, { mois: "Déc", val: 28 },
+];
+
+const pretsParMois = [
+  { mois: "Jan", val: 54 }, { mois: "Fév", val: 118 }, { mois: "Mar", val: 196 },
+  { mois: "Avr", val: 292 }, { mois: "Mai", val: 315 }, { mois: "Juin", val: 319 },
+  { mois: "Juil", val: 646 }, { mois: "Août", val: 134 }, { mois: "Sept", val: 257 },
+  { mois: "Oct", val: 223 }, { mois: "Nov", val: 170 }, { mois: "Déc", val: 145 },
+];
+
+const topPannes = [
+  { type: "Vérification générale", count: 348 },
+  { type: "Usure normale", count: 316 },
+  { type: "Accessoire manquant", count: 223 },
+  { type: "US (Pour le CPM)", count: 195 },
+  { type: "Boîtier/châssis détérioré", count: 137 },
+  { type: "Nettoyage matériel", count: 74 },
+  { type: "Connexion défectueuse", count: 65 },
+  { type: "Rép. spéciale tente", count: 55 },
+  { type: "Lavage tente", count: 49 },
+  { type: "Câble défectueux", count: 45 },
+];
+
+const pannesTentes = [
+  { type: "Usure normale", count: 225, color: C.corail },
+  { type: "Réparation spéciale", count: 53, color: C.rose },
+  { type: "Lavage tente", count: 49, color: C.blue },
+  { type: "Transpondeur", count: 6, color: C.amber },
+  { type: "Réparation toile", count: 5, color: C.steel },
+  { type: "Autres", count: 4, color: C.violet },
+];
+
+const pretsParJour = [
+  { jour: "Lundi", val: 380 }, { jour: "Mardi", val: 401 },
+  { jour: "Mercredi", val: 564 }, { jour: "Jeudi", val: 644 }, { jour: "Vendredi", val: 922 },
+];
+
+const views = [
+  { id: "overview", label: "Vue d'ensemble", icon: "📊" },
+  { id: "pannes", label: "Pannes", icon: "🔧" },
+  { id: "prets", label: "Prêts", icon: "📦" },
+  { id: "insights", label: "Insights", icon: "💡" },
+];
+
+function BarChart({ data, color, maxVal, labelKey, valKey }) {
+  const vk = valKey || "val";
+  const lk = labelKey || "mois";
+  const mx = maxVal || Math.max(...data.map(d => d[vk]));
+  return (
+    <div style={{ display: "flex", gap: 4, height: 220 }}>
+      {data.map((d, i) => {
+        const v = d[vk];
+        const h = Math.max((v / mx) * 190, 4);
+        return (
+          <div key={i} style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "flex-end" }}>
+            <span style={{ fontSize: 10, fontWeight: 700, color: color, marginBottom: 4 }}>{v}</span>
+            <div style={{ width: "80%", height: h, background: color, borderRadius: "4px 4px 0 0" }} />
+            <span style={{ fontSize: 10, color: C.muted, marginTop: 4, fontWeight: 500 }}>{d[lk]}</span>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+function HBar({ label, value, max, color }) {
+  return (
+    <div style={{ marginBottom: 10 }}>
+      <div style={{ display: "flex", justifyContent: "space-between", fontSize: 13, marginBottom: 3 }}>
+        <span style={{ fontWeight: 600 }}>{label}</span>
+        <span style={{ color: C.muted }}>{value}</span>
+      </div>
+      <div style={{ height: 8, background: C.border, borderRadius: 4, overflow: "hidden" }}>
+        <div style={{ width: `${(value / max) * 100}%`, height: "100%", background: color, borderRadius: 4, transition: "width 0.5s" }} />
+      </div>
+    </div>
+  );
+}
+
+function KPI({ num, label, sub, color }) {
+  return (
+    <div style={{ background: C.white, borderRadius: 12, padding: "16px 18px", border: `1px solid ${C.border}` }}>
+      <div style={{ fontSize: 28, fontWeight: 800, color: color || C.noir, fontFamily: "'Poppins', sans-serif" }}>{num}</div>
+      <div style={{ fontSize: 14, fontWeight: 600, color: C.text, marginTop: 2 }}>{label}</div>
+      {sub && <div style={{ fontSize: 12, color: C.muted, marginTop: 4 }}>{sub}</div>}
+    </div>
+  );
+}
+
+function SAPAnalysis() {
+  const [activeView, setActiveView] = useState("overview");
+
+  return (
+    <div style={{ fontFamily: "'Roboto',system-ui,sans-serif", background: C.fondClair, minHeight: "100vh", color: C.text }}>
+      {/* Header */}
+      <div style={{ background: "linear-gradient(135deg, #FDF0EE 0%, #F5E0DC 50%, #EEDDD9 100%)", padding: "24px 22px 18px", color: C.noir }}>
+        <div style={{ maxWidth: 920, margin: "0 auto" }}>
+          <p style={{ fontSize: 12, color: C.muted, marginBottom: 6 }}>Livrable 6 — Analyse exploratoire données SAP</p>
+          <h1 style={{ margin: 0, fontSize: 26, fontWeight: 700, fontFamily: "'Poppins', sans-serif" }}>
+            Ce que vos données racontent
+          </h1>
+          <p style={{ margin: "6px 0 0", fontSize: 14, color: C.muted }}>
+            1 883 pannes · 2 911 prêts · Données réelles SAP 2025
+          </p>
+        </div>
+      </div>
+
+      {/* Tabs */}
+      <div style={{ background: C.white, borderBottom: `1px solid ${C.border}`, position: "sticky", top: 0, zIndex: 10 }}>
+        <div style={{ maxWidth: 920, margin: "0 auto", display: "flex" }}>
+          {views.map(v => (
+            <button key={v.id} onClick={() => setActiveView(v.id)} style={{
+              padding: "12px 16px", border: "none", background: "none", cursor: "pointer",
+              fontSize: 14, fontWeight: activeView === v.id ? 700 : 500,
+              color: activeView === v.id ? C.corail : C.muted,
+              borderBottom: activeView === v.id ? `2px solid ${C.corail}` : "2px solid transparent",
+              fontFamily: "'Poppins', sans-serif",
+            }}>{v.icon} {v.label}</button>
+          ))}
+        </div>
+      </div>
+
+      <div style={{ maxWidth: 920, margin: "0 auto", padding: "18px 22px 44px" }}>
+
+        {activeView === "overview" && (
+          <div>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", gap: 10, marginBottom: 16 }}>
+              <KPI num="1 883" label="Pannes enregistrées" sub="Tous matériels" color={C.corail} />
+              <KPI num="2 911" label="Prêts traités" sub="69% terminés" color={C.blue} />
+              <KPI num="342" label="Pannes tentes" sub="310 Senior · 25 Junior · 6 Patrouille" color={C.amber} />
+              <KPI num="1 003 839" label="Participants servis" sub="~390 par prêt" color={C.green} />
+            </div>
+
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, marginBottom: 16 }}>
+              <div style={{ background: C.white, borderRadius: 12, padding: 18, border: `1px solid ${C.border}` }}>
+                <div style={{ fontSize: 16, fontWeight: 700, marginBottom: 14, fontFamily: "'Poppins', sans-serif" }}>
+                  Prêts par mois — Le tsunami de juillet
+                </div>
+                <BarChart data={pretsParMois} color={C.corail} />
+                <div style={{ fontSize: 12, color: C.corail, fontWeight: 600, marginTop: 8 }}>
+                  Juillet = 646 prêts — 2× le mois suivant.
+                </div>
+              </div>
+
+              <div style={{ background: C.white, borderRadius: 12, padding: 18, border: `1px solid ${C.border}` }}>
+                <div style={{ fontSize: 16, fontWeight: 700, marginBottom: 14, fontFamily: "'Poppins', sans-serif" }}>
+                  Pannes par mois — La vague de retour
+                </div>
+                <BarChart data={pannesParMois} color={C.amber} />
+                <div style={{ fontSize: 12, color: C.amber, fontWeight: 600, marginTop: 8 }}>
+                  Pic en avril (254) et septembre (174).
+                </div>
+              </div>
+            </div>
+
+            <div style={{ background: C.noir, borderRadius: 12, padding: 20, color: "#fff" }}>
+              <div style={{ fontSize: 16, fontWeight: 700, fontFamily: "'Poppins', sans-serif", marginBottom: 8 }}>🔍 Découverte clé</div>
+              <div style={{ fontSize: 15, lineHeight: 1.7 }}>
+                Le pic de pannes arrive <strong>2-3 mois après</strong> le pic de prêts. Le tsunami de l'été génère un <strong>arriéré de réparations</strong> qui s'étale jusqu'en décembre. 28% des réparations dépassent 90 jours — le pipeline se congestionne.
+              </div>
+            </div>
+          </div>
+        )}
+
+        {activeView === "pannes" && (
+          <div>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, marginBottom: 16 }}>
+              <div style={{ background: C.white, borderRadius: 12, padding: 18, border: `1px solid ${C.border}` }}>
+                <div style={{ fontSize: 16, fontWeight: 700, marginBottom: 14, fontFamily: "'Poppins', sans-serif" }}>
+                  Top 10 des pannes (tous matériels)
+                </div>
+                {topPannes.map((p, i) => (
+                  <HBar key={i} label={p.type} value={p.count} max={348} color={C.corail} />
+                ))}
+              </div>
+
+              <div style={{ background: C.white, borderRadius: 12, padding: 18, border: `1px solid ${C.border}` }}>
+                <div style={{ fontSize: 16, fontWeight: 700, marginBottom: 14, fontFamily: "'Poppins', sans-serif" }}>
+                  Pannes tentes (342 pannes)
+                </div>
+                {pannesTentes.map((p, i) => {
+                  const total = 342;
+                  const pct = Math.round((p.count / total) * 100);
+                  return (
+                    <div key={i} style={{ marginBottom: 10 }}>
+                      <div style={{ display: "flex", justifyContent: "space-between", fontSize: 13, marginBottom: 3 }}>
+                        <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                          <div style={{ width: 10, height: 10, borderRadius: "50%", background: p.color }} />
+                          <span style={{ fontWeight: 600 }}>{p.type}</span>
+                        </div>
+                        <span style={{ color: C.muted }}>{p.count} ({pct}%)</span>
+                      </div>
+                      <div style={{ height: 8, background: C.border, borderRadius: 4, overflow: "hidden" }}>
+                        <div style={{ width: `${pct}%`, height: "100%", background: p.color, borderRadius: 4 }} />
+                      </div>
+                    </div>
+                  );
+                })}
+                <div style={{ fontSize: 12, color: C.corail, fontWeight: 600, marginTop: 10 }}>
+                  66% des pannes tentes = usure normale. La prédiction est viable.
+                </div>
+              </div>
+            </div>
+
+            {/* Délai réparation */}
+            <div style={{ background: C.white, borderRadius: 12, padding: 18, border: `1px solid ${C.border}`, marginBottom: 16 }}>
+              <div style={{ fontSize: 16, fontWeight: 700, marginBottom: 14, fontFamily: "'Poppins', sans-serif" }}>
+                Délai de réparation — Le pipeline se congestionne
+              </div>
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", gap: 10 }}>
+                {[
+                  { tranche: "< 7 jours", pct: 24, count: 421, color: C.green },
+                  { tranche: "7-30 jours", pct: 27, count: 473, color: C.amber },
+                  { tranche: "30-90 jours", pct: 21, count: 367, color: C.corail },
+                  { tranche: "> 90 jours", pct: 28, count: 497, color: C.red },
+                ].map((d, i) => (
+                  <div key={i} style={{ textAlign: "center", padding: 12, borderRadius: 10, background: d.color + "10" }}>
+                    <div style={{ fontSize: 28, fontWeight: 800, color: d.color, fontFamily: "'Poppins', sans-serif" }}>{d.pct}%</div>
+                    <div style={{ fontSize: 13, fontWeight: 600, marginTop: 2 }}>{d.tranche}</div>
+                    <div style={{ fontSize: 12, color: C.muted }}>{d.count} pannes</div>
+                  </div>
+                ))}
+              </div>
+              <div style={{ marginTop: 12, padding: "10px 14px", borderRadius: 8, background: C.red + "10", borderLeft: `3px solid ${C.red}`, fontSize: 13, fontWeight: 600, color: C.red }}>
+                ⚠ 28% des réparations dépassent 90 jours. Médiane : 28 j. Moyenne : 62 j.
+              </div>
+            </div>
+
+            {/* Par type de tente */}
+            <div style={{ background: C.white, borderRadius: 12, padding: 18, border: `1px solid ${C.border}` }}>
+              <div style={{ fontSize: 16, fontWeight: 700, marginBottom: 14, fontFamily: "'Poppins', sans-serif" }}>Pannes par type de tente</div>
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 10 }}>
+                {[
+                  { type: "Tente Senior", count: 310, total: 1322, ratio: "23.4%", color: C.corail },
+                  { type: "Tente Junior", count: 25, total: 905, ratio: "2.8%", color: C.amber },
+                  { type: "Tente Patrouille", count: 6, total: 50, ratio: "12.0%", color: C.steel },
+                ].map((t, i) => (
+                  <div key={i} style={{ padding: 14, borderRadius: 10, background: t.color + "10", textAlign: "center" }}>
+                    <div style={{ fontSize: 26, fontWeight: 800, color: t.color, fontFamily: "'Poppins', sans-serif" }}>{t.count}</div>
+                    <div style={{ fontSize: 14, fontWeight: 700, marginTop: 2 }}>{t.type}</div>
+                    <div style={{ fontSize: 12, color: C.muted }}>sur {t.total} · ratio {t.ratio}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {activeView === "prets" && (
+          <div>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 10, marginBottom: 16 }}>
+              <KPI num="13,3 j" label="Durée moyenne de prêt" sub="Médiane : 7 jours" color={C.blue} />
+              <KPI num="2 016" label="Prêts terminés" sub="69% des demandes" color={C.green} />
+              <KPI num="838" label="Non-servis" sub="380 refusés + 239 modifiés + 219 annulés" color={C.red} />
+            </div>
+
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, marginBottom: 16 }}>
+              <div style={{ background: C.white, borderRadius: 12, padding: 18, border: `1px solid ${C.border}` }}>
+                <div style={{ fontSize: 16, fontWeight: 700, marginBottom: 14, fontFamily: "'Poppins', sans-serif" }}>
+                  Enlèvements par jour
+                </div>
+                <BarChart data={pretsParJour} color={C.steel} labelKey="jour" />
+                <div style={{ fontSize: 12, color: C.steel, fontWeight: 600, marginTop: 8 }}>
+                  Vendredi = 32% des enlèvements.
+                </div>
+              </div>
+
+              <div style={{ background: C.white, borderRadius: 12, padding: 18, border: `1px solid ${C.border}` }}>
+                <div style={{ fontSize: 16, fontWeight: 700, marginBottom: 14, fontFamily: "'Poppins', sans-serif" }}>
+                  Saisonnalité comparée — Prêts vs Pannes
+                </div>
+                <div style={{ display: "flex", gap: 12, marginBottom: 12, fontSize: 12 }}>
+                  <span style={{ display: "flex", alignItems: "center", gap: 4 }}><span style={{ width: 12, height: 12, borderRadius: 3, background: C.blue, display: "inline-block" }} /> Prêts</span>
+                  <span style={{ display: "flex", alignItems: "center", gap: 4 }}><span style={{ width: 12, height: 12, borderRadius: 3, background: C.corail, display: "inline-block" }} /> Pannes</span>
+                </div>
+                {pretsParMois.map((p, i) => (
+                  <div key={i} style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 6 }}>
+                    <span style={{ width: 35, fontSize: 11, fontWeight: 600, color: C.muted, flexShrink: 0 }}>{p.mois}</span>
+                    <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 2 }}>
+                      <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                        <div style={{ height: 10, width: `${(p.val / 646) * 100}%`, background: C.blue, borderRadius: 5, minWidth: 4 }} />
+                        <span style={{ fontSize: 10, color: C.blue, fontWeight: 700 }}>{p.val}</span>
+                      </div>
+                      <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                        <div style={{ height: 10, width: `${(pannesParMois[i].val / 646) * 100}%`, background: C.corail, borderRadius: 5, minWidth: 4 }} />
+                        <span style={{ fontSize: 10, color: C.corail, fontWeight: 700 }}>{pannesParMois[i].val}</span>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div style={{ background: C.white, borderRadius: 12, padding: 18, border: `1px solid ${C.border}` }}>
+              <div style={{ fontSize: 16, fontWeight: 700, marginBottom: 10, fontFamily: "'Poppins', sans-serif" }}>
+                Taux de non-service : 29%
+              </div>
+              <div style={{ fontSize: 14, lineHeight: 1.7, marginBottom: 10 }}>
+                Sur 2 911 demandes, 838 n'ont pas abouti : 380 refusées, 239 modifiées, 219 annulées. Près d'1 emprunteur sur 3 ne reçoit pas ce qu'il demande.
+              </div>
+              <div style={{ fontSize: 13, color: C.corail, fontWeight: 600, fontStyle: "italic" }}>
+                À creuser : ces refus sont-ils liés au stock, au timing, ou au processus ?
+              </div>
+            </div>
+          </div>
+        )}
+
+        {activeView === "insights" && (
+          <div>
+            {[
+              { title: "Le pipeline de réparations est le goulot", insight: "62 jours de délai moyen. Une tente revenue en août n'est remise en stock qu'en octobre. L'arriéré s'accumule.", action: "La maintenance prédictive doit anticiper AVANT la saison.", color: C.corail, icon: "🚨" },
+              { title: "L'usure normale est prédictible", insight: "66% des pannes tentes = usure normale, corrélée au nombre de sorties et à l'âge. 13 ans de données SAP le confirment.", action: "Un modèle prédictif de fin de vie est viable et urgent.", color: C.amber, icon: "📈" },
+              { title: "Le vendredi est critique mais prévisible", insight: "32% des enlèvements concentrés le vendredi. Pic stable et prévisible.", action: "Renforcer le comptoir le vendredi. Préparer les commandes le jeudi.", color: C.steel, icon: "📅" },
+              { title: "Les Senior sont le cœur du problème", insight: "310 pannes sur 1 322 Senior = 23,4% du parc touché. Le type le plus prêté et le plus réparé.", action: "Le pilote sur les Senior est validé par les données.", color: C.rose, icon: "⛺" },
+              { title: "29% de demandes non-servies", insight: "838 demandes sur 2 911 n'aboutissent pas. C'est la voix du client insatisfait — votre priorité n°1.", action: "Analyser les motifs par type de matériel et par période.", color: C.red, icon: "⚠️" },
+              { title: "Un million de participants", insight: "1 003 839 participants servis en un an. Chaque amélioration touche un million de personnes.", action: "Intégrer ce chiffre dans toute communication.", color: C.green, icon: "💎" },
+            ].map((ins, i) => (
+              <div key={i} style={{ background: C.white, borderRadius: 12, border: `1px solid ${C.border}`, borderLeft: `4px solid ${ins.color}`, padding: 18, marginBottom: 10 }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 8 }}>
+                  <span style={{ fontSize: 20 }}>{ins.icon}</span>
+                  <span style={{ fontSize: 16, fontWeight: 700, fontFamily: "'Poppins', sans-serif" }}>{ins.title}</span>
+                </div>
+                <div style={{ fontSize: 14, lineHeight: 1.7, marginBottom: 10 }}>{ins.insight}</div>
+                <div style={{ padding: "8px 14px", borderRadius: 8, background: ins.color + "10", fontSize: 13, fontWeight: 600, color: ins.color }}>
+                  → {ins.action}
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+
+      <div style={{ padding: "14px 22px", borderTop: `1px solid ${C.border}`, background: C.white, textAlign: "center" }}>
+        <span style={{ fontSize: 12, color: C.muted }}>Données SAP extraites par Bastien DEWEZ · Analyse CPM Horizon 2035 · Août 2026</span>
+      </div>
+    </div>
+  );
+}
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(React.createElement(SAPAnalysis));
+    </script>
+</body>
+</html>

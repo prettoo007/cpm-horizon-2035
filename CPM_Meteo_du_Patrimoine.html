@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CPM — La Météo du patrimoine</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Roboto', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+        button { font-family: inherit; }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
+    <script type="text/babel">
+const { useState } = React;
+
+const C = {
+  corail: "#D86F6F", noir: "#1D1D1B", rose: "#E372A6",
+  fondClair: "#F9F5F4", fondRose: "#FDF0EE", white: "#FFFFFF",
+  text: "#2C2C2C", muted: "#8A7F7F", border: "#E8DEDD",
+  green: "#5BA67D", amber: "#D4A843", steel: "#6B7F94",
+  violet: "#7C6BAA", blue: "#4A90B8", red: "#C0392B",
+};
+
+// Simulated real-time data based on SAP analysis
+const bulletins = [
+  {
+    date: "Lundi 18 août 2026",
+    semaine: "S34",
+    meteo: "⛅",
+    meteoLabel: "Vigilance",
+    meteoColor: C.amber,
+    resume: "Semaine chargée en perspective. Les retours de camps affluent et la capacité de lavage approche la saturation. Trois tentes nécessitent une décision de déclassement.",
+    kpis: [
+      { label: "Tentes disponibles", value: "1 847", total: "/ 2 277", pct: 81, color: C.green, trend: "↓ -23 vs sem. dernière" },
+      { label: "En prêt actuellement", value: "246", total: "", pct: 11, color: C.blue, trend: "↓ fin de saison" },
+      { label: "En réparation", value: "112", total: "", pct: 5, color: C.corail, trend: "↑ +18 vs sem. dernière" },
+      { label: "En lavage", value: "72", total: "", pct: 3, color: C.amber, trend: "↑ pic retours camps" },
+    ],
+    alertes: [
+      { type: "critical", icon: "🔴", text: "Capacité lavage à 89% — risque de saturation cette semaine. 72 tentes en file d'attente.", action: "Prioriser les Senior pour la saison Toussaint" },
+      { type: "warning", icon: "🟡", text: "3 tentes en alerte fatigue (≥ 5 réparations) : #2240301736, #2240301710, #2240301658.", action: "Décision de déclassement à valider par le contremaître" },
+      { type: "warning", icon: "🟡", text: "14 retours attendus cette semaine (camps Ardennes). Prévoir renforts quai jeudi-vendredi.", action: "Briefer l'équipe mardi matin" },
+      { type: "info", icon: "🔵", text: "Délai moyen de réparation en baisse : 54 jours (vs 62 jours mois dernier).", action: "Tendance positive à maintenir" },
+    ],
+    previsions: [
+      { semaine: "S35 (25 août)", text: "Derniers retours camps d'été. Fin du pic saisonnier. Début phase intensive de lavage et réparation." },
+      { semaine: "S36-S38 (sept.)", text: "Fenêtre de maintenance préventive. Traiter l'arriéré avant la demande Toussaint." },
+      { semaine: "S40-S42 (oct.)", text: "Reprise des prêts événementiels. Vérifier disponibilité podiums et matériel audiovisuel." },
+    ],
+    actions: [
+      { priorite: 1, text: "Valider le déclassement des 3 tentes en alerte fatigue", responsable: "Contremaître loisirs", delai: "Cette semaine" },
+      { priorite: 2, text: "Organiser les renforts quai pour jeudi-vendredi (14 retours prévus)", responsable: "Chef d'équipe", delai: "Mardi" },
+      { priorite: 3, text: "Planifier le lavage prioritaire des Senior (saison Toussaint)", responsable: "Équipe lavage", delai: "Avant S36" },
+      { priorite: 4, text: "Lancer l'inventaire des accessoires manquants (223 signalements cette année)", responsable: "Bastien DEWEZ", delai: "S35" },
+    ],
+    chiffre: { value: "1 003 839", label: "participants servis depuis janvier 2025", sub: "Chaque tente disponible compte." },
+  },
+  {
+    date: "Lundi 11 août 2026",
+    semaine: "S33",
+    meteo: "🌧️",
+    meteoLabel: "Alerte",
+    meteoColor: C.corail,
+    resume: "Semaine critique. Pic de retours post-camps avec 38 retours enregistrés. Le pipeline de lavage est saturé. Bonne nouvelle : le quick-win codes pannes montre ses premiers effets — temps d'encodage réduit de 40%.",
+    kpis: [
+      { label: "Tentes disponibles", value: "1 870", total: "/ 2 277", pct: 82, color: C.green, trend: "stable" },
+      { label: "En prêt actuellement", value: "269", total: "", pct: 12, color: C.blue, trend: "↓ retours en cours" },
+      { label: "En réparation", value: "94", total: "", pct: 4, color: C.corail, trend: "stable" },
+      { label: "En lavage", value: "44", total: "", pct: 2, color: C.amber, trend: "↑ +12 cette semaine" },
+    ],
+    alertes: [
+      { type: "critical", icon: "🔴", text: "38 retours enregistrés cette semaine — record de la saison.", action: "Mobiliser toutes les équipes quai" },
+      { type: "warning", icon: "🟡", text: "12 tentes revenues humides. Protocole séchage activé.", action: "Dépliage hangar C ce vendredi" },
+      { type: "info", icon: "🟢", text: "Quick-win codes pannes : temps d'encodage moyen passé de 5 min à 3 min (-40%).", action: "Première victoire mesurable du projet" },
+    ],
+    previsions: [
+      { semaine: "S34 (18 août)", text: "Encore 14 retours attendus. Pic de lavage anticipé." },
+      { semaine: "S35 (25 août)", text: "Fin de saison camps. Transition vers maintenance intensive." },
+    ],
+    actions: [
+      { priorite: 1, text: "Gérer les 38 retours — prioriser inspection et encodage", responsable: "Contremaîtres", delai: "Toute la semaine" },
+      { priorite: 2, text: "Activer protocole séchage pour les 12 tentes humides", responsable: "Équipe stockage", delai: "Vendredi" },
+      { priorite: 3, text: "Documenter le gain codes pannes pour le bilan pilote", responsable: "Olivier PRETTO", delai: "S34" },
+    ],
+    chiffre: { value: "40%", label: "de temps gagné sur l'encodage des pannes", sub: "Premier résultat concret du projet de digitalisation." },
+  },
+];
+
+function MeteoIcon({ meteo, color, size }) {
+  return (
+    <div style={{
+      width: size || 60, height: size || 60, borderRadius: "50%",
+      background: color + "15", border: `3px solid ${color}`,
+      display: "flex", alignItems: "center", justifyContent: "center",
+      fontSize: (size || 60) * 0.5,
+    }}>{meteo}</div>
+  );
+}
+
+function MeteoCPM() {
+  const [selectedBulletin, setSelectedBulletin] = useState(0);
+  const [activeSection, setActiveSection] = useState("resume");
+  const b = bulletins[selectedBulletin];
+
+  const sections = [
+    { id: "resume", label: "Résumé", icon: "📋" },
+    { id: "alertes", label: "Alertes", icon: "🚨" },
+    { id: "previsions", label: "Prévisions", icon: "🔮" },
+    { id: "actions", label: "Actions", icon: "✅" },
+  ];
+
+  return (
+    <div style={{ fontFamily: "'Roboto',system-ui,sans-serif", background: C.fondClair, minHeight: "100vh", color: C.text }}>
+      {/* Header */}
+      <div style={{ background: "linear-gradient(135deg, #FDF0EE 0%, #F5E0DC 50%, #EEDDD9 100%)", padding: "24px 22px 18px" }}>
+        <div style={{ maxWidth: 880, margin: "0 auto" }}>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
+            <div>
+              <p style={{ fontSize: 12, color: C.muted, marginBottom: 4 }}>Piste 3 · Bulletin hebdomadaire automatisé</p>
+              <h1 style={{ margin: 0, fontSize: 28, fontWeight: 700, fontFamily: "'Poppins', sans-serif", color: C.noir }}>
+                La Météo du patrimoine
+              </h1>
+              <p style={{ margin: "6px 0 0", fontSize: 14, color: C.muted }}>
+                Chaque lundi matin, l'essentiel en 30 secondes.
+              </p>
+            </div>
+            <MeteoIcon meteo={b.meteo} color={b.meteoColor} size={70} />
+          </div>
+
+          {/* Bulletin selector */}
+          <div style={{ display: "flex", gap: 8, marginTop: 16 }}>
+            {bulletins.map((bul, i) => (
+              <button key={i} onClick={() => { setSelectedBulletin(i); setActiveSection("resume"); }} style={{
+                padding: "8px 16px", borderRadius: 20, border: "none", cursor: "pointer",
+                background: selectedBulletin === i ? C.noir : C.white,
+                color: selectedBulletin === i ? "#fff" : C.muted,
+                fontSize: 13, fontWeight: 600,
+              }}>{bul.semaine} · {bul.date.split(" ").slice(1, 3).join(" ")}</button>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Section tabs */}
+      <div style={{ background: C.white, borderBottom: `1px solid ${C.border}`, position: "sticky", top: 0, zIndex: 10 }}>
+        <div style={{ maxWidth: 880, margin: "0 auto", display: "flex" }}>
+          {sections.map(s => (
+            <button key={s.id} onClick={() => setActiveSection(s.id)} style={{
+              padding: "12px 18px", border: "none", background: "none", cursor: "pointer",
+              fontSize: 14, fontWeight: activeSection === s.id ? 700 : 500,
+              color: activeSection === s.id ? C.corail : C.muted,
+              borderBottom: activeSection === s.id ? `2px solid ${C.corail}` : "2px solid transparent",
+              fontFamily: "'Poppins', sans-serif",
+            }}>{s.icon} {s.label}</button>
+          ))}
+        </div>
+      </div>
+
+      <div style={{ maxWidth: 880, margin: "0 auto", padding: "18px 22px 44px" }}>
+
+        {activeSection === "resume" && (
+          <div>
+            {/* Date + Meteo badge */}
+            <div style={{
+              display: "flex", alignItems: "center", gap: 14, marginBottom: 16,
+              background: b.meteoColor + "10", borderRadius: 12, padding: "14px 18px",
+              border: `1px solid ${b.meteoColor}30`,
+            }}>
+              <MeteoIcon meteo={b.meteo} color={b.meteoColor} size={50} />
+              <div>
+                <div style={{ fontSize: 18, fontWeight: 700, fontFamily: "'Poppins', sans-serif" }}>
+                  {b.date} — {b.semaine}
+                </div>
+                <div style={{ fontSize: 14, color: b.meteoColor, fontWeight: 600 }}>
+                  Niveau : {b.meteoLabel}
+                </div>
+              </div>
+            </div>
+
+            {/* Résumé narratif */}
+            <div style={{
+              background: C.white, borderRadius: 12, padding: 20, border: `1px solid ${C.border}`,
+              marginBottom: 16, fontSize: 16, lineHeight: 1.8,
+            }}>
+              {b.resume}
+            </div>
+
+            {/* KPIs */}
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, marginBottom: 16 }}>
+              {b.kpis.map((k, i) => (
+                <div key={i} style={{
+                  background: C.white, borderRadius: 12, padding: "16px 18px",
+                  border: `1px solid ${C.border}`,
+                }}>
+                  <div style={{ fontSize: 12, color: C.muted, fontWeight: 600, textTransform: "uppercase", letterSpacing: 0.5 }}>{k.label}</div>
+                  <div style={{ display: "flex", alignItems: "baseline", gap: 6, marginTop: 6 }}>
+                    <span style={{ fontSize: 28, fontWeight: 800, color: k.color, fontFamily: "'Poppins', sans-serif" }}>{k.value}</span>
+                    {k.total && <span style={{ fontSize: 14, color: C.muted }}>{k.total}</span>}
+                  </div>
+                  <div style={{ height: 6, background: C.border, borderRadius: 3, marginTop: 8, overflow: "hidden" }}>
+                    <div style={{ width: `${k.pct}%`, height: "100%", background: k.color, borderRadius: 3 }} />
+                  </div>
+                  <div style={{ fontSize: 12, color: C.muted, marginTop: 6 }}>{k.trend}</div>
+                </div>
+              ))}
+            </div>
+
+            {/* Chiffre de la semaine */}
+            <div style={{
+              background: C.noir, borderRadius: 12, padding: 22, color: "#fff", textAlign: "center",
+            }}>
+              <div style={{ fontSize: 11, textTransform: "uppercase", letterSpacing: 2, opacity: 0.6, marginBottom: 6 }}>
+                Le chiffre de la semaine
+              </div>
+              <div style={{ fontSize: 36, fontWeight: 800, fontFamily: "'Poppins', sans-serif", color: C.corail }}>
+                {b.chiffre.value}
+              </div>
+              <div style={{ fontSize: 15, opacity: 0.9, marginTop: 4 }}>{b.chiffre.label}</div>
+              <div style={{ fontSize: 12, opacity: 0.6, marginTop: 6, fontStyle: "italic" }}>{b.chiffre.sub}</div>
+            </div>
+          </div>
+        )}
+
+        {activeSection === "alertes" && (
+          <div>
+            <p style={{ fontSize: 15, color: C.muted, marginBottom: 14 }}>
+              {b.alertes.length} alertes actives cette semaine.
+            </p>
+            {b.alertes.map((a, i) => {
+              const colors = { critical: C.red, warning: C.amber, info: C.green };
+              const col = colors[a.type];
+              return (
+                <div key={i} style={{
+                  background: C.white, borderRadius: 12, border: `1px solid ${C.border}`,
+                  borderLeft: `4px solid ${col}`, padding: 18, marginBottom: 10,
+                }}>
+                  <div style={{ display: "flex", alignItems: "flex-start", gap: 10 }}>
+                    <span style={{ fontSize: 20, flexShrink: 0 }}>{a.icon}</span>
+                    <div>
+                      <div style={{ fontSize: 15, lineHeight: 1.6, fontWeight: 500 }}>{a.text}</div>
+                      <div style={{
+                        marginTop: 8, padding: "6px 12px", borderRadius: 8,
+                        background: col + "10", fontSize: 13, fontWeight: 600, color: col,
+                        display: "inline-block",
+                      }}>
+                        → {a.action}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        )}
+
+        {activeSection === "previsions" && (
+          <div>
+            <p style={{ fontSize: 15, color: C.muted, marginBottom: 14 }}>
+              Anticipation des prochaines semaines.
+            </p>
+            {b.previsions.map((p, i) => (
+              <div key={i} style={{
+                background: C.white, borderRadius: 12, border: `1px solid ${C.border}`,
+                padding: 18, marginBottom: 10, display: "flex", gap: 14,
+              }}>
+                <div style={{
+                  width: 44, height: 44, borderRadius: "50%", background: C.violet + "15",
+                  display: "flex", alignItems: "center", justifyContent: "center",
+                  fontSize: 18, flexShrink: 0,
+                }}>🔮</div>
+                <div>
+                  <div style={{ fontSize: 15, fontWeight: 700, fontFamily: "'Poppins', sans-serif", color: C.violet }}>
+                    {p.semaine}
+                  </div>
+                  <div style={{ fontSize: 14, lineHeight: 1.7, marginTop: 4, color: C.text }}>
+                    {p.text}
+                  </div>
+                </div>
+              </div>
+            ))}
+
+            <div style={{
+              marginTop: 12, padding: "14px 18px", borderRadius: 12,
+              background: C.fondRose, fontSize: 13, fontStyle: "italic", color: C.corail,
+              lineHeight: 1.6,
+            }}>
+              Ces prévisions sont générées par l'IA sur base des données SAP historiques et des tendances saisonnières.
+              Elles sont indicatives et doivent être validées par l'expérience terrain des contremaîtres.
+            </div>
+          </div>
+        )}
+
+        {activeSection === "actions" && (
+          <div>
+            <p style={{ fontSize: 15, color: C.muted, marginBottom: 14 }}>
+              {b.actions.length} actions prioritaires pour cette semaine.
+            </p>
+            {b.actions.map((a, i) => {
+              const prioColors = [C.red, C.corail, C.amber, C.steel];
+              const col = prioColors[a.priorite - 1] || C.muted;
+              return (
+                <div key={i} style={{
+                  background: C.white, borderRadius: 12, border: `1px solid ${C.border}`,
+                  padding: 18, marginBottom: 10, display: "flex", gap: 14,
+                }}>
+                  <div style={{
+                    width: 36, height: 36, borderRadius: "50%", background: col,
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                    color: "#fff", fontSize: 16, fontWeight: 800, flexShrink: 0,
+                    fontFamily: "'Poppins', sans-serif",
+                  }}>{a.priorite}</div>
+                  <div style={{ flex: 1 }}>
+                    <div style={{ fontSize: 15, fontWeight: 600, lineHeight: 1.5 }}>{a.text}</div>
+                    <div style={{ display: "flex", gap: 12, marginTop: 8, fontSize: 13, color: C.muted }}>
+                      <span>👤 {a.responsable}</span>
+                      <span>📅 {a.delai}</span>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+
+            <div style={{
+              marginTop: 16, padding: "14px 18px", borderRadius: 12,
+              background: C.green + "10", borderLeft: `3px solid ${C.green}`,
+              fontSize: 14, color: C.green, fontWeight: 600,
+            }}>
+              ✅ Ce bulletin est généré automatiquement chaque lundi à 7h00 et envoyé aux contremaîtres et à la direction via Teams / email.
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* Footer */}
+      <div style={{ padding: "14px 22px", borderTop: `1px solid ${C.border}`, background: C.white, textAlign: "center" }}>
+        <span style={{ fontSize: 12, color: C.muted }}>
+          La Météo du patrimoine · Généré par IA · Centre de Prêt de Matériel · FWB
+        </span>
+      </div>
+    </div>
+  );
+}
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(React.createElement(MeteoCPM));
+    </script>
+</body>
+</html>

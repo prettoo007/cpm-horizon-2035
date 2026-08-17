@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>CPM — Passeport numérique tente</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Roboto', 'Segoe UI', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+        button { font-family: inherit; }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
+    <script type="text/babel">
+const { useState } = React;
+
+const C = {
+  corail: "#D86F6F", noir: "#1D1D1B", rose: "#E372A6",
+  fondClair: "#F9F5F4", fondRose: "#FDF0EE", white: "#FFFFFF",
+  text: "#2C2C2C", muted: "#8A7F7F", border: "#E8DEDD",
+  green: "#5BA67D", amber: "#D4A843", steel: "#6B7F94",
+  violet: "#7C6BAA", blue: "#4A90B8",
+};
+
+const tent = {
+  id: "2240301537",
+  type: "Senior",
+  ref: "24-030",
+  name: "La Pionnière",
+  fabrication: "30 janvier 2012",
+  fabricants: "Équipe atelier loisirs — Pascal B. & Morgand L.",
+  dimensions: "5,00 × 5,00 m · hauteur 2,85 m",
+  poids: "~45 kg (avec accessoires)",
+  capacite: "8 à 10 personnes",
+  matiere: "Toile polyester enduite PU — lot T-2012-A",
+  sorties: 9,
+  camps: 9,
+  jeunes: 458,
+  km: "1 240 km parcourus",
+  lieux: [
+    { lieu: "Camp Patro — Vielsalm", date: "Juillet 2024", duree: "12 jours" },
+    { lieu: "Festival Jeunesse — Durbuy", date: "Août 2023", duree: "4 jours" },
+    { lieu: "Camp Scout — Bouillon", date: "Juillet 2023", duree: "14 jours" },
+    { lieu: "Camp Guides — Rochefort", date: "Juillet 2022", duree: "10 jours" },
+    { lieu: "Plaines de jeux — Namur", date: "Août 2021", duree: "5 jours" },
+  ],
+  reparations: 3,
+  lavages: 2,
+  heuresEntretien: 14,
+};
+
+const montageSteps = [
+  { step: "Déplier la tente au sol", detail: "Choisir un terrain plat, dégagé de cailloux et de branches. Orienter l'entrée dos au vent dominant.", time: "2 min" },
+  { step: "Assembler les mâts", detail: "Insérer les mâts centraux dans les fourreaux. Vérifier que les embouts sont bien enfoncés.", time: "3 min" },
+  { step: "Lever la structure", detail: "Deux personnes minimum. Lever le mât central puis tendre les haubans latéraux progressivement.", time: "5 min" },
+  { step: "Fixer les sardines", detail: "Enfoncer les sardines à 45° vers l'extérieur. Commencer par les 4 coins, puis les intermédiaires.", time: "5 min" },
+  { step: "Tendre la toile", detail: "Ajuster les tendeurs pour obtenir une toile bien lisse, sans poche d'eau possible.", time: "3 min" },
+  { step: "Vérifier l'ensemble", detail: "Tour complet : sardines, haubans, fermetures, ventilation. La tente doit être stable au vent.", time: "2 min" },
+];
+
+const pliageSteps = [
+  { step: "Retirer les sardines", detail: "Les rassembler dans le sac prévu — ne pas les laisser dans l'herbe !", time: "3 min" },
+  { step: "Détendre les haubans", detail: "Desserrer tous les tendeurs avant de baisser la structure.", time: "2 min" },
+  { step: "Baisser la structure", detail: "Retirer les mâts centraux délicatement. Ne jamais tirer sur la toile.", time: "3 min" },
+  { step: "Plier la toile", detail: "Plier en accordéon dans le sens de la longueur, puis rouler serré. NE PAS arracher la toile contre les entretoises.", time: "5 min" },
+  { step: "Ranger les accessoires", detail: "Mâts, sardines, tendeurs — chaque élément dans son sac. Vérifier qu'il ne manque rien.", time: "3 min" },
+  { step: "Sangler le tout", detail: "Entourer le rouleau avec les sangles fournies. La tente doit tenir compacte.", time: "2 min" },
+];
+
+function Section({ title, icon, children, defaultOpen }) {
+  const [open, setOpen] = useState(defaultOpen || false);
+  return (
+    <div style={{
+      background: C.white, borderRadius: 14, border: `1px solid ${C.border}`,
+      marginBottom: 10, overflow: "hidden",
+    }}>
+      <div onClick={() => setOpen(!open)} style={{
+        padding: "16px 20px", cursor: "pointer",
+        display: "flex", alignItems: "center", justifyContent: "space-between",
+      }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+          <span style={{ fontSize: 22 }}>{icon}</span>
+          <span style={{ fontSize: 17, fontWeight: 700, fontFamily: "'Poppins', sans-serif", color: C.noir }}>{title}</span>
+        </div>
+        <span style={{ fontSize: 20, color: C.muted, transform: open ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>⌄</span>
+      </div>
+      {open && <div style={{ padding: "0 20px 18px", borderTop: `1px solid ${C.fondClair}` }}>{children}</div>}
+    </div>
+  );
+}
+
+function DigitalPassport() {
+  const [activeTab, setActiveTab] = useState("histoire");
+  const [showSignal, setShowSignal] = useState(false);
+  const [signalSent, setSignalSent] = useState(false);
+
+  const tabs = [
+    { id: "histoire", label: "Son histoire", icon: "📖" },
+    { id: "technique", label: "Technique", icon: "📐" },
+    { id: "tutoriels", label: "Tutoriels", icon: "🎬" },
+    { id: "signaler", label: "Signaler", icon: "⚠️" },
+  ];
+
+  return (
+    <div style={{ fontFamily: "'Roboto','Segoe UI',system-ui,sans-serif", background: C.fondClair, minHeight: "100vh", color: C.text, maxWidth: 480, margin: "0 auto" }}>
+      {/* Header - mobile optimized */}
+      <div style={{
+        background: `linear-gradient(135deg, ${C.noir} 0%, #2C3E50 100%)`,
+        padding: "24px 20px 20px", color: "#fff", textAlign: "center",
+      }}>
+        <div style={{
+          display: "inline-block", padding: "4px 14px", borderRadius: 20,
+          background: C.corail + "30", fontSize: 11, fontWeight: 600, color: C.corail,
+          marginBottom: 12,
+        }}>
+          Passeport numérique CPM
+        </div>
+
+        {/* Tent visual */}
+        <div style={{ margin: "10px auto 14px", width: 120, height: 80 }}>
+          <svg viewBox="0 0 120 80" style={{ width: "100%", height: "100%" }}>
+            <polygon points="60,5 110,70 10,70" fill="none" stroke={C.corail} strokeWidth="2.5" strokeLinejoin="round" />
+            <line x1="60" y1="5" x2="60" y2="70" stroke={C.corail} strokeWidth="1.5" strokeDasharray="4,3" />
+            <line x1="10" y1="70" x2="110" y2="70" stroke={C.corail} strokeWidth="2" />
+            <rect x="50" y="45" width="20" height="25" rx="2" fill={C.corail} opacity="0.3" />
+          </svg>
+        </div>
+
+        <div style={{ fontSize: 24, fontWeight: 800, fontFamily: "'Poppins', sans-serif" }}>
+          {tent.name}
+        </div>
+        <div style={{ fontSize: 14, opacity: 0.7, marginTop: 4 }}>
+          Tente {tent.type} · #{tent.id}
+        </div>
+
+        {/* Impact counter */}
+        <div style={{
+          display: "flex", justifyContent: "center", gap: 20, marginTop: 16,
+          padding: "12px 0", borderTop: "1px solid rgba(255,255,255,0.1)",
+        }}>
+          {[
+            { num: tent.camps, label: "camps", icon: "⛺" },
+            { num: tent.jeunes, label: "jeunes", icon: "👥" },
+            { num: tent.lieux.length, label: "lieux", icon: "📍" },
+          ].map((stat, i) => (
+            <div key={i} style={{ textAlign: "center" }}>
+              <div style={{ fontSize: 11, marginBottom: 2 }}>{stat.icon}</div>
+              <div style={{ fontSize: 22, fontWeight: 800, fontFamily: "'Poppins', sans-serif" }}>{stat.num}</div>
+              <div style={{ fontSize: 10, opacity: 0.6 }}>{stat.label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Tabs */}
+      <div style={{
+        display: "flex", background: C.white, borderBottom: `1px solid ${C.border}`,
+        position: "sticky", top: 0, zIndex: 10,
+      }}>
+        {tabs.map(t => (
+          <button key={t.id} onClick={() => setActiveTab(t.id)} style={{
+            flex: 1, padding: "12px 4px", border: "none", background: "none", cursor: "pointer",
+            fontSize: 12, fontWeight: activeTab === t.id ? 700 : 500,
+            color: activeTab === t.id ? C.corail : C.muted,
+            borderBottom: activeTab === t.id ? `2px solid ${C.corail}` : "2px solid transparent",
+            fontFamily: "'Poppins', sans-serif",
+          }}>
+            <div style={{ fontSize: 16 }}>{t.icon}</div>
+            {t.label}
+          </button>
+        ))}
+      </div>
+
+      {/* Content */}
+      <div style={{ padding: "14px 16px 30px" }}>
+
+        {activeTab === "histoire" && (
+          <div>
+            {/* Story narrative */}
+            <div style={{
+              background: C.white, borderRadius: 14, padding: 20, marginBottom: 12,
+              border: `1px solid ${C.border}`,
+            }}>
+              <div style={{ fontSize: 15, lineHeight: 1.8, fontFamily: "'Roboto', sans-serif" }}>
+                Cette tente a été <strong>fabriquée à la main</strong> le {tent.fabrication} par l'équipe de l'atelier loisirs du Centre de Prêt de Matériel, à Namur. Depuis, elle a servi lors de <strong>{tent.camps} camps</strong> et a permis à près de <strong>{tent.jeunes} jeunes</strong> de vivre une aventure en plein air.
+              </div>
+              <div style={{
+                marginTop: 14, padding: "10px 14px", borderRadius: 10,
+                background: C.fondRose, fontSize: 13, lineHeight: 1.6,
+                fontStyle: "italic", color: C.corail,
+              }}>
+                Chaque tente CPM est un bien commun, fabriqué, entretenu et réparé par nos équipes pour que vous puissiez en profiter pleinement. Prenez-en soin comme nous le faisons.
+              </div>
+            </div>
+
+            {/* Fabrication */}
+            <Section title="Fabrication" icon="🔨" defaultOpen={true}>
+              <div style={{ fontSize: 14, lineHeight: 1.7 }}>
+                <div style={{ marginBottom: 8 }}><strong>Fabriquée par :</strong> {tent.fabricants}</div>
+                <div style={{ marginBottom: 8 }}><strong>Matière :</strong> {tent.matiere}</div>
+                <div><strong>Heures d'entretien cumulées :</strong> {tent.heuresEntretien}h — dont {tent.reparations} réparations et {tent.lavages} lavages complets</div>
+              </div>
+            </Section>
+
+            {/* Journey */}
+            <Section title="Ses voyages" icon="🗺️">
+              {tent.lieux.map((l, i) => (
+                <div key={i} style={{
+                  display: "flex", gap: 12, padding: "10px 0",
+                  borderBottom: i < tent.lieux.length - 1 ? `1px solid ${C.fondClair}` : "none",
+                }}>
+                  <div style={{
+                    width: 36, height: 36, borderRadius: "50%", background: C.corail + "15",
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                    fontSize: 14, flexShrink: 0,
+                  }}>📍</div>
+                  <div>
+                    <div style={{ fontSize: 14, fontWeight: 700 }}>{l.lieu}</div>
+                    <div style={{ fontSize: 12, color: C.muted }}>{l.date} · {l.duree}</div>
+                  </div>
+                </div>
+              ))}
+            </Section>
+
+            {/* Impact */}
+            <div style={{
+              background: C.corail, borderRadius: 14, padding: 20, textAlign: "center", color: "#fff",
+            }}>
+              <div style={{ fontSize: 13, opacity: 0.8, marginBottom: 6 }}>Impact cumulé de cette tente</div>
+              <div style={{ fontSize: 36, fontWeight: 800, fontFamily: "'Poppins', sans-serif" }}>
+                {tent.jeunes} jeunes
+              </div>
+              <div style={{ fontSize: 14, opacity: 0.9, marginTop: 4 }}>
+                ont dormi sous cette toile depuis {tent.fabrication.split(" ").pop()}
+              </div>
+              <div style={{ marginTop: 12, fontSize: 12, opacity: 0.7 }}>
+                Un bien commun de la Fédération Wallonie-Bruxelles
+              </div>
+            </div>
+          </div>
+        )}
+
+        {activeTab === "technique" && (
+          <div>
+            <div style={{ background: C.white, borderRadius: 14, padding: 20, border: `1px solid ${C.border}`, marginBottom: 12 }}>
+              {/* Tent sketch */}
+              <div style={{ textAlign: "center", marginBottom: 16 }}>
+                <svg viewBox="0 0 200 130" style={{ width: "100%", maxWidth: 280 }}>
+                  <polygon points="100,10 180,100 20,100" fill={C.corail + "15"} stroke={C.corail} strokeWidth="2" strokeLinejoin="round" />
+                  <line x1="100" y1="10" x2="100" y2="100" stroke={C.corail} strokeWidth="1" strokeDasharray="4,3" />
+                  <line x1="20" y1="100" x2="180" y2="100" stroke={C.corail} strokeWidth="2" />
+                  <rect x="85" y="65" width="30" height="35" rx="3" fill={C.corail} opacity="0.25" />
+                  <text x="100" y="120" textAnchor="middle" fontSize="10" fill={C.muted} fontFamily="Roboto, sans-serif">5,00 × 5,00 m · h 2,85 m</text>
+                </svg>
+              </div>
+
+              {[
+                { label: "Type", value: `Tente ${tent.type}` },
+                { label: "Référence", value: `réf ${tent.ref}` },
+                { label: "N° de matériel", value: tent.id },
+                { label: "Dimensions", value: tent.dimensions },
+                { label: "Poids", value: tent.poids },
+                { label: "Capacité", value: tent.capacite },
+                { label: "Matière", value: tent.matiere },
+                { label: "Mise en service", value: tent.fabrication },
+              ].map((item, i) => (
+                <div key={i} style={{
+                  display: "flex", justifyContent: "space-between", padding: "8px 0",
+                  borderBottom: `1px solid ${C.fondClair}`, fontSize: 14,
+                }}>
+                  <span style={{ color: C.muted, fontWeight: 500 }}>{item.label}</span>
+                  <span style={{ fontWeight: 600, textAlign: "right" }}>{item.value}</span>
+                </div>
+              ))}
+            </div>
+
+            <div style={{
+              background: C.steel + "10", borderRadius: 14, padding: 16,
+              fontSize: 13, lineHeight: 1.6, color: C.steel,
+            }}>
+              <strong>Conseil véhicule :</strong> cette tente nécessite un véhicule de type camionnette ou remorque. Poids total avec accessoires : environ 55 kg. Prévoir 2 personnes pour le chargement.
+            </div>
+          </div>
+        )}
+
+        {activeTab === "tutoriels" && (
+          <div>
+            {/* Montage */}
+            <Section title="Montage — 6 étapes (20 min)" icon="🏕️" defaultOpen={true}>
+              {montageSteps.map((s, i) => (
+                <div key={i} style={{
+                  display: "flex", gap: 12, padding: "10px 0",
+                  borderBottom: i < montageSteps.length - 1 ? `1px solid ${C.fondClair}` : "none",
+                }}>
+                  <div style={{
+                    width: 30, height: 30, borderRadius: "50%", background: C.green + "18",
+                    border: `2px solid ${C.green}`, display: "flex", alignItems: "center", justifyContent: "center",
+                    fontSize: 13, fontWeight: 800, color: C.green, flexShrink: 0,
+                    fontFamily: "'Poppins', sans-serif",
+                  }}>{i + 1}</div>
+                  <div>
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                      <span style={{ fontSize: 14, fontWeight: 700 }}>{s.step}</span>
+                      <span style={{ fontSize: 11, color: C.muted }}>~{s.time}</span>
+                    </div>
+                    <div style={{ fontSize: 13, color: C.muted, marginTop: 3, lineHeight: 1.5 }}>{s.detail}</div>
+                  </div>
+                </div>
+              ))}
+            </Section>
+
+            {/* Pliage */}
+            <Section title="Pliage — 6 étapes (18 min)" icon="📦">
+              {pliageSteps.map((s, i) => (
+                <div key={i} style={{
+                  display: "flex", gap: 12, padding: "10px 0",
+                  borderBottom: i < pliageSteps.length - 1 ? `1px solid ${C.fondClair}` : "none",
+                }}>
+                  <div style={{
+                    width: 30, height: 30, borderRadius: "50%", background: C.amber + "18",
+                    border: `2px solid ${C.amber}`, display: "flex", alignItems: "center", justifyContent: "center",
+                    fontSize: 13, fontWeight: 800, color: C.amber, flexShrink: 0,
+                    fontFamily: "'Poppins', sans-serif",
+                  }}>{i + 1}</div>
+                  <div>
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                      <span style={{ fontSize: 14, fontWeight: 700 }}>{s.step}</span>
+                      <span style={{ fontSize: 11, color: C.muted }}>~{s.time}</span>
+                    </div>
+                    <div style={{ fontSize: 13, color: C.muted, marginTop: 3, lineHeight: 1.5 }}>{s.detail}</div>
+                  </div>
+                </div>
+              ))}
+              <div style={{
+                marginTop: 10, padding: "10px 14px", borderRadius: 10,
+                background: C.corail + "12", borderLeft: `3px solid ${C.corail}`,
+                fontSize: 13, fontWeight: 600, color: C.corail,
+              }}>
+                ⚠ Ne jamais arracher la toile contre les entretoises — cela provoque des déchirures qui nécessitent plusieurs heures de réparation.
+              </div>
+            </Section>
+
+            {/* Video link placeholder */}
+            <div style={{
+              background: C.white, borderRadius: 14, padding: 20, border: `1px solid ${C.border}`,
+              textAlign: "center",
+            }}>
+              <div style={{ fontSize: 40, marginBottom: 8 }}>🎥</div>
+              <div style={{ fontSize: 16, fontWeight: 700, fontFamily: "'Poppins', sans-serif", marginBottom: 6 }}>
+                Vidéo tutoriel
+              </div>
+              <div style={{ fontSize: 13, color: C.muted, marginBottom: 12 }}>
+                Regardez notre vidéo de montage et pliage réalisée par l'équipe CPM
+              </div>
+              <div style={{
+                padding: "10px 20px", borderRadius: 10, background: C.corail, color: "#fff",
+                fontSize: 14, fontWeight: 600, display: "inline-block", cursor: "pointer",
+              }}>
+                ▶ Voir la vidéo sur Stream
+              </div>
+            </div>
+          </div>
+        )}
+
+        {activeTab === "signaler" && (
+          <div>
+            {!signalSent ? (
+              <div style={{ background: C.white, borderRadius: 14, padding: 20, border: `1px solid ${C.border}` }}>
+                <div style={{ fontSize: 17, fontWeight: 700, fontFamily: "'Poppins', sans-serif", marginBottom: 6 }}>
+                  Signaler un problème
+                </div>
+                <div style={{ fontSize: 14, color: C.muted, marginBottom: 16, lineHeight: 1.6 }}>
+                  Un souci avec cette tente ? Aidez-nous à l'améliorer en nous le signalant. Votre retour est précieux pour nos équipes.
+                </div>
+
+                {/* Type selection */}
+                <div style={{ fontSize: 13, fontWeight: 700, marginBottom: 8, color: C.corail }}>Type de problème</div>
+                <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 16 }}>
+                  {["Déchirure", "Pièce manquante", "Fermeture cassée", "Humidité / Moisissure", "Sardine tordue", "Autre"].map((type, i) => (
+                    <button key={i} onClick={() => setShowSignal(type)} style={{
+                      padding: "8px 14px", borderRadius: 20, cursor: "pointer",
+                      border: showSignal === type ? `2px solid ${C.corail}` : `1px solid ${C.border}`,
+                      background: showSignal === type ? C.corail + "12" : C.white,
+                      color: showSignal === type ? C.corail : C.text,
+                      fontSize: 13, fontWeight: 500,
+                    }}>{type}</button>
+                  ))}
+                </div>
+
+                {showSignal && (
+                  <div>
+                    {/* Photo upload */}
+                    <div style={{
+                      border: `2px dashed ${C.border}`, borderRadius: 12, padding: "20px",
+                      textAlign: "center", marginBottom: 16, background: C.fondClair,
+                    }}>
+                      <div style={{ fontSize: 28, marginBottom: 6 }}>📸</div>
+                      <div style={{ fontSize: 13, color: C.muted }}>Appuyez pour prendre une photo du problème</div>
+                    </div>
+
+                    {/* Comment */}
+                    <div style={{
+                      padding: "12px 14px", borderRadius: 10, border: `1px solid ${C.border}`,
+                      fontSize: 14, color: C.muted, marginBottom: 16, minHeight: 80,
+                      background: C.white,
+                    }}>
+                      Décrivez le problème en quelques mots...
+                    </div>
+
+                    {/* Send button */}
+                    <button onClick={() => setSignalSent(true)} style={{
+                      width: "100%", padding: "14px", borderRadius: 12, border: "none",
+                      background: C.corail, color: "#fff", fontSize: 16, fontWeight: 700,
+                      cursor: "pointer", fontFamily: "'Poppins', sans-serif",
+                    }}>
+                      Envoyer le signalement
+                    </button>
+                  </div>
+                )}
+              </div>
+            ) : (
+              <div style={{
+                background: C.white, borderRadius: 14, padding: 30, border: `1px solid ${C.border}`,
+                textAlign: "center",
+              }}>
+                <div style={{ fontSize: 50, marginBottom: 12 }}>✅</div>
+                <div style={{ fontSize: 20, fontWeight: 700, fontFamily: "'Poppins', sans-serif", color: C.green, marginBottom: 8 }}>
+                  Merci pour votre signalement !
+                </div>
+                <div style={{ fontSize: 14, color: C.muted, lineHeight: 1.6, marginBottom: 16 }}>
+                  Notre équipe a été notifiée. Votre retour nous aide à maintenir notre matériel en excellent état pour tous les utilisateurs.
+                </div>
+                <div style={{ fontSize: 13, color: C.corail, fontWeight: 600 }}>
+                  Tente {tent.type} #{tent.id} · Signalement envoyé
+                </div>
+                <button onClick={() => { setSignalSent(false); setShowSignal(false); }} style={{
+                  marginTop: 16, padding: "10px 20px", borderRadius: 10,
+                  border: `1px solid ${C.border}`, background: C.white,
+                  fontSize: 14, cursor: "pointer", color: C.text,
+                }}>Nouveau signalement</button>
+              </div>
+            )}
+          </div>
+        )}
+      </div>
+
+      {/* Footer */}
+      <div style={{
+        padding: "16px 20px", borderTop: `1px solid ${C.border}`, background: C.white,
+        textAlign: "center",
+      }}>
+        <div style={{ fontSize: 11, color: C.muted, lineHeight: 1.6 }}>
+          Centre de Prêt de Matériel — Fédération Wallonie-Bruxelles
+        </div>
+        <div style={{ fontSize: 10, color: C.border, marginTop: 4 }}>
+          Un bien n'a de valeur que lorsqu'il est utilisé au service de l'intérêt général.
+        </div>
+      </div>
+    </div>
+  );
+}
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(React.createElement(DigitalPassport));
+    </script>
+</body>
+</html>
