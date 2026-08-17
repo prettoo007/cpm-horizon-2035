@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>CPM Horizon 2035 — Schéma directeur</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'><circle cx='20' cy='20' r='18' fill='%23D86F6F'/><path d='M24,32C16.3,32 10,25.7 10,18C10,10.3 16.3,4 24,4L24,8.5C18.8,8.5 14.5,12.8 14.5,18C14.5,23.2 18.8,27.5 24,27.5L24,32' fill='white'/></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body, #root { height: 100%; }
+        body { font-family: 'Roboto', system-ui, sans-serif; -webkit-font-smoothing: antialiased; overflow: hidden; }
+        button { font-family: inherit; }
+        input:focus { border-color: #D86F6F !important; outline: none; }
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #E8DEDD; border-radius: 3px; }
+        @media (max-width: 768px) {
+            body { overflow: auto; }
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
+    <script type="text/babel">
+const { useState, useEffect } = React;
+
+const C = {
+  corail: "#D86F6F", noir: "#1D1D1B", rose: "#E372A6",
+  fondClair: "#F9F5F4", fondRose: "#FDF0EE", white: "#FFFFFF",
+  text: "#2C2C2C", muted: "#8A7F7F", border: "#E8DEDD",
+  green: "#5BA67D", amber: "#D4A843", steel: "#6B7F94",
+  violet: "#7C6BAA", blue: "#4A90B8", red: "#C0392B",
+};
+
+const PASSWORD = "CPM2035";
+
+const pages = [
+  { id: "home", label: "Accueil", icon: "🏠", category: null },
+  { id: "synthese", label: "Synthèse du cadrage", icon: "📋", category: "SCHÉMA DIRECTEUR" },
+  { id: "architecture", label: "Architecture technique", icon: "🏗️", category: null },
+  { id: "roadmap", label: "Roadmap 2035", icon: "🗺️", category: null },
+  { id: "presentation", label: "Présentation COPIL", icon: "📊", category: null },
+  { id: "prototype", label: "Gestion des tentes", icon: "⛺", category: "OUTILS OPÉRATIONNELS" },
+  { id: "passeport", label: "Passeport numérique", icon: "🎫", category: null },
+  { id: "assistant", label: "Demande au CPM", icon: "🤖", category: null },
+  { id: "analyse", label: "Analyse SAP 2025", icon: "📈", category: "DATA & PRÉDICTION" },
+  { id: "meteo", label: "Météo du patrimoine", icon: "⛅", category: null },
+  { id: "prediction", label: "Prédiction saisonnière", icon: "🔮", category: null },
+  { id: "innovation", label: "Le modèle CPM", icon: "💎", category: "COMMUNICATION" },
+];
+
+const homeCards = [
+  { title: "Schéma directeur", desc: "Vision, architecture, roadmap et présentation COPIL", icon: "📋", color: C.corail, link: "synthese", count: 4 },
+  { title: "Outils opérationnels", desc: "Prototype tentes, passeport QR et assistant IA", icon: "⛺", color: C.green, link: "prototype", count: 3 },
+  { title: "Data & Prédiction", desc: "Analyse SAP, météo du patrimoine et prédiction", icon: "📈", color: C.violet, link: "analyse", count: 3 },
+  { title: "Communication", desc: "Le modèle CPM — innovation publique", icon: "💎", color: C.amber, link: "innovation", count: 1 },
+];
+
+const stats = [
+  { num: "2 277", label: "tentes", color: C.corail },
+  { num: "1M+", label: "participants", color: C.green },
+  { num: "12", label: "modules", color: C.violet },
+  { num: "2035", label: "horizon", color: C.amber },
+];
+
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  useEffect(() => {
+    const handler = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener("resize", handler);
+    return () => window.removeEventListener("resize", handler);
+  }, []);
+  return isMobile;
+}
+
+function LoginScreen({ onLogin }) {
+  const [pwd, setPwd] = useState("");
+  const [error, setError] = useState(false);
+  const [shake, setShake] = useState(false);
+  const isMobile = useIsMobile();
+
+  const handleSubmit = () => {
+    if (pwd === PASSWORD) { onLogin(); }
+    else { setError(true); setShake(true); setTimeout(() => setShake(false), 500); }
+  };
+
+  return (
+    <div style={{
+      minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center",
+      background: `linear-gradient(135deg, ${C.noir} 0%, #2C3E50 60%, ${C.corail}40 100%)`,
+      padding: isMobile ? 16 : 0,
+    }}>
+      <div style={{
+        background: C.white, borderRadius: 20, padding: isMobile ? "36px 24px" : "48px 40px",
+        width: isMobile ? "100%" : 400, maxWidth: 400, textAlign: "center",
+        boxShadow: "0 20px 60px rgba(0,0,0,0.3)",
+        animation: shake ? "shake 0.4s ease" : "none",
+      }}>
+        <style>{`@keyframes shake { 0%,100% { transform: translateX(0); } 20%,60% { transform: translateX(-8px); } 40%,80% { transform: translateX(8px); } }`}</style>
+        <div style={{
+          width: 60, height: 60, borderRadius: "50%", background: C.corail,
+          margin: "0 auto 16px", display: "flex", alignItems: "center", justifyContent: "center",
+        }}>
+          <svg viewBox="0 0 40 40" width="32" height="32">
+            <path d="M24,32C16.3,32 10,25.7 10,18C10,10.3 16.3,4 24,4L24,8.5C18.8,8.5 14.5,12.8 14.5,18C14.5,23.2 18.8,27.5 24,27.5L24,32" fill="white" />
+          </svg>
+        </div>
+        <h1 style={{ fontSize: isMobile ? 22 : 26, fontWeight: 700, fontFamily: "'Poppins', sans-serif", color: C.noir, margin: "0 0 4px" }}>
+          CPM Horizon 2035
+        </h1>
+        <p style={{ fontSize: 13, color: C.muted, marginBottom: 4 }}>Transmettre un patrimoine. Ensemble.</p>
+        <p style={{ fontSize: 11, color: C.border, marginBottom: 24 }}>Fédération Wallonie-Bruxelles · AGC</p>
+        <input type="password" value={pwd}
+          onChange={e => { setPwd(e.target.value); setError(false); }}
+          onKeyDown={e => e.key === "Enter" && handleSubmit()}
+          placeholder="Code d'accès"
+          style={{
+            width: "100%", padding: "14px 18px", borderRadius: 12,
+            border: `2px solid ${error ? C.red : C.border}`,
+            fontSize: 16, textAlign: "center", outline: "none",
+            letterSpacing: 4, background: C.fondClair, marginBottom: 12,
+          }}
+        />
+        <button onClick={handleSubmit} style={{
+          width: "100%", padding: "14px", borderRadius: 12, border: "none",
+          background: C.corail, color: "#fff", fontSize: 16, fontWeight: 700,
+          cursor: "pointer", fontFamily: "'Poppins', sans-serif",
+        }}>Accéder</button>
+        {error && <p style={{ fontSize: 13, color: C.red, marginTop: 10, fontWeight: 600 }}>Code incorrect.</p>}
+      </div>
+    </div>
+  );
+}
+
+function HomePage({ onNavigate, isMobile }) {
+  return (
+    <div>
+      <div style={{
+        background: `linear-gradient(135deg, ${C.noir} 0%, #2C3E50 100%)`,
+        borderRadius: isMobile ? 12 : 16, padding: isMobile ? "24px 18px" : "32px 28px", color: "#fff", marginBottom: 16,
+      }}>
+        <div style={{ fontSize: 10, textTransform: "uppercase", letterSpacing: 2, opacity: 0.6, marginBottom: 6 }}>
+          Schéma directeur de transformation numérique
+        </div>
+        <h1 style={{ fontSize: isMobile ? 24 : 32, fontWeight: 700, fontFamily: "'Poppins', sans-serif", margin: "0 0 6px" }}>
+          <span style={{ fontWeight: 300 }}>CPM</span> Horizon 2035
+        </h1>
+        <p style={{ fontSize: isMobile ? 13 : 16, opacity: 0.8, fontStyle: "italic", margin: "0 0 16px" }}>
+          « Ils ne savaient pas que c'était impossible alors ils l'ont fait. »
+        </p>
+        <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr 1fr" : "1fr 1fr 1fr 1fr", gap: 8 }}>
+          {stats.map((s, i) => (
+            <div key={i} style={{ background: "rgba(255,255,255,0.08)", borderRadius: 10, padding: "10px 12px" }}>
+              <div style={{ fontSize: isMobile ? 18 : 22, fontWeight: 800, color: s.color, fontFamily: "'Poppins', sans-serif" }}>{s.num}</div>
+              <div style={{ fontSize: 11, opacity: 0.7 }}>{s.label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: 10 }}>
+        {homeCards.map((card, i) => (
+          <div key={i} onClick={() => onNavigate(card.link)} style={{
+            background: C.white, borderRadius: 14, padding: isMobile ? 18 : 22,
+            border: `1px solid ${C.border}`, cursor: "pointer",
+            borderLeft: `4px solid ${card.color}`,
+          }}>
+            <div style={{ fontSize: 28, marginBottom: 8 }}>{card.icon}</div>
+            <div style={{ fontSize: 17, fontWeight: 700, fontFamily: "'Poppins', sans-serif", marginBottom: 4 }}>{card.title}</div>
+            <div style={{ fontSize: 14, color: C.muted, lineHeight: 1.6, marginBottom: 10 }}>{card.desc}</div>
+            <div style={{ display: "flex", justifyContent: "space-between" }}>
+              <span style={{ fontSize: 12, fontWeight: 600, color: card.color }}>{card.count} module{card.count > 1 ? "s" : ""}</span>
+              <span style={{ color: card.color }}>→</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function ModulePage({ page }) {
+  const fileMap = {
+    synthese: "CPM_Horizon_2035_Synthese_Cadrage.html",
+    architecture: "CPM_Horizon_2035_Architecture.html",
+    roadmap: "CPM_Horizon_2035_Roadmap.html",
+    prototype: "CPM_Prototype_Gestion_Tentes.html",
+    analyse: "CPM_Analyse_SAP_2025.html",
+    meteo: "CPM_Meteo_du_Patrimoine.html",
+    prediction: "CPM_Prediction_Saisonniere.html",
+    passeport: "CPM_Passeport_Numerique_Tente.html",
+    assistant: "CPM_Assistant_IA_Demande_au_CPM.html",
+  };
+
+  if (page.id === "presentation") {
+    return (
+      <div style={{ background: C.white, borderRadius: 14, padding: 28, border: `1px solid ${C.border}`, textAlign: "center" }}>
+        <div style={{ fontSize: 48, marginBottom: 12 }}>📊</div>
+        <div style={{ fontSize: 20, fontWeight: 700, fontFamily: "'Poppins', sans-serif", marginBottom: 6 }}>Présentation COPIL</div>
+        <div style={{ fontSize: 14, color: C.muted, marginBottom: 16 }}>14 slides · Format PowerPoint</div>
+        <a href="CPM_Horizon_2035_Presentation_COPIL.pptx" download style={{
+          display: "inline-block", padding: "14px 28px", borderRadius: 12,
+          background: C.corail, color: "#fff", fontSize: 16, fontWeight: 700,
+          textDecoration: "none", fontFamily: "'Poppins', sans-serif",
+        }}>Télécharger le PPTX</a>
+      </div>
+    );
+  }
+
+  if (page.id === "innovation") {
+    return (
+      <div style={{ background: C.white, borderRadius: 14, padding: 28, border: `1px solid ${C.border}`, textAlign: "center" }}>
+        <div style={{ fontSize: 48, marginBottom: 12 }}>💎</div>
+        <div style={{ fontSize: 20, fontWeight: 700, fontFamily: "'Poppins', sans-serif", marginBottom: 6 }}>Le modèle CPM</div>
+        <div style={{ fontSize: 14, color: C.muted, marginBottom: 16 }}>Document d'innovation publique</div>
+        <a href="CPM_Le_Modele_CPM_Innovation_Publique.md" download style={{
+          display: "inline-block", padding: "14px 28px", borderRadius: 12,
+          background: C.violet, color: "#fff", fontSize: 16, fontWeight: 700,
+          textDecoration: "none", fontFamily: "'Poppins', sans-serif",
+        }}>Télécharger</a>
+      </div>
+    );
+  }
+
+  const file = fileMap[page.id];
+  if (file) {
+    return (
+      <div>
+        <div style={{
+          background: C.white, borderRadius: 14, border: `1px solid ${C.border}`,
+          overflow: "hidden", height: "calc(100vh - 140px)",
+        }}>
+          <iframe src={file} style={{ width: "100%", height: "100%", border: "none" }} title={page.label} />
+        </div>
+        <div style={{ marginTop: 8, textAlign: "center" }}>
+          <a href={file} target="_blank" rel="noreferrer" style={{ fontSize: 13, color: C.corail, fontWeight: 600, textDecoration: "none" }}>
+            Ouvrir dans un nouvel onglet ↗
+          </a>
+        </div>
+      </div>
+    );
+  }
+
+  return null;
+}
+
+function CPMApp() {
+  const [authenticated, setAuthenticated] = useState(false);
+  const [activePage, setActivePage] = useState("home");
+  const [menuOpen, setMenuOpen] = useState(false);
+  const isMobile = useIsMobile();
+
+  if (!authenticated) return <LoginScreen onLogin={() => setAuthenticated(true)} />;
+
+  const currentPage = pages.find(p => p.id === activePage);
+
+  const navigate = (id) => {
+    setActivePage(id);
+    setMenuOpen(false);
+  };
+
+  const Sidebar = () => (
+    <div style={{
+      width: isMobile ? "85vw" : 260, maxWidth: 300,
+      background: C.white, borderRight: `1px solid ${C.border}`,
+      display: "flex", flexDirection: "column", height: "100%",
+      ...(isMobile ? {
+        position: "fixed", left: 0, top: 0, zIndex: 1000,
+        boxShadow: "4px 0 20px rgba(0,0,0,0.15)",
+      } : {}),
+    }}>
+      {/* Logo */}
+      <div style={{ padding: "16px 18px", borderBottom: `1px solid ${C.border}`, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+          <div style={{
+            width: 34, height: 34, borderRadius: "50%", background: C.corail, flexShrink: 0,
+            display: "flex", alignItems: "center", justifyContent: "center",
+          }}>
+            <svg viewBox="0 0 40 40" width="18" height="18">
+              <path d="M24,32C16.3,32 10,25.7 10,18C10,10.3 16.3,4 24,4L24,8.5C18.8,8.5 14.5,12.8 14.5,18C14.5,23.2 18.8,27.5 24,27.5L24,32" fill="white" />
+            </svg>
+          </div>
+          <div>
+            <div style={{ fontSize: 15, fontWeight: 700, fontFamily: "'Poppins', sans-serif" }}>CPM 2035</div>
+            <div style={{ fontSize: 10, color: C.muted }}>Schéma directeur</div>
+          </div>
+        </div>
+        {isMobile && (
+          <button onClick={() => setMenuOpen(false)} style={{
+            width: 32, height: 32, borderRadius: 8, border: `1px solid ${C.border}`,
+            background: C.fondClair, cursor: "pointer", fontSize: 16, display: "flex",
+            alignItems: "center", justifyContent: "center",
+          }}>✕</button>
+        )}
+      </div>
+
+      {/* Nav items */}
+      <div style={{ flex: 1, padding: "8px 8px", overflowY: "auto" }}>
+        {pages.map((page, i) => (
+          <div key={page.id}>
+            {page.category && (
+              <div style={{
+                fontSize: 10, fontWeight: 700, color: C.muted, textTransform: "uppercase",
+                letterSpacing: 1, padding: "12px 10px 4px", marginTop: i > 0 ? 6 : 0,
+              }}>{page.category}</div>
+            )}
+            <button onClick={() => navigate(page.id)} style={{
+              width: "100%", display: "flex", alignItems: "center", gap: 10,
+              padding: "11px 12px", borderRadius: 10, border: "none", cursor: "pointer",
+              background: activePage === page.id ? C.corail + "12" : "transparent",
+              color: activePage === page.id ? C.corail : C.text,
+              fontSize: 14, fontWeight: activePage === page.id ? 700 : 500,
+              textAlign: "left",
+            }}>
+              <span style={{ fontSize: 18 }}>{page.icon}</span>
+              <span>{page.label}</span>
+            </button>
+          </div>
+        ))}
+      </div>
+
+      {/* Logout */}
+      <div style={{ padding: "10px 8px", borderTop: `1px solid ${C.border}` }}>
+        <button onClick={() => setAuthenticated(false)} style={{
+          width: "100%", padding: "10px", borderRadius: 8, border: "none",
+          background: C.red + "10", cursor: "pointer", fontSize: 13, color: C.red,
+          fontWeight: 600, display: "flex", alignItems: "center", justifyContent: "center", gap: 6,
+        }}>🔒 Déconnexion</button>
+      </div>
+    </div>
+  );
+
+  return (
+    <div style={{ fontFamily: "'Roboto',system-ui,sans-serif", display: "flex", minHeight: "100vh", background: C.fondClair }}>
+      {/* Desktop sidebar */}
+      {!isMobile && <Sidebar />}
+
+      {/* Mobile overlay */}
+      {isMobile && menuOpen && (
+        <>
+          <div onClick={() => setMenuOpen(false)} style={{
+            position: "fixed", inset: 0, background: "rgba(0,0,0,0.4)", zIndex: 999,
+          }} />
+          <Sidebar />
+        </>
+      )}
+
+      {/* Main content */}
+      <div style={{ flex: 1, display: "flex", flexDirection: "column", minWidth: 0 }}>
+        {/* Top bar */}
+        <div style={{
+          padding: isMobile ? "12px 16px" : "14px 24px",
+          background: C.white, borderBottom: `1px solid ${C.border}`,
+          display: "flex", justifyContent: "space-between", alignItems: "center",
+        }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+            {isMobile && (
+              <button onClick={() => setMenuOpen(true)} style={{
+                width: 40, height: 40, borderRadius: 10, border: `1px solid ${C.border}`,
+                background: C.white, cursor: "pointer", fontSize: 20,
+                display: "flex", alignItems: "center", justifyContent: "center",
+              }}>☰</button>
+            )}
+            <div style={{ fontSize: isMobile ? 16 : 18, fontWeight: 700, fontFamily: "'Poppins', sans-serif", color: C.noir }}>
+              {currentPage?.icon} {currentPage?.label}
+            </div>
+          </div>
+          {!isMobile && (
+            <div style={{ fontSize: 12, color: C.muted }}>Centre de Prêt de Matériel · FWB</div>
+          )}
+        </div>
+
+        {/* Content */}
+        <div style={{ flex: 1, padding: isMobile ? "14px 12px" : "20px 24px", overflowY: "auto" }}>
+          {activePage === "home" ? (
+            <HomePage onNavigate={navigate} isMobile={isMobile} />
+          ) : (
+            <ModulePage page={currentPage} />
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(React.createElement(CPMApp));
+    </script>
+</body>
+</html>
