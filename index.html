@@ -318,8 +318,8 @@ function CPMApp() {
               fontSize: 14, fontWeight: activePage === page.id ? 700 : 500,
               textAlign: "left",
             }}>
-              <span style={{ fontSize: 18 }}>{page.icon}</span>
-              <span>{page.label}</span>
+              <span style={{ fontSize: page.id === "home" ? 22 : 18 }}>{page.icon}</span>
+              <span style={{ fontSize: page.id === "home" ? 17 : 14 }}>{page.label}</span>
             </button>
           </div>
         ))}
