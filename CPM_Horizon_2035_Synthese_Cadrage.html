@@ -4,14 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CPM Horizon 2035 — Synthèse du cadrage</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Roboto', 'Segoe UI', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
-        button { font-family: inherit; }
-    </style>
+    <style>* { margin: 0; padding: 0; box-sizing: border-box; } body { font-family: 'Roboto', system-ui, sans-serif; -webkit-font-smoothing: antialiased; } button { font-family: inherit; }</style>
 </head>
 <body>
     <div id="root"></div>
@@ -175,14 +169,14 @@ const livrables = [
     id: 4,
     title: "Prototype interactif gestion des tentes",
     desc: "Évolution du prototype Stéphanie/Bastien — intégration IA Claude Vision, maintenance prédictive, KPIs enrichis.",
-    status: "ÉVOLUTION",
-    color: C.rose,
+    status: "TERMINÉ",
+    color: C.green,
   },
   {
     id: 5,
     title: "Roadmap visuelle + présentation COPIL",
     desc: "Timeline interactive pilote 2026-2027 + vision 2035. Version PPTX pour présentation direction.",
-    status: "EN COURS",
+    status: "TERMINÉ",
     color: C.green,
   },
   {
@@ -343,7 +337,6 @@ function SynthesisDashboard() {
     </div>
   );
 }
-
 
     const root = ReactDOM.createRoot(document.getElementById('root'));
     root.render(React.createElement(SynthesisDashboard));
