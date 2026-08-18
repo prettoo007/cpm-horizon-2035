@@ -46,6 +46,7 @@ const pages = [
   { id: "passeport", label: "Passeport numérique", icon: "🎫", category: null },
   { id: "assistant", label: "Demande au CPM", icon: "🤖", category: null },
   { id: "analyse", label: "Analyse SAP 2025", icon: "📈", category: "DATA & PRÉDICTION" },
+  { id: "tentes", label: "Analyse Tentes", icon: "⛺", category: null },
   { id: "meteo", label: "Météo du patrimoine", icon: "⛅", category: null },
   { id: "prediction", label: "Prédiction saisonnière", icon: "🔮", category: null },
   { id: "innovation", label: "Le modèle CPM", icon: "💎", category: "COMMUNICATION" },
@@ -61,7 +62,7 @@ const homeCards = [
 const stats = [
   { num: "2 277", label: "tentes", color: C.corail },
   { num: "1M+", label: "participants", color: C.green },
-  { num: "11", label: "modules", color: C.violet },
+  { num: "12", label: "modules", color: C.violet },
   { num: "2035", label: "horizon", color: C.amber },
 ];
 
@@ -188,6 +189,7 @@ function ModulePage({ page }) {
     roadmap: "CPM_Horizon_2035_Roadmap.html",
     prototype: "CPM_Prototype_Gestion_Tentes.html",
     analyse: "CPM_Analyse_SAP_2025.html",
+    tentes: "CPM_Analyse_Tentes.html",
     meteo: "CPM_Meteo_du_Patrimoine.html",
     prediction: "CPM_Prediction_Saisonniere.html",
     passeport: "CPM_Passeport_Numerique_Tente.html",

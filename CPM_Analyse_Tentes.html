@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CPM — Analyse des prêts de tentes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>* { margin: 0; padding: 0; box-sizing: border-box; } body { font-family: 'Roboto', system-ui, sans-serif; -webkit-font-smoothing: antialiased; } button { font-family: inherit; }</style>
+</head>
+<body>
+    <div id="root"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
+    <script type="text/babel">
+const { useState } = React;
+
+const C = {
+  corail: "#D86F6F", noir: "#1D1D1B", rose: "#E372A6",
+  fondClair: "#F9F5F4", fondRose: "#FDF0EE", white: "#FFFFFF",
+  text: "#2C2C2C", muted: "#8A7F7F", border: "#E8DEDD",
+  green: "#5BA67D", amber: "#D4A843", steel: "#6B7F94",
+  violet: "#7C6BAA", blue: "#4A90B8", red: "#C0392B",
+};
+
+// Real data from Tentes_1.xlsx
+const yearData = [
+  { year: "2023", senior: 1892, junior: 515, total: 2407 },
+  { year: "2024", senior: 3922, junior: 1775, total: 5697 },
+  { year: "2025", senior: 3801, junior: 1758, total: 5559 },
+  { year: "2026*", senior: 1059, junior: 376, total: 1435 },
+];
+
+const monthData = [
+  { mois: "Jan", qty: 3 }, { mois: "Fév", qty: 79 }, { mois: "Mar", qty: 1643 },
+  { mois: "Avr", qty: 1409 }, { mois: "Mai", qty: 763 }, { mois: "Juin", qty: 775 },
+  { mois: "Juil", qty: 7249 }, { mois: "Août", qty: 785 }, { mois: "Sept", qty: 1089 },
+  { mois: "Oct", qty: 1214 }, { mois: "Nov", qty: 85 }, { mois: "Déc", qty: 4 },
+];
+
+const monthSeniorJunior = [
+  { mois: "Jan", senior: 3, junior: 0 }, { mois: "Fév", senior: 52, junior: 27 },
+  { mois: "Mar", senior: 1180, junior: 463 }, { mois: "Avr", senior: 1002, junior: 407 },
+  { mois: "Mai", senior: 548, junior: 215 }, { mois: "Juin", senior: 557, junior: 218 },
+  { mois: "Juil", senior: 5147, junior: 2102 }, { mois: "Août", senior: 558, junior: 227 },
+  { mois: "Sept", senior: 785, junior: 304 }, { mois: "Oct", senior: 775, junior: 439 },
+  { mois: "Nov", senior: 65, junior: 20 }, { mois: "Déc", senior: 2, junior: 2 },
+];
+
+const pannesParMois = [
+  { mois: "Jan", val: 18 }, { mois: "Fév", val: 64 }, { mois: "Mar", val: 146 },
+  { mois: "Avr", val: 254 }, { mois: "Mai", val: 119 }, { mois: "Juin", val: 136 },
+  { mois: "Juil", val: 149 }, { mois: "Août", val: 107 }, { mois: "Sept", val: 174 },
+  { mois: "Oct", val: 80 }, { mois: "Nov", val: 40 }, { mois: "Déc", val: 28 },
+];
+
+const dureeDistrib = [
+  { tranche: "1 jour", count: 21, pct: 1 },
+  { tranche: "2-3 jours", count: 226, pct: 8 },
+  { tranche: "4-7 jours", count: 503, pct: 17 },
+  { tranche: "8-14 jours", count: 478, pct: 16 },
+  { tranche: "15-30 jours", count: 1561, pct: 54 },
+  { tranche: "> 30 jours", count: 117, pct: 4 },
+];
+
+const megaCommandes = [
+  { doc: "N24-0543", qty: 346, type: "Mixte", period: "2024" },
+  { doc: "N25-0973", qty: 325, type: "Mixte", period: "2025" },
+  { doc: "N26-0244", qty: 325, type: "Mixte", period: "2026" },
+  { doc: "N25-0089", qty: 194, type: "Mixte", period: "2025" },
+  { doc: "N25-2016", qty: 132, type: "Mixte", period: "2025" },
+  { doc: "N23-1770", qty: 121, type: "Mixte", period: "2023" },
+  { doc: "N25-0012", qty: 120, type: "Mixte", period: "2025" },
+  { doc: "N24-1794", qty: 113, type: "Mixte", period: "2024" },
+  { doc: "N26-0049", qty: 72, type: "Mixte", period: "2026" },
+  { doc: "N24-1647", qty: 71, type: "Mixte", period: "2024" },
+];
+
+const views = [
+  { id: "volume", label: "Volume & Tendances", icon: "📈" },
+  { id: "saison", label: "Saisonnalité", icon: "🌡️" },
+  { id: "duree", label: "Durée & Rotation", icon: "⏱️" },
+  { id: "predictions", label: "Prédictions", icon: "🔮" },
+];
+
+function Bar({ value, max, color, height }) {
+  return (
+    <div style={{ height: height || 8, background: C.border, borderRadius: 4, overflow: "hidden" }}>
+      <div style={{ width: `${Math.min((value / max) * 100, 100)}%`, height: "100%", background: color, borderRadius: 4 }} />
+    </div>
+  );
+}
+
+function VBars({ data, valKey, color, labelKey, maxVal }) {
+  const mx = maxVal || Math.max(...data.map(d => d[valKey]));
+  return (
+    <div style={{ display: "flex", gap: 4, height: 220 }}>
+      {data.map((d, i) => {
+        const v = d[valKey];
+        const h = Math.max((v / mx) * 190, 3);
+        const isMax = v === mx;
+        return (
+          <div key={i} style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "flex-end" }}>
+            <span style={{ fontSize: 9, fontWeight: 700, color: isMax ? color : C.text, marginBottom: 4 }}>{v > 0 ? v : ""}</span>
+            <div style={{ width: "75%", height: h, background: isMax ? color : color + "80", borderRadius: "4px 4px 0 0" }} />
+            <span style={{ fontSize: 10, color: C.muted, marginTop: 4, fontWeight: isMax ? 700 : 500 }}>{d[labelKey || "mois"]}</span>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+function KPI({ num, label, sub, color }) {
+  return (
+    <div style={{ background: C.white, borderRadius: 12, padding: "16px 18px", border: `1px solid ${C.border}` }}>
+      <div style={{ fontSize: 26, fontWeight: 800, color: color || C.noir, fontFamily: "'Poppins', sans-serif" }}>{num}</div>
+      <div style={{ fontSize: 14, fontWeight: 600, marginTop: 2 }}>{label}</div>
+      {sub && <div style={{ fontSize: 12, color: C.muted, marginTop: 4 }}>{sub}</div>}
+    </div>
+  );
+}
+
+function TentAnalysis() {
+  const [activeView, setActiveView] = useState("volume");
+
+  return (
+    <div style={{ fontFamily: "'Roboto',system-ui,sans-serif", background: C.fondClair, minHeight: "100vh", color: C.text }}>
+      {/* Header */}
+      <div style={{ background: "linear-gradient(135deg, #FDF0EE 0%, #F5E0DC 50%, #EEDDD9 100%)", padding: "24px 22px 18px" }}>
+        <div style={{ maxWidth: 920, margin: "0 auto" }}>
+          <p style={{ fontSize: 12, color: C.muted, marginBottom: 4 }}>Module dédié · Pilote Sprint 1</p>
+          <h1 style={{ margin: 0, fontSize: 28, fontWeight: 700, fontFamily: "'Poppins', sans-serif", color: C.noir }}>
+            ⛺ Analyse des prêts de tentes
+          </h1>
+          <p style={{ margin: "6px 0 0", fontSize: 14, color: C.muted }}>
+            15 098 tentes prêtées · 2 906 opérations · 2023 à 2026 · Données SAP réelles
+          </p>
+        </div>
+      </div>
+
+      <div style={{ background: C.white, borderBottom: `1px solid ${C.border}`, position: "sticky", top: 0, zIndex: 10 }}>
+        <div style={{ maxWidth: 920, margin: "0 auto", display: "flex" }}>
+          {views.map(v => (
+            <button key={v.id} onClick={() => setActiveView(v.id)} style={{
+              padding: "12px 16px", border: "none", background: "none", cursor: "pointer",
+              fontSize: 14, fontWeight: activeView === v.id ? 700 : 500,
+              color: activeView === v.id ? C.corail : C.muted,
+              borderBottom: activeView === v.id ? `2px solid ${C.corail}` : "2px solid transparent",
+              fontFamily: "'Poppins', sans-serif",
+            }}>{v.icon} {v.label}</button>
+          ))}
+        </div>
+      </div>
+
+      <div style={{ maxWidth: 920, margin: "0 auto", padding: "18px 22px 44px" }}>
+
+        {activeView === "volume" && (
+          <div>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", gap: 10, marginBottom: 16 }}>
+              <KPI num="15 098" label="Tentes prêtées" sub="2023 → 2026 (en cours)" color={C.corail} />
+              <KPI num="10 674" label="Senior (71%)" sub="5 × 5 × 2,85 m" color={C.steel} />
+              <KPI num="4 424" label="Junior (29%)" sub="3 × 3,4 × 2,35 m" color={C.amber} />
+              <KPI num="+137%" label="Croissance 2023→2024" sub="2 407 → 5 697 tentes" color={C.green} />
+            </div>
+
+            {/* Year evolution */}
+            <div style={{ background: C.white, borderRadius: 12, padding: 18, border: `1px solid ${C.border}`, marginBottom: 16 }}>
+              <div style={{ fontSize: 17, fontWeight: 700, marginBottom: 14, fontFamily: "'Poppins', sans-serif" }}>
+                Évolution annuelle — la demande a explosé
+              </div>
+              {yearData.map((y, i) => (
+                <div key={i} style={{ marginBottom: 14 }}>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 4 }}>
+                    <span style={{ fontSize: 15, fontWeight: 700, fontFamily: "'Poppins', sans-serif" }}>{y.year}</span>
+                    <span style={{ fontSize: 15, fontWeight: 800, color: C.corail }}>{y.total.toLocaleString()} tentes</span>
+                  </div>
+                  <div style={{ display: "flex", gap: 2, height: 24, borderRadius: 6, overflow: "hidden" }}>
+                    <div style={{
+                      width: `${(y.senior / 5697) * 100}%`, background: C.corail,
+                      display: "flex", alignItems: "center", justifyContent: "center",
+                      fontSize: 10, color: "#fff", fontWeight: 700,
+                    }}>{y.senior > 200 ? `${y.senior} Senior` : ""}</div>
+                    <div style={{
+                      width: `${(y.junior / 5697) * 100}%`, background: C.amber,
+                      display: "flex", alignItems: "center", justifyContent: "center",
+                      fontSize: 10, color: "#fff", fontWeight: 700,
+                    }}>{y.junior > 200 ? `${y.junior} Junior` : ""}</div>
+                  </div>
+                </div>
+              ))}
+              <div style={{ fontSize: 12, color: C.muted, marginTop: 6, fontStyle: "italic" }}>
+                * 2026 : données partielles (jusqu'à août)
+              </div>
+            </div>
+
+            {/* Key insight */}
+            <div style={{ background: C.noir, borderRadius: 12, padding: 20, color: "#fff" }}>
+              <div style={{ fontSize: 16, fontWeight: 700, fontFamily: "'Poppins', sans-serif", marginBottom: 8 }}>🔍 Constat majeur</div>
+              <div style={{ fontSize: 15, lineHeight: 1.7 }}>
+                La demande a <strong>plus que doublé</strong> entre 2023 et 2024, puis s'est stabilisée en 2025. Ce n'est pas un pic ponctuel — c'est un <strong>nouveau plateau</strong>. Le parc de 2 277 tentes doit absorber ~5 600 sorties par an. Chaque tente sort en moyenne <strong>2,5 fois par an</strong>, ce qui accélère l'usure et confirme l'urgence de la maintenance prédictive.
+              </div>
+            </div>
+          </div>
+        )}
+
+        {activeView === "saison" && (
+          <div>
+            {/* Monthly total */}
+            <div style={{ background: C.white, borderRadius: 12, padding: 18, border: `1px solid ${C.border}`, marginBottom: 16 }}>
+              <div style={{ fontSize: 17, fontWeight: 700, marginBottom: 4, fontFamily: "'Poppins', sans-serif" }}>
+                Le tsunami de juillet — 48% de l'activité annuelle
+              </div>
+              <div style={{ fontSize: 13, color: C.muted, marginBottom: 14 }}>
+                Toutes années confondues · 15 098 tentes prêtées
+              </div>
+              <VBars data={monthData} valKey="qty" color={C.corail} maxVal={7249} />
+              <div style={{ marginTop: 10, padding: "10px 14px", borderRadius: 8, background: C.corail + "10", fontSize: 13, fontWeight: 600, color: C.corail }}>
+                Juillet : 7 249 tentes = 48% du total. Août chute brutalement à 785 (÷9).
+              </div>
+            </div>
+
+            {/* Senior vs Junior by month */}
+            <div style={{ background: C.white, borderRadius: 12, padding: 18, border: `1px solid ${C.border}`, marginBottom: 16 }}>
+              <div style={{ fontSize: 17, fontWeight: 700, marginBottom: 14, fontFamily: "'Poppins', sans-serif" }}>
+                Senior vs Junior — répartition mensuelle
+              </div>
+              <div style={{ display: "flex", gap: 12, marginBottom: 12, fontSize: 12 }}>
+                <span style={{ display: "flex", alignItems: "center", gap: 4 }}><span style={{ width: 12, height: 12, borderRadius: 3, background: C.corail, display: "inline-block" }} /> Senior</span>
+                <span style={{ display: "flex", alignItems: "center", gap: 4 }}><span style={{ width: 12, height: 12, borderRadius: 3, background: C.amber, display: "inline-block" }} /> Junior</span>
+              </div>
+              {monthSeniorJunior.map((m, i) => {
+                const total = m.senior + m.junior;
+                if (total === 0) return null;
+                return (
+                  <div key={i} style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 6 }}>
+                    <span style={{ width: 35, fontSize: 12, fontWeight: 600, color: C.muted, flexShrink: 0 }}>{m.mois}</span>
+                    <div style={{ flex: 1, display: "flex", gap: 1, height: 18, borderRadius: 4, overflow: "hidden" }}>
+                      <div style={{ width: `${(m.senior / 7249) * 100}%`, background: C.corail, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 9, color: "#fff", fontWeight: 700 }}>
+                        {m.senior > 300 ? m.senior : ""}
+                      </div>
+                      <div style={{ width: `${(m.junior / 7249) * 100}%`, background: C.amber, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 9, color: "#fff", fontWeight: 700 }}>
+                        {m.junior > 200 ? m.junior : ""}
+                      </div>
+                    </div>
+                    <span style={{ fontSize: 11, color: C.muted, width: 45, textAlign: "right", flexShrink: 0 }}>{total}</span>
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Corrélation prêts/pannes */}
+            <div style={{ background: C.white, borderRadius: 12, padding: 18, border: `1px solid ${C.border}` }}>
+              <div style={{ fontSize: 17, fontWeight: 700, marginBottom: 14, fontFamily: "'Poppins', sans-serif" }}>
+                Corrélation prêts tentes ↔ pannes — le décalage de 2-3 mois
+              </div>
+              <div style={{ display: "flex", gap: 12, marginBottom: 12, fontSize: 12 }}>
+                <span style={{ display: "flex", alignItems: "center", gap: 4 }}><span style={{ width: 12, height: 12, borderRadius: 3, background: C.blue, display: "inline-block" }} /> Prêts tentes</span>
+                <span style={{ display: "flex", alignItems: "center", gap: 4 }}><span style={{ width: 12, height: 12, borderRadius: 3, background: C.red, display: "inline-block" }} /> Pannes (tous matériels)</span>
+              </div>
+              {monthData.map((m, i) => (
+                <div key={i} style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 5 }}>
+                  <span style={{ width: 35, fontSize: 11, fontWeight: 600, color: C.muted, flexShrink: 0 }}>{m.mois}</span>
+                  <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 2 }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                      <div style={{ height: 8, width: `${(m.qty / 7249) * 100}%`, background: C.blue, borderRadius: 4, minWidth: 2 }} />
+                      <span style={{ fontSize: 10, color: C.blue, fontWeight: 700 }}>{m.qty}</span>
+                    </div>
+                    <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                      <div style={{ height: 8, width: `${(pannesParMois[i].val / 7249) * 100}%`, background: C.red, borderRadius: 4, minWidth: 2 }} />
+                      <span style={{ fontSize: 10, color: C.red, fontWeight: 700 }}>{pannesParMois[i].val}</span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+              <div style={{ marginTop: 10, padding: "10px 14px", borderRadius: 8, background: C.violet + "10", borderLeft: `3px solid ${C.violet}`, fontSize: 13, fontWeight: 600, color: C.violet }}>
+                Le pic de prêts (juillet) génère un pic de pannes décalé en septembre-avril. Les tentes reviennent usées du camp → les pannes s'accumulent pendant 6 mois.
+              </div>
+            </div>
+          </div>
+        )}
+
+        {activeView === "duree" && (
+          <div>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 10, marginBottom: 16 }}>
+              <KPI num="16,7 j" label="Durée moyenne" sub="Un camp type + montage/démontage" color={C.blue} />
+              <KPI num="17 j" label="Durée médiane" sub="54% des prêts = 15-30 jours" color={C.steel} />
+              <KPI num="2,5×" label="Rotation moyenne / tente / an" sub="15 098 ÷ 2 277 ÷ 2,7 ans" color={C.amber} />
+            </div>
+
+            {/* Duration distribution */}
+            <div style={{ background: C.white, borderRadius: 12, padding: 18, border: `1px solid ${C.border}`, marginBottom: 16 }}>
+              <div style={{ fontSize: 17, fontWeight: 700, marginBottom: 14, fontFamily: "'Poppins', sans-serif" }}>
+                Distribution des durées de prêt
+              </div>
+              {dureeDistrib.map((d, i) => {
+                const colors = [C.green, C.green, C.blue, C.blue, C.corail, C.amber];
+                return (
+                  <div key={i} style={{ marginBottom: 10 }}>
+                    <div style={{ display: "flex", justifyContent: "space-between", fontSize: 14, marginBottom: 3 }}>
+                      <span style={{ fontWeight: 600 }}>{d.tranche}</span>
+                      <span style={{ color: C.muted }}>{d.count} prêts ({d.pct}%)</span>
+                    </div>
+                    <Bar value={d.pct} max={54} color={colors[i]} height={12} />
+                  </div>
+                );
+              })}
+              <div style={{ marginTop: 10, fontSize: 13, color: C.muted, lineHeight: 1.6 }}>
+                Plus de la moitié des prêts durent 15 à 30 jours — la durée type d'un camp d'été. Les prêts courts (1-3 jours) représentent seulement 9%, ce sont probablement des événements ponctuels.
+              </div>
+            </div>
+
+            {/* Mega commandes */}
+            <div style={{ background: C.white, borderRadius: 12, padding: 18, border: `1px solid ${C.border}` }}>
+              <div style={{ fontSize: 17, fontWeight: 700, marginBottom: 14, fontFamily: "'Poppins', sans-serif" }}>
+                Top 10 des méga-commandes
+              </div>
+              <div style={{ fontSize: 13, color: C.muted, marginBottom: 12 }}>
+                Ces 10 commandes représentent 1 819 tentes — 12% du total des prêts.
+              </div>
+              {megaCommandes.map((m, i) => (
+                <div key={i} style={{
+                  display: "flex", alignItems: "center", gap: 12, padding: "10px 0",
+                  borderBottom: i < megaCommandes.length - 1 ? `1px solid ${C.fondClair}` : "none",
+                }}>
+                  <div style={{
+                    width: 32, height: 32, borderRadius: "50%",
+                    background: i < 3 ? C.corail : C.steel, opacity: i < 3 ? 1 : 0.6,
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                    color: "#fff", fontSize: 13, fontWeight: 800, flexShrink: 0,
+                    fontFamily: "'Poppins', sans-serif",
+                  }}>{i + 1}</div>
+                  <div style={{ flex: 1 }}>
+                    <span style={{ fontSize: 14, fontWeight: 700, fontFamily: "'Poppins', sans-serif" }}>{m.doc}</span>
+                    <span style={{ fontSize: 12, color: C.muted, marginLeft: 8 }}>{m.period}</span>
+                  </div>
+                  <span style={{ fontSize: 18, fontWeight: 800, color: i < 3 ? C.corail : C.text, fontFamily: "'Poppins', sans-serif" }}>
+                    {m.qty}
+                  </span>
+                  <span style={{ fontSize: 11, color: C.muted }}>tentes</span>
+                </div>
+              ))}
+              <div style={{ marginTop: 12, padding: "10px 14px", borderRadius: 8, background: C.corail + "10", fontSize: 13, fontWeight: 600, color: C.corail }}>
+                ⚠ 3 commandes dépassent 300 tentes — probablement des fédérations. Ces méga-commandes nécessitent une préparation logistique dédiée.
+              </div>
+            </div>
+          </div>
+        )}
+
+        {activeView === "predictions" && (
+          <div>
+            <p style={{ fontSize: 15, color: C.muted, marginBottom: 16 }}>
+              Projections basées sur les tendances 2023-2025 appliquées au parc de 2 277 tentes.
+            </p>
+
+            {[
+              {
+                title: "Chaque tente sort 2,5 fois par an — et ça accélère",
+                insight: "En 2023, chaque tente sortait en moyenne 1,1 fois. En 2024-2025, c'est 2,5 fois. La pression sur le matériel a plus que doublé. À ce rythme, la durée de vie d'une tente se réduit proportionnellement — une tente conçue pour durer 8 saisons n'en tiendra que 5 si elle sort 2,5 fois par an au lieu de 1,5.",
+                action: "Recalculer les plans de remplacement sur base du nouveau taux de rotation, pas de l'ancien.",
+                color: C.corail, icon: "📊",
+              },
+              {
+                title: "Juillet concentre 48% des sorties — c'est un risque systémique",
+                insight: "7 249 tentes en un mois sur un parc de 2 277. Cela signifie que chaque tente du parc sort en moyenne 3,2 fois pendant le seul mois de juillet (avec les rotations). Une seule semaine de mauvais temps pourrait décaler les retours et créer un effet domino sur toute la saison.",
+                action: "Créer un plan de contingence juillet : stock tampon, protocole retour accéléré, équipe de lavage renforcée.",
+                color: C.amber, icon: "⚠️",
+              },
+              {
+                title: "La demande s'est stabilisée — c'est le moment d'investir",
+                insight: "Après l'explosion de +137% en 2024, la demande 2025 se stabilise à 5 559 (+/- 2%). Ce n'est plus une anomalie, c'est le nouveau normal. Le parc a été dimensionné pour 2 400 sorties/an (niveau 2023). Il absorbe aujourd'hui 5 600 sorties — plus du double.",
+                action: "Le plan de fabrication de 165 tentes sur 4 ans n'est pas un luxe, c'est le minimum pour maintenir la capacité de service.",
+                color: C.green, icon: "📈",
+              },
+              {
+                title: "Les Junior montent en puissance — +245% en 2 ans",
+                insight: "De 515 Junior prêtées en 2023 à 1 775 en 2024 (+245%). Les Junior représentent maintenant 29% des prêts contre 21% en 2023. La demande se diversifie — les emprunteurs veulent plus de tentes plus petites.",
+                action: "Augmenter la part de Junior dans le plan de fabrication. Ratio actuel : 905 Junior / 1 322 Senior. Ratio de demande : 29% / 71%. Le parc est sous-dimensionné en Junior.",
+                color: C.violet, icon: "⛺",
+              },
+              {
+                title: "Les méga-commandes façonnent la saison",
+                insight: "Les 3 plus grosses commandes (346, 325, 325 tentes) représentent à elles seules ~1 000 tentes — soit 18% de la capacité totale du parc mobilisée pour 3 emprunteurs. Ces commandes arrivent systématiquement pour juillet.",
+                action: "Identifier ces emprunteurs clés, anticiper leurs demandes dès février, et co-construire un calendrier de préparation dédié.",
+                color: C.steel, icon: "🤝",
+              },
+            ].map((ins, i) => (
+              <div key={i} style={{
+                background: C.white, borderRadius: 12, border: `1px solid ${C.border}`,
+                borderLeft: `4px solid ${ins.color}`, padding: 18, marginBottom: 10,
+              }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 8 }}>
+                  <span style={{ fontSize: 20 }}>{ins.icon}</span>
+                  <span style={{ fontSize: 16, fontWeight: 700, fontFamily: "'Poppins', sans-serif" }}>{ins.title}</span>
+                </div>
+                <div style={{ fontSize: 14, lineHeight: 1.7, marginBottom: 10 }}>{ins.insight}</div>
+                <div style={{ padding: "8px 14px", borderRadius: 8, background: ins.color + "10", fontSize: 13, fontWeight: 600, color: ins.color }}>
+                  → {ins.action}
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+
+      <div style={{ padding: "14px 22px", borderTop: `1px solid ${C.border}`, background: C.white, textAlign: "center" }}>
+        <span style={{ fontSize: 12, color: C.muted }}>Données SAP · Tentes_1.xlsx · Analyse CPM Horizon 2035 · Août 2026</span>
+      </div>
+    </div>
+  );
+}
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(React.createElement(TentAnalysis));
+    </script>
+</body>
+</html>
