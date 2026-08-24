@@ -1,0 +1,8981 @@
+{
+  "sap": [
+    {
+      "Année": 2020,
+      "Mois": 1,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DE",
+      "Comte": 6,
+      "Défauts": 6
+    },
+    {
+      "Année": 2020,
+      "Mois": 1,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DI",
+      "Comte": 34,
+      "Défauts": 34
+    },
+    {
+      "Année": 2020,
+      "Mois": 1,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DP",
+      "Comte": 2,
+      "Défauts": 2
+    },
+    {
+      "Année": 2020,
+      "Mois": 1,
+      "Secteur": "AUDIOVIS",
+      "Statut": "EN",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2020,
+      "Mois": 1,
+      "Secteur": "AUDIOVIS",
+      "Statut": "US",
+      "Comte": 3,
+      "Défauts": 3
+    },
+    {
+      "Année": 2020,
+      "Mois": 1,
+      "Secteur": "LOISIR",
+      "Statut": "DE",
+      "Comte": 2,
+      "Défauts": 2
+    },
+    {
+      "Année": 2020,
+      "Mois": 1,
+      "Secteur": "LOISIR",
+      "Statut": "DI",
+      "Comte": 9,
+      "Défauts": 9
+    },
+    {
+      "Année": 2020,
+      "Mois": 1,
+      "Secteur": "LOISIR",
+      "Statut": "EN",
+      "Comte": 2,
+      "Défauts": 2
+    },
+    {
+      "Année": 2020,
+      "Mois": 2,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DE",
+      "Comte": 14,
+      "Défauts": 14
+    },
+    {
+      "Année": 2020,
+      "Mois": 2,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DF",
+      "Comte": 3,
+      "Défauts": 3
+    },
+    {
+      "Année": 2020,
+      "Mois": 2,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DI",
+      "Comte": 79,
+      "Défauts": 79
+    },
+    {
+      "Année": 2020,
+      "Mois": 2,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DP",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2020,
+      "Mois": 2,
+      "Secteur": "AUDIOVIS",
+      "Statut": "EN",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2020,
+      "Mois": 2,
+      "Secteur": "AUDIOVIS",
+      "Statut": "US",
+      "Comte": 4,
+      "Défauts": 4
+    },
+    {
+      "Année": 2020,
+      "Mois": 2,
+      "Secteur": "LOISIR",
+      "Statut": "DI",
+      "Comte": 3,
+      "Défauts": 3
+    },
+    {
+      "Année": 2020,
+      "Mois": 3,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DE",
+      "Comte": 14,
+      "Défauts": 15
+    },
+    {
+      "Année": 2020,
+      "Mois": 3,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DI",
+      "Comte": 52,
+      "Défauts": 55
+    },
+    {
+      "Année": 2020,
+      "Mois": 3,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DP",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2020,
+      "Mois": 3,
+      "Secteur": "AUDIOVIS",
+      "Statut": "EN",
+      "Comte": 2,
+      "Défauts": 2
+    },
+    {
+      "Année": 2020,
+      "Mois": 3,
+      "Secteur": "AUDIOVIS",
+      "Statut": "US",
+      "Comte": 4,
+      "Défauts": 4
+    },
+    {
+      "Année": 2020,
+      "Mois": 3,
+      "Secteur": "LOISIR",
+      "Statut": "DI",
+      "Comte": 16,
+      "Défauts": 16
+    },
+    {
+      "Année": 2020,
+      "Mois": 3,
+      "Secteur": "LOISIR",
+      "Statut": "EN",
+      "Comte": 6,
+      "Défauts": 6
+    },
+    {
+      "Année": 2020,
+      "Mois": 5,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DE",
+      "Comte": 7,
+      "Défauts": 7
+    },
+    {
+      "Année": 2020,
+      "Mois": 5,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DI",
+      "Comte": 47,
+      "Défauts": 47
+    },
+    {
+      "Année": 2020,
+      "Mois": 5,
+      "Secteur": "AUDIOVIS",
+      "Statut": "US",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2020,
+      "Mois": 6,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DE",
+      "Comte": 3,
+      "Défauts": 3
+    },
+    {
+      "Année": 2020,
+      "Mois": 6,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DI",
+      "Comte": 15,
+      "Défauts": 18
+    },
+    {
+      "Année": 2020,
+      "Mois": 6,
+      "Secteur": "AUDIOVIS",
+      "Statut": "EN",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2020,
+      "Mois": 6,
+      "Secteur": "LOISIR",
+      "Statut": "DI",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2020,
+      "Mois": 7,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DE",
+      "Comte": 7,
+      "Défauts": 7
+    },
+    {
+      "Année": 2020,
+      "Mois": 7,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DI",
+      "Comte": 11,
+      "Défauts": 11
+    },
+    {
+      "Année": 2020,
+      "Mois": 7,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DP",
+      "Comte": 2,
+      "Défauts": 2
+    },
+    {
+      "Année": 2020,
+      "Mois": 7,
+      "Secteur": "AUDIOVIS",
+      "Statut": "EN",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2020,
+      "Mois": 7,
+      "Secteur": "AUDIOVIS",
+      "Statut": "US",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2020,
+      "Mois": 7,
+      "Secteur": "LOISIR",
+      "Statut": "DE",
+      "Comte": 13,
+      "Défauts": 13
+    },
+    {
+      "Année": 2020,
+      "Mois": 7,
+      "Secteur": "LOISIR",
+      "Statut": "DI",
+      "Comte": 33,
+      "Défauts": 33
+    },
+    {
+      "Année": 2020,
+      "Mois": 7,
+      "Secteur": "LOISIR",
+      "Statut": "EN",
+      "Comte": 5,
+      "Défauts": 5
+    },
+    {
+      "Année": 2020,
+      "Mois": 8,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DE",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2020,
+      "Mois": 8,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DI",
+      "Comte": 11,
+      "Défauts": 11
+    },
+    {
+      "Année": 2020,
+      "Mois": 8,
+      "Secteur": "AUDIOVIS",
+      "Statut": "US",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2020,
+      "Mois": 8,
+      "Secteur": "LOISIR",
+      "Statut": "DE",
+      "Comte": 14,
+      "Défauts": 14
+    },
+    {
+      "Année": 2020,
+      "Mois": 8,
+      "Secteur": "LOISIR",
+      "Statut": "DI",
+      "Comte": 10,
+      "Défauts": 10
+    },
+    {
+      "Année": 2020,
+      "Mois": 9,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DE",
+      "Comte": 12,
+      "Défauts": 13
+    },
+    {
+      "Année": 2020,
+      "Mois": 9,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DI",
+      "Comte": 26,
+      "Défauts": 26
+    },
+    {
+      "Année": 2020,
+      "Mois": 9,
+      "Secteur": "AUDIOVIS",
+      "Statut": "EN",
+      "Comte": 4,
+      "Défauts": 4
+    },
+    {
+      "Année": 2020,
+      "Mois": 9,
+      "Secteur": "AUDIOVIS",
+      "Statut": "US",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2020,
+      "Mois": 9,
+      "Secteur": "LOISIR",
+      "Statut": "DI",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2020,
+      "Mois": 10,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DE",
+      "Comte": 9,
+      "Défauts": 9
+    },
+    {
+      "Année": 2020,
+      "Mois": 10,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DI",
+      "Comte": 32,
+      "Défauts": 32
+    },
+    {
+      "Année": 2020,
+      "Mois": 10,
+      "Secteur": "AUDIOVIS",
+      "Statut": "EN",
+      "Comte": 2,
+      "Défauts": 2
+    },
+    {
+      "Année": 2020,
+      "Mois": 10,
+      "Secteur": "AUDIOVIS",
+      "Statut": "US",
+      "Comte": 5,
+      "Défauts": 17
+    },
+    {
+      "Année": 2020,
+      "Mois": 10,
+      "Secteur": "LOISIR",
+      "Statut": "DI",
+      "Comte": 7,
+      "Défauts": 7
+    },
+    {
+      "Année": 2020,
+      "Mois": 10,
+      "Secteur": "LOISIR",
+      "Statut": "EN",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2020,
+      "Mois": 11,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DE",
+      "Comte": 2,
+      "Défauts": 2
+    },
+    {
+      "Année": 2020,
+      "Mois": 11,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DI",
+      "Comte": 24,
+      "Défauts": 24
+    },
+    {
+      "Année": 2020,
+      "Mois": 11,
+      "Secteur": "AUDIOVIS",
+      "Statut": "US",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2020,
+      "Mois": 11,
+      "Secteur": "LOISIR",
+      "Statut": "DE",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2020,
+      "Mois": 11,
+      "Secteur": "LOISIR",
+      "Statut": "DI",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2020,
+      "Mois": 12,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DI",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2020,
+      "Mois": 12,
+      "Secteur": "AUDIOVIS",
+      "Statut": "US",
+      "Comte": 2,
+      "Défauts": 2
+    },
+    {
+      "Année": 2021,
+      "Mois": 1,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DE",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2021,
+      "Mois": 1,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DI",
+      "Comte": 2,
+      "Défauts": 2
+    },
+    {
+      "Année": 2021,
+      "Mois": 1,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DP",
+      "Comte": 2,
+      "Défauts": 2
+    },
+    {
+      "Année": 2021,
+      "Mois": 2,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DE",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2021,
+      "Mois": 2,
+      "Secteur": "AUDIOVIS",
+      "Statut": "EN",
+      "Comte": 2,
+      "Défauts": 2
+    },
+    {
+      "Année": 2021,
+      "Mois": 2,
+      "Secteur": "AUDIOVIS",
+      "Statut": "US",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2021,
+      "Mois": 2,
+      "Secteur": "LOISIR",
+      "Statut": "DI",
+      "Comte": 30,
+      "Défauts": 43
+    },
+    {
+      "Année": 2021,
+      "Mois": 3,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DE",
+      "Comte": 3,
+      "Défauts": 3
+    },
+    {
+      "Année": 2021,
+      "Mois": 3,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DI",
+      "Comte": 5,
+      "Défauts": 6
+    },
+    {
+      "Année": 2021,
+      "Mois": 3,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DP",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2021,
+      "Mois": 3,
+      "Secteur": "AUDIOVIS",
+      "Statut": "EN",
+      "Comte": 1,
+      "Défauts": 2
+    },
+    {
+      "Année": 2021,
+      "Mois": 4,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DE",
+      "Comte": 4,
+      "Défauts": 4
+    },
+    {
+      "Année": 2021,
+      "Mois": 4,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DI",
+      "Comte": 15,
+      "Défauts": 15
+    },
+    {
+      "Année": 2021,
+      "Mois": 4,
+      "Secteur": "LOISIR",
+      "Statut": "DE",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2021,
+      "Mois": 4,
+      "Secteur": "LOISIR",
+      "Statut": "DI",
+      "Comte": 4,
+      "Défauts": 4
+    },
+    {
+      "Année": 2021,
+      "Mois": 5,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DE",
+      "Comte": 2,
+      "Défauts": 2
+    },
+    {
+      "Année": 2021,
+      "Mois": 5,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DF",
+      "Comte": 4,
+      "Défauts": 4
+    },
+    {
+      "Année": 2021,
+      "Mois": 5,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DI",
+      "Comte": 36,
+      "Défauts": 37
+    },
+    {
+      "Année": 2021,
+      "Mois": 5,
+      "Secteur": "AUDIOVIS",
+      "Statut": "EN",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2021,
+      "Mois": 6,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DE",
+      "Comte": 10,
+      "Défauts": 10
+    },
+    {
+      "Année": 2021,
+      "Mois": 6,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DF",
+      "Comte": 3,
+      "Défauts": 3
+    },
+    {
+      "Année": 2021,
+      "Mois": 6,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DI",
+      "Comte": 37,
+      "Défauts": 37
+    },
+    {
+      "Année": 2021,
+      "Mois": 6,
+      "Secteur": "AUDIOVIS",
+      "Statut": "EN",
+      "Comte": 6,
+      "Défauts": 6
+    },
+    {
+      "Année": 2021,
+      "Mois": 6,
+      "Secteur": "AUDIOVIS",
+      "Statut": "US",
+      "Comte": 3,
+      "Défauts": 3
+    },
+    {
+      "Année": 2021,
+      "Mois": 6,
+      "Secteur": "LOISIR",
+      "Statut": "DI",
+      "Comte": 7,
+      "Défauts": 7
+    },
+    {
+      "Année": 2021,
+      "Mois": 7,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DE",
+      "Comte": 6,
+      "Défauts": 6
+    },
+    {
+      "Année": 2021,
+      "Mois": 7,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DF",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2021,
+      "Mois": 7,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DI",
+      "Comte": 23,
+      "Défauts": 23
+    },
+    {
+      "Année": 2021,
+      "Mois": 7,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DP",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2021,
+      "Mois": 7,
+      "Secteur": "LOISIR",
+      "Statut": "DE",
+      "Comte": 17,
+      "Défauts": 17
+    },
+    {
+      "Année": 2021,
+      "Mois": 7,
+      "Secteur": "LOISIR",
+      "Statut": "DI",
+      "Comte": 48,
+      "Défauts": 48
+    },
+    {
+      "Année": 2021,
+      "Mois": 7,
+      "Secteur": "LOISIR",
+      "Statut": "EN",
+      "Comte": 13,
+      "Défauts": 13
+    },
+    {
+      "Année": 2021,
+      "Mois": 8,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DE",
+      "Comte": 6,
+      "Défauts": 6
+    },
+    {
+      "Année": 2021,
+      "Mois": 8,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DI",
+      "Comte": 71,
+      "Défauts": 71
+    },
+    {
+      "Année": 2021,
+      "Mois": 8,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DP",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2021,
+      "Mois": 8,
+      "Secteur": "AUDIOVIS",
+      "Statut": "EN",
+      "Comte": 4,
+      "Défauts": 4
+    },
+    {
+      "Année": 2021,
+      "Mois": 8,
+      "Secteur": "AUDIOVIS",
+      "Statut": "US",
+      "Comte": 3,
+      "Défauts": 3
+    },
+    {
+      "Année": 2021,
+      "Mois": 8,
+      "Secteur": "LOISIR",
+      "Statut": "DE",
+      "Comte": 16,
+      "Défauts": 16
+    },
+    {
+      "Année": 2021,
+      "Mois": 8,
+      "Secteur": "LOISIR",
+      "Statut": "DI",
+      "Comte": 72,
+      "Défauts": 109
+    },
+    {
+      "Année": 2021,
+      "Mois": 8,
+      "Secteur": "LOISIR",
+      "Statut": "EN",
+      "Comte": 10,
+      "Défauts": 11
+    },
+    {
+      "Année": 2021,
+      "Mois": 9,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DE",
+      "Comte": 6,
+      "Défauts": 6
+    },
+    {
+      "Année": 2021,
+      "Mois": 9,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DF",
+      "Comte": 5,
+      "Défauts": 5
+    },
+    {
+      "Année": 2021,
+      "Mois": 9,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DI",
+      "Comte": 85,
+      "Défauts": 85
+    },
+    {
+      "Année": 2021,
+      "Mois": 9,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DP",
+      "Comte": 2,
+      "Défauts": 2
+    },
+    {
+      "Année": 2021,
+      "Mois": 9,
+      "Secteur": "AUDIOVIS",
+      "Statut": "EN",
+      "Comte": 3,
+      "Défauts": 3
+    },
+    {
+      "Année": 2021,
+      "Mois": 9,
+      "Secteur": "AUDIOVIS",
+      "Statut": "US",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2021,
+      "Mois": 9,
+      "Secteur": "LOISIR",
+      "Statut": "DE",
+      "Comte": 2,
+      "Défauts": 2
+    },
+    {
+      "Année": 2021,
+      "Mois": 9,
+      "Secteur": "LOISIR",
+      "Statut": "DI",
+      "Comte": 28,
+      "Défauts": 28
+    },
+    {
+      "Année": 2021,
+      "Mois": 9,
+      "Secteur": "LOISIR",
+      "Statut": "EN",
+      "Comte": 3,
+      "Défauts": 3
+    },
+    {
+      "Année": 2021,
+      "Mois": 10,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DE",
+      "Comte": 13,
+      "Défauts": 14
+    },
+    {
+      "Année": 2021,
+      "Mois": 10,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DF",
+      "Comte": 4,
+      "Défauts": 4
+    },
+    {
+      "Année": 2021,
+      "Mois": 10,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DI",
+      "Comte": 83,
+      "Défauts": 85
+    },
+    {
+      "Année": 2021,
+      "Mois": 10,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DR",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2021,
+      "Mois": 10,
+      "Secteur": "AUDIOVIS",
+      "Statut": "EN",
+      "Comte": 6,
+      "Défauts": 6
+    },
+    {
+      "Année": 2021,
+      "Mois": 10,
+      "Secteur": "AUDIOVIS",
+      "Statut": "US",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2021,
+      "Mois": 10,
+      "Secteur": "LOISIR",
+      "Statut": "DE",
+      "Comte": 4,
+      "Défauts": 4
+    },
+    {
+      "Année": 2021,
+      "Mois": 10,
+      "Secteur": "LOISIR",
+      "Statut": "DI",
+      "Comte": 56,
+      "Défauts": 122
+    },
+    {
+      "Année": 2021,
+      "Mois": 10,
+      "Secteur": "LOISIR",
+      "Statut": "EN",
+      "Comte": 2,
+      "Défauts": 2
+    },
+    {
+      "Année": 2021,
+      "Mois": 11,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DE",
+      "Comte": 6,
+      "Défauts": 6
+    },
+    {
+      "Année": 2021,
+      "Mois": 11,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DF",
+      "Comte": 1,
+      "Défauts": 2
+    },
+    {
+      "Année": 2021,
+      "Mois": 11,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DI",
+      "Comte": 60,
+      "Défauts": 61
+    },
+    {
+      "Année": 2021,
+      "Mois": 11,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DP",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2021,
+      "Mois": 11,
+      "Secteur": "AUDIOVIS",
+      "Statut": "EN",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2021,
+      "Mois": 11,
+      "Secteur": "LOISIR",
+      "Statut": "DE",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2021,
+      "Mois": 11,
+      "Secteur": "LOISIR",
+      "Statut": "DI",
+      "Comte": 52,
+      "Défauts": 131
+    },
+    {
+      "Année": 2021,
+      "Mois": 11,
+      "Secteur": "LOISIR",
+      "Statut": "EN",
+      "Comte": 5,
+      "Défauts": 8
+    },
+    {
+      "Année": 2021,
+      "Mois": 12,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DE",
+      "Comte": 2,
+      "Défauts": 2
+    },
+    {
+      "Année": 2021,
+      "Mois": 12,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DI",
+      "Comte": 11,
+      "Défauts": 11
+    },
+    {
+      "Année": 2021,
+      "Mois": 12,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DP",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2021,
+      "Mois": 12,
+      "Secteur": "AUDIOVIS",
+      "Statut": "US",
+      "Comte": 3,
+      "Défauts": 3
+    },
+    {
+      "Année": 2021,
+      "Mois": 12,
+      "Secteur": "LOISIR",
+      "Statut": "DE",
+      "Comte": 2,
+      "Défauts": 3
+    },
+    {
+      "Année": 2021,
+      "Mois": 12,
+      "Secteur": "LOISIR",
+      "Statut": "DI",
+      "Comte": 16,
+      "Défauts": 18
+    },
+    {
+      "Année": 2021,
+      "Mois": 12,
+      "Secteur": "LOISIR",
+      "Statut": "EN",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2022,
+      "Mois": 1,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DE",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2022,
+      "Mois": 1,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DF",
+      "Comte": 2,
+      "Défauts": 2
+    },
+    {
+      "Année": 2022,
+      "Mois": 1,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DI",
+      "Comte": 11,
+      "Défauts": 11
+    },
+    {
+      "Année": 2022,
+      "Mois": 1,
+      "Secteur": "AUDIOVIS",
+      "Statut": "EN",
+      "Comte": 2,
+      "Défauts": 2
+    },
+    {
+      "Année": 2022,
+      "Mois": 1,
+      "Secteur": "AUDIOVIS",
+      "Statut": "US",
+      "Comte": 3,
+      "Défauts": 3
+    },
+    {
+      "Année": 2022,
+      "Mois": 2,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DE",
+      "Comte": 3,
+      "Défauts": 3
+    },
+    {
+      "Année": 2022,
+      "Mois": 2,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DF",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2022,
+      "Mois": 2,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DI",
+      "Comte": 27,
+      "Défauts": 27
+    },
+    {
+      "Année": 2022,
+      "Mois": 2,
+      "Secteur": "AUDIOVIS",
+      "Statut": "US",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2022,
+      "Mois": 2,
+      "Secteur": "LOISIR",
+      "Statut": "DE",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2022,
+      "Mois": 3,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DE",
+      "Comte": 4,
+      "Défauts": 4
+    },
+    {
+      "Année": 2022,
+      "Mois": 3,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DF",
+      "Comte": 6,
+      "Défauts": 6
+    },
+    {
+      "Année": 2022,
+      "Mois": 3,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DI",
+      "Comte": 63,
+      "Défauts": 66
+    },
+    {
+      "Année": 2022,
+      "Mois": 3,
+      "Secteur": "AUDIOVIS",
+      "Statut": "EN",
+      "Comte": 4,
+      "Défauts": 6
+    },
+    {
+      "Année": 2022,
+      "Mois": 3,
+      "Secteur": "AUDIOVIS",
+      "Statut": "US",
+      "Comte": 4,
+      "Défauts": 4
+    },
+    {
+      "Année": 2022,
+      "Mois": 3,
+      "Secteur": "LOISIR",
+      "Statut": "DI",
+      "Comte": 13,
+      "Défauts": 15
+    },
+    {
+      "Année": 2022,
+      "Mois": 3,
+      "Secteur": "LOISIR",
+      "Statut": "EN",
+      "Comte": 4,
+      "Défauts": 4
+    },
+    {
+      "Année": 2022,
+      "Mois": 4,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DE",
+      "Comte": 8,
+      "Défauts": 8
+    },
+    {
+      "Année": 2022,
+      "Mois": 4,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DF",
+      "Comte": 5,
+      "Défauts": 5
+    },
+    {
+      "Année": 2022,
+      "Mois": 4,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DI",
+      "Comte": 82,
+      "Défauts": 83
+    },
+    {
+      "Année": 2022,
+      "Mois": 4,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DP",
+      "Comte": 2,
+      "Défauts": 2
+    },
+    {
+      "Année": 2022,
+      "Mois": 4,
+      "Secteur": "AUDIOVIS",
+      "Statut": "EN",
+      "Comte": 3,
+      "Défauts": 3
+    },
+    {
+      "Année": 2022,
+      "Mois": 4,
+      "Secteur": "AUDIOVIS",
+      "Statut": "US",
+      "Comte": 4,
+      "Défauts": 4
+    },
+    {
+      "Année": 2022,
+      "Mois": 4,
+      "Secteur": "LOISIR",
+      "Statut": "DE",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2022,
+      "Mois": 4,
+      "Secteur": "LOISIR",
+      "Statut": "DI",
+      "Comte": 27,
+      "Défauts": 40
+    },
+    {
+      "Année": 2022,
+      "Mois": 4,
+      "Secteur": "LOISIR",
+      "Statut": "EN",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2022,
+      "Mois": 5,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DE",
+      "Comte": 8,
+      "Défauts": 8
+    },
+    {
+      "Année": 2022,
+      "Mois": 5,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DF",
+      "Comte": 5,
+      "Défauts": 5
+    },
+    {
+      "Année": 2022,
+      "Mois": 5,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DI",
+      "Comte": 97,
+      "Défauts": 128
+    },
+    {
+      "Année": 2022,
+      "Mois": 5,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DP",
+      "Comte": 2,
+      "Défauts": 2
+    },
+    {
+      "Année": 2022,
+      "Mois": 5,
+      "Secteur": "AUDIOVIS",
+      "Statut": "EN",
+      "Comte": 6,
+      "Défauts": 6
+    },
+    {
+      "Année": 2022,
+      "Mois": 5,
+      "Secteur": "AUDIOVIS",
+      "Statut": "US",
+      "Comte": 2,
+      "Défauts": 2
+    },
+    {
+      "Année": 2022,
+      "Mois": 5,
+      "Secteur": "LOISIR",
+      "Statut": "DI",
+      "Comte": 22,
+      "Défauts": 22
+    },
+    {
+      "Année": 2022,
+      "Mois": 6,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DE",
+      "Comte": 10,
+      "Défauts": 10
+    },
+    {
+      "Année": 2022,
+      "Mois": 6,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DF",
+      "Comte": 3,
+      "Défauts": 3
+    },
+    {
+      "Année": 2022,
+      "Mois": 6,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DI",
+      "Comte": 52,
+      "Défauts": 56
+    },
+    {
+      "Année": 2022,
+      "Mois": 6,
+      "Secteur": "AUDIOVIS",
+      "Statut": "EN",
+      "Comte": 6,
+      "Défauts": 6
+    },
+    {
+      "Année": 2022,
+      "Mois": 6,
+      "Secteur": "AUDIOVIS",
+      "Statut": "US",
+      "Comte": 5,
+      "Défauts": 5
+    },
+    {
+      "Année": 2022,
+      "Mois": 6,
+      "Secteur": "LOISIR",
+      "Statut": "DE",
+      "Comte": 1,
+      "Défauts": 4
+    },
+    {
+      "Année": 2022,
+      "Mois": 6,
+      "Secteur": "LOISIR",
+      "Statut": "DI",
+      "Comte": 20,
+      "Défauts": 65
+    },
+    {
+      "Année": 2022,
+      "Mois": 6,
+      "Secteur": "LOISIR",
+      "Statut": "EN",
+      "Comte": 7,
+      "Défauts": 16
+    },
+    {
+      "Année": 2022,
+      "Mois": 7,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DE",
+      "Comte": 4,
+      "Défauts": 4
+    },
+    {
+      "Année": 2022,
+      "Mois": 7,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DF",
+      "Comte": 6,
+      "Défauts": 6
+    },
+    {
+      "Année": 2022,
+      "Mois": 7,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DI",
+      "Comte": 49,
+      "Défauts": 76
+    },
+    {
+      "Année": 2022,
+      "Mois": 7,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DP",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2022,
+      "Mois": 7,
+      "Secteur": "AUDIOVIS",
+      "Statut": "EN",
+      "Comte": 4,
+      "Défauts": 4
+    },
+    {
+      "Année": 2022,
+      "Mois": 7,
+      "Secteur": "AUDIOVIS",
+      "Statut": "US",
+      "Comte": 6,
+      "Défauts": 6
+    },
+    {
+      "Année": 2022,
+      "Mois": 7,
+      "Secteur": "LOISIR",
+      "Statut": "DE",
+      "Comte": 3,
+      "Défauts": 3
+    },
+    {
+      "Année": 2022,
+      "Mois": 7,
+      "Secteur": "LOISIR",
+      "Statut": "DI",
+      "Comte": 27,
+      "Défauts": 30
+    },
+    {
+      "Année": 2022,
+      "Mois": 7,
+      "Secteur": "LOISIR",
+      "Statut": "EN",
+      "Comte": 3,
+      "Défauts": 4
+    },
+    {
+      "Année": 2022,
+      "Mois": 8,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DE",
+      "Comte": 9,
+      "Défauts": 9
+    },
+    {
+      "Année": 2022,
+      "Mois": 8,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DF",
+      "Comte": 5,
+      "Défauts": 5
+    },
+    {
+      "Année": 2022,
+      "Mois": 8,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DI",
+      "Comte": 79,
+      "Défauts": 79
+    },
+    {
+      "Année": 2022,
+      "Mois": 8,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DP",
+      "Comte": 3,
+      "Défauts": 3
+    },
+    {
+      "Année": 2022,
+      "Mois": 8,
+      "Secteur": "AUDIOVIS",
+      "Statut": "EN",
+      "Comte": 4,
+      "Défauts": 4
+    },
+    {
+      "Année": 2022,
+      "Mois": 8,
+      "Secteur": "LOISIR",
+      "Statut": "DE",
+      "Comte": 17,
+      "Défauts": 17
+    },
+    {
+      "Année": 2022,
+      "Mois": 8,
+      "Secteur": "LOISIR",
+      "Statut": "DI",
+      "Comte": 32,
+      "Défauts": 35
+    },
+    {
+      "Année": 2022,
+      "Mois": 8,
+      "Secteur": "LOISIR",
+      "Statut": "EN",
+      "Comte": 4,
+      "Défauts": 4
+    },
+    {
+      "Année": 2022,
+      "Mois": 9,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DE",
+      "Comte": 8,
+      "Défauts": 8
+    },
+    {
+      "Année": 2022,
+      "Mois": 9,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DF",
+      "Comte": 5,
+      "Défauts": 5
+    },
+    {
+      "Année": 2022,
+      "Mois": 9,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DI",
+      "Comte": 89,
+      "Défauts": 89
+    },
+    {
+      "Année": 2022,
+      "Mois": 9,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DP",
+      "Comte": 2,
+      "Défauts": 2
+    },
+    {
+      "Année": 2022,
+      "Mois": 9,
+      "Secteur": "AUDIOVIS",
+      "Statut": "EN",
+      "Comte": 5,
+      "Défauts": 5
+    },
+    {
+      "Année": 2022,
+      "Mois": 9,
+      "Secteur": "AUDIOVIS",
+      "Statut": "US",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2022,
+      "Mois": 9,
+      "Secteur": "LOISIR",
+      "Statut": "DI",
+      "Comte": 40,
+      "Défauts": 52
+    },
+    {
+      "Année": 2022,
+      "Mois": 9,
+      "Secteur": "LOISIR",
+      "Statut": "EN",
+      "Comte": 7,
+      "Défauts": 7
+    },
+    {
+      "Année": 2022,
+      "Mois": 10,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DE",
+      "Comte": 7,
+      "Défauts": 7
+    },
+    {
+      "Année": 2022,
+      "Mois": 10,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DF",
+      "Comte": 3,
+      "Défauts": 3
+    },
+    {
+      "Année": 2022,
+      "Mois": 10,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DI",
+      "Comte": 63,
+      "Défauts": 67
+    },
+    {
+      "Année": 2022,
+      "Mois": 10,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DP",
+      "Comte": 2,
+      "Défauts": 2
+    },
+    {
+      "Année": 2022,
+      "Mois": 10,
+      "Secteur": "AUDIOVIS",
+      "Statut": "EN",
+      "Comte": 4,
+      "Défauts": 4
+    },
+    {
+      "Année": 2022,
+      "Mois": 10,
+      "Secteur": "AUDIOVIS",
+      "Statut": "US",
+      "Comte": 3,
+      "Défauts": 3
+    },
+    {
+      "Année": 2022,
+      "Mois": 10,
+      "Secteur": "LOISIR",
+      "Statut": "DE",
+      "Comte": 2,
+      "Défauts": 2
+    },
+    {
+      "Année": 2022,
+      "Mois": 10,
+      "Secteur": "LOISIR",
+      "Statut": "DI",
+      "Comte": 68,
+      "Défauts": 68
+    },
+    {
+      "Année": 2022,
+      "Mois": 10,
+      "Secteur": "LOISIR",
+      "Statut": "EN",
+      "Comte": 6,
+      "Défauts": 6
+    },
+    {
+      "Année": 2022,
+      "Mois": 11,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DE",
+      "Comte": 6,
+      "Défauts": 6
+    },
+    {
+      "Année": 2022,
+      "Mois": 11,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DF",
+      "Comte": 5,
+      "Défauts": 5
+    },
+    {
+      "Année": 2022,
+      "Mois": 11,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DI",
+      "Comte": 57,
+      "Défauts": 57
+    },
+    {
+      "Année": 2022,
+      "Mois": 11,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DP",
+      "Comte": 4,
+      "Défauts": 4
+    },
+    {
+      "Année": 2022,
+      "Mois": 11,
+      "Secteur": "AUDIOVIS",
+      "Statut": "EN",
+      "Comte": 2,
+      "Défauts": 2
+    },
+    {
+      "Année": 2022,
+      "Mois": 11,
+      "Secteur": "AUDIOVIS",
+      "Statut": "US",
+      "Comte": 3,
+      "Défauts": 3
+    },
+    {
+      "Année": 2022,
+      "Mois": 11,
+      "Secteur": "LOISIR",
+      "Statut": "DI",
+      "Comte": 16,
+      "Défauts": 16
+    },
+    {
+      "Année": 2022,
+      "Mois": 11,
+      "Secteur": "LOISIR",
+      "Statut": "EN",
+      "Comte": 3,
+      "Défauts": 3
+    },
+    {
+      "Année": 2022,
+      "Mois": 12,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DE",
+      "Comte": 3,
+      "Défauts": 3
+    },
+    {
+      "Année": 2022,
+      "Mois": 12,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DI",
+      "Comte": 52,
+      "Défauts": 56
+    },
+    {
+      "Année": 2022,
+      "Mois": 12,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DP",
+      "Comte": 2,
+      "Défauts": 2
+    },
+    {
+      "Année": 2022,
+      "Mois": 12,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DR",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2022,
+      "Mois": 12,
+      "Secteur": "LOISIR",
+      "Statut": "DE",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2022,
+      "Mois": 12,
+      "Secteur": "LOISIR",
+      "Statut": "DI",
+      "Comte": 79,
+      "Défauts": 228
+    },
+    {
+      "Année": 2022,
+      "Mois": 12,
+      "Secteur": "LOISIR",
+      "Statut": "EN",
+      "Comte": 9,
+      "Défauts": 22
+    },
+    {
+      "Année": 2023,
+      "Mois": 1,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DE",
+      "Comte": 12,
+      "Défauts": 13
+    },
+    {
+      "Année": 2023,
+      "Mois": 1,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DF",
+      "Comte": 4,
+      "Défauts": 4
+    },
+    {
+      "Année": 2023,
+      "Mois": 1,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DI",
+      "Comte": 26,
+      "Défauts": 26
+    },
+    {
+      "Année": 2023,
+      "Mois": 1,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DP",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2023,
+      "Mois": 1,
+      "Secteur": "AUDIOVIS",
+      "Statut": "EN",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2023,
+      "Mois": 2,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DE",
+      "Comte": 2,
+      "Défauts": 2
+    },
+    {
+      "Année": 2023,
+      "Mois": 2,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DF",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2023,
+      "Mois": 2,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DI",
+      "Comte": 35,
+      "Défauts": 36
+    },
+    {
+      "Année": 2023,
+      "Mois": 2,
+      "Secteur": "AUDIOVIS",
+      "Statut": "EN",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2023,
+      "Mois": 2,
+      "Secteur": "AUDIOVIS",
+      "Statut": "US",
+      "Comte": 3,
+      "Défauts": 3
+    },
+    {
+      "Année": 2023,
+      "Mois": 2,
+      "Secteur": "LOISIR",
+      "Statut": "DI",
+      "Comte": 8,
+      "Défauts": 8
+    },
+    {
+      "Année": 2023,
+      "Mois": 3,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DE",
+      "Comte": 9,
+      "Défauts": 9
+    },
+    {
+      "Année": 2023,
+      "Mois": 3,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DF",
+      "Comte": 4,
+      "Défauts": 4
+    },
+    {
+      "Année": 2023,
+      "Mois": 3,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DI",
+      "Comte": 136,
+      "Défauts": 151
+    },
+    {
+      "Année": 2023,
+      "Mois": 3,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DP",
+      "Comte": 6,
+      "Défauts": 6
+    },
+    {
+      "Année": 2023,
+      "Mois": 3,
+      "Secteur": "AUDIOVIS",
+      "Statut": "EN",
+      "Comte": 6,
+      "Défauts": 6
+    },
+    {
+      "Année": 2023,
+      "Mois": 3,
+      "Secteur": "AUDIOVIS",
+      "Statut": "US",
+      "Comte": 3,
+      "Défauts": 3
+    },
+    {
+      "Année": 2023,
+      "Mois": 3,
+      "Secteur": "LOISIR",
+      "Statut": "DE",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2023,
+      "Mois": 3,
+      "Secteur": "LOISIR",
+      "Statut": "DI",
+      "Comte": 62,
+      "Défauts": 62
+    },
+    {
+      "Année": 2023,
+      "Mois": 3,
+      "Secteur": "LOISIR",
+      "Statut": "EN",
+      "Comte": 7,
+      "Défauts": 7
+    },
+    {
+      "Année": 2023,
+      "Mois": 4,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DE",
+      "Comte": 5,
+      "Défauts": 5
+    },
+    {
+      "Année": 2023,
+      "Mois": 4,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DF",
+      "Comte": 5,
+      "Défauts": 5
+    },
+    {
+      "Année": 2023,
+      "Mois": 4,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DI",
+      "Comte": 120,
+      "Défauts": 122
+    },
+    {
+      "Année": 2023,
+      "Mois": 4,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DP",
+      "Comte": 3,
+      "Défauts": 3
+    },
+    {
+      "Année": 2023,
+      "Mois": 4,
+      "Secteur": "AUDIOVIS",
+      "Statut": "EN",
+      "Comte": 11,
+      "Défauts": 11
+    },
+    {
+      "Année": 2023,
+      "Mois": 4,
+      "Secteur": "AUDIOVIS",
+      "Statut": "US",
+      "Comte": 7,
+      "Défauts": 7
+    },
+    {
+      "Année": 2023,
+      "Mois": 4,
+      "Secteur": "LOISIR",
+      "Statut": "DE",
+      "Comte": 2,
+      "Défauts": 2
+    },
+    {
+      "Année": 2023,
+      "Mois": 4,
+      "Secteur": "LOISIR",
+      "Statut": "DI",
+      "Comte": 37,
+      "Défauts": 39
+    },
+    {
+      "Année": 2023,
+      "Mois": 4,
+      "Secteur": "LOISIR",
+      "Statut": "EN",
+      "Comte": 2,
+      "Défauts": 2
+    },
+    {
+      "Année": 2023,
+      "Mois": 5,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DE",
+      "Comte": 5,
+      "Défauts": 5
+    },
+    {
+      "Année": 2023,
+      "Mois": 5,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DF",
+      "Comte": 7,
+      "Défauts": 7
+    },
+    {
+      "Année": 2023,
+      "Mois": 5,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DI",
+      "Comte": 93,
+      "Défauts": 99
+    },
+    {
+      "Année": 2023,
+      "Mois": 5,
+      "Secteur": "AUDIOVIS",
+      "Statut": "EN",
+      "Comte": 2,
+      "Défauts": 2
+    },
+    {
+      "Année": 2023,
+      "Mois": 5,
+      "Secteur": "AUDIOVIS",
+      "Statut": "US",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2023,
+      "Mois": 5,
+      "Secteur": "LOISIR",
+      "Statut": "DE",
+      "Comte": 4,
+      "Défauts": 4
+    },
+    {
+      "Année": 2023,
+      "Mois": 5,
+      "Secteur": "LOISIR",
+      "Statut": "DI",
+      "Comte": 74,
+      "Défauts": 76
+    },
+    {
+      "Année": 2023,
+      "Mois": 5,
+      "Secteur": "LOISIR",
+      "Statut": "EN",
+      "Comte": 5,
+      "Défauts": 5
+    },
+    {
+      "Année": 2023,
+      "Mois": 6,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DE",
+      "Comte": 9,
+      "Défauts": 9
+    },
+    {
+      "Année": 2023,
+      "Mois": 6,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DF",
+      "Comte": 6,
+      "Défauts": 6
+    },
+    {
+      "Année": 2023,
+      "Mois": 6,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DI",
+      "Comte": 94,
+      "Défauts": 96
+    },
+    {
+      "Année": 2023,
+      "Mois": 6,
+      "Secteur": "AUDIOVIS",
+      "Statut": "EN",
+      "Comte": 6,
+      "Défauts": 6
+    },
+    {
+      "Année": 2023,
+      "Mois": 6,
+      "Secteur": "AUDIOVIS",
+      "Statut": "US",
+      "Comte": 2,
+      "Défauts": 2
+    },
+    {
+      "Année": 2023,
+      "Mois": 6,
+      "Secteur": "LOISIR",
+      "Statut": "DI",
+      "Comte": 15,
+      "Défauts": 16
+    },
+    {
+      "Année": 2023,
+      "Mois": 7,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DE",
+      "Comte": 9,
+      "Défauts": 9
+    },
+    {
+      "Année": 2023,
+      "Mois": 7,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DF",
+      "Comte": 59,
+      "Défauts": 59
+    },
+    {
+      "Année": 2023,
+      "Mois": 7,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DI",
+      "Comte": 114,
+      "Défauts": 114
+    },
+    {
+      "Année": 2023,
+      "Mois": 7,
+      "Secteur": "AUDIOVIS",
+      "Statut": "EN",
+      "Comte": 4,
+      "Défauts": 4
+    },
+    {
+      "Année": 2023,
+      "Mois": 7,
+      "Secteur": "LOISIR",
+      "Statut": "DE",
+      "Comte": 6,
+      "Défauts": 6
+    },
+    {
+      "Année": 2023,
+      "Mois": 7,
+      "Secteur": "LOISIR",
+      "Statut": "DI",
+      "Comte": 40,
+      "Défauts": 44
+    },
+    {
+      "Année": 2023,
+      "Mois": 7,
+      "Secteur": "LOISIR",
+      "Statut": "EN",
+      "Comte": 9,
+      "Défauts": 12
+    },
+    {
+      "Année": 2023,
+      "Mois": 8,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DE",
+      "Comte": 8,
+      "Défauts": 9
+    },
+    {
+      "Année": 2023,
+      "Mois": 8,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DF",
+      "Comte": 11,
+      "Défauts": 11
+    },
+    {
+      "Année": 2023,
+      "Mois": 8,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DI",
+      "Comte": 62,
+      "Défauts": 62
+    },
+    {
+      "Année": 2023,
+      "Mois": 8,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DP",
+      "Comte": 2,
+      "Défauts": 2
+    },
+    {
+      "Année": 2023,
+      "Mois": 8,
+      "Secteur": "AUDIOVIS",
+      "Statut": "EN",
+      "Comte": 5,
+      "Défauts": 5
+    },
+    {
+      "Année": 2023,
+      "Mois": 8,
+      "Secteur": "AUDIOVIS",
+      "Statut": "US",
+      "Comte": 3,
+      "Défauts": 3
+    },
+    {
+      "Année": 2023,
+      "Mois": 8,
+      "Secteur": "LOISIR",
+      "Statut": "DE",
+      "Comte": 10,
+      "Défauts": 10
+    },
+    {
+      "Année": 2023,
+      "Mois": 8,
+      "Secteur": "LOISIR",
+      "Statut": "DI",
+      "Comte": 35,
+      "Défauts": 35
+    },
+    {
+      "Année": 2023,
+      "Mois": 8,
+      "Secteur": "LOISIR",
+      "Statut": "EN",
+      "Comte": 3,
+      "Défauts": 3
+    },
+    {
+      "Année": 2023,
+      "Mois": 9,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DE",
+      "Comte": 15,
+      "Défauts": 15
+    },
+    {
+      "Année": 2023,
+      "Mois": 9,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DF",
+      "Comte": 17,
+      "Défauts": 17
+    },
+    {
+      "Année": 2023,
+      "Mois": 9,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DI",
+      "Comte": 83,
+      "Défauts": 83
+    },
+    {
+      "Année": 2023,
+      "Mois": 9,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DP",
+      "Comte": 2,
+      "Défauts": 2
+    },
+    {
+      "Année": 2023,
+      "Mois": 9,
+      "Secteur": "AUDIOVIS",
+      "Statut": "EN",
+      "Comte": 2,
+      "Défauts": 2
+    },
+    {
+      "Année": 2023,
+      "Mois": 9,
+      "Secteur": "AUDIOVIS",
+      "Statut": "US",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2023,
+      "Mois": 9,
+      "Secteur": "LOISIR",
+      "Statut": "DE",
+      "Comte": 2,
+      "Défauts": 2
+    },
+    {
+      "Année": 2023,
+      "Mois": 9,
+      "Secteur": "LOISIR",
+      "Statut": "DI",
+      "Comte": 22,
+      "Défauts": 22
+    },
+    {
+      "Année": 2023,
+      "Mois": 9,
+      "Secteur": "LOISIR",
+      "Statut": "EN",
+      "Comte": 5,
+      "Défauts": 6
+    },
+    {
+      "Année": 2023,
+      "Mois": 10,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DE",
+      "Comte": 19,
+      "Défauts": 54
+    },
+    {
+      "Année": 2023,
+      "Mois": 10,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DF",
+      "Comte": 23,
+      "Défauts": 23
+    },
+    {
+      "Année": 2023,
+      "Mois": 10,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DI",
+      "Comte": 74,
+      "Défauts": 74
+    },
+    {
+      "Année": 2023,
+      "Mois": 10,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DP",
+      "Comte": 2,
+      "Défauts": 2
+    },
+    {
+      "Année": 2023,
+      "Mois": 10,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DR",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2023,
+      "Mois": 10,
+      "Secteur": "AUDIOVIS",
+      "Statut": "EN",
+      "Comte": 13,
+      "Défauts": 13
+    },
+    {
+      "Année": 2023,
+      "Mois": 10,
+      "Secteur": "AUDIOVIS",
+      "Statut": "US",
+      "Comte": 2,
+      "Défauts": 2
+    },
+    {
+      "Année": 2023,
+      "Mois": 10,
+      "Secteur": "LOISIR",
+      "Statut": "DE",
+      "Comte": 4,
+      "Défauts": 4
+    },
+    {
+      "Année": 2023,
+      "Mois": 10,
+      "Secteur": "LOISIR",
+      "Statut": "DI",
+      "Comte": 50,
+      "Défauts": 61
+    },
+    {
+      "Année": 2023,
+      "Mois": 10,
+      "Secteur": "LOISIR",
+      "Statut": "EN",
+      "Comte": 12,
+      "Défauts": 13
+    },
+    {
+      "Année": 2023,
+      "Mois": 11,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DE",
+      "Comte": 13,
+      "Défauts": 13
+    },
+    {
+      "Année": 2023,
+      "Mois": 11,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DF",
+      "Comte": 5,
+      "Défauts": 5
+    },
+    {
+      "Année": 2023,
+      "Mois": 11,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DI",
+      "Comte": 95,
+      "Défauts": 96
+    },
+    {
+      "Année": 2023,
+      "Mois": 11,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DP",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2023,
+      "Mois": 11,
+      "Secteur": "AUDIOVIS",
+      "Statut": "EN",
+      "Comte": 4,
+      "Défauts": 4
+    },
+    {
+      "Année": 2023,
+      "Mois": 11,
+      "Secteur": "AUDIOVIS",
+      "Statut": "US",
+      "Comte": 3,
+      "Défauts": 3
+    },
+    {
+      "Année": 2023,
+      "Mois": 11,
+      "Secteur": "LOISIR",
+      "Statut": "DI",
+      "Comte": 17,
+      "Défauts": 20
+    },
+    {
+      "Année": 2023,
+      "Mois": 11,
+      "Secteur": "LOISIR",
+      "Statut": "EN",
+      "Comte": 3,
+      "Défauts": 3
+    },
+    {
+      "Année": 2023,
+      "Mois": 12,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DE",
+      "Comte": 4,
+      "Défauts": 4
+    },
+    {
+      "Année": 2023,
+      "Mois": 12,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DF",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2023,
+      "Mois": 12,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DI",
+      "Comte": 39,
+      "Défauts": 40
+    },
+    {
+      "Année": 2023,
+      "Mois": 12,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DP",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2023,
+      "Mois": 12,
+      "Secteur": "AUDIOVIS",
+      "Statut": "EN",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2023,
+      "Mois": 12,
+      "Secteur": "AUDIOVIS",
+      "Statut": "US",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2023,
+      "Mois": 12,
+      "Secteur": "LOISIR",
+      "Statut": "DE",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2023,
+      "Mois": 12,
+      "Secteur": "LOISIR",
+      "Statut": "DI",
+      "Comte": 9,
+      "Défauts": 11
+    },
+    {
+      "Année": 2024,
+      "Mois": 1,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DE",
+      "Comte": 5,
+      "Défauts": 5
+    },
+    {
+      "Année": 2024,
+      "Mois": 1,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DF",
+      "Comte": 2,
+      "Défauts": 2
+    },
+    {
+      "Année": 2024,
+      "Mois": 1,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DI",
+      "Comte": 35,
+      "Défauts": 35
+    },
+    {
+      "Année": 2024,
+      "Mois": 1,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DP",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2024,
+      "Mois": 1,
+      "Secteur": "AUDIOVIS",
+      "Statut": "EN",
+      "Comte": 2,
+      "Défauts": 2
+    },
+    {
+      "Année": 2024,
+      "Mois": 1,
+      "Secteur": "AUDIOVIS",
+      "Statut": "US",
+      "Comte": 4,
+      "Défauts": 4
+    },
+    {
+      "Année": 2024,
+      "Mois": 1,
+      "Secteur": "LOISIR",
+      "Statut": "DI",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2024,
+      "Mois": 2,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DE",
+      "Comte": 3,
+      "Défauts": 3
+    },
+    {
+      "Année": 2024,
+      "Mois": 2,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DF",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2024,
+      "Mois": 2,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DI",
+      "Comte": 38,
+      "Défauts": 38
+    },
+    {
+      "Année": 2024,
+      "Mois": 2,
+      "Secteur": "AUDIOVIS",
+      "Statut": "EN",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2024,
+      "Mois": 2,
+      "Secteur": "AUDIOVIS",
+      "Statut": "US",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2024,
+      "Mois": 2,
+      "Secteur": "LOISIR",
+      "Statut": "DI",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2024,
+      "Mois": 3,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DE",
+      "Comte": 15,
+      "Défauts": 15
+    },
+    {
+      "Année": 2024,
+      "Mois": 3,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DF",
+      "Comte": 6,
+      "Défauts": 6
+    },
+    {
+      "Année": 2024,
+      "Mois": 3,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DI",
+      "Comte": 79,
+      "Défauts": 79
+    },
+    {
+      "Année": 2024,
+      "Mois": 3,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DR",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2024,
+      "Mois": 3,
+      "Secteur": "AUDIOVIS",
+      "Statut": "EN",
+      "Comte": 12,
+      "Défauts": 12
+    },
+    {
+      "Année": 2024,
+      "Mois": 3,
+      "Secteur": "AUDIOVIS",
+      "Statut": "US",
+      "Comte": 3,
+      "Défauts": 3
+    },
+    {
+      "Année": 2024,
+      "Mois": 3,
+      "Secteur": "LOISIR",
+      "Statut": "DI",
+      "Comte": 42,
+      "Défauts": 42
+    },
+    {
+      "Année": 2024,
+      "Mois": 3,
+      "Secteur": "LOISIR",
+      "Statut": "EN",
+      "Comte": 5,
+      "Défauts": 5
+    },
+    {
+      "Année": 2024,
+      "Mois": 4,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DE",
+      "Comte": 12,
+      "Défauts": 12
+    },
+    {
+      "Année": 2024,
+      "Mois": 4,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DF",
+      "Comte": 9,
+      "Défauts": 9
+    },
+    {
+      "Année": 2024,
+      "Mois": 4,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DI",
+      "Comte": 81,
+      "Défauts": 88
+    },
+    {
+      "Année": 2024,
+      "Mois": 4,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DP",
+      "Comte": 2,
+      "Défauts": 2
+    },
+    {
+      "Année": 2024,
+      "Mois": 4,
+      "Secteur": "AUDIOVIS",
+      "Statut": "EN",
+      "Comte": 5,
+      "Défauts": 5
+    },
+    {
+      "Année": 2024,
+      "Mois": 4,
+      "Secteur": "LOISIR",
+      "Statut": "DE",
+      "Comte": 2,
+      "Défauts": 2
+    },
+    {
+      "Année": 2024,
+      "Mois": 4,
+      "Secteur": "LOISIR",
+      "Statut": "DI",
+      "Comte": 28,
+      "Défauts": 28
+    },
+    {
+      "Année": 2024,
+      "Mois": 4,
+      "Secteur": "LOISIR",
+      "Statut": "EN",
+      "Comte": 5,
+      "Défauts": 5
+    },
+    {
+      "Année": 2024,
+      "Mois": 5,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DE",
+      "Comte": 9,
+      "Défauts": 9
+    },
+    {
+      "Année": 2024,
+      "Mois": 5,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DF",
+      "Comte": 6,
+      "Défauts": 6
+    },
+    {
+      "Année": 2024,
+      "Mois": 5,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DI",
+      "Comte": 77,
+      "Défauts": 99
+    },
+    {
+      "Année": 2024,
+      "Mois": 5,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DP",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2024,
+      "Mois": 5,
+      "Secteur": "AUDIOVIS",
+      "Statut": "EN",
+      "Comte": 11,
+      "Défauts": 11
+    },
+    {
+      "Année": 2024,
+      "Mois": 5,
+      "Secteur": "AUDIOVIS",
+      "Statut": "US",
+      "Comte": 4,
+      "Défauts": 4
+    },
+    {
+      "Année": 2024,
+      "Mois": 5,
+      "Secteur": "LOISIR",
+      "Statut": "DE",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2024,
+      "Mois": 5,
+      "Secteur": "LOISIR",
+      "Statut": "DI",
+      "Comte": 22,
+      "Défauts": 22
+    },
+    {
+      "Année": 2024,
+      "Mois": 5,
+      "Secteur": "LOISIR",
+      "Statut": "EN",
+      "Comte": 3,
+      "Défauts": 3
+    },
+    {
+      "Année": 2024,
+      "Mois": 6,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DE",
+      "Comte": 9,
+      "Défauts": 9
+    },
+    {
+      "Année": 2024,
+      "Mois": 6,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DF",
+      "Comte": 4,
+      "Défauts": 4
+    },
+    {
+      "Année": 2024,
+      "Mois": 6,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DI",
+      "Comte": 69,
+      "Défauts": 69
+    },
+    {
+      "Année": 2024,
+      "Mois": 6,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DR",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2024,
+      "Mois": 6,
+      "Secteur": "AUDIOVIS",
+      "Statut": "EN",
+      "Comte": 12,
+      "Défauts": 12
+    },
+    {
+      "Année": 2024,
+      "Mois": 6,
+      "Secteur": "AUDIOVIS",
+      "Statut": "US",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2024,
+      "Mois": 6,
+      "Secteur": "LOISIR",
+      "Statut": "DI",
+      "Comte": 57,
+      "Défauts": 72
+    },
+    {
+      "Année": 2024,
+      "Mois": 6,
+      "Secteur": "LOISIR",
+      "Statut": "EN",
+      "Comte": 6,
+      "Défauts": 7
+    },
+    {
+      "Année": 2024,
+      "Mois": 7,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DE",
+      "Comte": 9,
+      "Défauts": 9
+    },
+    {
+      "Année": 2024,
+      "Mois": 7,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DF",
+      "Comte": 6,
+      "Défauts": 6
+    },
+    {
+      "Année": 2024,
+      "Mois": 7,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DI",
+      "Comte": 58,
+      "Défauts": 58
+    },
+    {
+      "Année": 2024,
+      "Mois": 7,
+      "Secteur": "AUDIOVIS",
+      "Statut": "EN",
+      "Comte": 6,
+      "Défauts": 6
+    },
+    {
+      "Année": 2024,
+      "Mois": 7,
+      "Secteur": "AUDIOVIS",
+      "Statut": "US",
+      "Comte": 2,
+      "Défauts": 2
+    },
+    {
+      "Année": 2024,
+      "Mois": 7,
+      "Secteur": "LOISIR",
+      "Statut": "DE",
+      "Comte": 13,
+      "Défauts": 13
+    },
+    {
+      "Année": 2024,
+      "Mois": 7,
+      "Secteur": "LOISIR",
+      "Statut": "DI",
+      "Comte": 138,
+      "Défauts": 142
+    },
+    {
+      "Année": 2024,
+      "Mois": 7,
+      "Secteur": "LOISIR",
+      "Statut": "EN",
+      "Comte": 17,
+      "Défauts": 19
+    },
+    {
+      "Année": 2024,
+      "Mois": 8,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DE",
+      "Comte": 9,
+      "Défauts": 9
+    },
+    {
+      "Année": 2024,
+      "Mois": 8,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DF",
+      "Comte": 2,
+      "Défauts": 2
+    },
+    {
+      "Année": 2024,
+      "Mois": 8,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DI",
+      "Comte": 74,
+      "Défauts": 89
+    },
+    {
+      "Année": 2024,
+      "Mois": 8,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DP",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2024,
+      "Mois": 8,
+      "Secteur": "AUDIOVIS",
+      "Statut": "EN",
+      "Comte": 5,
+      "Défauts": 9
+    },
+    {
+      "Année": 2024,
+      "Mois": 8,
+      "Secteur": "LOISIR",
+      "Statut": "DE",
+      "Comte": 4,
+      "Défauts": 4
+    },
+    {
+      "Année": 2024,
+      "Mois": 8,
+      "Secteur": "LOISIR",
+      "Statut": "DI",
+      "Comte": 147,
+      "Défauts": 151
+    },
+    {
+      "Année": 2024,
+      "Mois": 8,
+      "Secteur": "LOISIR",
+      "Statut": "EN",
+      "Comte": 20,
+      "Défauts": 20
+    },
+    {
+      "Année": 2024,
+      "Mois": 9,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DE",
+      "Comte": 14,
+      "Défauts": 14
+    },
+    {
+      "Année": 2024,
+      "Mois": 9,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DF",
+      "Comte": 6,
+      "Défauts": 6
+    },
+    {
+      "Année": 2024,
+      "Mois": 9,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DI",
+      "Comte": 91,
+      "Défauts": 91
+    },
+    {
+      "Année": 2024,
+      "Mois": 9,
+      "Secteur": "AUDIOVIS",
+      "Statut": "EN",
+      "Comte": 5,
+      "Défauts": 5
+    },
+    {
+      "Année": 2024,
+      "Mois": 9,
+      "Secteur": "AUDIOVIS",
+      "Statut": "US",
+      "Comte": 5,
+      "Défauts": 5
+    },
+    {
+      "Année": 2024,
+      "Mois": 9,
+      "Secteur": "LOISIR",
+      "Statut": "DE",
+      "Comte": 2,
+      "Défauts": 2
+    },
+    {
+      "Année": 2024,
+      "Mois": 9,
+      "Secteur": "LOISIR",
+      "Statut": "DI",
+      "Comte": 65,
+      "Défauts": 65
+    },
+    {
+      "Année": 2024,
+      "Mois": 9,
+      "Secteur": "LOISIR",
+      "Statut": "EN",
+      "Comte": 9,
+      "Défauts": 9
+    },
+    {
+      "Année": 2024,
+      "Mois": 10,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DE",
+      "Comte": 8,
+      "Défauts": 8
+    },
+    {
+      "Année": 2024,
+      "Mois": 10,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DF",
+      "Comte": 28,
+      "Défauts": 28
+    },
+    {
+      "Année": 2024,
+      "Mois": 10,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DI",
+      "Comte": 107,
+      "Défauts": 116
+    },
+    {
+      "Année": 2024,
+      "Mois": 10,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DP",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2024,
+      "Mois": 10,
+      "Secteur": "AUDIOVIS",
+      "Statut": "EN",
+      "Comte": 7,
+      "Défauts": 7
+    },
+    {
+      "Année": 2024,
+      "Mois": 10,
+      "Secteur": "AUDIOVIS",
+      "Statut": "US",
+      "Comte": 2,
+      "Défauts": 2
+    },
+    {
+      "Année": 2024,
+      "Mois": 10,
+      "Secteur": "LOISIR",
+      "Statut": "DE",
+      "Comte": 2,
+      "Défauts": 2
+    },
+    {
+      "Année": 2024,
+      "Mois": 10,
+      "Secteur": "LOISIR",
+      "Statut": "DI",
+      "Comte": 99,
+      "Défauts": 99
+    },
+    {
+      "Année": 2024,
+      "Mois": 10,
+      "Secteur": "LOISIR",
+      "Statut": "EN",
+      "Comte": 13,
+      "Défauts": 13
+    },
+    {
+      "Année": 2024,
+      "Mois": 11,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DE",
+      "Comte": 6,
+      "Défauts": 6
+    },
+    {
+      "Année": 2024,
+      "Mois": 11,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DF",
+      "Comte": 4,
+      "Défauts": 4
+    },
+    {
+      "Année": 2024,
+      "Mois": 11,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DI",
+      "Comte": 67,
+      "Défauts": 69
+    },
+    {
+      "Année": 2024,
+      "Mois": 11,
+      "Secteur": "AUDIOVIS",
+      "Statut": "EN",
+      "Comte": 12,
+      "Défauts": 12
+    },
+    {
+      "Année": 2024,
+      "Mois": 11,
+      "Secteur": "AUDIOVIS",
+      "Statut": "US",
+      "Comte": 2,
+      "Défauts": 2
+    },
+    {
+      "Année": 2024,
+      "Mois": 11,
+      "Secteur": "LOISIR",
+      "Statut": "DI",
+      "Comte": 36,
+      "Défauts": 36
+    },
+    {
+      "Année": 2024,
+      "Mois": 11,
+      "Secteur": "LOISIR",
+      "Statut": "EN",
+      "Comte": 11,
+      "Défauts": 11
+    },
+    {
+      "Année": 2024,
+      "Mois": 12,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DE",
+      "Comte": 5,
+      "Défauts": 5
+    },
+    {
+      "Année": 2024,
+      "Mois": 12,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DF",
+      "Comte": 6,
+      "Défauts": 6
+    },
+    {
+      "Année": 2024,
+      "Mois": 12,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DI",
+      "Comte": 79,
+      "Défauts": 79
+    },
+    {
+      "Année": 2024,
+      "Mois": 12,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DR",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2024,
+      "Mois": 12,
+      "Secteur": "AUDIOVIS",
+      "Statut": "EN",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2024,
+      "Mois": 12,
+      "Secteur": "AUDIOVIS",
+      "Statut": "US",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2024,
+      "Mois": 12,
+      "Secteur": "LOISIR",
+      "Statut": "DI",
+      "Comte": 16,
+      "Défauts": 16
+    },
+    {
+      "Année": 2024,
+      "Mois": 12,
+      "Secteur": "LOISIR",
+      "Statut": "EN",
+      "Comte": 3,
+      "Défauts": 3
+    },
+    {
+      "Année": 2025,
+      "Mois": 1,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DF",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2025,
+      "Mois": 1,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DI",
+      "Comte": 16,
+      "Défauts": 16
+    },
+    {
+      "Année": 2025,
+      "Mois": 1,
+      "Secteur": "AUDIOVIS",
+      "Statut": "EN",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2025,
+      "Mois": 1,
+      "Secteur": "LOISIR",
+      "Statut": "DI",
+      "Comte": 2,
+      "Défauts": 2
+    },
+    {
+      "Année": 2025,
+      "Mois": 1,
+      "Secteur": "LOISIR",
+      "Statut": "EN",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2025,
+      "Mois": 2,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DE",
+      "Comte": 2,
+      "Défauts": 2
+    },
+    {
+      "Année": 2025,
+      "Mois": 2,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DF",
+      "Comte": 2,
+      "Défauts": 2
+    },
+    {
+      "Année": 2025,
+      "Mois": 2,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DI",
+      "Comte": 39,
+      "Défauts": 39
+    },
+    {
+      "Année": 2025,
+      "Mois": 2,
+      "Secteur": "AUDIOVIS",
+      "Statut": "EN",
+      "Comte": 7,
+      "Défauts": 7
+    },
+    {
+      "Année": 2025,
+      "Mois": 2,
+      "Secteur": "AUDIOVIS",
+      "Statut": "US",
+      "Comte": 1,
+      "Défauts": 2
+    },
+    {
+      "Année": 2025,
+      "Mois": 2,
+      "Secteur": "LOISIR",
+      "Statut": "DI",
+      "Comte": 12,
+      "Défauts": 12
+    },
+    {
+      "Année": 2025,
+      "Mois": 3,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DE",
+      "Comte": 10,
+      "Défauts": 10
+    },
+    {
+      "Année": 2025,
+      "Mois": 3,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DF",
+      "Comte": 10,
+      "Défauts": 10
+    },
+    {
+      "Année": 2025,
+      "Mois": 3,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DI",
+      "Comte": 96,
+      "Défauts": 99
+    },
+    {
+      "Année": 2025,
+      "Mois": 3,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DP",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2025,
+      "Mois": 3,
+      "Secteur": "AUDIOVIS",
+      "Statut": "EN",
+      "Comte": 8,
+      "Défauts": 9
+    },
+    {
+      "Année": 2025,
+      "Mois": 3,
+      "Secteur": "AUDIOVIS",
+      "Statut": "US",
+      "Comte": 3,
+      "Défauts": 3
+    },
+    {
+      "Année": 2025,
+      "Mois": 3,
+      "Secteur": "LOISIR",
+      "Statut": "DI",
+      "Comte": 21,
+      "Défauts": 21
+    },
+    {
+      "Année": 2025,
+      "Mois": 3,
+      "Secteur": "LOISIR",
+      "Statut": "EN",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2025,
+      "Mois": 4,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DE",
+      "Comte": 10,
+      "Défauts": 13
+    },
+    {
+      "Année": 2025,
+      "Mois": 4,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DF",
+      "Comte": 19,
+      "Défauts": 19
+    },
+    {
+      "Année": 2025,
+      "Mois": 4,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DI",
+      "Comte": 141,
+      "Défauts": 146
+    },
+    {
+      "Année": 2025,
+      "Mois": 4,
+      "Secteur": "AUDIOVIS",
+      "Statut": "EN",
+      "Comte": 13,
+      "Défauts": 13
+    },
+    {
+      "Année": 2025,
+      "Mois": 4,
+      "Secteur": "AUDIOVIS",
+      "Statut": "US",
+      "Comte": 7,
+      "Défauts": 7
+    },
+    {
+      "Année": 2025,
+      "Mois": 4,
+      "Secteur": "LOISIR",
+      "Statut": "DE",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2025,
+      "Mois": 4,
+      "Secteur": "LOISIR",
+      "Statut": "DI",
+      "Comte": 64,
+      "Défauts": 75
+    },
+    {
+      "Année": 2025,
+      "Mois": 4,
+      "Secteur": "LOISIR",
+      "Statut": "EN",
+      "Comte": 15,
+      "Défauts": 15
+    },
+    {
+      "Année": 2025,
+      "Mois": 5,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DE",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2025,
+      "Mois": 5,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DF",
+      "Comte": 11,
+      "Défauts": 11
+    },
+    {
+      "Année": 2025,
+      "Mois": 5,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DI",
+      "Comte": 54,
+      "Défauts": 95
+    },
+    {
+      "Année": 2025,
+      "Mois": 5,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DP",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2025,
+      "Mois": 5,
+      "Secteur": "AUDIOVIS",
+      "Statut": "EN",
+      "Comte": 8,
+      "Défauts": 8
+    },
+    {
+      "Année": 2025,
+      "Mois": 5,
+      "Secteur": "AUDIOVIS",
+      "Statut": "US",
+      "Comte": 3,
+      "Défauts": 3
+    },
+    {
+      "Année": 2025,
+      "Mois": 5,
+      "Secteur": "LOISIR",
+      "Statut": "DI",
+      "Comte": 34,
+      "Défauts": 36
+    },
+    {
+      "Année": 2025,
+      "Mois": 5,
+      "Secteur": "LOISIR",
+      "Statut": "EN",
+      "Comte": 9,
+      "Défauts": 9
+    },
+    {
+      "Année": 2025,
+      "Mois": 6,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DE",
+      "Comte": 8,
+      "Défauts": 8
+    },
+    {
+      "Année": 2025,
+      "Mois": 6,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DF",
+      "Comte": 8,
+      "Défauts": 8
+    },
+    {
+      "Année": 2025,
+      "Mois": 6,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DI",
+      "Comte": 90,
+      "Défauts": 114
+    },
+    {
+      "Année": 2025,
+      "Mois": 6,
+      "Secteur": "AUDIOVIS",
+      "Statut": "EN",
+      "Comte": 9,
+      "Défauts": 9
+    },
+    {
+      "Année": 2025,
+      "Mois": 6,
+      "Secteur": "AUDIOVIS",
+      "Statut": "US",
+      "Comte": 3,
+      "Défauts": 3
+    },
+    {
+      "Année": 2025,
+      "Mois": 6,
+      "Secteur": "LOISIR",
+      "Statut": "DE",
+      "Comte": 4,
+      "Défauts": 7
+    },
+    {
+      "Année": 2025,
+      "Mois": 6,
+      "Secteur": "LOISIR",
+      "Statut": "DI",
+      "Comte": 30,
+      "Défauts": 33
+    },
+    {
+      "Année": 2025,
+      "Mois": 6,
+      "Secteur": "LOISIR",
+      "Statut": "EN",
+      "Comte": 7,
+      "Défauts": 7
+    },
+    {
+      "Année": 2025,
+      "Mois": 7,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DE",
+      "Comte": 4,
+      "Défauts": 4
+    },
+    {
+      "Année": 2025,
+      "Mois": 7,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DF",
+      "Comte": 24,
+      "Défauts": 24
+    },
+    {
+      "Année": 2025,
+      "Mois": 7,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DI",
+      "Comte": 78,
+      "Défauts": 94
+    },
+    {
+      "Année": 2025,
+      "Mois": 7,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DP",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2025,
+      "Mois": 7,
+      "Secteur": "AUDIOVIS",
+      "Statut": "EN",
+      "Comte": 9,
+      "Défauts": 9
+    },
+    {
+      "Année": 2025,
+      "Mois": 7,
+      "Secteur": "LOISIR",
+      "Statut": "DE",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2025,
+      "Mois": 7,
+      "Secteur": "LOISIR",
+      "Statut": "DI",
+      "Comte": 72,
+      "Défauts": 77
+    },
+    {
+      "Année": 2025,
+      "Mois": 7,
+      "Secteur": "LOISIR",
+      "Statut": "EN",
+      "Comte": 11,
+      "Défauts": 11
+    },
+    {
+      "Année": 2025,
+      "Mois": 8,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DE",
+      "Comte": 8,
+      "Défauts": 8
+    },
+    {
+      "Année": 2025,
+      "Mois": 8,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DF",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2025,
+      "Mois": 8,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DI",
+      "Comte": 88,
+      "Défauts": 96
+    },
+    {
+      "Année": 2025,
+      "Mois": 8,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DP",
+      "Comte": 2,
+      "Défauts": 3
+    },
+    {
+      "Année": 2025,
+      "Mois": 8,
+      "Secteur": "AUDIOVIS",
+      "Statut": "EN",
+      "Comte": 14,
+      "Défauts": 14
+    },
+    {
+      "Année": 2025,
+      "Mois": 8,
+      "Secteur": "AUDIOVIS",
+      "Statut": "US",
+      "Comte": 5,
+      "Défauts": 5
+    },
+    {
+      "Année": 2025,
+      "Mois": 8,
+      "Secteur": "LOISIR",
+      "Statut": "DI",
+      "Comte": 28,
+      "Défauts": 28
+    },
+    {
+      "Année": 2025,
+      "Mois": 8,
+      "Secteur": "LOISIR",
+      "Statut": "EN",
+      "Comte": 5,
+      "Défauts": 5
+    },
+    {
+      "Année": 2025,
+      "Mois": 9,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DE",
+      "Comte": 5,
+      "Défauts": 5
+    },
+    {
+      "Année": 2025,
+      "Mois": 9,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DF",
+      "Comte": 2,
+      "Défauts": 2
+    },
+    {
+      "Année": 2025,
+      "Mois": 9,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DI",
+      "Comte": 151,
+      "Défauts": 151
+    },
+    {
+      "Année": 2025,
+      "Mois": 9,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DP",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2025,
+      "Mois": 9,
+      "Secteur": "AUDIOVIS",
+      "Statut": "EN",
+      "Comte": 8,
+      "Défauts": 8
+    },
+    {
+      "Année": 2025,
+      "Mois": 9,
+      "Secteur": "AUDIOVIS",
+      "Statut": "RB",
+      "Comte": 2,
+      "Défauts": 2
+    },
+    {
+      "Année": 2025,
+      "Mois": 9,
+      "Secteur": "AUDIOVIS",
+      "Statut": "US",
+      "Comte": 4,
+      "Défauts": 4
+    },
+    {
+      "Année": 2025,
+      "Mois": 9,
+      "Secteur": "LOISIR",
+      "Statut": "DI",
+      "Comte": 30,
+      "Défauts": 35
+    },
+    {
+      "Année": 2025,
+      "Mois": 9,
+      "Secteur": "LOISIR",
+      "Statut": "EN",
+      "Comte": 9,
+      "Défauts": 9
+    },
+    {
+      "Année": 2025,
+      "Mois": 10,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DE",
+      "Comte": 8,
+      "Défauts": 9
+    },
+    {
+      "Année": 2025,
+      "Mois": 10,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DF",
+      "Comte": 6,
+      "Défauts": 6
+    },
+    {
+      "Année": 2025,
+      "Mois": 10,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DI",
+      "Comte": 57,
+      "Défauts": 232
+    },
+    {
+      "Année": 2025,
+      "Mois": 10,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DP",
+      "Comte": 2,
+      "Défauts": 2
+    },
+    {
+      "Année": 2025,
+      "Mois": 10,
+      "Secteur": "AUDIOVIS",
+      "Statut": "EN",
+      "Comte": 6,
+      "Défauts": 6
+    },
+    {
+      "Année": 2025,
+      "Mois": 10,
+      "Secteur": "AUDIOVIS",
+      "Statut": "US",
+      "Comte": 2,
+      "Défauts": 2
+    },
+    {
+      "Année": 2025,
+      "Mois": 10,
+      "Secteur": "LOISIR",
+      "Statut": "DI",
+      "Comte": 30,
+      "Défauts": 30
+    },
+    {
+      "Année": 2025,
+      "Mois": 10,
+      "Secteur": "LOISIR",
+      "Statut": "EN",
+      "Comte": 8,
+      "Défauts": 8
+    },
+    {
+      "Année": 2025,
+      "Mois": 11,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DE",
+      "Comte": 5,
+      "Défauts": 5
+    },
+    {
+      "Année": 2025,
+      "Mois": 11,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DF",
+      "Comte": 4,
+      "Défauts": 4
+    },
+    {
+      "Année": 2025,
+      "Mois": 11,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DI",
+      "Comte": 46,
+      "Défauts": 47
+    },
+    {
+      "Année": 2025,
+      "Mois": 11,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DR",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2025,
+      "Mois": 11,
+      "Secteur": "AUDIOVIS",
+      "Statut": "EN",
+      "Comte": 10,
+      "Défauts": 10
+    },
+    {
+      "Année": 2025,
+      "Mois": 11,
+      "Secteur": "AUDIOVIS",
+      "Statut": "US",
+      "Comte": 6,
+      "Défauts": 6
+    },
+    {
+      "Année": 2025,
+      "Mois": 11,
+      "Secteur": "LOISIR",
+      "Statut": "DI",
+      "Comte": 5,
+      "Défauts": 5
+    },
+    {
+      "Année": 2025,
+      "Mois": 11,
+      "Secteur": "LOISIR",
+      "Statut": "EN",
+      "Comte": 6,
+      "Défauts": 6
+    },
+    {
+      "Année": 2025,
+      "Mois": 12,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DE",
+      "Comte": 8,
+      "Défauts": 8
+    },
+    {
+      "Année": 2025,
+      "Mois": 12,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DF",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2025,
+      "Mois": 12,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DI",
+      "Comte": 71,
+      "Défauts": 75
+    },
+    {
+      "Année": 2025,
+      "Mois": 12,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DP",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2025,
+      "Mois": 12,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DR",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2025,
+      "Mois": 12,
+      "Secteur": "AUDIOVIS",
+      "Statut": "EN",
+      "Comte": 6,
+      "Défauts": 6
+    },
+    {
+      "Année": 2025,
+      "Mois": 12,
+      "Secteur": "AUDIOVIS",
+      "Statut": "US",
+      "Comte": 4,
+      "Défauts": 4
+    },
+    {
+      "Année": 2025,
+      "Mois": 12,
+      "Secteur": "LOISIR",
+      "Statut": "DI",
+      "Comte": 3,
+      "Défauts": 3
+    },
+    {
+      "Année": 2026,
+      "Mois": 1,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DE",
+      "Comte": 2,
+      "Défauts": 2
+    },
+    {
+      "Année": 2026,
+      "Mois": 1,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DI",
+      "Comte": 27,
+      "Défauts": 27
+    },
+    {
+      "Année": 2026,
+      "Mois": 1,
+      "Secteur": "AUDIOVIS",
+      "Statut": "EN",
+      "Comte": 3,
+      "Défauts": 3
+    },
+    {
+      "Année": 2026,
+      "Mois": 2,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DE",
+      "Comte": 3,
+      "Défauts": 3
+    },
+    {
+      "Année": 2026,
+      "Mois": 2,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DF",
+      "Comte": 4,
+      "Défauts": 4
+    },
+    {
+      "Année": 2026,
+      "Mois": 2,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DI",
+      "Comte": 39,
+      "Défauts": 41
+    },
+    {
+      "Année": 2026,
+      "Mois": 2,
+      "Secteur": "AUDIOVIS",
+      "Statut": "EN",
+      "Comte": 8,
+      "Défauts": 8
+    },
+    {
+      "Année": 2026,
+      "Mois": 2,
+      "Secteur": "AUDIOVIS",
+      "Statut": "US",
+      "Comte": 6,
+      "Défauts": 6
+    },
+    {
+      "Année": 2026,
+      "Mois": 2,
+      "Secteur": "LOISIR",
+      "Statut": "DI",
+      "Comte": 2,
+      "Défauts": 2
+    },
+    {
+      "Année": 2026,
+      "Mois": 3,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DE",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2026,
+      "Mois": 3,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DF",
+      "Comte": 2,
+      "Défauts": 2
+    },
+    {
+      "Année": 2026,
+      "Mois": 3,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DI",
+      "Comte": 107,
+      "Défauts": 109
+    },
+    {
+      "Année": 2026,
+      "Mois": 3,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DP",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2026,
+      "Mois": 3,
+      "Secteur": "AUDIOVIS",
+      "Statut": "EN",
+      "Comte": 22,
+      "Défauts": 22
+    },
+    {
+      "Année": 2026,
+      "Mois": 3,
+      "Secteur": "AUDIOVIS",
+      "Statut": "US",
+      "Comte": 7,
+      "Défauts": 7
+    },
+    {
+      "Année": 2026,
+      "Mois": 3,
+      "Secteur": "LOISIR",
+      "Statut": "DI",
+      "Comte": 55,
+      "Défauts": 55
+    },
+    {
+      "Année": 2026,
+      "Mois": 3,
+      "Secteur": "LOISIR",
+      "Statut": "EN",
+      "Comte": 5,
+      "Défauts": 5
+    },
+    {
+      "Année": 2026,
+      "Mois": 4,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DE",
+      "Comte": 2,
+      "Défauts": 2
+    },
+    {
+      "Année": 2026,
+      "Mois": 4,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DF",
+      "Comte": 4,
+      "Défauts": 4
+    },
+    {
+      "Année": 2026,
+      "Mois": 4,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DI",
+      "Comte": 142,
+      "Défauts": 143
+    },
+    {
+      "Année": 2026,
+      "Mois": 4,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DP",
+      "Comte": 5,
+      "Défauts": 5
+    },
+    {
+      "Année": 2026,
+      "Mois": 4,
+      "Secteur": "AUDIOVIS",
+      "Statut": "EN",
+      "Comte": 21,
+      "Défauts": 21
+    },
+    {
+      "Année": 2026,
+      "Mois": 4,
+      "Secteur": "AUDIOVIS",
+      "Statut": "US",
+      "Comte": 10,
+      "Défauts": 10
+    },
+    {
+      "Année": 2026,
+      "Mois": 4,
+      "Secteur": "LOISIR",
+      "Statut": "DE",
+      "Comte": 2,
+      "Défauts": 2
+    },
+    {
+      "Année": 2026,
+      "Mois": 4,
+      "Secteur": "LOISIR",
+      "Statut": "DI",
+      "Comte": 60,
+      "Défauts": 60
+    },
+    {
+      "Année": 2026,
+      "Mois": 4,
+      "Secteur": "LOISIR",
+      "Statut": "EN",
+      "Comte": 16,
+      "Défauts": 16
+    },
+    {
+      "Année": 2026,
+      "Mois": 5,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DF",
+      "Comte": 3,
+      "Défauts": 3
+    },
+    {
+      "Année": 2026,
+      "Mois": 5,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DI",
+      "Comte": 82,
+      "Défauts": 83
+    },
+    {
+      "Année": 2026,
+      "Mois": 5,
+      "Secteur": "AUDIOVIS",
+      "Statut": "EN",
+      "Comte": 11,
+      "Défauts": 19
+    },
+    {
+      "Année": 2026,
+      "Mois": 5,
+      "Secteur": "AUDIOVIS",
+      "Statut": "US",
+      "Comte": 6,
+      "Défauts": 6
+    },
+    {
+      "Année": 2026,
+      "Mois": 5,
+      "Secteur": "LOISIR",
+      "Statut": "DI",
+      "Comte": 14,
+      "Défauts": 15
+    },
+    {
+      "Année": 2026,
+      "Mois": 5,
+      "Secteur": "LOISIR",
+      "Statut": "EN",
+      "Comte": 12,
+      "Défauts": 12
+    },
+    {
+      "Année": 2026,
+      "Mois": 6,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DE",
+      "Comte": 2,
+      "Défauts": 2
+    },
+    {
+      "Année": 2026,
+      "Mois": 6,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DI",
+      "Comte": 62,
+      "Défauts": 63
+    },
+    {
+      "Année": 2026,
+      "Mois": 6,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DP",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2026,
+      "Mois": 6,
+      "Secteur": "AUDIOVIS",
+      "Statut": "EN",
+      "Comte": 10,
+      "Défauts": 10
+    },
+    {
+      "Année": 2026,
+      "Mois": 6,
+      "Secteur": "AUDIOVIS",
+      "Statut": "US",
+      "Comte": 9,
+      "Défauts": 9
+    },
+    {
+      "Année": 2026,
+      "Mois": 6,
+      "Secteur": "LOISIR",
+      "Statut": "DI",
+      "Comte": 13,
+      "Défauts": 15
+    },
+    {
+      "Année": 2026,
+      "Mois": 6,
+      "Secteur": "LOISIR",
+      "Statut": "EN",
+      "Comte": 16,
+      "Défauts": 16
+    },
+    {
+      "Année": 2026,
+      "Mois": 7,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DF",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2026,
+      "Mois": 7,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DI",
+      "Comte": 63,
+      "Défauts": 63
+    },
+    {
+      "Année": 2026,
+      "Mois": 7,
+      "Secteur": "AUDIOVIS",
+      "Statut": "EN",
+      "Comte": 19,
+      "Défauts": 19
+    },
+    {
+      "Année": 2026,
+      "Mois": 7,
+      "Secteur": "AUDIOVIS",
+      "Statut": "US",
+      "Comte": 4,
+      "Défauts": 4
+    },
+    {
+      "Année": 2026,
+      "Mois": 7,
+      "Secteur": "LOISIR",
+      "Statut": "DI",
+      "Comte": 19,
+      "Défauts": 19
+    },
+    {
+      "Année": 2026,
+      "Mois": 7,
+      "Secteur": "LOISIR",
+      "Statut": "EN",
+      "Comte": 72,
+      "Défauts": 76
+    },
+    {
+      "Année": 2026,
+      "Mois": 8,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DE",
+      "Comte": 1,
+      "Défauts": 1
+    },
+    {
+      "Année": 2026,
+      "Mois": 8,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DF",
+      "Comte": 4,
+      "Défauts": 4
+    },
+    {
+      "Année": 2026,
+      "Mois": 8,
+      "Secteur": "AUDIOVIS",
+      "Statut": "DI",
+      "Comte": 10,
+      "Défauts": 10
+    },
+    {
+      "Année": 2026,
+      "Mois": 8,
+      "Secteur": "AUDIOVIS",
+      "Statut": "EN",
+      "Comte": 8,
+      "Défauts": 8
+    },
+    {
+      "Année": 2026,
+      "Mois": 8,
+      "Secteur": "AUDIOVIS",
+      "Statut": "US",
+      "Comte": 5,
+      "Défauts": 5
+    },
+    {
+      "Année": 2026,
+      "Mois": 8,
+      "Secteur": "LOISIR",
+      "Statut": "DI",
+      "Comte": 19,
+      "Défauts": 19
+    },
+    {
+      "Année": 2026,
+      "Mois": 8,
+      "Secteur": "LOISIR",
+      "Statut": "EN",
+      "Comte": 104,
+      "Défauts": 104
+    }
+  ],
+  "top_probs": {
+    "USURE NORMALE (US)": 1859,
+    "VERIFICATION GENERALE": 1724,
+    "US (Pour le CPM)": 1311,
+    "ACCESSOIRE MANQUANT": 1106,
+    "PIQUET DE SOL MANQUANT": 831,
+    "VOIR MATERIEL ASSOCIE": 528,
+    "NETTOYAGE DU MATERIEL": 494,
+    "BOITIER OU CHASSIS DETERIORE": 404,
+    "LAVAGE TENTE": 364,
+    "GOUSSET COMPLET": 273
+  },
+  "tentes": [
+    {
+      "Année": 2020,
+      "Mois": 1,
+      "Qty": 364,
+      "Durée": 20.95774647887324,
+      "Prêts": 71
+    },
+    {
+      "Année": 2020,
+      "Mois": 2,
+      "Qty": 318,
+      "Durée": 10.212121212121213,
+      "Prêts": 66
+    },
+    {
+      "Année": 2020,
+      "Mois": 3,
+      "Qty": 521,
+      "Durée": 28.265822784810126,
+      "Prêts": 79
+    },
+    {
+      "Année": 2020,
+      "Mois": 4,
+      "Qty": 111,
+      "Durée": 22.689655172413794,
+      "Prêts": 29
+    },
+    {
+      "Année": 2020,
+      "Mois": 5,
+      "Qty": 151,
+      "Durée": 29.341463414634145,
+      "Prêts": 41
+    },
+    {
+      "Année": 2020,
+      "Mois": 6,
+      "Qty": 229,
+      "Durée": 16.558823529411764,
+      "Prêts": 34
+    },
+    {
+      "Année": 2020,
+      "Mois": 7,
+      "Qty": 256,
+      "Durée": 25.285714285714285,
+      "Prêts": 42
+    },
+    {
+      "Année": 2020,
+      "Mois": 8,
+      "Qty": 1093,
+      "Durée": 21.29368029739777,
+      "Prêts": 269
+    },
+    {
+      "Année": 2020,
+      "Mois": 9,
+      "Qty": 919,
+      "Durée": 22.200803212851405,
+      "Prêts": 249
+    },
+    {
+      "Année": 2020,
+      "Mois": 10,
+      "Qty": 916,
+      "Durée": 21.49009900990099,
+      "Prêts": 202
+    },
+    {
+      "Année": 2020,
+      "Mois": 11,
+      "Qty": 381,
+      "Durée": 23.814285714285713,
+      "Prêts": 70
+    },
+    {
+      "Année": 2020,
+      "Mois": 12,
+      "Qty": 131,
+      "Durée": 24.083333333333332,
+      "Prêts": 36
+    },
+    {
+      "Année": 2021,
+      "Mois": 1,
+      "Qty": 253,
+      "Durée": 33.75,
+      "Prêts": 40
+    },
+    {
+      "Année": 2021,
+      "Mois": 2,
+      "Qty": 223,
+      "Durée": 19.228070175438596,
+      "Prêts": 57
+    },
+    {
+      "Année": 2021,
+      "Mois": 3,
+      "Qty": 249,
+      "Durée": 20.35,
+      "Prêts": 60
+    },
+    {
+      "Année": 2021,
+      "Mois": 4,
+      "Qty": 124,
+      "Durée": 15.257142857142858,
+      "Prêts": 35
+    },
+    {
+      "Année": 2021,
+      "Mois": 5,
+      "Qty": 185,
+      "Durée": 18.617021276595743,
+      "Prêts": 47
+    },
+    {
+      "Année": 2021,
+      "Mois": 6,
+      "Qty": 188,
+      "Durée": 17.05128205128205,
+      "Prêts": 39
+    },
+    {
+      "Année": 2021,
+      "Mois": 7,
+      "Qty": 173,
+      "Durée": 20.897435897435898,
+      "Prêts": 39
+    },
+    {
+      "Année": 2021,
+      "Mois": 8,
+      "Qty": 1308,
+      "Durée": 21.19047619047619,
+      "Prêts": 315
+    },
+    {
+      "Année": 2021,
+      "Mois": 9,
+      "Qty": 1141,
+      "Durée": 18.09090909090909,
+      "Prêts": 264
+    },
+    {
+      "Année": 2021,
+      "Mois": 10,
+      "Qty": 1349,
+      "Durée": 18.466321243523318,
+      "Prêts": 193
+    },
+    {
+      "Année": 2021,
+      "Mois": 11,
+      "Qty": 228,
+      "Durée": 17.649122807017545,
+      "Prêts": 57
+    },
+    {
+      "Année": 2021,
+      "Mois": 12,
+      "Qty": 268,
+      "Durée": 11.971428571428572,
+      "Prêts": 35
+    },
+    {
+      "Année": 2022,
+      "Mois": 1,
+      "Qty": 179,
+      "Durée": 26.09090909090909,
+      "Prêts": 33
+    },
+    {
+      "Année": 2022,
+      "Mois": 2,
+      "Qty": 444,
+      "Durée": 21.466666666666665,
+      "Prêts": 60
+    },
+    {
+      "Année": 2022,
+      "Mois": 3,
+      "Qty": 617,
+      "Durée": 9.93859649122807,
+      "Prêts": 114
+    },
+    {
+      "Année": 2022,
+      "Mois": 4,
+      "Qty": 368,
+      "Durée": 12.604395604395604,
+      "Prêts": 91
+    },
+    {
+      "Année": 2022,
+      "Mois": 5,
+      "Qty": 109,
+      "Durée": 11.340425531914894,
+      "Prêts": 47
+    },
+    {
+      "Année": 2022,
+      "Mois": 6,
+      "Qty": 362,
+      "Durée": 13.12,
+      "Prêts": 50
+    },
+    {
+      "Année": 2022,
+      "Mois": 7,
+      "Qty": 344,
+      "Durée": 14.724137931034482,
+      "Prêts": 58
+    },
+    {
+      "Année": 2022,
+      "Mois": 8,
+      "Qty": 1018,
+      "Durée": 21.48085106382979,
+      "Prêts": 235
+    },
+    {
+      "Année": 2022,
+      "Mois": 9,
+      "Qty": 1310,
+      "Durée": 19.84550561797753,
+      "Prêts": 356
+    },
+    {
+      "Année": 2022,
+      "Mois": 10,
+      "Qty": 452,
+      "Durée": 16.948453608247423,
+      "Prêts": 97
+    },
+    {
+      "Année": 2022,
+      "Mois": 11,
+      "Qty": 239,
+      "Durée": 19.70967741935484,
+      "Prêts": 62
+    },
+    {
+      "Année": 2022,
+      "Mois": 12,
+      "Qty": 619,
+      "Durée": 18.5,
+      "Prêts": 50
+    },
+    {
+      "Année": 2023,
+      "Mois": 1,
+      "Qty": 394,
+      "Durée": 13.79245283018868,
+      "Prêts": 53
+    },
+    {
+      "Année": 2023,
+      "Mois": 2,
+      "Qty": 436,
+      "Durée": 18.21590909090909,
+      "Prêts": 88
+    },
+    {
+      "Année": 2023,
+      "Mois": 3,
+      "Qty": 309,
+      "Durée": 10.846153846153847,
+      "Prêts": 65
+    },
+    {
+      "Année": 2023,
+      "Mois": 4,
+      "Qty": 232,
+      "Durée": 8.963636363636363,
+      "Prêts": 55
+    },
+    {
+      "Année": 2023,
+      "Mois": 5,
+      "Qty": 282,
+      "Durée": 10.090909090909092,
+      "Prêts": 33
+    },
+    {
+      "Année": 2023,
+      "Mois": 6,
+      "Qty": 98,
+      "Durée": 11.04,
+      "Prêts": 25
+    },
+    {
+      "Année": 2023,
+      "Mois": 7,
+      "Qty": 187,
+      "Durée": 20.333333333333332,
+      "Prêts": 24
+    },
+    {
+      "Année": 2023,
+      "Mois": 8,
+      "Qty": 159,
+      "Durée": 14.764705882352942,
+      "Prêts": 34
+    },
+    {
+      "Année": 2023,
+      "Mois": 9,
+      "Qty": 2450,
+      "Durée": 19.740484429065745,
+      "Prêts": 578
+    },
+    {
+      "Année": 2023,
+      "Mois": 10,
+      "Qty": 455,
+      "Durée": 15.186440677966102,
+      "Prêts": 118
+    },
+    {
+      "Année": 2023,
+      "Mois": 11,
+      "Qty": 719,
+      "Durée": 16.6,
+      "Prêts": 60
+    },
+    {
+      "Année": 2023,
+      "Mois": 12,
+      "Qty": 235,
+      "Durée": 22.833333333333332,
+      "Prêts": 30
+    },
+    {
+      "Année": 2024,
+      "Mois": 1,
+      "Qty": 215,
+      "Durée": 13.619047619047619,
+      "Prêts": 42
+    },
+    {
+      "Année": 2024,
+      "Mois": 2,
+      "Qty": 355,
+      "Durée": 16.649122807017545,
+      "Prêts": 57
+    },
+    {
+      "Année": 2024,
+      "Mois": 3,
+      "Qty": 194,
+      "Durée": 11.535714285714286,
+      "Prêts": 56
+    },
+    {
+      "Année": 2024,
+      "Mois": 4,
+      "Qty": 358,
+      "Durée": 12.194029850746269,
+      "Prêts": 67
+    },
+    {
+      "Année": 2024,
+      "Mois": 5,
+      "Qty": 231,
+      "Durée": 9.512195121951219,
+      "Prêts": 41
+    },
+    {
+      "Année": 2024,
+      "Mois": 6,
+      "Qty": 255,
+      "Durée": 10.485714285714286,
+      "Prêts": 35
+    },
+    {
+      "Année": 2024,
+      "Mois": 7,
+      "Qty": 230,
+      "Durée": 17.63888888888889,
+      "Prêts": 36
+    },
+    {
+      "Année": 2024,
+      "Mois": 8,
+      "Qty": 267,
+      "Durée": 19.0,
+      "Prêts": 23
+    },
+    {
+      "Année": 2024,
+      "Mois": 9,
+      "Qty": 186,
+      "Durée": 7.2,
+      "Prêts": 30
+    },
+    {
+      "Année": 2024,
+      "Mois": 10,
+      "Qty": 2625,
+      "Durée": 20.275039745627982,
+      "Prêts": 629
+    },
+    {
+      "Année": 2024,
+      "Mois": 11,
+      "Qty": 240,
+      "Durée": 17.647058823529413,
+      "Prêts": 68
+    },
+    {
+      "Année": 2024,
+      "Mois": 12,
+      "Qty": 173,
+      "Durée": 14.078947368421053,
+      "Prêts": 38
+    },
+    {
+      "Année": 2025,
+      "Mois": 1,
+      "Qty": 315,
+      "Durée": 13.921875,
+      "Prêts": 64
+    },
+    {
+      "Année": 2025,
+      "Mois": 2,
+      "Qty": 670,
+      "Durée": 21.25423728813559,
+      "Prêts": 59
+    },
+    {
+      "Année": 2025,
+      "Mois": 3,
+      "Qty": 288,
+      "Durée": 9.571428571428571,
+      "Prêts": 63
+    },
+    {
+      "Année": 2025,
+      "Mois": 4,
+      "Qty": 115,
+      "Durée": 12.642857142857142,
+      "Prêts": 42
+    },
+    {
+      "Année": 2025,
+      "Mois": 5,
+      "Qty": 194,
+      "Durée": 9.148148148148149,
+      "Prêts": 27
+    },
+    {
+      "Année": 2025,
+      "Mois": 6,
+      "Qty": 350,
+      "Durée": 10.91304347826087,
+      "Prêts": 46
+    },
+    {
+      "Année": 2025,
+      "Mois": 7,
+      "Qty": 153,
+      "Durée": 17.147058823529413,
+      "Prêts": 34
+    },
+    {
+      "Année": 2025,
+      "Mois": 8,
+      "Qty": 171,
+      "Durée": 12.192307692307692,
+      "Prêts": 26
+    },
+    {
+      "Année": 2025,
+      "Mois": 9,
+      "Qty": 261,
+      "Durée": 7.372093023255814,
+      "Prêts": 43
+    },
+    {
+      "Année": 2025,
+      "Mois": 10,
+      "Qty": 47,
+      "Durée": 5.0,
+      "Prêts": 11
+    },
+    {
+      "Année": 2025,
+      "Mois": 11,
+      "Qty": 110,
+      "Durée": 9.80952380952381,
+      "Prêts": 21
+    },
+    {
+      "Année": 2025,
+      "Mois": 12,
+      "Qty": 1139,
+      "Durée": 18.686486486486487,
+      "Prêts": 185
+    },
+    {
+      "Année": 2026,
+      "Mois": 1,
+      "Qty": 1380,
+      "Durée": 21.635170603674542,
+      "Prêts": 381
+    },
+    {
+      "Année": 2026,
+      "Mois": 2,
+      "Qty": 984,
+      "Durée": 18.870445344129553,
+      "Prêts": 247
+    },
+    {
+      "Année": 2026,
+      "Mois": 3,
+      "Qty": 385,
+      "Durée": 12.617283950617283,
+      "Prêts": 81
+    },
+    {
+      "Année": 2026,
+      "Mois": 4,
+      "Qty": 155,
+      "Durée": 12.361702127659575,
+      "Prêts": 47
+    },
+    {
+      "Année": 2026,
+      "Mois": 5,
+      "Qty": 148,
+      "Durée": 9.75,
+      "Prêts": 32
+    },
+    {
+      "Année": 2026,
+      "Mois": 6,
+      "Qty": 356,
+      "Durée": 15.8,
+      "Prêts": 35
+    },
+    {
+      "Année": 2026,
+      "Mois": 7,
+      "Qty": 166,
+      "Durée": 18.666666666666668,
+      "Prêts": 27
+    },
+    {
+      "Année": 2026,
+      "Mois": 8,
+      "Qty": 175,
+      "Durée": 10.133333333333333,
+      "Prêts": 30
+    }
+  ],
+  "motifs_tentes": {
+    "USURE NORMALE (US)": 1859,
+    "PIQUET DE SOL MANQUANT": 831,
+    "LAVAGE TENTE": 364,
+    "GOUSSET COMPLET": 273,
+    "RIVET": 271,
+    "REPARATION SPECIALE PODIUM": 201,
+    "REPARATION SPECIALE": 191,
+    "MAIN D'OEUVRE (PAR QUART D'HEURE)": 170,
+    "REPARATION SPECIALE TENTE": 164,
+    "LAVAGE TAPIS DE SOL": 120
+  },
+  "prets": [
+    {
+      "Année": 2019,
+      "Mois": 6,
+      "Statut": "DANA",
+      "Demandes": 2,
+      "Participants": 120
+    },
+    {
+      "Année": 2019,
+      "Mois": 6,
+      "Statut": "DERT",
+      "Demandes": 10,
+      "Participants": 2320
+    },
+    {
+      "Année": 2019,
+      "Mois": 6,
+      "Statut": "DRTP",
+      "Demandes": 3,
+      "Participants": 660
+    },
+    {
+      "Année": 2019,
+      "Mois": 7,
+      "Statut": "DANA",
+      "Demandes": 7,
+      "Participants": 9405
+    },
+    {
+      "Année": 2019,
+      "Mois": 7,
+      "Statut": "DERT",
+      "Demandes": 16,
+      "Participants": 843
+    },
+    {
+      "Année": 2019,
+      "Mois": 7,
+      "Statut": "DRTP",
+      "Demandes": 1,
+      "Participants": 45
+    },
+    {
+      "Année": 2019,
+      "Mois": 8,
+      "Statut": "DANA",
+      "Demandes": 6,
+      "Participants": 774
+    },
+    {
+      "Année": 2019,
+      "Mois": 8,
+      "Statut": "DEAC",
+      "Demandes": 1,
+      "Participants": 40
+    },
+    {
+      "Année": 2019,
+      "Mois": 8,
+      "Statut": "DERT",
+      "Demandes": 96,
+      "Participants": 5351
+    },
+    {
+      "Année": 2019,
+      "Mois": 8,
+      "Statut": "DRTP",
+      "Demandes": 25,
+      "Participants": 1672
+    },
+    {
+      "Année": 2019,
+      "Mois": 9,
+      "Statut": "DANA",
+      "Demandes": 16,
+      "Participants": 64370
+    },
+    {
+      "Année": 2019,
+      "Mois": 9,
+      "Statut": "DEAC",
+      "Demandes": 5,
+      "Participants": 123
+    },
+    {
+      "Année": 2019,
+      "Mois": 9,
+      "Statut": "DERT",
+      "Demandes": 116,
+      "Participants": 6553
+    },
+    {
+      "Année": 2019,
+      "Mois": 9,
+      "Statut": "DRTP",
+      "Demandes": 24,
+      "Participants": 1326
+    },
+    {
+      "Année": 2019,
+      "Mois": 10,
+      "Statut": "DANA",
+      "Demandes": 35,
+      "Participants": 12746
+    },
+    {
+      "Année": 2019,
+      "Mois": 10,
+      "Statut": "DEAC",
+      "Demandes": 4,
+      "Participants": 310
+    },
+    {
+      "Année": 2019,
+      "Mois": 10,
+      "Statut": "DERT",
+      "Demandes": 55,
+      "Participants": 4545
+    },
+    {
+      "Année": 2019,
+      "Mois": 10,
+      "Statut": "DRMM",
+      "Demandes": 34,
+      "Participants": 1818
+    },
+    {
+      "Année": 2019,
+      "Mois": 10,
+      "Statut": "DRTP",
+      "Demandes": 10,
+      "Participants": 2525
+    },
+    {
+      "Année": 2019,
+      "Mois": 11,
+      "Statut": "DANA",
+      "Demandes": 34,
+      "Participants": 36457
+    },
+    {
+      "Année": 2019,
+      "Mois": 11,
+      "Statut": "DERT",
+      "Demandes": 28,
+      "Participants": 14243
+    },
+    {
+      "Année": 2019,
+      "Mois": 11,
+      "Statut": "DRMM",
+      "Demandes": 26,
+      "Participants": 1166
+    },
+    {
+      "Année": 2019,
+      "Mois": 11,
+      "Statut": "DRTP",
+      "Demandes": 3,
+      "Participants": 330
+    },
+    {
+      "Année": 2019,
+      "Mois": 12,
+      "Statut": "DANA",
+      "Demandes": 35,
+      "Participants": 31834
+    },
+    {
+      "Année": 2019,
+      "Mois": 12,
+      "Statut": "DEAC",
+      "Demandes": 1,
+      "Participants": 150
+    },
+    {
+      "Année": 2019,
+      "Mois": 12,
+      "Statut": "DERT",
+      "Demandes": 56,
+      "Participants": 36815
+    },
+    {
+      "Année": 2019,
+      "Mois": 12,
+      "Statut": "DRMM",
+      "Demandes": 15,
+      "Participants": 890
+    },
+    {
+      "Année": 2019,
+      "Mois": 12,
+      "Statut": "DRTP",
+      "Demandes": 7,
+      "Participants": 990
+    },
+    {
+      "Année": 2020,
+      "Mois": 1,
+      "Statut": "DANA",
+      "Demandes": 109,
+      "Participants": 120049
+    },
+    {
+      "Année": 2020,
+      "Mois": 1,
+      "Statut": "DECR",
+      "Demandes": 1,
+      "Participants": 0
+    },
+    {
+      "Année": 2020,
+      "Mois": 1,
+      "Statut": "DERT",
+      "Demandes": 111,
+      "Participants": 78426
+    },
+    {
+      "Année": 2020,
+      "Mois": 1,
+      "Statut": "DRMM",
+      "Demandes": 21,
+      "Participants": 923
+    },
+    {
+      "Année": 2020,
+      "Mois": 1,
+      "Statut": "DRTP",
+      "Demandes": 7,
+      "Participants": 1155
+    },
+    {
+      "Année": 2020,
+      "Mois": 2,
+      "Statut": "DANA",
+      "Demandes": 147,
+      "Participants": 71158
+    },
+    {
+      "Année": 2020,
+      "Mois": 2,
+      "Statut": "DEAC",
+      "Demandes": 2,
+      "Participants": 430
+    },
+    {
+      "Année": 2020,
+      "Mois": 2,
+      "Statut": "DECR",
+      "Demandes": 1,
+      "Participants": 0
+    },
+    {
+      "Année": 2020,
+      "Mois": 2,
+      "Statut": "DEPR",
+      "Demandes": 1,
+      "Participants": 2000
+    },
+    {
+      "Année": 2020,
+      "Mois": 2,
+      "Statut": "DERT",
+      "Demandes": 53,
+      "Participants": 8568
+    },
+    {
+      "Année": 2020,
+      "Mois": 2,
+      "Statut": "DRMM",
+      "Demandes": 10,
+      "Participants": 2280
+    },
+    {
+      "Année": 2020,
+      "Mois": 2,
+      "Statut": "DRTP",
+      "Demandes": 3,
+      "Participants": 410
+    },
+    {
+      "Année": 2020,
+      "Mois": 3,
+      "Statut": "DANA",
+      "Demandes": 89,
+      "Participants": 102325
+    },
+    {
+      "Année": 2020,
+      "Mois": 3,
+      "Statut": "DEAC",
+      "Demandes": 1,
+      "Participants": 0
+    },
+    {
+      "Année": 2020,
+      "Mois": 3,
+      "Statut": "DECR",
+      "Demandes": 7,
+      "Participants": 5208
+    },
+    {
+      "Année": 2020,
+      "Mois": 3,
+      "Statut": "DERT",
+      "Demandes": 30,
+      "Participants": 8293
+    },
+    {
+      "Année": 2020,
+      "Mois": 3,
+      "Statut": "DRMM",
+      "Demandes": 11,
+      "Participants": 1888
+    },
+    {
+      "Année": 2020,
+      "Mois": 3,
+      "Statut": "DRTP",
+      "Demandes": 6,
+      "Participants": 0
+    },
+    {
+      "Année": 2020,
+      "Mois": 4,
+      "Statut": "DANA",
+      "Demandes": 11,
+      "Participants": 1250
+    },
+    {
+      "Année": 2020,
+      "Mois": 4,
+      "Statut": "DERT",
+      "Demandes": 14,
+      "Participants": 524
+    },
+    {
+      "Année": 2020,
+      "Mois": 4,
+      "Statut": "DRMM",
+      "Demandes": 5,
+      "Participants": 260
+    },
+    {
+      "Année": 2020,
+      "Mois": 5,
+      "Statut": "DANA",
+      "Demandes": 15,
+      "Participants": 53982
+    },
+    {
+      "Année": 2020,
+      "Mois": 5,
+      "Statut": "DEAC",
+      "Demandes": 1,
+      "Participants": 0
+    },
+    {
+      "Année": 2020,
+      "Mois": 5,
+      "Statut": "DECR",
+      "Demandes": 1,
+      "Participants": 2000
+    },
+    {
+      "Année": 2020,
+      "Mois": 5,
+      "Statut": "DERT",
+      "Demandes": 27,
+      "Participants": 2798
+    },
+    {
+      "Année": 2020,
+      "Mois": 5,
+      "Statut": "DRMM",
+      "Demandes": 10,
+      "Participants": 441
+    },
+    {
+      "Année": 2020,
+      "Mois": 5,
+      "Statut": "DRTP",
+      "Demandes": 2,
+      "Participants": 52
+    },
+    {
+      "Année": 2020,
+      "Mois": 6,
+      "Statut": "DANA",
+      "Demandes": 13,
+      "Participants": 73170
+    },
+    {
+      "Année": 2020,
+      "Mois": 6,
+      "Statut": "DEAC",
+      "Demandes": 2,
+      "Participants": 700
+    },
+    {
+      "Année": 2020,
+      "Mois": 6,
+      "Statut": "DERT",
+      "Demandes": 32,
+      "Participants": 3861
+    },
+    {
+      "Année": 2020,
+      "Mois": 6,
+      "Statut": "DRMM",
+      "Demandes": 16,
+      "Participants": 704
+    },
+    {
+      "Année": 2020,
+      "Mois": 6,
+      "Statut": "DRTP",
+      "Demandes": 6,
+      "Participants": 33160
+    },
+    {
+      "Année": 2020,
+      "Mois": 7,
+      "Statut": "DANA",
+      "Demandes": 20,
+      "Participants": 7460
+    },
+    {
+      "Année": 2020,
+      "Mois": 7,
+      "Statut": "DEAC",
+      "Demandes": 2,
+      "Participants": 650
+    },
+    {
+      "Année": 2020,
+      "Mois": 7,
+      "Statut": "DERT",
+      "Demandes": 33,
+      "Participants": 5605
+    },
+    {
+      "Année": 2020,
+      "Mois": 7,
+      "Statut": "DRTP",
+      "Demandes": 13,
+      "Participants": 5980
+    },
+    {
+      "Année": 2020,
+      "Mois": 8,
+      "Statut": "DANA",
+      "Demandes": 12,
+      "Participants": 2215
+    },
+    {
+      "Année": 2020,
+      "Mois": 8,
+      "Statut": "DEAC",
+      "Demandes": 3,
+      "Participants": 125
+    },
+    {
+      "Année": 2020,
+      "Mois": 8,
+      "Statut": "DECR",
+      "Demandes": 1,
+      "Participants": 40
+    },
+    {
+      "Année": 2020,
+      "Mois": 8,
+      "Statut": "DERT",
+      "Demandes": 159,
+      "Participants": 30384
+    },
+    {
+      "Année": 2020,
+      "Mois": 8,
+      "Statut": "DRMM",
+      "Demandes": 1,
+      "Participants": 50
+    },
+    {
+      "Année": 2020,
+      "Mois": 8,
+      "Statut": "DRTP",
+      "Demandes": 37,
+      "Participants": 2358
+    },
+    {
+      "Année": 2020,
+      "Mois": 9,
+      "Statut": "DANA",
+      "Demandes": 29,
+      "Participants": 4301
+    },
+    {
+      "Année": 2020,
+      "Mois": 9,
+      "Statut": "DEAC",
+      "Demandes": 3,
+      "Participants": 245
+    },
+    {
+      "Année": 2020,
+      "Mois": 9,
+      "Statut": "DERT",
+      "Demandes": 157,
+      "Participants": 46241
+    },
+    {
+      "Année": 2020,
+      "Mois": 9,
+      "Statut": "DRMM",
+      "Demandes": 1,
+      "Participants": 60
+    },
+    {
+      "Année": 2020,
+      "Mois": 9,
+      "Statut": "DRTP",
+      "Demandes": 25,
+      "Participants": 6694
+    },
+    {
+      "Année": 2020,
+      "Mois": 10,
+      "Statut": "DANA",
+      "Demandes": 39,
+      "Participants": 13571
+    },
+    {
+      "Année": 2020,
+      "Mois": 10,
+      "Statut": "DEAC",
+      "Demandes": 4,
+      "Participants": 390
+    },
+    {
+      "Année": 2020,
+      "Mois": 10,
+      "Statut": "DERT",
+      "Demandes": 76,
+      "Participants": 8993
+    },
+    {
+      "Année": 2020,
+      "Mois": 10,
+      "Statut": "DRMM",
+      "Demandes": 21,
+      "Participants": 1065
+    },
+    {
+      "Année": 2020,
+      "Mois": 10,
+      "Statut": "DRTP",
+      "Demandes": 24,
+      "Participants": 1452
+    },
+    {
+      "Année": 2020,
+      "Mois": 11,
+      "Statut": "DANA",
+      "Demandes": 9,
+      "Participants": 16140
+    },
+    {
+      "Année": 2020,
+      "Mois": 11,
+      "Statut": "DERT",
+      "Demandes": 20,
+      "Participants": 1124
+    },
+    {
+      "Année": 2020,
+      "Mois": 11,
+      "Statut": "DRMM",
+      "Demandes": 23,
+      "Participants": 1441
+    },
+    {
+      "Année": 2020,
+      "Mois": 11,
+      "Statut": "DRTP",
+      "Demandes": 5,
+      "Participants": 2000
+    },
+    {
+      "Année": 2020,
+      "Mois": 12,
+      "Statut": "DANA",
+      "Demandes": 18,
+      "Participants": 4165
+    },
+    {
+      "Année": 2020,
+      "Mois": 12,
+      "Statut": "DERT",
+      "Demandes": 25,
+      "Participants": 599
+    },
+    {
+      "Année": 2020,
+      "Mois": 12,
+      "Statut": "DRMM",
+      "Demandes": 4,
+      "Participants": 213
+    },
+    {
+      "Année": 2020,
+      "Mois": 12,
+      "Statut": "DRTP",
+      "Demandes": 3,
+      "Participants": 170
+    },
+    {
+      "Année": 2021,
+      "Mois": 1,
+      "Statut": "DANA",
+      "Demandes": 12,
+      "Participants": 3076
+    },
+    {
+      "Année": 2021,
+      "Mois": 1,
+      "Statut": "DECR",
+      "Demandes": 1,
+      "Participants": 25
+    },
+    {
+      "Année": 2021,
+      "Mois": 1,
+      "Statut": "DERT",
+      "Demandes": 29,
+      "Participants": 4057
+    },
+    {
+      "Année": 2021,
+      "Mois": 1,
+      "Statut": "DRMM",
+      "Demandes": 8,
+      "Participants": 355
+    },
+    {
+      "Année": 2021,
+      "Mois": 1,
+      "Statut": "DRTP",
+      "Demandes": 3,
+      "Participants": 700
+    },
+    {
+      "Année": 2021,
+      "Mois": 2,
+      "Statut": "DANA",
+      "Demandes": 15,
+      "Participants": 69230
+    },
+    {
+      "Année": 2021,
+      "Mois": 2,
+      "Statut": "DEAC",
+      "Demandes": 1,
+      "Participants": 0
+    },
+    {
+      "Année": 2021,
+      "Mois": 2,
+      "Statut": "DECR",
+      "Demandes": 1,
+      "Participants": 50
+    },
+    {
+      "Année": 2021,
+      "Mois": 2,
+      "Statut": "DERT",
+      "Demandes": 32,
+      "Participants": 6912
+    },
+    {
+      "Année": 2021,
+      "Mois": 2,
+      "Statut": "DRMM",
+      "Demandes": 28,
+      "Participants": 1259
+    },
+    {
+      "Année": 2021,
+      "Mois": 2,
+      "Statut": "DRTP",
+      "Demandes": 5,
+      "Participants": 210
+    },
+    {
+      "Année": 2021,
+      "Mois": 3,
+      "Statut": "DANA",
+      "Demandes": 15,
+      "Participants": 2576
+    },
+    {
+      "Année": 2021,
+      "Mois": 3,
+      "Statut": "DERT",
+      "Demandes": 35,
+      "Participants": 9542
+    },
+    {
+      "Année": 2021,
+      "Mois": 3,
+      "Statut": "DRMM",
+      "Demandes": 34,
+      "Participants": 2191
+    },
+    {
+      "Année": 2021,
+      "Mois": 3,
+      "Statut": "DRTP",
+      "Demandes": 6,
+      "Participants": 15255
+    },
+    {
+      "Année": 2021,
+      "Mois": 4,
+      "Statut": "DANA",
+      "Demandes": 11,
+      "Participants": 12779
+    },
+    {
+      "Année": 2021,
+      "Mois": 4,
+      "Statut": "DEAC",
+      "Demandes": 1,
+      "Participants": 24
+    },
+    {
+      "Année": 2021,
+      "Mois": 4,
+      "Statut": "DERT",
+      "Demandes": 32,
+      "Participants": 12768
+    },
+    {
+      "Année": 2021,
+      "Mois": 4,
+      "Statut": "DRMM",
+      "Demandes": 25,
+      "Participants": 1351
+    },
+    {
+      "Année": 2021,
+      "Mois": 4,
+      "Statut": "DRTP",
+      "Demandes": 6,
+      "Participants": 7088
+    },
+    {
+      "Année": 2021,
+      "Mois": 5,
+      "Statut": "DANA",
+      "Demandes": 10,
+      "Participants": 4479
+    },
+    {
+      "Année": 2021,
+      "Mois": 5,
+      "Statut": "DERT",
+      "Demandes": 84,
+      "Participants": 86010
+    },
+    {
+      "Année": 2021,
+      "Mois": 5,
+      "Statut": "DRMM",
+      "Demandes": 6,
+      "Participants": 283
+    },
+    {
+      "Année": 2021,
+      "Mois": 5,
+      "Statut": "DRTP",
+      "Demandes": 13,
+      "Participants": 3925
+    },
+    {
+      "Année": 2021,
+      "Mois": 6,
+      "Statut": "DANA",
+      "Demandes": 12,
+      "Participants": 25225
+    },
+    {
+      "Année": 2021,
+      "Mois": 6,
+      "Statut": "DEAC",
+      "Demandes": 2,
+      "Participants": 8
+    },
+    {
+      "Année": 2021,
+      "Mois": 6,
+      "Statut": "DERT",
+      "Demandes": 87,
+      "Participants": 26398
+    },
+    {
+      "Année": 2021,
+      "Mois": 6,
+      "Statut": "DRMM",
+      "Demandes": 11,
+      "Participants": 636
+    },
+    {
+      "Année": 2021,
+      "Mois": 6,
+      "Statut": "DRTP",
+      "Demandes": 12,
+      "Participants": 33254
+    },
+    {
+      "Année": 2021,
+      "Mois": 7,
+      "Statut": "DANA",
+      "Demandes": 6,
+      "Participants": 5390
+    },
+    {
+      "Année": 2021,
+      "Mois": 7,
+      "Statut": "DEAC",
+      "Demandes": 6,
+      "Participants": 3700
+    },
+    {
+      "Année": 2021,
+      "Mois": 7,
+      "Statut": "DECR",
+      "Demandes": 1,
+      "Participants": 0
+    },
+    {
+      "Année": 2021,
+      "Mois": 7,
+      "Statut": "DERT",
+      "Demandes": 73,
+      "Participants": 69216
+    },
+    {
+      "Année": 2021,
+      "Mois": 7,
+      "Statut": "DRMM",
+      "Demandes": 3,
+      "Participants": 1010
+    },
+    {
+      "Année": 2021,
+      "Mois": 7,
+      "Statut": "DRTP",
+      "Demandes": 11,
+      "Participants": 33450
+    },
+    {
+      "Année": 2021,
+      "Mois": 8,
+      "Statut": "DANA",
+      "Demandes": 18,
+      "Participants": 11728
+    },
+    {
+      "Année": 2021,
+      "Mois": 8,
+      "Statut": "DEAC",
+      "Demandes": 2,
+      "Participants": 95
+    },
+    {
+      "Année": 2021,
+      "Mois": 8,
+      "Statut": "DERT",
+      "Demandes": 218,
+      "Participants": 76216
+    },
+    {
+      "Année": 2021,
+      "Mois": 8,
+      "Statut": "DRMM",
+      "Demandes": 2,
+      "Participants": 905
+    },
+    {
+      "Année": 2021,
+      "Mois": 8,
+      "Statut": "DRTP",
+      "Demandes": 29,
+      "Participants": 16680
+    },
+    {
+      "Année": 2021,
+      "Mois": 9,
+      "Statut": "DANA",
+      "Demandes": 30,
+      "Participants": 8697
+    },
+    {
+      "Année": 2021,
+      "Mois": 9,
+      "Statut": "DEAC",
+      "Demandes": 3,
+      "Participants": 105
+    },
+    {
+      "Année": 2021,
+      "Mois": 9,
+      "Statut": "DEPR",
+      "Demandes": 1,
+      "Participants": 0
+    },
+    {
+      "Année": 2021,
+      "Mois": 9,
+      "Statut": "DERT",
+      "Demandes": 231,
+      "Participants": 35407
+    },
+    {
+      "Année": 2021,
+      "Mois": 9,
+      "Statut": "DRMM",
+      "Demandes": 4,
+      "Participants": 12130
+    },
+    {
+      "Année": 2021,
+      "Mois": 9,
+      "Statut": "DRTP",
+      "Demandes": 17,
+      "Participants": 26912
+    },
+    {
+      "Année": 2021,
+      "Mois": 10,
+      "Statut": "DANA",
+      "Demandes": 47,
+      "Participants": 104250
+    },
+    {
+      "Année": 2021,
+      "Mois": 10,
+      "Statut": "DEAC",
+      "Demandes": 1,
+      "Participants": 65
+    },
+    {
+      "Année": 2021,
+      "Mois": 10,
+      "Statut": "DECR",
+      "Demandes": 1,
+      "Participants": 50
+    },
+    {
+      "Année": 2021,
+      "Mois": 10,
+      "Statut": "DERT",
+      "Demandes": 163,
+      "Participants": 63883
+    },
+    {
+      "Année": 2021,
+      "Mois": 10,
+      "Statut": "DRMM",
+      "Demandes": 23,
+      "Participants": 1246
+    },
+    {
+      "Année": 2021,
+      "Mois": 10,
+      "Statut": "DRTP",
+      "Demandes": 17,
+      "Participants": 27593
+    },
+    {
+      "Année": 2021,
+      "Mois": 11,
+      "Statut": "DANA",
+      "Demandes": 34,
+      "Participants": 12456
+    },
+    {
+      "Année": 2021,
+      "Mois": 11,
+      "Statut": "DEAC",
+      "Demandes": 2,
+      "Participants": 4000
+    },
+    {
+      "Année": 2021,
+      "Mois": 11,
+      "Statut": "DERT",
+      "Demandes": 64,
+      "Participants": 23001
+    },
+    {
+      "Année": 2021,
+      "Mois": 11,
+      "Statut": "DRMM",
+      "Demandes": 21,
+      "Participants": 1308
+    },
+    {
+      "Année": 2021,
+      "Mois": 11,
+      "Statut": "DRTP",
+      "Demandes": 9,
+      "Participants": 13950
+    },
+    {
+      "Année": 2021,
+      "Mois": 12,
+      "Statut": "DANA",
+      "Demandes": 7,
+      "Participants": 2600
+    },
+    {
+      "Année": 2021,
+      "Mois": 12,
+      "Statut": "DERT",
+      "Demandes": 50,
+      "Participants": 32238
+    },
+    {
+      "Année": 2021,
+      "Mois": 12,
+      "Statut": "DRMM",
+      "Demandes": 10,
+      "Participants": 400
+    },
+    {
+      "Année": 2021,
+      "Mois": 12,
+      "Statut": "DRTP",
+      "Demandes": 7,
+      "Participants": 3541
+    },
+    {
+      "Année": 2022,
+      "Mois": 1,
+      "Statut": "DANA",
+      "Demandes": 11,
+      "Participants": 1790
+    },
+    {
+      "Année": 2022,
+      "Mois": 1,
+      "Statut": "DERT",
+      "Demandes": 71,
+      "Participants": 37525
+    },
+    {
+      "Année": 2022,
+      "Mois": 1,
+      "Statut": "DRMM",
+      "Demandes": 4,
+      "Participants": 205
+    },
+    {
+      "Année": 2022,
+      "Mois": 1,
+      "Statut": "DRTP",
+      "Demandes": 5,
+      "Participants": 50707
+    },
+    {
+      "Année": 2022,
+      "Mois": 2,
+      "Statut": "DANA",
+      "Demandes": 19,
+      "Participants": 12785
+    },
+    {
+      "Année": 2022,
+      "Mois": 2,
+      "Statut": "DEAC",
+      "Demandes": 4,
+      "Participants": 2000
+    },
+    {
+      "Année": 2022,
+      "Mois": 2,
+      "Statut": "DERT",
+      "Demandes": 146,
+      "Participants": 136373
+    },
+    {
+      "Année": 2022,
+      "Mois": 2,
+      "Statut": "DRMM",
+      "Demandes": 2,
+      "Participants": 75
+    },
+    {
+      "Année": 2022,
+      "Mois": 2,
+      "Statut": "DRTP",
+      "Demandes": 18,
+      "Participants": 59945
+    },
+    {
+      "Année": 2022,
+      "Mois": 3,
+      "Statut": "DANA",
+      "Demandes": 22,
+      "Participants": 19320
+    },
+    {
+      "Année": 2022,
+      "Mois": 3,
+      "Statut": "DEAC",
+      "Demandes": 2,
+      "Participants": 1300
+    },
+    {
+      "Année": 2022,
+      "Mois": 3,
+      "Statut": "DEPR",
+      "Demandes": 1,
+      "Participants": 60
+    },
+    {
+      "Année": 2022,
+      "Mois": 3,
+      "Statut": "DERT",
+      "Demandes": 218,
+      "Participants": 87201
+    },
+    {
+      "Année": 2022,
+      "Mois": 3,
+      "Statut": "DRMM",
+      "Demandes": 18,
+      "Participants": 3330
+    },
+    {
+      "Année": 2022,
+      "Mois": 3,
+      "Statut": "DRTP",
+      "Demandes": 30,
+      "Participants": 16261
+    },
+    {
+      "Année": 2022,
+      "Mois": 4,
+      "Statut": "DANA",
+      "Demandes": 24,
+      "Participants": 9042
+    },
+    {
+      "Année": 2022,
+      "Mois": 4,
+      "Statut": "DEAC",
+      "Demandes": 2,
+      "Participants": 350
+    },
+    {
+      "Année": 2022,
+      "Mois": 4,
+      "Statut": "DERT",
+      "Demandes": 164,
+      "Participants": 119742
+    },
+    {
+      "Année": 2022,
+      "Mois": 4,
+      "Statut": "DRMM",
+      "Demandes": 28,
+      "Participants": 3075
+    },
+    {
+      "Année": 2022,
+      "Mois": 4,
+      "Statut": "DRTP",
+      "Demandes": 30,
+      "Participants": 29425
+    },
+    {
+      "Année": 2022,
+      "Mois": 5,
+      "Statut": "DANA",
+      "Demandes": 23,
+      "Participants": 20179
+    },
+    {
+      "Année": 2022,
+      "Mois": 5,
+      "Statut": "DEAC",
+      "Demandes": 1,
+      "Participants": 4
+    },
+    {
+      "Année": 2022,
+      "Mois": 5,
+      "Statut": "DERT",
+      "Demandes": 122,
+      "Participants": 111740
+    },
+    {
+      "Année": 2022,
+      "Mois": 5,
+      "Statut": "DRMM",
+      "Demandes": 26,
+      "Participants": 7940
+    },
+    {
+      "Année": 2022,
+      "Mois": 5,
+      "Statut": "DRTP",
+      "Demandes": 21,
+      "Participants": 37840
+    },
+    {
+      "Année": 2022,
+      "Mois": 6,
+      "Statut": "DANA",
+      "Demandes": 18,
+      "Participants": 18865
+    },
+    {
+      "Année": 2022,
+      "Mois": 6,
+      "Statut": "DEAC",
+      "Demandes": 5,
+      "Participants": 494
+    },
+    {
+      "Année": 2022,
+      "Mois": 6,
+      "Statut": "DECR",
+      "Demandes": 1,
+      "Participants": 0
+    },
+    {
+      "Année": 2022,
+      "Mois": 6,
+      "Statut": "DERT",
+      "Demandes": 126,
+      "Participants": 112884
+    },
+    {
+      "Année": 2022,
+      "Mois": 6,
+      "Statut": "DRMM",
+      "Demandes": 26,
+      "Participants": 27723
+    },
+    {
+      "Année": 2022,
+      "Mois": 6,
+      "Statut": "DRTP",
+      "Demandes": 15,
+      "Participants": 35515
+    },
+    {
+      "Année": 2022,
+      "Mois": 7,
+      "Statut": "DANA",
+      "Demandes": 7,
+      "Participants": 4000
+    },
+    {
+      "Année": 2022,
+      "Mois": 7,
+      "Statut": "DEAC",
+      "Demandes": 1,
+      "Participants": 0
+    },
+    {
+      "Année": 2022,
+      "Mois": 7,
+      "Statut": "DERT",
+      "Demandes": 84,
+      "Participants": 71034
+    },
+    {
+      "Année": 2022,
+      "Mois": 7,
+      "Statut": "DRMM",
+      "Demandes": 6,
+      "Participants": 698
+    },
+    {
+      "Année": 2022,
+      "Mois": 7,
+      "Statut": "DRTP",
+      "Demandes": 7,
+      "Participants": 4673
+    },
+    {
+      "Année": 2022,
+      "Mois": 8,
+      "Statut": "DANA",
+      "Demandes": 9,
+      "Participants": 1025
+    },
+    {
+      "Année": 2022,
+      "Mois": 8,
+      "Statut": "DEAC",
+      "Demandes": 8,
+      "Participants": 1645
+    },
+    {
+      "Année": 2022,
+      "Mois": 8,
+      "Statut": "DERT",
+      "Demandes": 219,
+      "Participants": 126486
+    },
+    {
+      "Année": 2022,
+      "Mois": 8,
+      "Statut": "DRMM",
+      "Demandes": 4,
+      "Participants": 1050
+    },
+    {
+      "Année": 2022,
+      "Mois": 8,
+      "Statut": "DRTP",
+      "Demandes": 33,
+      "Participants": 8287
+    },
+    {
+      "Année": 2022,
+      "Mois": 9,
+      "Statut": "DANA",
+      "Demandes": 11,
+      "Participants": 1385
+    },
+    {
+      "Année": 2022,
+      "Mois": 9,
+      "Statut": "DEAC",
+      "Demandes": 9,
+      "Participants": 380
+    },
+    {
+      "Année": 2022,
+      "Mois": 9,
+      "Statut": "DECR",
+      "Demandes": 2,
+      "Participants": 85
+    },
+    {
+      "Année": 2022,
+      "Mois": 9,
+      "Statut": "DERT",
+      "Demandes": 308,
+      "Participants": 235987
+    },
+    {
+      "Année": 2022,
+      "Mois": 9,
+      "Statut": "DRMM",
+      "Demandes": 4,
+      "Participants": 635
+    },
+    {
+      "Année": 2022,
+      "Mois": 9,
+      "Statut": "DRTP",
+      "Demandes": 26,
+      "Participants": 5222
+    },
+    {
+      "Année": 2022,
+      "Mois": 10,
+      "Statut": "DANA",
+      "Demandes": 8,
+      "Participants": 7179
+    },
+    {
+      "Année": 2022,
+      "Mois": 10,
+      "Statut": "DEAC",
+      "Demandes": 2,
+      "Participants": 200
+    },
+    {
+      "Année": 2022,
+      "Mois": 10,
+      "Statut": "DECR",
+      "Demandes": 2,
+      "Participants": 5
+    },
+    {
+      "Année": 2022,
+      "Mois": 10,
+      "Statut": "DEPR",
+      "Demandes": 1,
+      "Participants": 0
+    },
+    {
+      "Année": 2022,
+      "Mois": 10,
+      "Statut": "DERT",
+      "Demandes": 120,
+      "Participants": 47879
+    },
+    {
+      "Année": 2022,
+      "Mois": 10,
+      "Statut": "DRMM",
+      "Demandes": 37,
+      "Participants": 1896
+    },
+    {
+      "Année": 2022,
+      "Mois": 10,
+      "Statut": "DRTP",
+      "Demandes": 13,
+      "Participants": 25821
+    },
+    {
+      "Année": 2022,
+      "Mois": 11,
+      "Statut": "DANA",
+      "Demandes": 10,
+      "Participants": 2990
+    },
+    {
+      "Année": 2022,
+      "Mois": 11,
+      "Statut": "DEAC",
+      "Demandes": 3,
+      "Participants": 135
+    },
+    {
+      "Année": 2022,
+      "Mois": 11,
+      "Statut": "DERT",
+      "Demandes": 121,
+      "Participants": 126966
+    },
+    {
+      "Année": 2022,
+      "Mois": 11,
+      "Statut": "DRMM",
+      "Demandes": 37,
+      "Participants": 7755
+    },
+    {
+      "Année": 2022,
+      "Mois": 11,
+      "Statut": "DRTP",
+      "Demandes": 14,
+      "Participants": 15449
+    },
+    {
+      "Année": 2022,
+      "Mois": 12,
+      "Statut": "DANA",
+      "Demandes": 9,
+      "Participants": 985
+    },
+    {
+      "Année": 2022,
+      "Mois": 12,
+      "Statut": "DEAC",
+      "Demandes": 2,
+      "Participants": 300
+    },
+    {
+      "Année": 2022,
+      "Mois": 12,
+      "Statut": "DERT",
+      "Demandes": 81,
+      "Participants": 43318
+    },
+    {
+      "Année": 2022,
+      "Mois": 12,
+      "Statut": "DRMM",
+      "Demandes": 17,
+      "Participants": 751
+    },
+    {
+      "Année": 2022,
+      "Mois": 12,
+      "Statut": "DRTP",
+      "Demandes": 10,
+      "Participants": 14000
+    },
+    {
+      "Année": 2023,
+      "Mois": 1,
+      "Statut": "DANA",
+      "Demandes": 8,
+      "Participants": 4752
+    },
+    {
+      "Année": 2023,
+      "Mois": 1,
+      "Statut": "DERT",
+      "Demandes": 140,
+      "Participants": 75150
+    },
+    {
+      "Année": 2023,
+      "Mois": 1,
+      "Statut": "DRMM",
+      "Demandes": 17,
+      "Participants": 1125
+    },
+    {
+      "Année": 2023,
+      "Mois": 1,
+      "Statut": "DRTP",
+      "Demandes": 17,
+      "Participants": 16615
+    },
+    {
+      "Année": 2023,
+      "Mois": 2,
+      "Statut": "DANA",
+      "Demandes": 13,
+      "Participants": 6977
+    },
+    {
+      "Année": 2023,
+      "Mois": 2,
+      "Statut": "DEAC",
+      "Demandes": 5,
+      "Participants": 2010
+    },
+    {
+      "Année": 2023,
+      "Mois": 2,
+      "Statut": "DEPR",
+      "Demandes": 2,
+      "Participants": 0
+    },
+    {
+      "Année": 2023,
+      "Mois": 2,
+      "Statut": "DERT",
+      "Demandes": 180,
+      "Participants": 93003
+    },
+    {
+      "Année": 2023,
+      "Mois": 2,
+      "Statut": "DRMM",
+      "Demandes": 32,
+      "Participants": 2633
+    },
+    {
+      "Année": 2023,
+      "Mois": 2,
+      "Statut": "DRTP",
+      "Demandes": 24,
+      "Participants": 13393
+    },
+    {
+      "Année": 2023,
+      "Mois": 3,
+      "Statut": "DANA",
+      "Demandes": 19,
+      "Participants": 26020
+    },
+    {
+      "Année": 2023,
+      "Mois": 3,
+      "Statut": "DEAC",
+      "Demandes": 3,
+      "Participants": 12120
+    },
+    {
+      "Année": 2023,
+      "Mois": 3,
+      "Statut": "DERT",
+      "Demandes": 184,
+      "Participants": 77394
+    },
+    {
+      "Année": 2023,
+      "Mois": 3,
+      "Statut": "DRMM",
+      "Demandes": 36,
+      "Participants": 7284
+    },
+    {
+      "Année": 2023,
+      "Mois": 3,
+      "Statut": "DRTP",
+      "Demandes": 35,
+      "Participants": 14139
+    },
+    {
+      "Année": 2023,
+      "Mois": 4,
+      "Statut": "DANA",
+      "Demandes": 18,
+      "Participants": 5411
+    },
+    {
+      "Année": 2023,
+      "Mois": 4,
+      "Statut": "DEAC",
+      "Demandes": 5,
+      "Participants": 1250
+    },
+    {
+      "Année": 2023,
+      "Mois": 4,
+      "Statut": "DERT",
+      "Demandes": 153,
+      "Participants": 106519
+    },
+    {
+      "Année": 2023,
+      "Mois": 4,
+      "Statut": "DRMM",
+      "Demandes": 32,
+      "Participants": 12217
+    },
+    {
+      "Année": 2023,
+      "Mois": 4,
+      "Statut": "DRTP",
+      "Demandes": 25,
+      "Participants": 19090
+    },
+    {
+      "Année": 2023,
+      "Mois": 5,
+      "Statut": "DANA",
+      "Demandes": 23,
+      "Participants": 6280
+    },
+    {
+      "Année": 2023,
+      "Mois": 5,
+      "Statut": "DEAC",
+      "Demandes": 3,
+      "Participants": 90
+    },
+    {
+      "Année": 2023,
+      "Mois": 5,
+      "Statut": "DERT",
+      "Demandes": 131,
+      "Participants": 119777
+    },
+    {
+      "Année": 2023,
+      "Mois": 5,
+      "Statut": "DRMM",
+      "Demandes": 16,
+      "Participants": 4165
+    },
+    {
+      "Année": 2023,
+      "Mois": 5,
+      "Statut": "DRTP",
+      "Demandes": 25,
+      "Participants": 66183
+    },
+    {
+      "Année": 2023,
+      "Mois": 6,
+      "Statut": "DANA",
+      "Demandes": 8,
+      "Participants": 4800
+    },
+    {
+      "Année": 2023,
+      "Mois": 6,
+      "Statut": "DEAC",
+      "Demandes": 5,
+      "Participants": 3960
+    },
+    {
+      "Année": 2023,
+      "Mois": 6,
+      "Statut": "DEPR",
+      "Demandes": 1,
+      "Participants": 0
+    },
+    {
+      "Année": 2023,
+      "Mois": 6,
+      "Statut": "DERT",
+      "Demandes": 99,
+      "Participants": 69563
+    },
+    {
+      "Année": 2023,
+      "Mois": 6,
+      "Statut": "DRMM",
+      "Demandes": 17,
+      "Participants": 3550
+    },
+    {
+      "Année": 2023,
+      "Mois": 6,
+      "Statut": "DRTP",
+      "Demandes": 13,
+      "Participants": 6376
+    },
+    {
+      "Année": 2023,
+      "Mois": 7,
+      "Statut": "DANA",
+      "Demandes": 14,
+      "Participants": 13970
+    },
+    {
+      "Année": 2023,
+      "Mois": 7,
+      "Statut": "DEAC",
+      "Demandes": 2,
+      "Participants": 1200
+    },
+    {
+      "Année": 2023,
+      "Mois": 7,
+      "Statut": "DERT",
+      "Demandes": 75,
+      "Participants": 56952
+    },
+    {
+      "Année": 2023,
+      "Mois": 7,
+      "Statut": "DRMM",
+      "Demandes": 8,
+      "Participants": 1750
+    },
+    {
+      "Année": 2023,
+      "Mois": 7,
+      "Statut": "DRTP",
+      "Demandes": 11,
+      "Participants": 18503
+    },
+    {
+      "Année": 2023,
+      "Mois": 8,
+      "Statut": "DANA",
+      "Demandes": 11,
+      "Participants": 2425
+    },
+    {
+      "Année": 2023,
+      "Mois": 8,
+      "Statut": "DEAC",
+      "Demandes": 2,
+      "Participants": 75
+    },
+    {
+      "Année": 2023,
+      "Mois": 8,
+      "Statut": "DECR",
+      "Demandes": 1,
+      "Participants": 100
+    },
+    {
+      "Année": 2023,
+      "Mois": 8,
+      "Statut": "DERT",
+      "Demandes": 99,
+      "Participants": 124031
+    },
+    {
+      "Année": 2023,
+      "Mois": 8,
+      "Statut": "DRMM",
+      "Demandes": 3,
+      "Participants": 160
+    },
+    {
+      "Année": 2023,
+      "Mois": 8,
+      "Statut": "DRTP",
+      "Demandes": 11,
+      "Participants": 18333
+    },
+    {
+      "Année": 2023,
+      "Mois": 9,
+      "Statut": "DANA",
+      "Demandes": 15,
+      "Participants": 1945
+    },
+    {
+      "Année": 2023,
+      "Mois": 9,
+      "Statut": "DEAC",
+      "Demandes": 6,
+      "Participants": 2045
+    },
+    {
+      "Année": 2023,
+      "Mois": 9,
+      "Statut": "DERT",
+      "Demandes": 478,
+      "Participants": 198783
+    },
+    {
+      "Année": 2023,
+      "Mois": 9,
+      "Statut": "DRMM",
+      "Demandes": 7,
+      "Participants": 3381
+    },
+    {
+      "Année": 2023,
+      "Mois": 9,
+      "Statut": "DRTP",
+      "Demandes": 52,
+      "Participants": 39036
+    },
+    {
+      "Année": 2023,
+      "Mois": 10,
+      "Statut": "DANA",
+      "Demandes": 16,
+      "Participants": 3636
+    },
+    {
+      "Année": 2023,
+      "Mois": 10,
+      "Statut": "DEAC",
+      "Demandes": 5,
+      "Participants": 340
+    },
+    {
+      "Année": 2023,
+      "Mois": 10,
+      "Statut": "DECR",
+      "Demandes": 1,
+      "Participants": 0
+    },
+    {
+      "Année": 2023,
+      "Mois": 10,
+      "Statut": "DERT",
+      "Demandes": 168,
+      "Participants": 102690
+    },
+    {
+      "Année": 2023,
+      "Mois": 10,
+      "Statut": "DRMM",
+      "Demandes": 48,
+      "Participants": 4034
+    },
+    {
+      "Année": 2023,
+      "Mois": 10,
+      "Statut": "DRTP",
+      "Demandes": 17,
+      "Participants": 4657
+    },
+    {
+      "Année": 2023,
+      "Mois": 11,
+      "Statut": "DANA",
+      "Demandes": 9,
+      "Participants": 2415
+    },
+    {
+      "Année": 2023,
+      "Mois": 11,
+      "Statut": "DERT",
+      "Demandes": 136,
+      "Participants": 76822
+    },
+    {
+      "Année": 2023,
+      "Mois": 11,
+      "Statut": "DRMM",
+      "Demandes": 26,
+      "Participants": 5762
+    },
+    {
+      "Année": 2023,
+      "Mois": 11,
+      "Statut": "DRTP",
+      "Demandes": 14,
+      "Participants": 12717
+    },
+    {
+      "Année": 2023,
+      "Mois": 12,
+      "Statut": "DANA",
+      "Demandes": 8,
+      "Participants": 1729
+    },
+    {
+      "Année": 2023,
+      "Mois": 12,
+      "Statut": "DEAC",
+      "Demandes": 2,
+      "Participants": 130
+    },
+    {
+      "Année": 2023,
+      "Mois": 12,
+      "Statut": "DERT",
+      "Demandes": 85,
+      "Participants": 28049
+    },
+    {
+      "Année": 2023,
+      "Mois": 12,
+      "Statut": "DRMM",
+      "Demandes": 7,
+      "Participants": 347
+    },
+    {
+      "Année": 2023,
+      "Mois": 12,
+      "Statut": "DRTP",
+      "Demandes": 8,
+      "Participants": 11400
+    },
+    {
+      "Année": 2024,
+      "Mois": 1,
+      "Statut": "DANA",
+      "Demandes": 18,
+      "Participants": 14210
+    },
+    {
+      "Année": 2024,
+      "Mois": 1,
+      "Statut": "DEAC",
+      "Demandes": 6,
+      "Participants": 0
+    },
+    {
+      "Année": 2024,
+      "Mois": 1,
+      "Statut": "DERT",
+      "Demandes": 189,
+      "Participants": 79378
+    },
+    {
+      "Année": 2024,
+      "Mois": 1,
+      "Statut": "DRMM",
+      "Demandes": 15,
+      "Participants": 2112
+    },
+    {
+      "Année": 2024,
+      "Mois": 1,
+      "Statut": "DRTP",
+      "Demandes": 12,
+      "Participants": 25355
+    },
+    {
+      "Année": 2024,
+      "Mois": 2,
+      "Statut": "DANA",
+      "Demandes": 23,
+      "Participants": 23210
+    },
+    {
+      "Année": 2024,
+      "Mois": 2,
+      "Statut": "DEAC",
+      "Demandes": 3,
+      "Participants": 330
+    },
+    {
+      "Année": 2024,
+      "Mois": 2,
+      "Statut": "DERT",
+      "Demandes": 202,
+      "Participants": 163742
+    },
+    {
+      "Année": 2024,
+      "Mois": 2,
+      "Statut": "DRMM",
+      "Demandes": 17,
+      "Participants": 1950
+    },
+    {
+      "Année": 2024,
+      "Mois": 2,
+      "Statut": "DRTP",
+      "Demandes": 19,
+      "Participants": 9340
+    },
+    {
+      "Année": 2024,
+      "Mois": 3,
+      "Statut": "DANA",
+      "Demandes": 22,
+      "Participants": 16220
+    },
+    {
+      "Année": 2024,
+      "Mois": 3,
+      "Statut": "DEAC",
+      "Demandes": 5,
+      "Participants": 650
+    },
+    {
+      "Année": 2024,
+      "Mois": 3,
+      "Statut": "DERT",
+      "Demandes": 176,
+      "Participants": 185194
+    },
+    {
+      "Année": 2024,
+      "Mois": 3,
+      "Statut": "DRMM",
+      "Demandes": 42,
+      "Participants": 16303
+    },
+    {
+      "Année": 2024,
+      "Mois": 3,
+      "Statut": "DRTP",
+      "Demandes": 26,
+      "Participants": 8864
+    },
+    {
+      "Année": 2024,
+      "Mois": 4,
+      "Statut": "DANA",
+      "Demandes": 28,
+      "Participants": 8910
+    },
+    {
+      "Année": 2024,
+      "Mois": 4,
+      "Statut": "DCLO",
+      "Demandes": 2,
+      "Participants": 11
+    },
+    {
+      "Année": 2024,
+      "Mois": 4,
+      "Statut": "DEAC",
+      "Demandes": 2,
+      "Participants": 55
+    },
+    {
+      "Année": 2024,
+      "Mois": 4,
+      "Statut": "DERT",
+      "Demandes": 187,
+      "Participants": 99682
+    },
+    {
+      "Année": 2024,
+      "Mois": 4,
+      "Statut": "DRMM",
+      "Demandes": 45,
+      "Participants": 8348
+    },
+    {
+      "Année": 2024,
+      "Mois": 4,
+      "Statut": "DRTP",
+      "Demandes": 27,
+      "Participants": 58575
+    },
+    {
+      "Année": 2024,
+      "Mois": 5,
+      "Statut": "DANA",
+      "Demandes": 15,
+      "Participants": 1289
+    },
+    {
+      "Année": 2024,
+      "Mois": 5,
+      "Statut": "DEAC",
+      "Demandes": 1,
+      "Participants": 3
+    },
+    {
+      "Année": 2024,
+      "Mois": 5,
+      "Statut": "DECR",
+      "Demandes": 1,
+      "Participants": 55
+    },
+    {
+      "Année": 2024,
+      "Mois": 5,
+      "Statut": "DERT",
+      "Demandes": 140,
+      "Participants": 103276
+    },
+    {
+      "Année": 2024,
+      "Mois": 5,
+      "Statut": "DRMM",
+      "Demandes": 23,
+      "Participants": 3493
+    },
+    {
+      "Année": 2024,
+      "Mois": 5,
+      "Statut": "DRTP",
+      "Demandes": 13,
+      "Participants": 8972
+    },
+    {
+      "Année": 2024,
+      "Mois": 6,
+      "Statut": "DANA",
+      "Demandes": 13,
+      "Participants": 1684
+    },
+    {
+      "Année": 2024,
+      "Mois": 6,
+      "Statut": "DEAC",
+      "Demandes": 1,
+      "Participants": 1500
+    },
+    {
+      "Année": 2024,
+      "Mois": 6,
+      "Statut": "DEPR",
+      "Demandes": 1,
+      "Participants": 10000
+    },
+    {
+      "Année": 2024,
+      "Mois": 6,
+      "Statut": "DERT",
+      "Demandes": 105,
+      "Participants": 90736
+    },
+    {
+      "Année": 2024,
+      "Mois": 6,
+      "Statut": "DRMM",
+      "Demandes": 10,
+      "Participants": 2540
+    },
+    {
+      "Année": 2024,
+      "Mois": 6,
+      "Statut": "DRTP",
+      "Demandes": 15,
+      "Participants": 29225
+    },
+    {
+      "Année": 2024,
+      "Mois": 7,
+      "Statut": "DANA",
+      "Demandes": 8,
+      "Participants": 1570
+    },
+    {
+      "Année": 2024,
+      "Mois": 7,
+      "Statut": "DEAC",
+      "Demandes": 1,
+      "Participants": 500
+    },
+    {
+      "Année": 2024,
+      "Mois": 7,
+      "Statut": "DECR",
+      "Demandes": 2,
+      "Participants": 0
+    },
+    {
+      "Année": 2024,
+      "Mois": 7,
+      "Statut": "DERT",
+      "Demandes": 104,
+      "Participants": 173764
+    },
+    {
+      "Année": 2024,
+      "Mois": 7,
+      "Statut": "DRMM",
+      "Demandes": 8,
+      "Participants": 774
+    },
+    {
+      "Année": 2024,
+      "Mois": 7,
+      "Statut": "DRTP",
+      "Demandes": 15,
+      "Participants": 46000
+    },
+    {
+      "Année": 2024,
+      "Mois": 8,
+      "Statut": "DANA",
+      "Demandes": 9,
+      "Participants": 410
+    },
+    {
+      "Année": 2024,
+      "Mois": 8,
+      "Statut": "DEAC",
+      "Demandes": 2,
+      "Participants": 350
+    },
+    {
+      "Année": 2024,
+      "Mois": 8,
+      "Statut": "DERT",
+      "Demandes": 111,
+      "Participants": 54981
+    },
+    {
+      "Année": 2024,
+      "Mois": 8,
+      "Statut": "DRMM",
+      "Demandes": 4,
+      "Participants": 381
+    },
+    {
+      "Année": 2024,
+      "Mois": 8,
+      "Statut": "DRTP",
+      "Demandes": 7,
+      "Participants": 15608
+    },
+    {
+      "Année": 2024,
+      "Mois": 9,
+      "Statut": "DANA",
+      "Demandes": 14,
+      "Participants": 5017
+    },
+    {
+      "Année": 2024,
+      "Mois": 9,
+      "Statut": "DEAC",
+      "Demandes": 1,
+      "Participants": 0
+    },
+    {
+      "Année": 2024,
+      "Mois": 9,
+      "Statut": "DERT",
+      "Demandes": 183,
+      "Participants": 225419
+    },
+    {
+      "Année": 2024,
+      "Mois": 9,
+      "Statut": "DRMM",
+      "Demandes": 4,
+      "Participants": 2800
+    },
+    {
+      "Année": 2024,
+      "Mois": 9,
+      "Statut": "DRTP",
+      "Demandes": 16,
+      "Participants": 6483
+    },
+    {
+      "Année": 2024,
+      "Mois": 10,
+      "Statut": "DANA",
+      "Demandes": 37,
+      "Participants": 7223
+    },
+    {
+      "Année": 2024,
+      "Mois": 10,
+      "Statut": "DEAC",
+      "Demandes": 13,
+      "Participants": 510
+    },
+    {
+      "Année": 2024,
+      "Mois": 10,
+      "Statut": "DECR",
+      "Demandes": 3,
+      "Participants": 215
+    },
+    {
+      "Année": 2024,
+      "Mois": 10,
+      "Statut": "DERT",
+      "Demandes": 453,
+      "Participants": 90208
+    },
+    {
+      "Année": 2024,
+      "Mois": 10,
+      "Statut": "DRMM",
+      "Demandes": 7,
+      "Participants": 295
+    },
+    {
+      "Année": 2024,
+      "Mois": 10,
+      "Statut": "DRTP",
+      "Demandes": 82,
+      "Participants": 12636
+    },
+    {
+      "Année": 2024,
+      "Mois": 11,
+      "Statut": "DANA",
+      "Demandes": 12,
+      "Participants": 5205
+    },
+    {
+      "Année": 2024,
+      "Mois": 11,
+      "Statut": "DEAC",
+      "Demandes": 2,
+      "Participants": 120
+    },
+    {
+      "Année": 2024,
+      "Mois": 11,
+      "Statut": "DECR",
+      "Demandes": 1,
+      "Participants": 0
+    },
+    {
+      "Année": 2024,
+      "Mois": 11,
+      "Statut": "DERT",
+      "Demandes": 152,
+      "Participants": 50762
+    },
+    {
+      "Année": 2024,
+      "Mois": 11,
+      "Statut": "DRMM",
+      "Demandes": 9,
+      "Participants": 891
+    },
+    {
+      "Année": 2024,
+      "Mois": 11,
+      "Statut": "DRTP",
+      "Demandes": 18,
+      "Participants": 7205
+    },
+    {
+      "Année": 2024,
+      "Mois": 12,
+      "Statut": "DANA",
+      "Demandes": 9,
+      "Participants": 550
+    },
+    {
+      "Année": 2024,
+      "Mois": 12,
+      "Statut": "DEAC",
+      "Demandes": 2,
+      "Participants": 70
+    },
+    {
+      "Année": 2024,
+      "Mois": 12,
+      "Statut": "DERT",
+      "Demandes": 79,
+      "Participants": 20795
+    },
+    {
+      "Année": 2024,
+      "Mois": 12,
+      "Statut": "DRMM",
+      "Demandes": 14,
+      "Participants": 635
+    },
+    {
+      "Année": 2024,
+      "Mois": 12,
+      "Statut": "DRTP",
+      "Demandes": 13,
+      "Participants": 2840
+    },
+    {
+      "Année": 2025,
+      "Mois": 1,
+      "Statut": "DANA",
+      "Demandes": 14,
+      "Participants": 5255
+    },
+    {
+      "Année": 2025,
+      "Mois": 1,
+      "Statut": "DEAC",
+      "Demandes": 6,
+      "Participants": 2830
+    },
+    {
+      "Année": 2025,
+      "Mois": 1,
+      "Statut": "DERT",
+      "Demandes": 177,
+      "Participants": 106378
+    },
+    {
+      "Année": 2025,
+      "Mois": 1,
+      "Statut": "DRMM",
+      "Demandes": 28,
+      "Participants": 5600
+    },
+    {
+      "Année": 2025,
+      "Mois": 1,
+      "Statut": "DRTP",
+      "Demandes": 33,
+      "Participants": 15422
+    },
+    {
+      "Année": 2025,
+      "Mois": 2,
+      "Statut": "DANA",
+      "Demandes": 21,
+      "Participants": 7987
+    },
+    {
+      "Année": 2025,
+      "Mois": 2,
+      "Statut": "DEAC",
+      "Demandes": 5,
+      "Participants": 3060
+    },
+    {
+      "Année": 2025,
+      "Mois": 2,
+      "Statut": "DECR",
+      "Demandes": 2,
+      "Participants": 0
+    },
+    {
+      "Année": 2025,
+      "Mois": 2,
+      "Statut": "DERT",
+      "Demandes": 204,
+      "Participants": 103001
+    },
+    {
+      "Année": 2025,
+      "Mois": 2,
+      "Statut": "DRMM",
+      "Demandes": 30,
+      "Participants": 16139
+    },
+    {
+      "Année": 2025,
+      "Mois": 2,
+      "Statut": "DRTP",
+      "Demandes": 36,
+      "Participants": 48121
+    },
+    {
+      "Année": 2025,
+      "Mois": 3,
+      "Statut": "DANA",
+      "Demandes": 28,
+      "Participants": 3843
+    },
+    {
+      "Année": 2025,
+      "Mois": 3,
+      "Statut": "DEAC",
+      "Demandes": 5,
+      "Participants": 150
+    },
+    {
+      "Année": 2025,
+      "Mois": 3,
+      "Statut": "DERT",
+      "Demandes": 164,
+      "Participants": 75151
+    },
+    {
+      "Année": 2025,
+      "Mois": 3,
+      "Statut": "DRMM",
+      "Demandes": 51,
+      "Participants": 13762
+    },
+    {
+      "Année": 2025,
+      "Mois": 3,
+      "Statut": "DRTP",
+      "Demandes": 34,
+      "Participants": 25030
+    },
+    {
+      "Année": 2025,
+      "Mois": 4,
+      "Statut": "DANA",
+      "Demandes": 25,
+      "Participants": 6667
+    },
+    {
+      "Année": 2025,
+      "Mois": 4,
+      "Statut": "DEAC",
+      "Demandes": 3,
+      "Participants": 680
+    },
+    {
+      "Année": 2025,
+      "Mois": 4,
+      "Statut": "DECR",
+      "Demandes": 1,
+      "Participants": 55
+    },
+    {
+      "Année": 2025,
+      "Mois": 4,
+      "Statut": "DERT",
+      "Demandes": 120,
+      "Participants": 44676
+    },
+    {
+      "Année": 2025,
+      "Mois": 4,
+      "Statut": "DRMM",
+      "Demandes": 47,
+      "Participants": 9893
+    },
+    {
+      "Année": 2025,
+      "Mois": 4,
+      "Statut": "DRMP",
+      "Demandes": 1,
+      "Participants": 150
+    },
+    {
+      "Année": 2025,
+      "Mois": 4,
+      "Statut": "DRTP",
+      "Demandes": 24,
+      "Participants": 20178
+    },
+    {
+      "Année": 2025,
+      "Mois": 5,
+      "Statut": "DANA",
+      "Demandes": 19,
+      "Participants": 61241
+    },
+    {
+      "Année": 2025,
+      "Mois": 5,
+      "Statut": "DEAC",
+      "Demandes": 2,
+      "Participants": 150
+    },
+    {
+      "Année": 2025,
+      "Mois": 5,
+      "Statut": "DERT",
+      "Demandes": 108,
+      "Participants": 69491
+    },
+    {
+      "Année": 2025,
+      "Mois": 5,
+      "Statut": "DRMM",
+      "Demandes": 22,
+      "Participants": 3960
+    },
+    {
+      "Année": 2025,
+      "Mois": 5,
+      "Statut": "DRTP",
+      "Demandes": 25,
+      "Participants": 29750
+    },
+    {
+      "Année": 2025,
+      "Mois": 6,
+      "Statut": "DANA",
+      "Demandes": 11,
+      "Participants": 8650
+    },
+    {
+      "Année": 2025,
+      "Mois": 6,
+      "Statut": "DEAC",
+      "Demandes": 2,
+      "Participants": 5020
+    },
+    {
+      "Année": 2025,
+      "Mois": 6,
+      "Statut": "DERT",
+      "Demandes": 120,
+      "Participants": 102415
+    },
+    {
+      "Année": 2025,
+      "Mois": 6,
+      "Statut": "DRMM",
+      "Demandes": 22,
+      "Participants": 9244
+    },
+    {
+      "Année": 2025,
+      "Mois": 6,
+      "Statut": "DRTP",
+      "Demandes": 25,
+      "Participants": 41170
+    },
+    {
+      "Année": 2025,
+      "Mois": 7,
+      "Statut": "DANA",
+      "Demandes": 10,
+      "Participants": 6340
+    },
+    {
+      "Année": 2025,
+      "Mois": 7,
+      "Statut": "DERT",
+      "Demandes": 110,
+      "Participants": 51106
+    },
+    {
+      "Année": 2025,
+      "Mois": 7,
+      "Statut": "DRMM",
+      "Demandes": 2,
+      "Participants": 110
+    },
+    {
+      "Année": 2025,
+      "Mois": 7,
+      "Statut": "DRTP",
+      "Demandes": 26,
+      "Participants": 37330
+    },
+    {
+      "Année": 2025,
+      "Mois": 8,
+      "Statut": "DANA",
+      "Demandes": 15,
+      "Participants": 6304
+    },
+    {
+      "Année": 2025,
+      "Mois": 8,
+      "Statut": "DEAC",
+      "Demandes": 2,
+      "Participants": 160
+    },
+    {
+      "Année": 2025,
+      "Mois": 8,
+      "Statut": "DEPR",
+      "Demandes": 1,
+      "Participants": 800
+    },
+    {
+      "Année": 2025,
+      "Mois": 8,
+      "Statut": "DERT",
+      "Demandes": 114,
+      "Participants": 142587
+    },
+    {
+      "Année": 2025,
+      "Mois": 8,
+      "Statut": "DRMM",
+      "Demandes": 4,
+      "Participants": 4400
+    },
+    {
+      "Année": 2025,
+      "Mois": 8,
+      "Statut": "DRTP",
+      "Demandes": 22,
+      "Participants": 6495
+    },
+    {
+      "Année": 2025,
+      "Mois": 9,
+      "Statut": "DANA",
+      "Demandes": 20,
+      "Participants": 6485
+    },
+    {
+      "Année": 2025,
+      "Mois": 9,
+      "Statut": "DEAC",
+      "Demandes": 2,
+      "Participants": 400
+    },
+    {
+      "Année": 2025,
+      "Mois": 9,
+      "Statut": "DECR",
+      "Demandes": 4,
+      "Participants": 1018
+    },
+    {
+      "Année": 2025,
+      "Mois": 9,
+      "Statut": "DEPR",
+      "Demandes": 1,
+      "Participants": 0
+    },
+    {
+      "Année": 2025,
+      "Mois": 9,
+      "Statut": "DERT",
+      "Demandes": 194,
+      "Participants": 93092
+    },
+    {
+      "Année": 2025,
+      "Mois": 9,
+      "Statut": "DRMM",
+      "Demandes": 5,
+      "Participants": 550
+    },
+    {
+      "Année": 2025,
+      "Mois": 9,
+      "Statut": "DRTP",
+      "Demandes": 29,
+      "Participants": 28985
+    },
+    {
+      "Année": 2025,
+      "Mois": 10,
+      "Statut": "DANA",
+      "Demandes": 21,
+      "Participants": 4330
+    },
+    {
+      "Année": 2025,
+      "Mois": 10,
+      "Statut": "DEAC",
+      "Demandes": 4,
+      "Participants": 2150
+    },
+    {
+      "Année": 2025,
+      "Mois": 10,
+      "Statut": "DERT",
+      "Demandes": 142,
+      "Participants": 108699
+    },
+    {
+      "Année": 2025,
+      "Mois": 10,
+      "Statut": "DRMM",
+      "Demandes": 2,
+      "Participants": 200
+    },
+    {
+      "Année": 2025,
+      "Mois": 10,
+      "Statut": "DRTP",
+      "Demandes": 21,
+      "Participants": 6255
+    },
+    {
+      "Année": 2025,
+      "Mois": 11,
+      "Statut": "DANA",
+      "Demandes": 21,
+      "Participants": 2803
+    },
+    {
+      "Année": 2025,
+      "Mois": 11,
+      "Statut": "DEAC",
+      "Demandes": 3,
+      "Participants": 600
+    },
+    {
+      "Année": 2025,
+      "Mois": 11,
+      "Statut": "DEPR",
+      "Demandes": 1,
+      "Participants": 0
+    },
+    {
+      "Année": 2025,
+      "Mois": 11,
+      "Statut": "DERT",
+      "Demandes": 133,
+      "Participants": 36254
+    },
+    {
+      "Année": 2025,
+      "Mois": 11,
+      "Statut": "DRMM",
+      "Demandes": 3,
+      "Participants": 2050
+    },
+    {
+      "Année": 2025,
+      "Mois": 11,
+      "Statut": "DRTP",
+      "Demandes": 26,
+      "Participants": 6318
+    },
+    {
+      "Année": 2025,
+      "Mois": 12,
+      "Statut": "DANA",
+      "Demandes": 9,
+      "Participants": 2060
+    },
+    {
+      "Année": 2025,
+      "Mois": 12,
+      "Statut": "DEAC",
+      "Demandes": 3,
+      "Participants": 34
+    },
+    {
+      "Année": 2025,
+      "Mois": 12,
+      "Statut": "DERT",
+      "Demandes": 226,
+      "Participants": 29567
+    },
+    {
+      "Année": 2025,
+      "Mois": 12,
+      "Statut": "DRMM",
+      "Demandes": 1,
+      "Participants": 1200
+    },
+    {
+      "Année": 2025,
+      "Mois": 12,
+      "Statut": "DRTP",
+      "Demandes": 21,
+      "Participants": 3500
+    },
+    {
+      "Année": 2026,
+      "Mois": 1,
+      "Statut": "DANA",
+      "Demandes": 23,
+      "Participants": 3221
+    },
+    {
+      "Année": 2026,
+      "Mois": 1,
+      "Statut": "DEAC",
+      "Demandes": 9,
+      "Participants": 3030
+    },
+    {
+      "Année": 2026,
+      "Mois": 1,
+      "Statut": "DECR",
+      "Demandes": 2,
+      "Participants": 0
+    },
+    {
+      "Année": 2026,
+      "Mois": 1,
+      "Statut": "DERT",
+      "Demandes": 388,
+      "Participants": 127725
+    },
+    {
+      "Année": 2026,
+      "Mois": 1,
+      "Statut": "DRMM",
+      "Demandes": 3,
+      "Participants": 800
+    },
+    {
+      "Année": 2026,
+      "Mois": 1,
+      "Statut": "DRTP",
+      "Demandes": 56,
+      "Participants": 13556
+    },
+    {
+      "Année": 2026,
+      "Mois": 2,
+      "Statut": "DANA",
+      "Demandes": 39,
+      "Participants": 11488
+    },
+    {
+      "Année": 2026,
+      "Mois": 2,
+      "Statut": "DEAC",
+      "Demandes": 14,
+      "Participants": 8885
+    },
+    {
+      "Année": 2026,
+      "Mois": 2,
+      "Statut": "DECR",
+      "Demandes": 5,
+      "Participants": 720
+    },
+    {
+      "Année": 2026,
+      "Mois": 2,
+      "Statut": "DEPR",
+      "Demandes": 1,
+      "Participants": 1000
+    },
+    {
+      "Année": 2026,
+      "Mois": 2,
+      "Statut": "DERT",
+      "Demandes": 256,
+      "Participants": 84930
+    },
+    {
+      "Année": 2026,
+      "Mois": 2,
+      "Statut": "DRMM",
+      "Demandes": 30,
+      "Participants": 4432
+    },
+    {
+      "Année": 2026,
+      "Mois": 2,
+      "Statut": "DRTP",
+      "Demandes": 39,
+      "Participants": 10755
+    },
+    {
+      "Année": 2026,
+      "Mois": 3,
+      "Statut": "DANA",
+      "Demandes": 39,
+      "Participants": 8535
+    },
+    {
+      "Année": 2026,
+      "Mois": 3,
+      "Statut": "DEAC",
+      "Demandes": 15,
+      "Participants": 14233
+    },
+    {
+      "Année": 2026,
+      "Mois": 3,
+      "Statut": "DECR",
+      "Demandes": 6,
+      "Participants": 2785
+    },
+    {
+      "Année": 2026,
+      "Mois": 3,
+      "Statut": "DEPR",
+      "Demandes": 3,
+      "Participants": 3200
+    },
+    {
+      "Année": 2026,
+      "Mois": 3,
+      "Statut": "DERT",
+      "Demandes": 211,
+      "Participants": 71642
+    },
+    {
+      "Année": 2026,
+      "Mois": 3,
+      "Statut": "DRMM",
+      "Demandes": 43,
+      "Participants": 10626
+    },
+    {
+      "Année": 2026,
+      "Mois": 3,
+      "Statut": "DRTP",
+      "Demandes": 29,
+      "Participants": 42450
+    },
+    {
+      "Année": 2026,
+      "Mois": 4,
+      "Statut": "DANA",
+      "Demandes": 24,
+      "Participants": 8234
+    },
+    {
+      "Année": 2026,
+      "Mois": 4,
+      "Statut": "DEAC",
+      "Demandes": 20,
+      "Participants": 91300
+    },
+    {
+      "Année": 2026,
+      "Mois": 4,
+      "Statut": "DECR",
+      "Demandes": 6,
+      "Participants": 472
+    },
+    {
+      "Année": 2026,
+      "Mois": 4,
+      "Statut": "DEPR",
+      "Demandes": 4,
+      "Participants": 100
+    },
+    {
+      "Année": 2026,
+      "Mois": 4,
+      "Statut": "DERT",
+      "Demandes": 139,
+      "Participants": 48217
+    },
+    {
+      "Année": 2026,
+      "Mois": 4,
+      "Statut": "DRMM",
+      "Demandes": 29,
+      "Participants": 59065
+    },
+    {
+      "Année": 2026,
+      "Mois": 4,
+      "Statut": "DRTP",
+      "Demandes": 20,
+      "Participants": 6475
+    },
+    {
+      "Année": 2026,
+      "Mois": 5,
+      "Statut": "DANA",
+      "Demandes": 15,
+      "Participants": 61935
+    },
+    {
+      "Année": 2026,
+      "Mois": 5,
+      "Statut": "DEAC",
+      "Demandes": 22,
+      "Participants": 8019
+    },
+    {
+      "Année": 2026,
+      "Mois": 5,
+      "Statut": "DECR",
+      "Demandes": 8,
+      "Participants": 5110
+    },
+    {
+      "Année": 2026,
+      "Mois": 5,
+      "Statut": "DEPR",
+      "Demandes": 9,
+      "Participants": 1914
+    },
+    {
+      "Année": 2026,
+      "Mois": 5,
+      "Statut": "DERT",
+      "Demandes": 113,
+      "Participants": 59549
+    },
+    {
+      "Année": 2026,
+      "Mois": 5,
+      "Statut": "DRMM",
+      "Demandes": 16,
+      "Participants": 10066
+    },
+    {
+      "Année": 2026,
+      "Mois": 5,
+      "Statut": "DRMP",
+      "Demandes": 1,
+      "Participants": 9000
+    },
+    {
+      "Année": 2026,
+      "Mois": 5,
+      "Statut": "DRTP",
+      "Demandes": 5,
+      "Participants": 6010
+    },
+    {
+      "Année": 2026,
+      "Mois": 6,
+      "Statut": "DANA",
+      "Demandes": 16,
+      "Participants": 5127
+    },
+    {
+      "Année": 2026,
+      "Mois": 6,
+      "Statut": "DEAC",
+      "Demandes": 64,
+      "Participants": 134974
+    },
+    {
+      "Année": 2026,
+      "Mois": 6,
+      "Statut": "DECR",
+      "Demandes": 8,
+      "Participants": 1849
+    },
+    {
+      "Année": 2026,
+      "Mois": 6,
+      "Statut": "DEPR",
+      "Demandes": 8,
+      "Participants": 1992
+    },
+    {
+      "Année": 2026,
+      "Mois": 6,
+      "Statut": "DERT",
+      "Demandes": 60,
+      "Participants": 20361
+    },
+    {
+      "Année": 2026,
+      "Mois": 6,
+      "Statut": "DPRP",
+      "Demandes": 1,
+      "Participants": 500
+    },
+    {
+      "Année": 2026,
+      "Mois": 6,
+      "Statut": "DRMM",
+      "Demandes": 11,
+      "Participants": 7618
+    },
+    {
+      "Année": 2026,
+      "Mois": 6,
+      "Statut": "DRTP",
+      "Demandes": 7,
+      "Participants": 6009
+    },
+    {
+      "Année": 2026,
+      "Mois": 7,
+      "Statut": "DANA",
+      "Demandes": 2,
+      "Participants": 2150
+    },
+    {
+      "Année": 2026,
+      "Mois": 7,
+      "Statut": "DEAC",
+      "Demandes": 64,
+      "Participants": 47344
+    },
+    {
+      "Année": 2026,
+      "Mois": 7,
+      "Statut": "DECR",
+      "Demandes": 6,
+      "Participants": 1770
+    },
+    {
+      "Année": 2026,
+      "Mois": 7,
+      "Statut": "DEPR",
+      "Demandes": 7,
+      "Participants": 1258
+    },
+    {
+      "Année": 2026,
+      "Mois": 7,
+      "Statut": "DERT",
+      "Demandes": 23,
+      "Participants": 12816
+    },
+    {
+      "Année": 2026,
+      "Mois": 7,
+      "Statut": "DRMM",
+      "Demandes": 2,
+      "Participants": 9800
+    },
+    {
+      "Année": 2026,
+      "Mois": 7,
+      "Statut": "DRTP",
+      "Demandes": 5,
+      "Participants": 2225
+    },
+    {
+      "Année": 2026,
+      "Mois": 8,
+      "Statut": "DANA",
+      "Demandes": 4,
+      "Participants": 121
+    },
+    {
+      "Année": 2026,
+      "Mois": 8,
+      "Statut": "DEAC",
+      "Demandes": 82,
+      "Participants": 75659
+    },
+    {
+      "Année": 2026,
+      "Mois": 8,
+      "Statut": "DECR",
+      "Demandes": 16,
+      "Participants": 20798
+    },
+    {
+      "Année": 2026,
+      "Mois": 8,
+      "Statut": "DEPR",
+      "Demandes": 8,
+      "Participants": 1476
+    },
+    {
+      "Année": 2026,
+      "Mois": 8,
+      "Statut": "DERT",
+      "Demandes": 7,
+      "Participants": 17638
+    },
+    {
+      "Année": 2026,
+      "Mois": 8,
+      "Statut": "DPRP",
+      "Demandes": 1,
+      "Participants": 70
+    }
+  ],
+  "risk": [
+    {
+      "Année": 2019,
+      "Mois": 6,
+      "RiskScore": 4.6066666666666665,
+      "Nb_pannes": 6,
+      "Défauts": 7.0,
+      "Durée_moy": 18.933333333333334
+    },
+    {
+      "Année": 2019,
+      "Mois": 7,
+      "RiskScore": 5.480555555555556,
+      "Nb_pannes": 22,
+      "Défauts": 41.0,
+      "Durée_moy": 18.0
+    },
+    {
+      "Année": 2019,
+      "Mois": 8,
+      "RiskScore": 4.894329896907217,
+      "Nb_pannes": 120,
+      "Défauts": 261.0,
+      "Durée_moy": 21.391752577319586
+    },
+    {
+      "Année": 2019,
+      "Mois": 9,
+      "RiskScore": 4.633980582524272,
+      "Nb_pannes": 95,
+      "Défauts": 169.0,
+      "Durée_moy": 19.058252427184467
+    },
+    {
+      "Année": 2019,
+      "Mois": 10,
+      "RiskScore": 4.208176100628931,
+      "Nb_pannes": 47,
+      "Défauts": 92.0,
+      "Durée_moy": 17.68553459119497
+    },
+    {
+      "Année": 2019,
+      "Mois": 11,
+      "RiskScore": 3.7405405405405405,
+      "Nb_pannes": 37,
+      "Défauts": 71.0,
+      "Durée_moy": 14.18918918918919
+    },
+    {
+      "Année": 2019,
+      "Mois": 12,
+      "RiskScore": 4.046052631578948,
+      "Nb_pannes": 64,
+      "Défauts": 115.0,
+      "Durée_moy": 16.38157894736842
+    },
+    {
+      "Année": 2020,
+      "Mois": 1,
+      "RiskScore": 3.8850704225352115,
+      "Nb_pannes": 142,
+      "Défauts": 159.0,
+      "Durée_moy": 16.27323943661972
+    },
+    {
+      "Année": 2020,
+      "Mois": 2,
+      "RiskScore": 2.8716101694915257,
+      "Nb_pannes": 41,
+      "Défauts": 49.0,
+      "Durée_moy": 8.567796610169491
+    },
+    {
+      "Année": 2020,
+      "Mois": 3,
+      "RiskScore": 3.8378504672897193,
+      "Nb_pannes": 84,
+      "Défauts": 121.0,
+      "Durée_moy": 36.97196261682243
+    },
+    {
+      "Année": 2020,
+      "Mois": 4,
+      "RiskScore": 4.435483870967742,
+      "Nb_pannes": 6,
+      "Défauts": 12.0,
+      "Durée_moy": 24.193548387096776
+    },
+    {
+      "Année": 2020,
+      "Mois": 5,
+      "RiskScore": 5.071153846153846,
+      "Nb_pannes": 59,
+      "Défauts": 81.0,
+      "Durée_moy": 52.02884615384615
+    },
+    {
+      "Année": 2020,
+      "Mois": 6,
+      "RiskScore": 4.398989898989899,
+      "Nb_pannes": 46,
+      "Défauts": 76.0,
+      "Durée_moy": 28.96969696969697
+    },
+    {
+      "Année": 2020,
+      "Mois": 7,
+      "RiskScore": 5.5592,
+      "Nb_pannes": 78,
+      "Défauts": 92.0,
+      "Durée_moy": 34.888
+    },
+    {
+      "Année": 2020,
+      "Mois": 8,
+      "RiskScore": 4.9381231671554255,
+      "Nb_pannes": 216,
+      "Défauts": 511.0,
+      "Durée_moy": 20.75659824046921
+    },
+    {
+      "Année": 2020,
+      "Mois": 9,
+      "RiskScore": 4.740366972477064,
+      "Nb_pannes": 209,
+      "Défauts": 555.0,
+      "Durée_moy": 21.730886850152906
+    },
+    {
+      "Année": 2020,
+      "Mois": 10,
+      "RiskScore": 4.354883720930232,
+      "Nb_pannes": 99,
+      "Défauts": 340.0,
+      "Durée_moy": 28.74418604651163
+    },
+    {
+      "Année": 2020,
+      "Mois": 11,
+      "RiskScore": 4.378947368421053,
+      "Nb_pannes": 30,
+      "Défauts": 67.0,
+      "Durée_moy": 21.55263157894737
+    },
+    {
+      "Année": 2020,
+      "Mois": 12,
+      "RiskScore": 4.378846153846154,
+      "Nb_pannes": 14,
+      "Défauts": 21.0,
+      "Durée_moy": 34.40384615384615
+    },
+    {
+      "Année": 2021,
+      "Mois": 1,
+      "RiskScore": 5.222900763358779,
+      "Nb_pannes": 90,
+      "Défauts": 242.0,
+      "Durée_moy": 73.0
+    },
+    {
+      "Année": 2021,
+      "Mois": 2,
+      "RiskScore": 4.434615384615385,
+      "Nb_pannes": 41,
+      "Défauts": 51.0,
+      "Durée_moy": 21.673076923076923
+    },
+    {
+      "Année": 2021,
+      "Mois": 3,
+      "RiskScore": 4.3792857142857144,
+      "Nb_pannes": 75,
+      "Défauts": 129.0,
+      "Durée_moy": 19.05
+    },
+    {
+      "Année": 2021,
+      "Mois": 4,
+      "RiskScore": 4.252336448598131,
+      "Nb_pannes": 50,
+      "Défauts": 85.0,
+      "Durée_moy": 24.878504672897197
+    },
+    {
+      "Année": 2021,
+      "Mois": 5,
+      "RiskScore": 4.924170616113744,
+      "Nb_pannes": 148,
+      "Défauts": 177.0,
+      "Durée_moy": 30.194312796208532
+    },
+    {
+      "Année": 2021,
+      "Mois": 6,
+      "RiskScore": 4.442364532019704,
+      "Nb_pannes": 123,
+      "Défauts": 148.0,
+      "Durée_moy": 27.014778325123153
+    },
+    {
+      "Année": 2021,
+      "Mois": 7,
+      "RiskScore": 5.47396449704142,
+      "Nb_pannes": 102,
+      "Défauts": 121.0,
+      "Durée_moy": 19.550295857988164
+    },
+    {
+      "Année": 2021,
+      "Mois": 8,
+      "RiskScore": 4.544949494949495,
+      "Nb_pannes": 226,
+      "Défauts": 414.0,
+      "Durée_moy": 21.242424242424242
+    },
+    {
+      "Année": 2021,
+      "Mois": 9,
+      "RiskScore": 4.529268292682927,
+      "Nb_pannes": 203,
+      "Défauts": 338.0,
+      "Durée_moy": 19.936430317848412
+    },
+    {
+      "Année": 2021,
+      "Mois": 10,
+      "RiskScore": 3.9112219451371573,
+      "Nb_pannes": 224,
+      "Défauts": 370.0,
+      "Durée_moy": 13.905236907730673
+    },
+    {
+      "Année": 2021,
+      "Mois": 11,
+      "RiskScore": 3.5451612903225804,
+      "Nb_pannes": 47,
+      "Défauts": 47.0,
+      "Durée_moy": 13.948387096774194
+    },
+    {
+      "Année": 2021,
+      "Mois": 12,
+      "RiskScore": 4.335042735042735,
+      "Nb_pannes": 67,
+      "Défauts": 80.0,
+      "Durée_moy": 15.991452991452991
+    },
+    {
+      "Année": 2022,
+      "Mois": 1,
+      "RiskScore": 4.314634146341464,
+      "Nb_pannes": 54,
+      "Défauts": 60.0,
+      "Durée_moy": 20.788617886178862
+    },
+    {
+      "Année": 2022,
+      "Mois": 2,
+      "RiskScore": 4.290697674418604,
+      "Nb_pannes": 231,
+      "Défauts": 452.0,
+      "Durée_moy": 22.563953488372093
+    },
+    {
+      "Année": 2022,
+      "Mois": 3,
+      "RiskScore": 3.9445454545454544,
+      "Nb_pannes": 234,
+      "Défauts": 448.0,
+      "Durée_moy": 12.936363636363636
+    },
+    {
+      "Année": 2022,
+      "Mois": 4,
+      "RiskScore": 3.803846153846154,
+      "Nb_pannes": 152,
+      "Défauts": 313.0,
+      "Durée_moy": 10.307692307692308
+    },
+    {
+      "Année": 2022,
+      "Mois": 5,
+      "RiskScore": 3.7745535714285716,
+      "Nb_pannes": 67,
+      "Défauts": 95.0,
+      "Durée_moy": 12.888392857142858
+    },
+    {
+      "Année": 2022,
+      "Mois": 6,
+      "RiskScore": 3.9824999999999995,
+      "Nb_pannes": 139,
+      "Défauts": 190.0,
+      "Durée_moy": 15.807142857142857
+    },
+    {
+      "Année": 2022,
+      "Mois": 7,
+      "RiskScore": 5.04632768361582,
+      "Nb_pannes": 112,
+      "Défauts": 196.0,
+      "Durée_moy": 11.847457627118644
+    },
+    {
+      "Année": 2022,
+      "Mois": 8,
+      "RiskScore": 4.527045454545455,
+      "Nb_pannes": 266,
+      "Défauts": 538.0,
+      "Durée_moy": 19.15681818181818
+    },
+    {
+      "Année": 2022,
+      "Mois": 9,
+      "RiskScore": 4.5451882845188285,
+      "Nb_pannes": 260,
+      "Défauts": 522.0,
+      "Durée_moy": 17.964435146443513
+    },
+    {
+      "Année": 2022,
+      "Mois": 10,
+      "RiskScore": 4.3523297491039425,
+      "Nb_pannes": 162,
+      "Défauts": 350.0,
+      "Durée_moy": 18.311827956989248
+    },
+    {
+      "Année": 2022,
+      "Mois": 11,
+      "RiskScore": 4.025,
+      "Nb_pannes": 105,
+      "Défauts": 123.0,
+      "Durée_moy": 14.85
+    },
+    {
+      "Année": 2022,
+      "Mois": 12,
+      "RiskScore": 4.410588235294117,
+      "Nb_pannes": 87,
+      "Défauts": 280.0,
+      "Durée_moy": 19.676470588235293
+    },
+    {
+      "Année": 2023,
+      "Mois": 1,
+      "RiskScore": 3.850363196125908,
+      "Nb_pannes": 301,
+      "Défauts": 356.0,
+      "Durée_moy": 9.74818401937046
+    },
+    {
+      "Année": 2023,
+      "Mois": 2,
+      "RiskScore": 3.7364978902953583,
+      "Nb_pannes": 309,
+      "Défauts": 470.0,
+      "Durée_moy": 11.748945147679326
+    },
+    {
+      "Année": 2023,
+      "Mois": 3,
+      "RiskScore": 4.146705426356589,
+      "Nb_pannes": 317,
+      "Défauts": 376.0,
+      "Durée_moy": 12.381782945736434
+    },
+    {
+      "Année": 2023,
+      "Mois": 4,
+      "RiskScore": 4.0620060790273556,
+      "Nb_pannes": 163,
+      "Défauts": 315.0,
+      "Durée_moy": 15.042553191489361
+    },
+    {
+      "Année": 2023,
+      "Mois": 5,
+      "RiskScore": 3.663604240282685,
+      "Nb_pannes": 139,
+      "Défauts": 203.0,
+      "Durée_moy": 10.20494699646643
+    },
+    {
+      "Année": 2023,
+      "Mois": 6,
+      "RiskScore": 3.818947368421053,
+      "Nb_pannes": 80,
+      "Défauts": 118.0,
+      "Durée_moy": 13.115789473684211
+    },
+    {
+      "Année": 2023,
+      "Mois": 7,
+      "RiskScore": 5.171698113207547,
+      "Nb_pannes": 82,
+      "Défauts": 125.0,
+      "Durée_moy": 19.867924528301888
+    },
+    {
+      "Année": 2023,
+      "Mois": 8,
+      "RiskScore": 3.11144578313253,
+      "Nb_pannes": 75,
+      "Défauts": 130.0,
+      "Durée_moy": 4.325301204819277
+    },
+    {
+      "Année": 2023,
+      "Mois": 9,
+      "RiskScore": 4.718139097744361,
+      "Nb_pannes": 794,
+      "Défauts": 1902.0,
+      "Durée_moy": 17.348684210526315
+    },
+    {
+      "Année": 2023,
+      "Mois": 10,
+      "RiskScore": 4.156637168141593,
+      "Nb_pannes": 160,
+      "Défauts": 279.0,
+      "Durée_moy": 14.008849557522124
+    },
+    {
+      "Année": 2023,
+      "Mois": 11,
+      "RiskScore": 4.037370242214533,
+      "Nb_pannes": 157,
+      "Défauts": 310.0,
+      "Durée_moy": 15.754325259515571
+    },
+    {
+      "Année": 2023,
+      "Mois": 12,
+      "RiskScore": 4.347159090909091,
+      "Nb_pannes": 107,
+      "Défauts": 122.0,
+      "Durée_moy": 19.272727272727273
+    },
+    {
+      "Année": 2024,
+      "Mois": 1,
+      "RiskScore": 4.153866666666667,
+      "Nb_pannes": 205,
+      "Défauts": 278.0,
+      "Durée_moy": 14.408
+    },
+    {
+      "Année": 2024,
+      "Mois": 2,
+      "RiskScore": 3.9842105263157896,
+      "Nb_pannes": 240,
+      "Défauts": 316.0,
+      "Durée_moy": 12.5311004784689
+    },
+    {
+      "Année": 2024,
+      "Mois": 3,
+      "RiskScore": 3.804335260115607,
+      "Nb_pannes": 138,
+      "Défauts": 195.0,
+      "Durée_moy": 10.028901734104046
+    },
+    {
+      "Année": 2024,
+      "Mois": 4,
+      "RiskScore": 3.901711491442543,
+      "Nb_pannes": 187,
+      "Défauts": 247.0,
+      "Durée_moy": 14.056234718826406
+    },
+    {
+      "Année": 2024,
+      "Mois": 5,
+      "RiskScore": 3.7996415770609318,
+      "Nb_pannes": 145,
+      "Défauts": 170.0,
+      "Durée_moy": 8.68100358422939
+    },
+    {
+      "Année": 2024,
+      "Mois": 6,
+      "RiskScore": 3.8465587044534413,
+      "Nb_pannes": 158,
+      "Défauts": 205.0,
+      "Durée_moy": 14.518218623481781
+    },
+    {
+      "Année": 2024,
+      "Mois": 7,
+      "RiskScore": 5.16271186440678,
+      "Nb_pannes": 142,
+      "Défauts": 269.0,
+      "Durée_moy": 14.372881355932204
+    },
+    {
+      "Année": 2024,
+      "Mois": 8,
+      "RiskScore": 4.578571428571428,
+      "Nb_pannes": 202,
+      "Défauts": 291.0,
+      "Durée_moy": 19.63605442176871
+    },
+    {
+      "Année": 2024,
+      "Mois": 9,
+      "RiskScore": 4.140384615384615,
+      "Nb_pannes": 148,
+      "Défauts": 150.0,
+      "Durée_moy": 15.625
+    },
+    {
+      "Année": 2024,
+      "Mois": 10,
+      "RiskScore": 4.555371900826446,
+      "Nb_pannes": 491,
+      "Défauts": 1034.0,
+      "Durée_moy": 17.485242030696575
+    },
+    {
+      "Année": 2024,
+      "Mois": 11,
+      "RiskScore": 4.2425,
+      "Nb_pannes": 194,
+      "Défauts": 272.0,
+      "Durée_moy": 14.775
+    },
+    {
+      "Année": 2024,
+      "Mois": 12,
+      "RiskScore": 4.1835051546391755,
+      "Nb_pannes": 116,
+      "Défauts": 142.0,
+      "Durée_moy": 13.577319587628866
+    },
+    {
+      "Année": 2025,
+      "Mois": 1,
+      "RiskScore": 3.8798429319371723,
+      "Nb_pannes": 204,
+      "Défauts": 521.0,
+      "Durée_moy": 12.848167539267015
+    },
+    {
+      "Année": 2025,
+      "Mois": 2,
+      "RiskScore": 3.873253493013972,
+      "Nb_pannes": 292,
+      "Défauts": 435.0,
+      "Durée_moy": 12.812
+    },
+    {
+      "Année": 2025,
+      "Mois": 3,
+      "RiskScore": 3.793922651933702,
+      "Nb_pannes": 141,
+      "Défauts": 196.0,
+      "Durée_moy": 10.350828729281767
+    },
+    {
+      "Année": 2025,
+      "Mois": 4,
+      "RiskScore": 3.668939393939394,
+      "Nb_pannes": 84,
+      "Défauts": 104.0,
+      "Durée_moy": 12.549242424242424
+    },
+    {
+      "Année": 2025,
+      "Mois": 5,
+      "RiskScore": 3.7688034188034187,
+      "Nb_pannes": 93,
+      "Défauts": 107.0,
+      "Durée_moy": 10.931623931623932
+    },
+    {
+      "Année": 2025,
+      "Mois": 6,
+      "RiskScore": 3.783441558441558,
+      "Nb_pannes": 177,
+      "Défauts": 385.0,
+      "Durée_moy": 9.198051948051948
+    },
+    {
+      "Année": 2025,
+      "Mois": 7,
+      "RiskScore": 4.896984924623116,
+      "Nb_pannes": 98,
+      "Défauts": 109.0,
+      "Durée_moy": 11.959798994974875
+    },
+    {
+      "Année": 2025,
+      "Mois": 8,
+      "RiskScore": 4.075,
+      "Nb_pannes": 92,
+      "Défauts": 145.0,
+      "Durée_moy": 16.300925925925927
+    },
+    {
+      "Année": 2025,
+      "Mois": 9,
+      "RiskScore": 4.1777158774373255,
+      "Nb_pannes": 168,
+      "Défauts": 206.0,
+      "Durée_moy": 11.743732590529248
+    },
+    {
+      "Année": 2025,
+      "Mois": 10,
+      "RiskScore": 3.6787610619469024,
+      "Nb_pannes": 75,
+      "Défauts": 81.0,
+      "Durée_moy": 9.9070796460177
+    },
+    {
+      "Année": 2025,
+      "Mois": 11,
+      "RiskScore": 3.8256198347107437,
+      "Nb_pannes": 101,
+      "Défauts": 122.0,
+      "Durée_moy": 11.71900826446281
+    },
+    {
+      "Année": 2025,
+      "Mois": 12,
+      "RiskScore": 4.584345794392523,
+      "Nb_pannes": 272,
+      "Défauts": 472.0,
+      "Durée_moy": 14.675233644859814
+    },
+    {
+      "Année": 2026,
+      "Mois": 1,
+      "RiskScore": 4.837735849056603,
+      "Nb_pannes": 403,
+      "Défauts": 691.0,
+      "Durée_moy": 16.69375907111756
+    },
+    {
+      "Année": 2026,
+      "Mois": 2,
+      "RiskScore": 4.2697674418604645,
+      "Nb_pannes": 242,
+      "Défauts": 297.0,
+      "Durée_moy": 13.86046511627907
+    },
+    {
+      "Année": 2026,
+      "Mois": 3,
+      "RiskScore": 3.8585526315789473,
+      "Nb_pannes": 179,
+      "Défauts": 227.0,
+      "Durée_moy": 9.807017543859649
+    },
+    {
+      "Année": 2026,
+      "Mois": 4,
+      "RiskScore": 3.6299242424242424,
+      "Nb_pannes": 62,
+      "Défauts": 75.0,
+      "Durée_moy": 10.397727272727273
+    },
+    {
+      "Année": 2026,
+      "Mois": 5,
+      "RiskScore": 3.6857142857142855,
+      "Nb_pannes": 51,
+      "Défauts": 68.0,
+      "Durée_moy": 9.747619047619047
+    },
+    {
+      "Année": 2026,
+      "Mois": 6,
+      "RiskScore": 3.480392156862745,
+      "Nb_pannes": 48,
+      "Défauts": 82.0,
+      "Durée_moy": 13.901960784313726
+    },
+    {
+      "Année": 2026,
+      "Mois": 7,
+      "RiskScore": 4.023214285714286,
+      "Nb_pannes": 9,
+      "Défauts": 9.0,
+      "Durée_moy": 10.258928571428571
+    },
+    {
+      "Année": 2026,
+      "Mois": 8,
+      "RiskScore": 2.577118644067797,
+      "Nb_pannes": 0,
+      "Défauts": 0.0,
+      "Durée_moy": 9.711864406779661
+    }
+  ],
+  "stats": {
+    "rep_total": 12586,
+    "rep_audiovis": 6663,
+    "rep_loisir": 5923,
+    "pret_total": 16369,
+    "tente_total": 7408,
+    "taux_panne": 51.975923619759236,
+    "risk_score_moy": 4.2058655043586555,
+    "prets_analyzed": 24090
+  }
+}
