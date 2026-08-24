@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CPM Horizon 2035 — Data & Prédiction</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'><circle cx='20' cy='20' r='20' fill='%23e74c3c'/><text x='20' y='28' font-size='28' font-weight='bold' fill='white' text-anchor='middle'>C</text></svg>">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #f5f5f5;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* ===== SIDEBAR ===== */
+        .sidebar {
+            width: 200px;
+            background: #2c3e50;
+            color: white;
+            padding: 20px;
+            overflow-y: auto;
+            box-shadow: 2px 0 8px rgba(0,0,0,0.1);
+            position: fixed;
+            height: 100vh;
+            left: 0;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .sidebar-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: #e74c3c;
+            color: white;
+            border-radius: 50%;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .sidebar-title {
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            color: #bdc3c7;
+        }
+
+        .sidebar-section {
+            margin-bottom: 25px;
+        }
+
+        .sidebar-section-title {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background: #e74c3c;
+            color: white;
+            padding: 8px 10px;
+            border-radius: 3px;
+            margin-bottom: 12px;
+        }
+
+        .sidebar-section-title.purple {
+            background: #9b59b6;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+        }
+
+        .sidebar-menu li {
+            margin-bottom: 8px;
+        }
+
+        .sidebar-menu a {
+            display: block;
+            padding: 10px 12px;
+            color: #bdc3c7;
+            text-decoration: none;
+            font-size: 13px;
+            border-radius: 4px;
+            transition: all 0.2s;
+            border-left: 3px solid transparent;
+            cursor: pointer;
+        }
+
+        .sidebar-menu a:hover {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border-left-color: #e74c3c;
+        }
+
+        .sidebar-menu a.active {
+            background: #e74c3c;
+            color: white;
+            border-left-color: #e74c3c;
+            font-weight: 600;
+        }
+
+        /* ===== MAIN CONTENT ===== */
+        .main {
+            margin-left: 200px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 40px;
+            border-bottom: 4px solid #9b59b6;
+        }
+
+        .header h1 {
+            font-size: 36px;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        /* ===== FILTERS ===== */
+        .filters {
+            background: white;
+            padding: 20px 40px;
+            border-bottom: 1px solid #e0e0e0;
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .filter-group label {
+            font-size: 12px;
+            font-weight: 700;
+            color: #2c3e50;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .filter-group .checkboxes {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .filter-group .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .filter-group input[type="checkbox"] {
+            cursor: pointer;
+            width: 16px;
+            height: 16px;
+        }
+
+        .filter-group .checkbox-label {
+            font-size: 13px;
+            color: #555;
+            cursor: pointer;
+        }
+
+        /* ===== CONTENT ===== */
+        .content {
+            flex: 1;
+            padding: 40px;
+            overflow-y: auto;
+        }
+
+        /* ===== ACCORDION ===== */
+        .accordion {
+            margin-bottom: 20px;
+        }
+
+        .accordion-header {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-left: 4px solid #9b59b6;
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .accordion-header:hover {
+            background: #f9f9f9;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .accordion-header.open {
+            background: #f5f5f5;
+        }
+
+        .accordion-header .icon {
+            transition: transform 0.3s;
+        }
+
+        .accordion-header.open .icon {
+            transform: rotate(180deg);
+        }
+
+        .accordion-body {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-top: none;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .accordion-body.open {
+            max-height: 2000px;
+        }
+
+        .accordion-content {
+            padding: 30px;
+        }
+
+        .kpi-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .kpi-card {
+            background: #f9f9f9;
+            border-left: 4px solid #9b59b6;
+            padding: 20px;
+            border-radius: 4px;
+        }
+
+        .kpi-label {
+            font-size: 12px;
+            color: #7f8c8d;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .kpi-value {
+            font-size: 28px;
+            font-weight: 700;
+            color: #2c3e50;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 300px;
+            margin-bottom: 30px;
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            padding: 15px;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        .empty-state .icon {
+            font-size: 48px;
+            margin-bottom: 12px;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .sidebar {
+                position: absolute;
+                width: 200px;
+                height: 100vh;
+                z-index: 1000;
+                transform: translateX(-100%);
+            }
+            
+            .main {
+                margin-left: 0;
+            }
+
+            .filters {
+                flex-direction: column;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .kpi-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <div class="sidebar-logo">C</div>
+        <div class="sidebar-title">Schéma directeur</div>
+
+        <div class="sidebar-section">
+            <ul class="sidebar-menu">
+                <li><a href="../">← Retour Accueil</a></li>
+            </ul>
+        </div>
+
+        <div class="sidebar-section">
+            <div class="sidebar-section-title purple">Data & Prédiction</div>
+            <ul class="sidebar-menu">
+                <li><a href="#" class="active">Analyse SAP</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="main">
+        <!-- HEADER -->
+        <div class="header">
+            <h1>📊 Data & Prédiction</h1>
+            <p>Analyse SAP, Tentes, Météo, Risque & Prédiction 2025</p>
+        </div>
+
+        <!-- FILTERS -->
+        <div class="filters">
+            <div class="filter-group">
+                <label>📅 Années</label>
+                <div class="checkboxes" id="yearFilters"></div>
+            </div>
+            <div class="filter-group">
+                <label>🏢 Secteurs</label>
+                <div class="checkboxes" id="sectorFilters"></div>
+            </div>
+        </div>
+
+        <!-- CONTENT -->
+        <div class="content" id="mainContent">
+            <!-- Les accordions seront générés ici -->
+        </div>
+    </div>
+
+    <script>
+        // ===== DONNÉES EMBARQUÉES =====
+        const mockData = {
+            repairs: [
+                { year: 2024, sector: 'AUDIOVIS', status: 'DI', count: 120 },
+                { year: 2024, sector: 'AUDIOVIS', status: 'EN', count: 80 },
+                { year: 2024, sector: 'LOISIR', status: 'DI', count: 90 },
+                { year: 2024, sector: 'LOISIR', status: 'EN', count: 70 },
+                { year: 2023, sector: 'AUDIOVIS', status: 'DI', count: 100 },
+                { year: 2023, sector: 'AUDIOVIS', status: 'EN', count: 60 },
+                { year: 2023, sector: 'LOISIR', status: 'DI', count: 80 },
+                { year: 2023, sector: 'LOISIR', status: 'EN', count: 50 },
+            ],
+            loans: [
+                { year: 2024, month: 'Jan', count: 450, defaultRate: 0.48 },
+                { year: 2024, month: 'Feb', count: 480, defaultRate: 0.50 },
+                { year: 2024, month: 'Mar', count: 520, defaultRate: 0.52 },
+                { year: 2024, month: 'Jul', count: 650, defaultRate: 0.65 },
+                { year: 2023, month: 'Jan', count: 420, defaultRate: 0.45 },
+                { year: 2023, month: 'Feb', count: 460, defaultRate: 0.48 },
+            ]
+        };
+
+        // ===== INITIALISATION =====
+        function initializeFilters() {
+            const years = [2023, 2024];
+            const sectors = ['AUDIOVIS', 'LOISIR'];
+
+            // Années
+            const yearContainer = document.getElementById('yearFilters');
+            years.forEach(year => {
+                const item = document.createElement('div');
+                item.className = 'checkbox-item';
+                item.innerHTML = `
+                    <input type="checkbox" id="year_${year}" value="${year}" class="year-filter" checked>
+                    <label for="year_${year}" class="checkbox-label">${year}</label>
+                `;
+                yearContainer.appendChild(item);
+            });
+
+            // Secteurs
+            const sectorContainer = document.getElementById('sectorFilters');
+            sectors.forEach(sector => {
+                const item = document.createElement('div');
+                item.className = 'checkbox-item';
+                item.innerHTML = `
+                    <input type="checkbox" id="sector_${sector}" value="${sector}" class="sector-filter" checked>
+                    <label for="sector_${sector}" class="checkbox-label">${sector}</label>
+                `;
+                sectorContainer.appendChild(item);
+            });
+
+            // Event listeners
+            document.querySelectorAll('.year-filter, .sector-filter').forEach(checkbox => {
+                checkbox.addEventListener('change', updateContent);
+            });
+        }
+
+        // ===== OBTENIR LES FILTRES SÉLECTIONNÉS =====
+        function getSelectedFilters() {
+            const selectedYears = Array.from(document.querySelectorAll('.year-filter:checked')).map(el => parseInt(el.value));
+            const selectedSectors = Array.from(document.querySelectorAll('.sector-filter:checked')).map(el => el.value);
+            return { selectedYears, selectedSectors };
+        }
+
+        // ===== METTRE À JOUR LE CONTENU =====
+        function updateContent() {
+            const { selectedYears, selectedSectors } = getSelectedFilters();
+            
+            // Si aucun filtre n'est sélectionné, afficher un message
+            if (selectedYears.length === 0 || selectedSectors.length === 0) {
+                document.getElementById('mainContent').innerHTML = `
+                    <div class="empty-state">
+                        <div class="icon">📋</div>
+                        <p>Veuillez sélectionner au moins une année et un secteur pour afficher les données.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            // Générer les accordions
+            const html = `
+                ${createAccordion('Analyse SAP', '📈', 'sap', selectedYears, selectedSectors)}
+                ${createAccordion('Analyse Tentes', '⛺', 'tentes', selectedYears, selectedSectors)}
+                ${createAccordion('Météo du Patrimoine', '⛅', 'meteo', selectedYears, selectedSectors)}
+                ${createAccordion('Risque Panne', '🔮', 'risque', selectedYears, selectedSectors)}
+                ${createAccordion('Prédiction 2025', '📊', 'prediction', selectedYears, selectedSectors)}
+            `;
+
+            document.getElementById('mainContent').innerHTML = html;
+            setupAccordions();
+            renderCharts(selectedYears, selectedSectors);
+        }
+
+        // ===== CRÉER UN ACCORDION =====
+        function createAccordion(title, icon, id, years, sectors) {
+            return `
+                <div class="accordion">
+                    <div class="accordion-header ${id === 'sap' ? 'open' : ''}" onclick="toggleAccordion('${id}')">
+                        <span>${icon} ${title}</span>
+                        <span class="icon">▼</span>
+                    </div>
+                    <div class="accordion-body ${id === 'sap' ? 'open' : ''}" id="${id}-body">
+                        <div class="accordion-content" id="${id}-content">
+                            <!-- Content sera généré par renderCharts -->
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // ===== TOGGLE ACCORDION =====
+        function toggleAccordion(id) {
+            const header = event.target.closest('.accordion-header');
+            const body = header.nextElementSibling;
+
+            header.classList.toggle('open');
+            body.classList.toggle('open');
+        }
+
+        // ===== SETUP ACCORDIONS =====
+        function setupAccordions() {
+            document.querySelectorAll('.accordion-header').forEach(header => {
+                header.addEventListener('click', function() {
+                    this.classList.toggle('open');
+                    this.nextElementSibling.classList.toggle('open');
+                });
+            });
+        }
+
+        // ===== RENDRE LES GRAPHIQUES =====
+        function renderCharts(years, sectors) {
+            // Filtre les données
+            const filteredRepairs = mockData.repairs.filter(r => 
+                years.includes(r.year) && sectors.includes(r.sector)
+            );
+
+            // ===== ANALYSE SAP =====
+            if (filteredRepairs.length > 0) {
+                const sapTotal = filteredRepairs.reduce((sum, r) => sum + r.count, 0);
+                const sapByStatus = {};
+                filteredRepairs.forEach(r => {
+                    sapByStatus[r.status] = (sapByStatus[r.status] || 0) + r.count;
+                });
+
+                const sapHtml = `
+                    <div class="kpi-container">
+                        <div class="kpi-card">
+                            <div class="kpi-label">Total Réparations</div>
+                            <div class="kpi-value">${sapTotal}</div>
+                        </div>
+                        <div class="kpi-card">
+                            <div class="kpi-label">Status DI</div>
+                            <div class="kpi-value">${sapByStatus['DI'] || 0}</div>
+                        </div>
+                        <div class="kpi-card">
+                            <div class="kpi-label">Status EN</div>
+                            <div class="kpi-value">${sapByStatus['EN'] || 0}</div>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="sapChart"></canvas>
+                    </div>
+                `;
+
+                document.getElementById('sap-content').innerHTML = sapHtml;
+
+                // Créer graphique
+                setTimeout(() => {
+                    const ctx = document.getElementById('sapChart');
+                    if (ctx) {
+                        new Chart(ctx, {
+                            type: 'bar',
+                            data: {
+                                labels: Object.keys(sapByStatus),
+                                datasets: [{
+                                    label: 'Réparations par Status',
+                                    data: Object.values(sapByStatus),
+                                    backgroundColor: '#9b59b6',
+                                    borderColor: '#7d3c98',
+                                    borderWidth: 1
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                plugins: {
+                                    legend: { display: true }
+                                }
+                            }
+                        });
+                    }
+                }, 0);
+            }
+
+            // ===== AUTRES MODULES (stub pour l'instant) =====
+            ['tentes', 'meteo', 'risque', 'prediction'].forEach(moduleId => {
+                const content = document.getElementById(moduleId + '-content');
+                if (content) {
+                    content.innerHTML = `
+                        <div class="empty-state">
+                            <p>Module en construction...</p>
+                        </div>
+                    `;
+                }
+            });
+        }
+
+        // ===== LANCER L'APP =====
+        window.addEventListener('DOMContentLoaded', () => {
+            initializeFilters();
+            updateContent();
+        });
+    </script>
+</body>
+</html>
