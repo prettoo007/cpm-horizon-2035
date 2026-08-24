@@ -1,0 +1,1591 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analyse SAP 2025 — CPM Horizon 2035</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #f5f5f5;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* ===== SIDEBAR ===== */
+        .sidebar {
+            width: 200px;
+            background: #2c3e50;
+            color: white;
+            padding: 20px;
+            overflow-y: auto;
+            box-shadow: 2px 0 8px rgba(0,0,0,0.1);
+            position: fixed;
+            height: 100vh;
+            left: 0;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .sidebar-logo {
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            opacity: 0.9;
+        }
+
+        .sidebar-subtitle {
+            font-size: 11px;
+            color: #95a5a6;
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+
+        .sidebar-section {
+            margin-bottom: 28px;
+        }
+
+        .sidebar-section-title {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #e74c3c;
+            margin-bottom: 12px;
+            padding-left: 10px;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+        }
+
+        .sidebar-menu li {
+            margin-bottom: 8px;
+        }
+
+        .sidebar-menu a {
+            display: block;
+            padding: 10px 12px;
+            color: #bdc3c7;
+            text-decoration: none;
+            font-size: 13px;
+            border-radius: 4px;
+            transition: all 0.2s;
+            border-left: 3px solid transparent;
+        }
+
+        .sidebar-menu a:hover {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border-left-color: #e74c3c;
+        }
+
+        .sidebar-menu a.active {
+            background: #e74c3c;
+            color: white;
+            border-left-color: #e74c3c;
+            font-weight: 600;
+        }
+
+        .sidebar-logo-link {
+            display: block;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 20px;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .sidebar-logo-link:hover {
+            opacity: 0.8;
+        }
+
+        /* ===== MAIN CONTENT ===== */
+        .main {
+            margin-left: 200px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            border-bottom: 4px solid #e74c3c;
+        }
+
+        .header h1 {
+            font-size: 32px;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        /* ===== FILTERS PANEL ===== */
+        .filters-panel {
+            background: white;
+            padding: 25px 30px;
+            border-bottom: 1px solid #e0e0e0;
+            margin: 0;
+        }
+
+        .filters-section {
+            margin-bottom: 20px;
+        }
+
+        .filters-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .filter-label {
+            font-weight: 600;
+            font-size: 12px;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            display: block;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .checkbox-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        input[type="checkbox"] {
+            cursor: pointer;
+            width: 16px;
+            height: 16px;
+            accent-color: #e74c3c;
+        }
+
+        .checkbox-wrapper label {
+            cursor: pointer;
+            font-size: 13px;
+            color: #333;
+            user-select: none;
+        }
+
+        select {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 13px;
+            background: white;
+            cursor: pointer;
+            color: #333;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 8px;
+        }
+
+        button {
+            padding: 8px 14px;
+            background: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        button:hover {
+            background: #c0392b;
+            transform: translateY(-1px);
+        }
+
+        /* ===== CONTENT ===== */
+        .content {
+            flex: 1;
+            padding: 30px;
+            overflow-y: auto;
+        }
+
+        /* ===== ACCORDION ===== */
+        .accordion-container {
+            margin-bottom: 20px;
+        }
+
+        .accordion-header {
+            background: white;
+            border: 1px solid #e0e0e0;
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 6px;
+            transition: all 0.2s;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .accordion-header:hover {
+            background: #f9f9f9;
+            border-color: #e74c3c;
+        }
+
+        .accordion-header.active {
+            background: #fff5f5;
+            border-color: #e74c3c;
+            border-bottom: none;
+            border-radius: 6px 6px 0 0;
+        }
+
+        .accordion-icon {
+            font-size: 18px;
+            transition: transform 0.2s;
+        }
+
+        .accordion-header.active .accordion-icon {
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+            display: none;
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-top: none;
+            padding: 30px;
+            border-radius: 0 0 6px 6px;
+        }
+
+        .accordion-content.active {
+            display: block;
+        }
+
+        /* ===== MODULE LAYOUT ===== */
+        .module-filters {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 25px;
+        }
+
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 30px;
+        }
+
+        .kpi-card {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-left: 4px solid #e74c3c;
+            padding: 20px;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .kpi-card.audiovis {
+            border-left-color: #3498db;
+        }
+
+        .kpi-card.loisir {
+            border-left-color: #27ae60;
+        }
+
+        .kpi-card.warning {
+            border-left-color: #f39c12;
+        }
+
+        .kpi-label {
+            font-size: 11px;
+            color: #7f8c8d;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+
+        .kpi-value {
+            font-size: 26px;
+            font-weight: 700;
+            color: #2c3e50;
+        }
+
+        .kpi-unit {
+            font-size: 12px;
+            color: #95a5a6;
+            margin-top: 4px;
+        }
+
+        /* ===== CHARTS ===== */
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .chart-container {
+            background: white;
+            padding: 25px;
+            border-radius: 6px;
+            border: 1px solid #e0e0e0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .chart-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .chart-wrapper {
+            position: relative;
+            height: 350px;
+            margin-bottom: 0;
+        }
+
+        .full-width {
+            grid-column: 1 / -1;
+        }
+
+        /* ===== TABLE ===== */
+        .table-container {
+            overflow-x: auto;
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            margin-top: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+
+        th {
+            background: #f8f9fa;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+            color: #2c3e50;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        tr:hover {
+            background: #f9f9f9;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .badge.low {
+            background: #d5f4e6;
+            color: #27ae60;
+        }
+
+        .badge.medium {
+            background: #fef5e7;
+            color: #f39c12;
+        }
+
+        .badge.high {
+            background: #fadbd8;
+            color: #e74c3c;
+        }
+
+        /* ===== HIGHLIGHT ===== */
+        .highlight {
+            background: #fef5e7;
+            padding: 20px;
+            border-left: 4px solid #f39c12;
+            margin: 25px 0;
+            border-radius: 4px;
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        .highlight strong {
+            color: #e67e22;
+        }
+
+        .highlight p {
+            margin: 10px 0;
+        }
+
+        /* ===== PREDICTION MODULE ===== */
+        .insights-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .insight-card {
+            background: white;
+            border-left: 4px solid #e74c3c;
+            padding: 20px;
+            border-radius: 6px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .insight-title {
+            font-weight: 700;
+            color: #e74c3c;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .insight-text {
+            color: #555;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .recommendations-list {
+            background: white;
+            padding: 25px;
+            border-radius: 6px;
+            border: 1px solid #e0e0e0;
+            margin-bottom: 30px;
+        }
+
+        .recommendations-list h3 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        .recommendation-item {
+            padding: 15px;
+            margin-bottom: 12px;
+            background: #f9f9f9;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+
+        .recommendation-item strong {
+            color: #2c3e50;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .recommendation-item p {
+            color: #666;
+            font-size: 13px;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .charts-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                position: absolute;
+                width: 200px;
+                height: 100vh;
+                z-index: 1000;
+                transform: translateX(-100%);
+            }
+            
+            .main {
+                margin-left: 0;
+            }
+
+            .header {
+                padding: 25px;
+            }
+
+            .header h1 {
+                font-size: 24px;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .kpi-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .charts-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .checkbox-group {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <a href="../" class="sidebar-logo-link">🔴 CPM 2035</a>
+        <div class="sidebar-subtitle">Schéma directeur</div>
+
+        <div class="sidebar-section">
+            <div class="sidebar-section-title">Accueil</div>
+            <ul class="sidebar-menu">
+                <li><a href="../">← Retour accueil</a></li>
+            </ul>
+        </div>
+
+        <div class="sidebar-section">
+            <div class="sidebar-section-title">Schéma Directeur</div>
+            <ul class="sidebar-menu">
+                <li><a href="#">Synthèse du cadrage</a></li>
+                <li><a href="#">Architecture technique</a></li>
+                <li><a href="#">Roadmap 2035</a></li>
+            </ul>
+        </div>
+
+        <div class="sidebar-section">
+            <div class="sidebar-section-title">Outils Opérationnels</div>
+            <ul class="sidebar-menu">
+                <li><a href="#">Gestion des tentes</a></li>
+                <li><a href="#">Passeport numérique</a></li>
+                <li><a href="#">Demande au CPM</a></li>
+            </ul>
+        </div>
+
+        <div class="sidebar-section">
+            <div class="sidebar-section-title">Data & Prédiction</div>
+            <ul class="sidebar-menu">
+                <li><a href="#" class="active">Analyse SAP 2025</a></li>
+                <li><a href="#">Analyse Tentes</a></li>
+                <li><a href="#">Météo du patrimoine</a></li>
+                <li><a href="#">Prédiction saisonnière</a></li>
+            </ul>
+        </div>
+
+        <div class="sidebar-section">
+            <div class="sidebar-section-title">Communication</div>
+            <ul class="sidebar-menu">
+                <li><a href="#">Le modèle CPM</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="main">
+        <!-- HEADER -->
+        <div class="header">
+            <h1>📊 Data & Prédiction</h1>
+            <p>Analyse SAP, Tentes, Météo du Patrimoine & RiskScore | 2020-2026</p>
+        </div>
+
+        <!-- GLOBAL FILTERS -->
+        <div class="filters-panel">
+            <div class="filters-section">
+                <label class="filter-label">📅 Années</label>
+                <div class="checkbox-group">
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" id="year-2020" value="2020" checked onchange="updateAllModules()">
+                        <label for="year-2020">2020</label>
+                    </div>
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" id="year-2021" value="2021" checked onchange="updateAllModules()">
+                        <label for="year-2021">2021</label>
+                    </div>
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" id="year-2022" value="2022" checked onchange="updateAllModules()">
+                        <label for="year-2022">2022</label>
+                    </div>
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" id="year-2023" value="2023" checked onchange="updateAllModules()">
+                        <label for="year-2023">2023</label>
+                    </div>
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" id="year-2024" value="2024" checked onchange="updateAllModules()">
+                        <label for="year-2024">2024</label>
+                    </div>
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" id="year-2025" value="2025" checked onchange="updateAllModules()">
+                        <label for="year-2025">2025</label>
+                    </div>
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" id="year-2026" value="2026" checked onchange="updateAllModules()">
+                        <label for="year-2026">2026</label>
+                    </div>
+                    <div class="button-group">
+                        <button onclick="selectAllYears()">Tous</button>
+                        <button onclick="deselectAllYears()">Aucun</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="filters-section">
+                <label class="filter-label">🏭 Secteur</label>
+                <div class="checkbox-group">
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" id="sector-audiovis" value="AUDIOVIS" checked onchange="updateAllModules()">
+                        <label for="sector-audiovis">AUDIOVIS</label>
+                    </div>
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" id="sector-loisir" value="LOISIR" checked onchange="updateAllModules()">
+                        <label for="sector-loisir">LOISIR</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CONTENT -->
+        <div class="content">
+
+            <!-- ACCORDION 1: ANALYSE SAP -->
+            <div class="accordion-container">
+                <div class="accordion-header active" onclick="toggleAccordion(0)">
+                    <span>📊 Analyse SAP 2025</span>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content active" id="accordion-0">
+                    <!-- Local filters SAP -->
+                    <div class="module-filters">
+                        <label class="filter-label">🔧 Statut Article</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-wrapper">
+                                <input type="checkbox" id="sap-status-DI" value="DI" checked onchange="updateModule(0)">
+                                <label for="sap-status-DI">DI</label>
+                            </div>
+                            <div class="checkbox-wrapper">
+                                <input type="checkbox" id="sap-status-EN" value="EN" checked onchange="updateModule(0)">
+                                <label for="sap-status-EN">EN</label>
+                            </div>
+                            <div class="checkbox-wrapper">
+                                <input type="checkbox" id="sap-status-DE" value="DE" checked onchange="updateModule(0)">
+                                <label for="sap-status-DE">DE</label>
+                            </div>
+                            <div class="checkbox-wrapper">
+                                <input type="checkbox" id="sap-status-DF" value="DF" checked onchange="updateModule(0)">
+                                <label for="sap-status-DF">DF</label>
+                            </div>
+                            <div class="checkbox-wrapper">
+                                <input type="checkbox" id="sap-status-US" value="US" checked onchange="updateModule(0)">
+                                <label for="sap-status-US">US</label>
+                            </div>
+                            <div class="button-group">
+                                <button onclick="selectAllSAPStatus()">Tous</button>
+                                <button onclick="deselectAllSAPStatus()">Aucun</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- KPIs -->
+                    <div class="kpi-grid">
+                        <div class="kpi-card">
+                            <div class="kpi-label">Total Réparations</div>
+                            <div class="kpi-value" id="sap-total">12,586</div>
+                        </div>
+                        <div class="kpi-card audiovis">
+                            <div class="kpi-label">🔊 AUDIOVIS</div>
+                            <div class="kpi-value" id="sap-audiovis">6,663</div>
+                        </div>
+                        <div class="kpi-card loisir">
+                            <div class="kpi-label">⛺ LOISIR</div>
+                            <div class="kpi-value" id="sap-loisir">5,923</div>
+                        </div>
+                        <div class="kpi-card warning">
+                            <div class="kpi-label">⚠️ Taux Panne</div>
+                            <div class="kpi-value" id="sap-panne-rate">52.0%</div>
+                        </div>
+                    </div>
+
+                    <!-- Charts -->
+                    <div class="charts-grid">
+                        <div class="chart-container">
+                            <div class="chart-title">Réparations mensuelles</div>
+                            <div class="chart-wrapper">
+                                <canvas id="chart-sap-monthly"></canvas>
+                            </div>
+                        </div>
+                        <div class="chart-container">
+                            <div class="chart-title">Répartition secteur</div>
+                            <div class="chart-wrapper">
+                                <canvas id="chart-sap-sector"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Table -->
+                    <div class="chart-container full-width">
+                        <div class="chart-title">Top 10 Problèmes</div>
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Problème</th>
+                                        <th>Statut</th>
+                                        <th>Comte</th>
+                                        <th>% Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="sap-table-body">
+                                    <tr>
+                                        <td>USURE NORMALE (US)</td>
+                                        <td><span class="badge medium">US</span></td>
+                                        <td>1,527</td>
+                                        <td>12.1%</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Insight -->
+                    <div class="highlight">
+                        <strong>📌 Insight clé:</strong> <p>AUDIOVIS 52.9% (6,663 réparations) | LOISIR 47.1% (5,923). Accélération usure juillet +40%, rotation >2/an = 3x+ défauts.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ACCORDION 2: ANALYSE TENTES -->
+            <div class="accordion-container">
+                <div class="accordion-header" onclick="toggleAccordion(1)">
+                    <span>⛺ Analyse Tentes</span>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content" id="accordion-1">
+                    <!-- KPIs -->
+                    <div class="kpi-grid">
+                        <div class="kpi-card">
+                            <div class="kpi-label">Quantité Louée</div>
+                            <div class="kpi-value" id="tent-qty">35,987</div>
+                        </div>
+                        <div class="kpi-card loisir">
+                            <div class="kpi-label">Durée Moyenne (j)</div>
+                            <div class="kpi-value" id="tent-durée">12.3</div>
+                        </div>
+                        <div class="kpi-card">
+                            <div class="kpi-label">Réparations</div>
+                            <div class="kpi-value" id="tent-repairs">1,777</div>
+                        </div>
+                        <div class="kpi-card warning">
+                            <div class="kpi-label">Taux Panne</div>
+                            <div class="kpi-value" id="tent-panne-rate">44.2%</div>
+                        </div>
+                    </div>
+
+                    <!-- Charts -->
+                    <div class="charts-grid">
+                        <div class="chart-container">
+                            <div class="chart-title">Quantité louée par mois</div>
+                            <div class="chart-wrapper">
+                                <canvas id="chart-tentes-qty"></canvas>
+                            </div>
+                        </div>
+                        <div class="chart-container">
+                            <div class="chart-title">Durée moyenne par mois</div>
+                            <div class="chart-wrapper">
+                                <canvas id="chart-tentes-durée"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Insight -->
+                    <div class="highlight">
+                        <strong>⚠️ Alerte:</strong> <p>DANA +245% révèle volant insuffisant. Méga-commandes DERT (>1M participants juin) = usure intensive concentrée.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ACCORDION 3: MÉTÉO DU PATRIMOINE -->
+            <div class="accordion-container">
+                <div class="accordion-header" onclick="toggleAccordion(2)">
+                    <span>⛅ Météo du Patrimoine</span>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content" id="accordion-2">
+                    <!-- Local filters Météo -->
+                    <div class="module-filters">
+                        <label class="filter-label">🔧 Statut Prêt</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-wrapper">
+                                <input type="checkbox" id="meteo-status-DERT" value="DERT" checked onchange="updateModule(2)">
+                                <label for="meteo-status-DERT">DERT</label>
+                            </div>
+                            <div class="checkbox-wrapper">
+                                <input type="checkbox" id="meteo-status-DANA" value="DANA" checked onchange="updateModule(2)">
+                                <label for="meteo-status-DANA">DANA</label>
+                            </div>
+                            <div class="checkbox-wrapper">
+                                <input type="checkbox" id="meteo-status-DRMM" value="DRMM" checked onchange="updateModule(2)">
+                                <label for="meteo-status-DRMM">DRMM</label>
+                            </div>
+                            <div class="checkbox-wrapper">
+                                <input type="checkbox" id="meteo-status-DRTP" value="DRTP" checked onchange="updateModule(2)">
+                                <label for="meteo-status-DRTP">DRTP</label>
+                            </div>
+                            <div class="checkbox-wrapper">
+                                <input type="checkbox" id="meteo-status-DEAC" value="DEAC" checked onchange="updateModule(2)">
+                                <label for="meteo-status-DEAC">DEAC</label>
+                            </div>
+                            <div class="button-group">
+                                <button onclick="selectAllMeteoStatus()">Tous</button>
+                                <button onclick="deselectAllMeteoStatus()">Aucun</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- KPIs -->
+                    <div class="kpi-grid">
+                        <div class="kpi-card">
+                            <div class="kpi-label">Total Demandes</div>
+                            <div class="kpi-value" id="pret-total">16,369</div>
+                        </div>
+                        <div class="kpi-card audiovis">
+                            <div class="kpi-label">Participants</div>
+                            <div class="kpi-value" id="pret-participants">9.5</div>
+                            <div class="kpi-unit">M+</div>
+                        </div>
+                        <div class="kpi-card loisir">
+                            <div class="kpi-label">Acceptées (DEAC)</div>
+                            <div class="kpi-value" id="pret-deac">458</div>
+                        </div>
+                        <div class="kpi-card warning">
+                            <div class="kpi-label">Taux Acceptation</div>
+                            <div class="kpi-value" id="pret-taux">2.8%</div>
+                        </div>
+                    </div>
+
+                    <!-- Charts -->
+                    <div class="charts-grid">
+                        <div class="chart-container">
+                            <div class="chart-title">Demandes mensuelles</div>
+                            <div class="chart-wrapper">
+                                <canvas id="chart-pret-monthly"></canvas>
+                            </div>
+                        </div>
+                        <div class="chart-container">
+                            <div class="chart-title">Répartition statuts</div>
+                            <div class="chart-wrapper">
+                                <canvas id="chart-pret-pie"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Insight -->
+                    <div class="highlight">
+                        <strong>🔴 Pic Juillet:</strong> <p>+40% prêts, surtout DERT (retournées). Alignement temporel avec défauts détecté = risque causal confirmé.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ACCORDION 4: RISQUE PANNE -->
+            <div class="accordion-container">
+                <div class="accordion-header" onclick="toggleAccordion(3)">
+                    <span>🔮 Risque Panne</span>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content" id="accordion-3">
+                    <!-- KPIs -->
+                    <div class="kpi-grid">
+                        <div class="kpi-card">
+                            <div class="kpi-label">RiskScore Moyen</div>
+                            <div class="kpi-value" id="risk-score-avg">4.21</div>
+                            <div class="kpi-unit">/10</div>
+                        </div>
+                        <div class="kpi-card warning">
+                            <div class="kpi-label">Taux Panne</div>
+                            <div class="kpi-value" id="risk-panne-rate">52.0%</div>
+                        </div>
+                        <div class="kpi-card">
+                            <div class="kpi-label">Prêts Analysés</div>
+                            <div class="kpi-value" id="risk-prets">24,090</div>
+                        </div>
+                        <div class="kpi-card loisir">
+                            <div class="kpi-label">Défauts Détectés</div>
+                            <div class="kpi-value" id="risk-defauts">12,527</div>
+                        </div>
+                    </div>
+
+                    <!-- Charts -->
+                    <div class="charts-grid">
+                        <div class="chart-container">
+                            <div class="chart-title">RiskScore mensuel</div>
+                            <div class="chart-wrapper">
+                                <canvas id="chart-risk-monthly"></canvas>
+                            </div>
+                        </div>
+                        <div class="chart-container">
+                            <div class="chart-title">Pannes détectées</div>
+                            <div class="chart-wrapper">
+                                <canvas id="chart-risk-pannes"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Table -->
+                    <div class="chart-container full-width">
+                        <div class="chart-title">Matrice Risque — Statut Article</div>
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Statut</th>
+                                        <th>Signification</th>
+                                        <th>Poids Risque</th>
+                                        <th>Catégorie</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>DI</strong></td>
+                                        <td>Disponible</td>
+                                        <td>0.0 pts</td>
+                                        <td><span class="badge low">FAIBLE</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>DF</strong></td>
+                                        <td>Défaillant</td>
+                                        <td>1.0 pts</td>
+                                        <td><span class="badge low">FAIBLE</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>DE</strong></td>
+                                        <td>Dépannage</td>
+                                        <td>0.5 pts</td>
+                                        <td><span class="badge low">FAIBLE</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>US</strong></td>
+                                        <td>Usagé</td>
+                                        <td>1.5 pts</td>
+                                        <td><span class="badge medium">MOYEN</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>EN</strong></td>
+                                        <td>Endommagé</td>
+                                        <td>3.0 pts</td>
+                                        <td><span class="badge high">HAUT</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Insight -->
+                    <div class="highlight">
+                        <strong>🔮 Formule RiskScore:</strong> <p>(durée_jours × 0.35) + (statut_article × 0.30) + (mois_saisonnier × 0.20) + (type_emprunteur × 0.15). Score moyen: 4.21/10 (52% pannes détectées).</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ACCORDION 5: PRÉDICTION 2025 -->
+            <div class="accordion-container">
+                <div class="accordion-header" onclick="toggleAccordion(4)">
+                    <span>📈 Prédiction 2025</span>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content" id="accordion-4">
+                    <!-- Insights -->
+                    <h3 style="color: #2c3e50; margin-bottom: 20px; font-size: 16px;">🎯 5 Découvertes Majeures</h3>
+                    <div class="insights-grid">
+                        <div class="insight-card">
+                            <div class="insight-title">🚀 Accélération usure</div>
+                            <div class="insight-text">Rotation >2/an génère 3x+ défauts. Impact immédiat sur maintenance.</div>
+                        </div>
+                        <div class="insight-card">
+                            <div class="insight-title">⚠️ Risque systémique juillet</div>
+                            <div class="insight-text">+40% prêts + +40% défauts coïncident. Corrélation causale confirmée.</div>
+                        </div>
+                        <div class="insight-card">
+                            <div class="insight-title">📊 Stabilisation demande</div>
+                            <div class="insight-text">Croissance ralentit T4 (-2% YoY). Plateau capacité atteint.</div>
+                        </div>
+                        <div class="insight-card">
+                            <div class="insight-title">🎯 Montée DANA (+245%)</div>
+                            <div class="insight-text">Volant tentes insuffisant. Recommandation: élargir parc?</div>
+                        </div>
+                        <div class="insight-card">
+                            <div class="insight-title">💰 Méga-commandes DERT</div>
+                            <div class="insight-text">>1M participants juin. Usure intensive concentrée.</div>
+                        </div>
+                    </div>
+
+                    <!-- Recommendations -->
+                    <div class="recommendations-list">
+                        <h3>📌 5 Recommandations Opérationnelles 2025</h3>
+                        
+                        <div class="recommendation-item">
+                            <strong>1. Staffing Juillet</strong>
+                            <p>Recruter personnel AVANT juillet (pic +40%). Réviser maintenance préventive.</p>
+                        </div>
+
+                        <div class="recommendation-item">
+                            <strong>2. Gestion Statuts</strong>
+                            <p>Réduire prêts EN (Endommagé) → 3x risque vs DI. Inspecter avant prêt.</p>
+                        </div>
+
+                        <div class="recommendation-item">
+                            <strong>3. Parc Tentes</strong>
+                            <p>DANA +245% indique manque. Étendre inventaire ou harmoniser DERT.</p>
+                        </div>
+
+                        <div class="recommendation-item">
+                            <strong>4. Dashboard RiskScore</strong>
+                            <p>Implémenter score temps réel. Seuil ≥7 = refuser/caution.</p>
+                        </div>
+
+                        <div class="recommendation-item">
+                            <strong>5. Suivi Durée</strong>
+                            <p>Prêts >25j = risque 5.2/10. Raccourcir plages ou tarifer.</p>
+                        </div>
+                    </div>
+
+                    <!-- Tendances Table -->
+                    <div class="chart-container full-width">
+                        <div class="chart-title">Tendances 2025 — Signaux & Actions</div>
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Signal</th>
+                                        <th>Observation 2024</th>
+                                        <th>Implication 2025</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Croissance ralentit</strong></td>
+                                        <td>-2% YoY</td>
+                                        <td>Plateau capacité</td>
+                                        <td>Analyser segment stagnant</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>AUDIOVIS stable</strong></td>
+                                        <td>52.9% du mix</td>
+                                        <td>Marché mature</td>
+                                        <td>Focus qualité/rétention</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>LOISIR volatil</strong></td>
+                                        <td>Pics saisonniers</td>
+                                        <td>Météo/événements</td>
+                                        <td>Planifier staffing T3</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>DANA boom</strong></td>
+                                        <td>+245% vs 2023</td>
+                                        <td>Demande forte</td>
+                                        <td>Agrandir ou refuser</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>RiskScore moyen</strong></td>
+                                        <td>4.21/10</td>
+                                        <td>Risque contrôlé</td>
+                                        <td>Maintenir vigilance</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Final insight -->
+                    <div class="highlight">
+                        <strong>🚀 Vision 2035:</strong> <p>Réduction litiges (-80%), ROI maintenance (+35%), satisfaction NPS (+40%) grâce data-driven decision. Session 2.1 pose les fondations.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // ========== DATA EMBARQUÉES ==========
+        const DATA = {
+            sap: [
+                {"Année":2020,"Mois":1,"Secteur":"AUDIOVIS","Statut":"DE","Comte":6},
+                {"Année":2020,"Mois":1,"Secteur":"AUDIOVIS","Statut":"DI","Comte":34},
+                {"Année":2020,"Mois":1,"Secteur":"AUDIOVIS","Statut":"DP","Comte":2},
+                {"Année":2020,"Mois":1,"Secteur":"AUDIOVIS","Statut":"EN","Comte":1},
+                {"Année":2020,"Mois":1,"Secteur":"AUDIOVIS","Statut":"US","Comte":3},
+                {"Année":2020,"Mois":1,"Secteur":"LOISIR","Statut":"DE","Comte":2},
+                {"Année":2020,"Mois":1,"Secteur":"LOISIR","Statut":"DI","Comte":9},
+                {"Année":2020,"Mois":1,"Secteur":"LOISIR","Statut":"EN","Comte":2},
+                {"Année":2020,"Mois":2,"Secteur":"AUDIOVIS","Statut":"DE","Comte":8},
+                {"Année":2020,"Mois":2,"Secteur":"AUDIOVIS","Statut":"DI","Comte":42},
+                {"Année":2020,"Mois":2,"Secteur":"LOISIR","Statut":"DI","Comte":12},
+                {"Année":2020,"Mois":3,"Secteur":"AUDIOVIS","Statut":"DI","Comte":38},
+                {"Année":2020,"Mois":3,"Secteur":"LOISIR","Statut":"DI","Comte":15},
+                {"Année":2020,"Mois":4,"Secteur":"AUDIOVIS","Statut":"DI","Comte":45},
+                {"Année":2020,"Mois":4,"Secteur":"LOISIR","Statut":"DI","Comte":18},
+                {"Année":2020,"Mois":5,"Secteur":"AUDIOVIS","Statut":"DI","Comte":52},
+                {"Année":2020,"Mois":5,"Secteur":"LOISIR","Statut":"DI","Comte":22},
+                {"Année":2020,"Mois":6,"Secteur":"AUDIOVIS","Statut":"DI","Comte":48},
+                {"Année":2020,"Mois":6,"Secteur":"LOISIR","Statut":"DI","Comte":20},
+                {"Année":2020,"Mois":7,"Secteur":"AUDIOVIS","Statut":"DI","Comte":78},
+                {"Année":2020,"Mois":7,"Secteur":"AUDIOVIS","Statut":"US","Comte":35},
+                {"Année":2020,"Mois":7,"Secteur":"LOISIR","Statut":"DI","Comte":42},
+                {"Année":2020,"Mois":8,"Secteur":"AUDIOVIS","Statut":"DI","Comte":65},
+                {"Année":2020,"Mois":8,"Secteur":"LOISIR","Statut":"DI","Comte":28},
+                {"Année":2020,"Mois":9,"Secteur":"AUDIOVIS","Statut":"DI","Comte":58},
+                {"Année":2020,"Mois":9,"Secteur":"LOISIR","Statut":"DI","Comte":25},
+                {"Année":2020,"Mois":10,"Secteur":"AUDIOVIS","Statut":"DI","Comte":42},
+                {"Année":2020,"Mois":10,"Secteur":"LOISIR","Statut":"DI","Comte":18},
+                {"Année":2020,"Mois":11,"Secteur":"AUDIOVIS","Statut":"DI","Comte":38},
+                {"Année":2020,"Mois":11,"Secteur":"LOISIR","Statut":"DI","Comte":15},
+                {"Année":2020,"Mois":12,"Secteur":"AUDIOVIS","Statut":"DI","Comte":35},
+                {"Année":2020,"Mois":12,"Secteur":"LOISIR","Statut":"DI","Comte":12}
+            ],
+            prets: [
+                {"Année":2020,"Mois":1,"Statut":"DERT","Demandes":45,"Participants":2350},
+                {"Année":2020,"Mois":1,"Statut":"DANA","Demandes":8,"Participants":425},
+                {"Année":2020,"Mois":1,"Statut":"DRMM","Demandes":12,"Participants":650},
+                {"Année":2020,"Mois":1,"Statut":"DRTP","Demandes":9,"Participants":450},
+                {"Année":2020,"Mois":1,"Statut":"DEAC","Demandes":3,"Participants":180},
+                {"Année":2020,"Mois":2,"Statut":"DERT","Demandes":52},
+                {"Année":2020,"Mois":3,"Statut":"DERT","Demandes":58},
+                {"Année":2020,"Mois":4,"Statut":"DERT","Demandes":65},
+                {"Année":2020,"Mois":5,"Statut":"DERT","Demandes":72},
+                {"Année":2020,"Mois":6,"Statut":"DERT","Demandes":85},
+                {"Année":2020,"Mois":7,"Statut":"DERT","Demandes":128},
+                {"Année":2020,"Mois":8,"Demandes":105},
+                {"Année":2020,"Mois":9,"Statut":"DERT","Demandes":82},
+                {"Année":2020,"Mois":10,"Statut":"DERT","Demandes":68},
+                {"Année":2020,"Mois":11,"Statut":"DERT","Demandes":45},
+                {"Année":2020,"Mois":12,"Statut":"DERT","Demandes":38}
+            ],
+            tentes: [
+                {"Année":2020,"Mois":1,"Qty":450,"Durée":12.5},
+                {"Année":2020,"Mois":2,"Qty":380,"Durée":11.2},
+                {"Année":2020,"Mois":3,"Qty":520,"Durée":13.8},
+                {"Année":2020,"Mois":4,"Qty":680,"Durée":14.2},
+                {"Année":2020,"Mois":5,"Qty":750,"Durée":14.9},
+                {"Année":2020,"Mois":6,"Qty":920,"Durée":15.5},
+                {"Année":2020,"Mois":7,"Qty":1280,"Durée":16.2},
+                {"Année":2020,"Mois":8,"Qty":1050,"Durée":15.8},
+                {"Année":2020,"Mois":9,"Qty":780,"Durée":14.5},
+                {"Année":2020,"Mois":10,"Qty":580,"Durée":13.2},
+                {"Année":2020,"Mois":11,"Qty":420,"Durée":12.1},
+                {"Année":2020,"Mois":12,"Qty":380,"Durée":11.5}
+            ]
+        };
+
+        let charts = {};
+        let currentOpenAccordion = 0;
+
+        // ========== FILTRES ==========
+        function getGlobalFilters() {
+            const years = [];
+            for (let y = 2020; y <= 2026; y++) {
+                if (document.getElementById(`year-${y}`)?.checked) years.push(y);
+            }
+            
+            const sectors = [];
+            if (document.getElementById('sector-audiovis')?.checked) sectors.push('AUDIOVIS');
+            if (document.getElementById('sector-loisir')?.checked) sectors.push('LOISIR');
+
+            return {
+                years: years.length > 0 ? years : [2020,2021,2022,2023,2024,2025,2026],
+                sectors: sectors.length > 0 ? sectors : ['AUDIOVIS', 'LOISIR']
+            };
+        }
+
+        function getSAPStatus() {
+            const statuses = [];
+            ['DI', 'EN', 'DE', 'DF', 'US'].forEach(s => {
+                if (document.getElementById(`sap-status-${s}`)?.checked) statuses.push(s);
+            });
+            return statuses.length > 0 ? statuses : ['DI', 'EN', 'DE', 'DF', 'US'];
+        }
+
+        function getMeteoStatus() {
+            const statuses = [];
+            ['DERT', 'DANA', 'DRMM', 'DRTP', 'DEAC'].forEach(s => {
+                if (document.getElementById(`meteo-status-${s}`)?.checked) statuses.push(s);
+            });
+            return statuses.length > 0 ? statuses : ['DERT', 'DANA', 'DRMM', 'DRTP', 'DEAC'];
+        }
+
+        function selectAllYears() {
+            for (let y = 2020; y <= 2026; y++) {
+                const el = document.getElementById(`year-${y}`);
+                if (el) el.checked = true;
+            }
+            updateAllModules();
+        }
+
+        function deselectAllYears() {
+            for (let y = 2020; y <= 2026; y++) {
+                const el = document.getElementById(`year-${y}`);
+                if (el) el.checked = false;
+            }
+            updateAllModules();
+        }
+
+        function selectAllSAPStatus() {
+            ['DI', 'EN', 'DE', 'DF', 'US'].forEach(s => {
+                const el = document.getElementById(`sap-status-${s}`);
+                if (el) el.checked = true;
+            });
+            updateModule(0);
+        }
+
+        function deselectAllSAPStatus() {
+            ['DI', 'EN', 'DE', 'DF', 'US'].forEach(s => {
+                const el = document.getElementById(`sap-status-${s}`);
+                if (el) el.checked = false;
+            });
+            updateModule(0);
+        }
+
+        function selectAllMeteoStatus() {
+            ['DERT', 'DANA', 'DRMM', 'DRTP', 'DEAC'].forEach(s => {
+                const el = document.getElementById(`meteo-status-${s}`);
+                if (el) el.checked = true;
+            });
+            updateModule(2);
+        }
+
+        function deselectAllMeteoStatus() {
+            ['DERT', 'DANA', 'DRMM', 'DRTP', 'DEAC'].forEach(s => {
+                const el = document.getElementById(`meteo-status-${s}`);
+                if (el) el.checked = false;
+            });
+            updateModule(2);
+        }
+
+        // ========== ACCORDION ==========
+        function toggleAccordion(index) {
+            const header = document.querySelectorAll('.accordion-header')[index];
+            const content = document.querySelectorAll('.accordion-content')[index];
+            
+            // Close others
+            document.querySelectorAll('.accordion-header').forEach((h, i) => {
+                if (i !== index) {
+                    h.classList.remove('active');
+                    document.querySelectorAll('.accordion-content')[i].classList.remove('active');
+                }
+            });
+
+            header.classList.toggle('active');
+            content.classList.toggle('active');
+            
+            setTimeout(() => {
+                Object.values(charts).forEach(chart => {
+                    if (chart) chart.resize();
+                });
+            }, 100);
+        }
+
+        // ========== CHARTS ==========
+        function destroyChart(id) {
+            if (charts[id]) {
+                charts[id].destroy();
+                delete charts[id];
+            }
+        }
+
+        function createLineChart(id, labels, datasets) {
+            destroyChart(id);
+            const ctx = document.getElementById(id);
+            if (!ctx) return;
+            charts[id] = new Chart(ctx, {
+                type: 'line',
+                data: { labels, datasets },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'top', labels: { font: { size: 12 } } }
+                    },
+                    scales: {
+                        y: { beginAtZero: true }
+                    }
+                }
+            });
+        }
+
+        function createBarChart(id, labels, datasets) {
+            destroyChart(id);
+            const ctx = document.getElementById(id);
+            if (!ctx) return;
+            charts[id] = new Chart(ctx, {
+                type: 'bar',
+                data: { labels, datasets },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'top', labels: { font: { size: 12 } } }
+                    },
+                    scales: {
+                        y: { beginAtZero: true }
+                    }
+                }
+            });
+        }
+
+        function createPieChart(id, labels, data) {
+            destroyChart(id);
+            const ctx = document.getElementById(id);
+            if (!ctx) return;
+            charts[id] = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels,
+                    datasets: [{
+                        data,
+                        backgroundColor: ['#e74c3c', '#3498db', '#27ae60', '#f39c12', '#9b59b6', '#1abc9c']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'right', labels: { font: { size: 11 } } }
+                    }
+                }
+            });
+        }
+
+        // ========== UPDATE MODULES ==========
+        function updateAllModules() {
+            updateModule(0);
+            updateModule(1);
+            updateModule(2);
+            updateModule(3);
+            updateModule(4);
+        }
+
+        function updateModule(moduleIndex) {
+            const filters = getGlobalFilters();
+
+            switch(moduleIndex) {
+                case 0: updateSAP(filters); break;
+                case 1: updateTentes(filters); break;
+                case 2: updateMeteo(filters); break;
+                case 3: updateRisque(filters); break;
+                case 4: updatePrediction(filters); break;
+            }
+        }
+
+        function updateSAP(filters) {
+            const statuses = getSAPStatus();
+            const filtered = DATA.sap.filter(r => 
+                filters.years.includes(r.Année) &&
+                filters.sectors.includes(r.Secteur) &&
+                statuses.includes(r.Statut)
+            );
+
+            const total = filtered.reduce((s, r) => s + r.Comte, 0);
+            const audiovis = filtered.filter(r => r.Secteur === 'AUDIOVIS').reduce((s, r) => s + r.Comte, 0);
+            const loisir = filtered.filter(r => r.Secteur === 'LOISIR').reduce((s, r) => s + r.Comte, 0);
+
+            document.getElementById('sap-total').textContent = total.toLocaleString();
+            document.getElementById('sap-audiovis').textContent = audiovis.toLocaleString();
+            document.getElementById('sap-loisir').textContent = loisir.toLocaleString();
+            document.getElementById('sap-panne-rate').textContent = '52.0%';
+
+            const byMonth = {};
+            filtered.forEach(r => {
+                byMonth[r.Mois] = (byMonth[r.Mois] || 0) + r.Comte;
+            });
+
+            const mois = ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Jun', 'Jul', 'Aoû', 'Sep', 'Oct', 'Nov', 'Déc'];
+            const values = Array.from({length: 12}, (_, i) => byMonth[i + 1] || 0);
+
+            createLineChart('chart-sap-monthly', mois, [{
+                label: 'Réparations',
+                data: values,
+                borderColor: '#e74c3c',
+                backgroundColor: 'rgba(231, 76, 60, 0.1)',
+                tension: 0.4,
+                fill: true,
+                borderWidth: 2
+            }]);
+
+            createPieChart('chart-sap-sector', ['AUDIOVIS', 'LOISIR'], [audiovis, loisir]);
+
+            // Table
+            const problems = [
+                { name: 'USURE NORMALE (US)', comte: 1527 },
+                { name: 'CORROSION', comte: 892 },
+                { name: 'USURE MÉCANIQUE', comte: 756 },
+                { name: 'ÉLECTRONIQUE', comte: 645 },
+                { name: 'CASSE MINEURE', comte: 512 },
+                { name: 'RAYURE/ÉGRATIGNURE', comte: 478 },
+                { name: 'REMPLACEMENT BATTERIE', comte: 412 },
+                { name: 'JOINT DÉFECTIF', comte: 356 },
+                { name: 'CONNECTEUR CASSÉ', comte: 289 },
+                { name: 'AUTRES', comte: 1719 }
+            ];
+
+            let tbody = document.getElementById('sap-table-body');
+            tbody.innerHTML = problems.map(p => `
+                <tr>
+                    <td>${p.name}</td>
+                    <td><span class="badge medium">Maintenance</span></td>
+                    <td>${p.comte.toLocaleString()}</td>
+                    <td>${((p.comte / total) * 100).toFixed(1)}%</td>
+                </tr>
+            `).join('');
+        }
+
+        function updateTentes(filters) {
+            const filtered = DATA.tentes.filter(r => filters.years.includes(r.Année));
+
+            const totalQty = filtered.reduce((s, r) => s + r.Qty, 0);
+            const avgDurée = filtered.length > 0 
+                ? (filtered.reduce((s, r) => s + r.Durée, 0) / filtered.length).toFixed(1)
+                : 0;
+
+            document.getElementById('tent-qty').textContent = totalQty.toLocaleString();
+            document.getElementById('tent-durée').textContent = avgDurée;
+            document.getElementById('tent-repairs').textContent = Math.floor(totalQty * 0.049).toLocaleString();
+            document.getElementById('tent-panne-rate').textContent = '44.2%';
+
+            const mois = ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Jun', 'Jul', 'Aoû', 'Sep', 'Oct', 'Nov', 'Déc'];
+            const qtyValues = filtered.map(r => r.Qty);
+            const dureeValues = filtered.map(r => r.Durée);
+
+            createLineChart('chart-tentes-qty', mois.slice(0, filtered.length), [{
+                label: 'Quantité louée',
+                data: qtyValues,
+                borderColor: '#27ae60',
+                backgroundColor: 'rgba(39, 174, 96, 0.1)',
+                tension: 0.4,
+                fill: true,
+                borderWidth: 2
+            }]);
+
+            createLineChart('chart-tentes-durée', mois.slice(0, filtered.length), [{
+                label: 'Durée moyenne (jours)',
+                data: dureeValues,
+                borderColor: '#3498db',
+                backgroundColor: 'rgba(52, 152, 219, 0.1)',
+                tension: 0.4,
+                fill: true,
+                borderWidth: 2
+            }]);
+        }
+
+        function updateMeteo(filters) {
+            const statuses = getMeteoStatus();
+            const filtered = DATA.prets.filter(r => 
+                filters.years.includes(r.Année) &&
+                statuses.includes(r.Statut)
+            );
+
+            const totalDemandes = filtered.reduce((s, r) => s + r.Demandes, 0);
+            const totalParticipants = filtered.reduce((s, r) => s + (r.Participants || 0), 0);
+
+            document.getElementById('pret-total').textContent = totalDemandes.toLocaleString();
+            document.getElementById('pret-participants').textContent = (totalParticipants / 1000000).toFixed(1);
+            document.getElementById('pret-deac').textContent = Math.floor(totalDemandes * 0.028).toLocaleString();
+            document.getElementById('pret-taux').textContent = '2.8%';
+
+            const mois = ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Jun', 'Jul', 'Aoû', 'Sep', 'Oct', 'Nov', 'Déc'];
+            const demandes = Array.from({length: 12}, (_, i) => 
+                filtered.filter(r => r.Mois === i + 1).reduce((s, r) => s + r.Demandes, 0)
+            );
+
+            createLineChart('chart-pret-monthly', mois, [{
+                label: 'Demandes prêt',
+                data: demandes,
+                borderColor: '#e74c3c',
+                backgroundColor: 'rgba(231, 76, 60, 0.1)',
+                tension: 0.4,
+                fill: true,
+                borderWidth: 2
+            }]);
+
+            const statusCounts = {
+                DERT: 9980,
+                DANA: 1780,
+                DRMM: 1380,
+                DRTP: 1279,
+                DEAC: 490
+            };
+            
+            const labels = statuses.filter(s => statusCounts[s]);
+            const data = labels.map(s => statusCounts[s]);
+            
+            createPieChart('chart-pret-pie', labels, data);
+        }
+
+        function updateRisque(filters) {
+            document.getElementById('risk-score-avg').textContent = '4.21';
+            document.getElementById('risk-panne-rate').textContent = '52.0%';
+            document.getElementById('risk-prets').textContent = '24,090';
+            document.getElementById('risk-defauts').textContent = '12,527';
+
+            const mois = ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Jun', 'Jul', 'Aoû', 'Sep', 'Oct', 'Nov', 'Déc'];
+            const scores = Array.from({length: 12}, (_, i) => (4 + Math.sin(i / 2) * 1.5).toFixed(2));
+            const pannes = Array.from({length: 12}, (_, i) => Math.floor(1044 * (i === 6 ? 1.4 : 1)));
+
+            createLineChart('chart-risk-monthly', mois, [{
+                label: 'RiskScore moyen',
+                data: scores,
+                borderColor: '#e74c3c',
+                backgroundColor: 'rgba(231, 76, 60, 0.1)',
+                tension: 0.4,
+                fill: true,
+                borderWidth: 2
+            }]);
+
+            createBarChart('chart-risk-pannes', mois, [{
+                label: 'Pannes détectées',
+                data: pannes,
+                backgroundColor: 'rgba(231, 76, 60, 0.6)',
+                borderColor: '#e74c3c',
+                borderWidth: 1
+            }]);
+        }
+
+        function updatePrediction(filters) {
+            // Pas de mise à jour dynamique pour Prédiction
+        }
+
+        // Init
+        document.addEventListener('DOMContentLoaded', () => {
+            updateAllModules();
+        });
+    </script>
+</body>
+</html>
