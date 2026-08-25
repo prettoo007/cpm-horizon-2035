@@ -14,7 +14,7 @@
     </style>
 </head>
 <body>
-    <!-- HEADER -->
+    <!-- HEADER NAVIGATION -->
     <div style="background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%); color: white; padding: 20px 40px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 2px 8px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100;">
         <div style="font-size: 20px; font-weight: 700;">🏛️ CPM Horizon 2035</div>
         <div style="display: flex; gap: 12px; align-items: center;">
@@ -23,30 +23,12 @@
             <button onclick="window.location.href='../../index.html#outils'" style="padding: 10px 16px; background: rgba(255,255,255,0.15); color: white; border: none; border-radius: 4px; font-size: 13px; font-weight: 600; cursor: pointer; text-transform: uppercase;">🔧 OUTILS</button>
             <button onclick="window.location.href='../../index.html#data'" style="padding: 10px 16px; background: rgba(255,255,255,0.15); color: white; border: none; border-radius: 4px; font-size: 13px; font-weight: 600; cursor: pointer; text-transform: uppercase;">📊 DATA</button>
             <button onclick="window.location.href='../../index.html#communication'" style="padding: 10px 16px; background: rgba(255,255,255,0.15); color: white; border: none; border-radius: 4px; font-size: 13px; font-weight: 600; cursor: pointer; text-transform: uppercase;">💬 COMM</button>
-            <button onclick="sessionStorage.removeItem('cpm_authenticated'); window.location.href='../../login.html';" style="padding: 10px 16px; background: #e74c3c; color: white; border: none; border-radius: 4px; font-size: 13px; font-weight: 600; cursor: pointer; text-transform: uppercase;">🔴 DÉCONNEXION</button>
+            <button onclick="sessionStorage.removeItem('cpm_authenticated'); window.location.href='../../login.html';" style="padding: 10px 16px; background: #e74c3c; color: white; border: none; border-radius: 4px; font-size: 13px; font-weight: 600; cursor: pointer; text-transform: uppercase;">🔴 DÉCO</button>
         </div>
     </div>
     <script>if (!sessionStorage.getItem('cpm_authenticated')) window.location.href = '../../login.html';</script>
 
 
-
-        <div style="display: flex; gap: 12px;">
-            <a href="../../index.html" style="padding: 8px 16px; background: rgba(255,255,255,0.15); color: white; text-decoration: none; border-radius: 4px; font-size: 12px; font-weight: 600; transition: all 0.2s; cursor: pointer; text-transform: uppercase; letter-spacing: 0.5px; border: none;" onmouseover="this.style.background='rgba(255,255,255,0.25)'" onmouseout="this.style.background='rgba(255,255,255,0.15)'">📋 SCHÉMA</a>
-            <a href="../../index.html" style="padding: 8px 16px; background: rgba(255,255,255,0.15); color: white; text-decoration: none; border-radius: 4px; font-size: 12px; font-weight: 600; transition: all 0.2s; cursor: pointer; text-transform: uppercase; letter-spacing: 0.5px; border: none;" onmouseover="this.style.background='rgba(255,255,255,0.25)'" onmouseout="this.style.background='rgba(255,255,255,0.15)'">🔧 OUTILS</a>
-            <a href="../../index.html" style="padding: 8px 16px; background: rgba(255,255,255,0.15); color: white; text-decoration: none; border-radius: 4px; font-size: 12px; font-weight: 600; transition: all 0.2s; cursor: pointer; text-transform: uppercase; letter-spacing: 0.5px; border: none;" onmouseover="this.style.background='rgba(255,255,255,0.25)'" onmouseout="this.style.background='rgba(255,255,255,0.15)'">📊 DATA</a>
-            <a href="../../index.html" style="padding: 8px 16px; background: rgba(255,255,255,0.15); color: white; text-decoration: none; border-radius: 4px; font-size: 12px; font-weight: 600; transition: all 0.2s; cursor: pointer; text-transform: uppercase; letter-spacing: 0.5px; border: none;" onmouseover="this.style.background='rgba(255,255,255,0.25)'" onmouseout="this.style.background='rgba(255,255,255,0.15)'">💬 COMM</a>
-            <button onclick="logout()" style="padding: 8px 16px; background: #e74c3c; color: white; border: none; border-radius: 4px; font-size: 12px; font-weight: 600; cursor: pointer; text-transform: uppercase; letter-spacing: 0.5px; transition: all 0.2s;" onmouseover="this.style.background='#c0392b'" onmouseout="this.style.background='#e74c3c'">🔴 DÉCONNEXION</button>
-        </div>
-    </div>
-    <script>
-        function logout() {
-            sessionStorage.removeItem('cpm_authenticated');
-            window.location.href = '../../login.html';
-        }
-        if (!sessionStorage.getItem('cpm_authenticated')) {
-            window.location.href = '../../login.html';
-        }
-    </script>
     <div id="root"></div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
