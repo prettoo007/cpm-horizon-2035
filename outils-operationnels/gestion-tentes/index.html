@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CPM — Cycle de vie des tentes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Roboto', 'Segoe UI', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+        button { font-family: inherit; }
+    </style>
+</head>
+<body>
+    <div style="background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%); color: white; padding: 15px 40px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+        <div style="font-size: 18px; font-weight: 700;">🏛️ CPM Horizon 2035</div>
+        <div style="display: flex; gap: 12px;">
+            <a href="../../index.html" style="padding: 8px 16px; background: rgba(255,255,255,0.15); color: white; text-decoration: none; border-radius: 4px; font-size: 12px; font-weight: 600; transition: all 0.2s; cursor: pointer; text-transform: uppercase; letter-spacing: 0.5px; border: none;" onmouseover="this.style.background='rgba(255,255,255,0.25)'" onmouseout="this.style.background='rgba(255,255,255,0.15)'">📋 SCHÉMA</a>
+            <a href="../../index.html" style="padding: 8px 16px; background: rgba(255,255,255,0.15); color: white; text-decoration: none; border-radius: 4px; font-size: 12px; font-weight: 600; transition: all 0.2s; cursor: pointer; text-transform: uppercase; letter-spacing: 0.5px; border: none;" onmouseover="this.style.background='rgba(255,255,255,0.25)'" onmouseout="this.style.background='rgba(255,255,255,0.15)'">🔧 OUTILS</a>
+            <a href="../../index.html" style="padding: 8px 16px; background: rgba(255,255,255,0.15); color: white; text-decoration: none; border-radius: 4px; font-size: 12px; font-weight: 600; transition: all 0.2s; cursor: pointer; text-transform: uppercase; letter-spacing: 0.5px; border: none;" onmouseover="this.style.background='rgba(255,255,255,0.25)'" onmouseout="this.style.background='rgba(255,255,255,0.15)'">📊 DATA</a>
+            <a href="../../index.html" style="padding: 8px 16px; background: rgba(255,255,255,0.15); color: white; text-decoration: none; border-radius: 4px; font-size: 12px; font-weight: 600; transition: all 0.2s; cursor: pointer; text-transform: uppercase; letter-spacing: 0.5px; border: none;" onmouseover="this.style.background='rgba(255,255,255,0.25)'" onmouseout="this.style.background='rgba(255,255,255,0.15)'">💬 COMM</a>
+            <button onclick="logout()" style="padding: 8px 16px; background: #e74c3c; color: white; border: none; border-radius: 4px; font-size: 12px; font-weight: 600; cursor: pointer; text-transform: uppercase; letter-spacing: 0.5px; transition: all 0.2s;" onmouseover="this.style.background='#c0392b'" onmouseout="this.style.background='#e74c3c'">🔴 DÉCONNEXION</button>
+        </div>
+    </div>
+    <script>
+        function logout() {
+            sessionStorage.removeItem('cpm_authenticated');
+            window.location.href = '../../login.html';
+        }
+        if (!sessionStorage.getItem('cpm_authenticated')) {
+            window.location.href = '../../login.html';
+        }
+    </script>
+    <div id="root"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
+    <script type="text/babel">
+const { useState } = React;
+
+const C = {
+  corail: "#D86F6F", noir: "#1D1D1B", rose: "#E372A6",
+  fondClair: "#F9F5F4", fondRose: "#FDF0EE", white: "#FFFFFF",
+  text: "#2C2C2C", muted: "#8A7F7F", border: "#E8DEDD",
+  green: "#5BA67D", amber: "#D4A843", steel: "#6B7F94",
+  violet: "#7C6BAA", blue: "#4A90B8", red: "#C0392B",
+};
+
+const PASTILLE = "data:image/png;base64,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";
+
+// Simulated tent data
+const tents = [
+  { id: "2240301537", type: "Senior", ref: "24-030", status: "En réparation", location: "Hangar A — Allée 2 — Empl. 61", health: "C", fabrication: "30/01/2012", sorties: 9, repairs: 3, lastReturn: "15/07/2026", healthScore: 42, lifeExpectancy: "2 saisons", topPanne: "Usure toile" },
+  { id: "2240301446", type: "Senior", ref: "24-015", status: "Disponible", location: "Hangar B — Allée 1 — Empl. 12", health: "A", fabrication: "15/03/2018", sorties: 5, repairs: 0, lastReturn: "02/08/2026", healthScore: 92, lifeExpectancy: "6+ saisons", topPanne: "Aucune" },
+  { id: "2240301736", type: "Senior", ref: "24-048", status: "En lavage", location: "Zone lavage", health: "B", fabrication: "22/06/2015", sorties: 12, repairs: 2, lastReturn: "28/07/2026", healthScore: 65, lifeExpectancy: "3 saisons", topPanne: "Lavage tente" },
+  { id: "2240301710", type: "Senior", ref: "24-042", status: "Disponible", location: "Hangar A — Allée 3 — Empl. 8", health: "B", fabrication: "10/09/2016", sorties: 8, repairs: 1, lastReturn: "20/07/2026", healthScore: 74, lifeExpectancy: "4 saisons", topPanne: "Cordage d'angle" },
+  { id: "2240302782", type: "Junior", ref: "J-007", status: "Prêtée", location: "Camp Patro Namur", health: "A", fabrication: "05/02/2020", sorties: 3, repairs: 0, lastReturn: "—", healthScore: 95, lifeExpectancy: "7+ saisons", topPanne: "Aucune" },
+];
+
+const cycleSteps = [
+  { name: "Fabrication", icon: "🔨", color: C.green },
+  { name: "Contrôle", icon: "✅", color: C.green },
+  { name: "Stockage", icon: "📦", color: C.steel },
+  { name: "Prêt", icon: "🤝", color: C.corail },
+  { name: "Utilisation", icon: "⛺", color: C.corail },
+  { name: "Retour", icon: "↩️", color: C.amber },
+  { name: "Inspection", icon: "🔍", color: C.amber },
+  { name: "Réparation", icon: "🧵", color: C.rose },
+  { name: "Remise en stock", icon: "🔄", color: C.green },
+];
+
+const currentStep = { "En réparation": 7, "Disponible": 2, "En lavage": 6, "Prêtée": 4 };
+
+const inspectionResults = {
+  pending: true,
+  result: null,
+};
+
+function HealthBadge({ score, size }) {
+  const s = size || 36;
+  const grade = score >= 85 ? "A" : score >= 65 ? "B" : score >= 40 ? "C" : "D";
+  const color = score >= 85 ? C.green : score >= 65 ? C.amber : score >= 40 ? C.corail : C.red;
+  return (
+    <div style={{
+      width: s, height: s, borderRadius: "50%", background: color + "18", border: `2px solid ${color}`,
+      display: "flex", alignItems: "center", justifyContent: "center",
+      fontSize: s * 0.45, fontWeight: 800, color: color, fontFamily: "'Poppins', sans-serif",
+    }}>{grade}</div>
+  );
+}
+
+function StatusBadge({ status }) {
+  const colors = { "En réparation": C.corail, "Disponible": C.green, "En lavage": C.amber, "Prêtée": C.blue };
+  const col = colors[status] || C.muted;
+  return (
+    <span style={{
+      padding: "3px 12px", borderRadius: 12, fontSize: 12, fontWeight: 600,
+      background: col + "18", color: col, fontFamily: "'Roboto', sans-serif",
+    }}>{status}</span>
+  );
+}
+
+function DashboardView({ onSelectTent }) {
+  const totalTents = 2277;
+  const disponible = 1842;
+  const enPret = 312;
+  const enReparation = 87;
+  const enLavage = 36;
+  const immob = Math.round(((enReparation + enLavage) / totalTents) * 100);
+
+  return (
+    <div>
+      {/* KPI cards */}
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", gap: 10, marginBottom: 16 }}>
+        {[
+          { num: disponible, label: "Disponibles", color: C.green, pct: Math.round(disponible/totalTents*100) + "%" },
+          { num: enPret, label: "En prêt", color: C.blue, pct: Math.round(enPret/totalTents*100) + "%" },
+          { num: enReparation, label: "En réparation", color: C.corail, pct: Math.round(enReparation/totalTents*100) + "%" },
+          { num: enLavage, label: "En lavage", color: C.amber, pct: Math.round(enLavage/totalTents*100) + "%" },
+        ].map((k, i) => (
+          <div key={i} style={{
+            background: C.white, borderRadius: 12, padding: "14px 16px",
+            border: `1px solid ${C.border}`,
+          }}>
+            <div style={{ fontSize: 28, fontWeight: 800, color: k.color, fontFamily: "'Poppins', sans-serif" }}>{k.num}</div>
+            <div style={{ fontSize: 13, color: C.muted, fontFamily: "'Roboto', sans-serif" }}>{k.label}</div>
+            <div style={{ fontSize: 11, color: k.color, fontWeight: 600, marginTop: 4 }}>{k.pct} du parc</div>
+          </div>
+        ))}
+      </div>
+
+      {/* Health index + Alerts */}
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, marginBottom: 16 }}>
+        <div style={{ background: C.white, borderRadius: 12, padding: 18, border: `1px solid ${C.border}` }}>
+          <div style={{ fontSize: 15, fontWeight: 700, marginBottom: 12, fontFamily: "'Poppins', sans-serif" }}>
+            Indice de santé du parc
+          </div>
+          <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+            <div style={{
+              width: 80, height: 80, borderRadius: "50%", border: `4px solid ${C.green}`,
+              display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
+            }}>
+              <span style={{ fontSize: 28, fontWeight: 800, color: C.green, fontFamily: "'Poppins', sans-serif" }}>76</span>
+              <span style={{ fontSize: 10, color: C.muted }}>/100</span>
+            </div>
+            <div>
+              <div style={{ fontSize: 14, fontWeight: 600, color: C.green, marginBottom: 4 }}>Bon état général</div>
+              <div style={{ fontSize: 12, color: C.muted, lineHeight: 1.5 }}>
+                Disponibilité {Math.round(disponible/totalTents*100)}% · Immobilisation {immob}% · Fatigue moyenne 1.2 rép./tente
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style={{ background: C.white, borderRadius: 12, padding: 18, border: `1px solid ${C.border}` }}>
+          <div style={{ fontSize: 15, fontWeight: 700, marginBottom: 12, fontFamily: "'Poppins', sans-serif", color: C.corail }}>
+            ⚠ Alertes actives
+          </div>
+          {[
+            { text: "12 tentes avec fatigue élevée (≥ 3 réparations)", color: C.red },
+            { text: "Taux d'immobilisation 5.4% — sous le seuil de 25%", color: C.green },
+            { text: "3 tentes sans mouvement depuis > 2 ans", color: C.amber },
+          ].map((a, i) => (
+            <div key={i} style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 6 }}>
+              <div style={{ width: 8, height: 8, borderRadius: "50%", background: a.color, flexShrink: 0 }} />
+              <span style={{ fontSize: 13, color: C.text, fontFamily: "'Roboto', sans-serif" }}>{a.text}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Tent list */}
+      <div style={{ background: C.white, borderRadius: 12, border: `1px solid ${C.border}`, overflow: "hidden" }}>
+        <div style={{ padding: "14px 18px", borderBottom: `1px solid ${C.border}`, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+          <span style={{ fontSize: 16, fontWeight: 700, fontFamily: "'Poppins', sans-serif" }}>Tentes pilotes (23)</span>
+          <span style={{ fontSize: 12, color: C.muted }}>Cliquez sur une tente pour voir sa fiche</span>
+        </div>
+        {tents.map((t, i) => (
+          <div key={i} onClick={() => onSelectTent(t)} style={{
+            padding: "12px 18px", cursor: "pointer",
+            borderBottom: i < tents.length - 1 ? `1px solid ${C.fondClair}` : "none",
+            display: "flex", alignItems: "center", gap: 14,
+            transition: "background 0.15s",
+          }}
+          onMouseOver={e => e.currentTarget.style.background = C.fondRose}
+          onMouseOut={e => e.currentTarget.style.background = "transparent"}
+          >
+            <HealthBadge score={t.healthScore} size={32} />
+            <div style={{ flex: 1 }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                <span style={{ fontSize: 15, fontWeight: 700, fontFamily: "'Poppins', sans-serif" }}>#{t.id}</span>
+                <span style={{ fontSize: 12, color: C.muted }}>Tente {t.type} · réf {t.ref}</span>
+              </div>
+              <div style={{ fontSize: 12, color: C.muted, marginTop: 2, fontFamily: "'Roboto', sans-serif" }}>
+                {t.location} · {t.sorties} sorties · {t.repairs} réparations
+              </div>
+            </div>
+            <StatusBadge status={t.status} />
+            <span style={{ fontSize: 14, color: C.muted }}>→</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function TentDetailView({ tent, onBack }) {
+  const step = currentStep[tent.status] || 2;
+
+  return (
+    <div>
+      <button onClick={onBack} style={{
+        padding: "8px 16px", borderRadius: 8, border: `1px solid ${C.border}`,
+        background: C.white, cursor: "pointer", fontSize: 14, marginBottom: 14,
+        fontFamily: "'Roboto', sans-serif", color: C.corail, fontWeight: 600,
+      }}>← Retour au tableau de bord</button>
+
+      {/* Header */}
+      <div style={{ background: C.white, borderRadius: 12, border: `1px solid ${C.border}`, padding: 20, marginBottom: 12 }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
+          <div>
+            <div style={{ fontSize: 22, fontWeight: 700, fontFamily: "'Poppins', sans-serif" }}>
+              Tente {tent.type} <span style={{ color: C.corail }}>#{tent.id}</span>
+            </div>
+            <div style={{ fontSize: 14, color: C.muted, marginTop: 4 }}>
+              Réf. {tent.ref} · Fabrication {tent.fabrication} · {tent.sorties} sorties cumulées
+            </div>
+          </div>
+          <HealthBadge score={tent.healthScore} size={50} />
+        </div>
+
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 10, marginTop: 16 }}>
+          {[
+            { label: "STATUT", value: tent.status, color: tent.status === "Disponible" ? C.green : C.corail },
+            { label: "LOCALISATION", value: tent.location, color: C.steel },
+            { label: "ESPÉRANCE DE VIE", value: tent.lifeExpectancy, color: tent.healthScore >= 65 ? C.green : C.amber },
+          ].map((card, i) => (
+            <div key={i} style={{ background: card.color + "10", borderRadius: 10, padding: "10px 14px" }}>
+              <div style={{ fontSize: 10, fontWeight: 700, color: card.color, textTransform: "uppercase", letterSpacing: 1 }}>{card.label}</div>
+              <div style={{ fontSize: 15, fontWeight: 700, color: C.noir, marginTop: 4, fontFamily: "'Poppins', sans-serif" }}>{card.value}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Lifecycle visualization */}
+      <div style={{ background: C.white, borderRadius: 12, border: `1px solid ${C.border}`, padding: 20, marginBottom: 12 }}>
+        <div style={{ fontSize: 16, fontWeight: 700, marginBottom: 14, fontFamily: "'Poppins', sans-serif" }}>
+          Cycle de vie — Position actuelle
+        </div>
+        <div style={{ display: "flex", gap: 2, alignItems: "center" }}>
+          {cycleSteps.map((s, i) => {
+            const isActive = i === step;
+            const isPast = i < step;
+            return (
+              <div key={i} style={{ flex: 1, textAlign: "center" }}>
+                <div style={{
+                  width: 36, height: 36, borderRadius: "50%", margin: "0 auto 6px",
+                  background: isActive ? s.color : isPast ? s.color + "30" : C.border + "60",
+                  display: "flex", alignItems: "center", justifyContent: "center",
+                  fontSize: 16, border: isActive ? `3px solid ${s.color}` : "none",
+                  boxShadow: isActive ? `0 0 12px ${s.color}40` : "none",
+                }}>
+                  {s.icon}
+                </div>
+                <div style={{
+                  fontSize: 9, fontWeight: isActive ? 700 : 400,
+                  color: isActive ? s.color : C.muted,
+                  fontFamily: "'Roboto', sans-serif",
+                }}>{s.name}</div>
+                {i < cycleSteps.length - 1 && (
+                  <div style={{
+                    position: "relative", top: -28, left: "55%", width: "90%", height: 2,
+                    background: isPast ? s.color + "50" : C.border,
+                  }} />
+                )}
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Repairs + Predictions */}
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
+        <div style={{ background: C.white, borderRadius: 12, border: `1px solid ${C.border}`, padding: 18 }}>
+          <div style={{ fontSize: 15, fontWeight: 700, marginBottom: 12, fontFamily: "'Poppins', sans-serif" }}>
+            Historique des interventions
+          </div>
+          {tent.repairs === 0 ? (
+            <div style={{ fontSize: 14, color: C.green, fontWeight: 600 }}>Aucune intervention enregistrée</div>
+          ) : (
+            [
+              { type: "LAVAGE TENTE", date: "25/03/2024", avis: "300012621", agent: "LIEGJ001" },
+              { type: "CORDAGE D'ANGLE", date: "24/11/2014", avis: "300003335", agent: "REDIV001" },
+              { type: "LAVAGE TENTE", date: "24/11/2014", avis: "300003335", agent: "REDIV001" },
+            ].slice(0, tent.repairs).map((r, i) => (
+              <div key={i} style={{ padding: "8px 0", borderBottom: `1px solid ${C.fondClair}` }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                  <span style={{ fontSize: 14, fontWeight: 700 }}>{r.type}</span>
+                  <span style={{ fontSize: 11, color: C.muted }}>avis {r.avis}</span>
+                </div>
+                <div style={{ fontSize: 12, color: C.muted, marginTop: 2 }}>
+                  {r.date} · {r.agent}
+                </div>
+              </div>
+            ))
+          )}
+        </div>
+
+        <div style={{ background: C.white, borderRadius: 12, border: `1px solid ${C.border}`, padding: 18 }}>
+          <div style={{ fontSize: 15, fontWeight: 700, marginBottom: 12, fontFamily: "'Poppins', sans-serif", color: C.violet }}>
+            🔮 Maintenance prédictive
+          </div>
+          <div style={{ marginBottom: 12 }}>
+            <div style={{ fontSize: 12, color: C.muted, marginBottom: 4 }}>Indice de santé</div>
+            <div style={{ height: 8, background: C.border, borderRadius: 4, overflow: "hidden" }}>
+              <div style={{
+                width: `${tent.healthScore}%`, height: "100%", borderRadius: 4,
+                background: tent.healthScore >= 65 ? C.green : tent.healthScore >= 40 ? C.amber : C.red,
+              }} />
+            </div>
+            <div style={{ fontSize: 22, fontWeight: 800, color: tent.healthScore >= 65 ? C.green : C.amber, marginTop: 6, fontFamily: "'Poppins', sans-serif" }}>
+              {tent.healthScore}/100
+            </div>
+          </div>
+          <div style={{ fontSize: 13, marginBottom: 4 }}><strong>Espérance de vie :</strong> {tent.lifeExpectancy}</div>
+          <div style={{ fontSize: 13, marginBottom: 4 }}><strong>Panne la plus probable :</strong> {tent.topPanne}</div>
+          <div style={{ fontSize: 13 }}><strong>Recommandation :</strong> {tent.healthScore >= 65 ? "Maintien en service" : tent.healthScore >= 40 ? "Surveillance renforcée" : "Déclassement à envisager"}</div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function InspectionView() {
+  const [phase, setPhase] = useState("upload");
+  const [analyzing, setAnalyzing] = useState(false);
+
+  const startAnalysis = () => {
+    setAnalyzing(true);
+    setPhase("analyzing");
+    setTimeout(() => {
+      setPhase("result");
+      setAnalyzing(false);
+    }, 3000);
+  };
+
+  return (
+    <div>
+      <div style={{ background: C.white, borderRadius: 12, border: `1px solid ${C.border}`, padding: 20, marginBottom: 12 }}>
+        <div style={{ fontSize: 18, fontWeight: 700, fontFamily: "'Poppins', sans-serif", marginBottom: 4 }}>
+          Module d'inspection IA
+        </div>
+        <div style={{ fontSize: 14, color: C.muted, marginBottom: 16 }}>
+          Claude Vision analyse les photos de retour et génère un diagnostic structuré.
+        </div>
+
+        {phase === "upload" && (
+          <div>
+            <div onClick={startAnalysis} style={{
+              border: `2px dashed ${C.corail}`, borderRadius: 12, padding: "40px 20px",
+              textAlign: "center", cursor: "pointer", background: C.fondRose,
+              transition: "all 0.2s",
+            }}>
+              <div style={{ fontSize: 40, marginBottom: 8 }}>📸</div>
+              <div style={{ fontSize: 16, fontWeight: 700, color: C.corail, fontFamily: "'Poppins', sans-serif" }}>
+                Cliquez pour simuler l'upload d'une photo
+              </div>
+              <div style={{ fontSize: 13, color: C.muted, marginTop: 6 }}>
+                En production : prise de photo via tablette ou upload depuis Zebra MC330L
+              </div>
+            </div>
+          </div>
+        )}
+
+        {phase === "analyzing" && (
+          <div style={{ textAlign: "center", padding: "40px 20px" }}>
+            <div style={{ fontSize: 40, marginBottom: 12, animation: "spin 2s linear infinite" }}>🔍</div>
+            <style>{`@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }`}</style>
+            <div style={{ fontSize: 16, fontWeight: 700, color: C.violet, fontFamily: "'Poppins', sans-serif" }}>
+              Claude Vision analyse la photo...
+            </div>
+            <div style={{ fontSize: 13, color: C.muted, marginTop: 6 }}>
+              Détection d'usure · État des coutures · Propreté · Cotation automatique
+            </div>
+          </div>
+        )}
+
+        {phase === "result" && (
+          <div>
+            {/* Result header */}
+            <div style={{
+              background: C.amber + "12", borderRadius: 10, padding: 16, marginBottom: 14,
+              border: `1px solid ${C.amber}30`,
+            }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                <div>
+                  <div style={{ fontSize: 12, color: C.amber, fontWeight: 700, textTransform: "uppercase" }}>
+                    Diagnostic IA — Tente #2240301537
+                  </div>
+                  <div style={{ fontSize: 22, fontWeight: 800, color: C.noir, fontFamily: "'Poppins', sans-serif", marginTop: 4 }}>
+                    Cotation : C — Réparation nécessaire
+                  </div>
+                </div>
+                <HealthBadge score={42} size={50} />
+              </div>
+            </div>
+
+            {/* Detailed findings */}
+            <div style={{ fontSize: 15, fontWeight: 700, marginBottom: 10, fontFamily: "'Poppins', sans-serif" }}>
+              Constats détectés par l'IA
+            </div>
+            {[
+              { zone: "Toile principale", constat: "Usure visible sur la face sud — amincissement du tissu estimé à 40%", severity: "Élevé", color: C.corail },
+              { zone: "Couture latérale gauche", constat: "Début de décousure sur 12 cm — risque d'infiltration en cas de pluie", severity: "Élevé", color: C.corail },
+              { zone: "Cordage d'angle", constat: "Tension inégale — point d'ancrage arrière-droit fragilisé", severity: "Moyen", color: C.amber },
+              { zone: "Propreté générale", constat: "Traces de terre et d'humidité — lavage recommandé avant réparation", severity: "Faible", color: C.steel },
+            ].map((f, i) => (
+              <div key={i} style={{
+                background: C.white, borderRadius: 10, padding: "12px 16px", marginBottom: 6,
+                border: `1px solid ${C.border}`, borderLeft: `3px solid ${f.color}`,
+              }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 4 }}>
+                  <span style={{ fontSize: 14, fontWeight: 700 }}>{f.zone}</span>
+                  <span style={{
+                    padding: "2px 8px", borderRadius: 10, fontSize: 10, fontWeight: 700,
+                    background: f.color + "18", color: f.color,
+                  }}>{f.severity}</span>
+                </div>
+                <div style={{ fontSize: 13, color: C.muted, lineHeight: 1.5 }}>{f.constat}</div>
+              </div>
+            ))}
+
+            {/* Recommendation */}
+            <div style={{
+              marginTop: 14, background: C.violet + "10", borderRadius: 10, padding: 16,
+              borderLeft: `3px solid ${C.violet}`,
+            }}>
+              <div style={{ fontSize: 14, fontWeight: 700, color: C.violet, marginBottom: 6, fontFamily: "'Poppins', sans-serif" }}>
+                Recommandation IA
+              </div>
+              <div style={{ fontSize: 14, lineHeight: 1.6 }}>
+                Lavage complet puis réparation de la couture latérale gauche en priorité. Surveillance renforcée de la toile principale — si l'usure progresse, envisager le déclassement à la prochaine saison. Cordage à retensionner lors de la réparation.
+              </div>
+              <div style={{
+                marginTop: 10, padding: "8px 12px", borderRadius: 8,
+                background: C.amber + "15", fontSize: 12, color: C.amber, fontWeight: 600,
+              }}>
+                ⚠ Ce diagnostic est un avis IA — la décision finale appartient au contremaître.
+              </div>
+            </div>
+
+            <button onClick={() => setPhase("upload")} style={{
+              marginTop: 14, padding: "10px 20px", borderRadius: 8, border: "none",
+              background: C.corail, color: C.white, fontSize: 14, fontWeight: 600,
+              cursor: "pointer", fontFamily: "'Poppins', sans-serif",
+            }}>Nouvelle inspection</button>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+function TentPrototype() {
+  const [view, setView] = useState("dashboard");
+  const [selectedTent, setSelectedTent] = useState(null);
+
+  const views = [
+    { id: "dashboard", label: "Tableau de bord", icon: "📊" },
+    { id: "inspection", label: "Inspection IA", icon: "👁️" },
+  ];
+
+  return (
+    <div style={{ fontFamily: "'Roboto','Segoe UI',system-ui,sans-serif", background: C.fondClair, minHeight: "100vh", color: C.text }}>
+      {/* Header */}
+      <div style={{ background: "linear-gradient(135deg, #FDF0EE 0%, #F5E0DC 50%, #EEDDD9 100%)", padding: "22px 22px 18px", color: C.noir }}>
+        <div style={{ maxWidth: 920, margin: "0 auto" }}>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+              <img src={PASTILLE} alt="C" style={{ width: 32, height: 32 }} />
+              <div>
+                <div style={{ fontSize: 20, fontWeight: 700, fontFamily: "'Poppins', sans-serif" }}>
+                  CPM · Cycle de vie des tentes
+                </div>
+                <div style={{ fontSize: 12, color: C.muted }}>
+                  Plateforme de traçabilité — Fédération Wallonie-Bruxelles
+                </div>
+              </div>
+            </div>
+            <div style={{
+              padding: "6px 14px", borderRadius: 20, background: C.corail + "15",
+              fontSize: 12, fontWeight: 600, color: C.corail,
+            }}>
+              Prototype v2 · Sprint 2
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Navigation */}
+      <div style={{ background: C.white, borderBottom: `1px solid ${C.border}`, position: "sticky", top: 0, zIndex: 10 }}>
+        <div style={{ maxWidth: 920, margin: "0 auto", display: "flex" }}>
+          {views.map(v => (
+            <button key={v.id} onClick={() => { setView(v.id); setSelectedTent(null); }} style={{
+              padding: "12px 20px", border: "none", background: "none", cursor: "pointer",
+              fontSize: 15, fontWeight: view === v.id ? 700 : 500,
+              color: view === v.id ? C.corail : C.muted,
+              borderBottom: view === v.id ? `2px solid ${C.corail}` : "2px solid transparent",
+              fontFamily: "'Poppins', sans-serif",
+            }}>{v.icon} {v.label}</button>
+          ))}
+        </div>
+      </div>
+
+      {/* Content */}
+      <div style={{ maxWidth: 920, margin: "0 auto", padding: "18px 22px 44px" }}>
+        {view === "dashboard" && !selectedTent && (
+          <DashboardView onSelectTent={(t) => setSelectedTent(t)} />
+        )}
+        {view === "dashboard" && selectedTent && (
+          <TentDetailView tent={selectedTent} onBack={() => setSelectedTent(null)} />
+        )}
+        {view === "inspection" && <InspectionView />}
+      </div>
+
+      {/* Footer */}
+      <div style={{ padding: "14px 22px", borderTop: `1px solid ${C.border}`, background: C.white, textAlign: "center" }}>
+        <span style={{ fontSize: 12, color: C.muted }}>
+          Centre de Prêt de Matériel · Administration générale de la Culture · Fédération Wallonie-Bruxelles
+        </span>
+      </div>
+    </div>
+  );
+}
+
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(React.createElement(TentPrototype));
+    </script>
+</body>
+</html>
