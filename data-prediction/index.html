@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📊 Data & Prédiction - CPM Horizon 2035</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Roboto', 'Segoe UI', sans-serif; background: linear-gradient(135deg, #f5f7fa 0%, #ecf0f1 100%); color: #2c3e50; padding: 40px 20px; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .header { text-align: center; margin-bottom: 60px; }
+        .header h1 { font-size: 36px; color: #E75480; margin-bottom: 10px; font-weight: 700; }
+        .header p { font-size: 16px; color: #7f8c8d; }
+        .modules-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+        .module-card { background: white; border-radius: 12px; padding: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-left: 5px solid #E75480; transition: all 0.3s ease; }
+        .module-card:hover { transform: translateY(-8px); box-shadow: 0 8px 25px rgba(0,0,0,0.15); }
+        .module-icon { font-size: 48px; margin-bottom: 15px; }
+        .module-title { font-size: 18px; font-weight: 600; color: #2c3e50; margin-bottom: 12px; }
+        .module-desc { font-size: 13px; color: #7f8c8d; line-height: 1.6; margin-bottom: 20px; }
+        .module-btn { display: inline-block; padding: 12px 24px; background: linear-gradient(135deg, #E75480 0%, #d63447 100%); color: white; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 13px; transition: all 0.3s; text-transform: uppercase; letter-spacing: 0.5px; }
+        .module-btn:hover { transform: scale(1.05); box-shadow: 0 6px 12px rgba(231, 84, 128, 0.4); }
+        @media (max-width: 768px) {
+            .modules-grid { grid-template-columns: 1fr; }
+            .header h1 { font-size: 24px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 Data & Prédiction</h1>
+            <p>Vue détaillée des réparations, tentes, prêts, risques et tendances 2020-2026</p>
+        </div>
+
+        <div class="modules-grid">
+            <!-- Module 1: Analyse SAP -->
+            <div class="module-card">
+                <div class="module-icon">📈</div>
+                <div class="module-title">Analyse SAP</div>
+                <div class="module-desc">Réparations par secteur & statut. Tendances 2020-2026, top problèmes, insights opérationnels.</div>
+                <a href="01_analyse_sap.html" class="module-btn">→ Explorer</a>
+            </div>
+
+            <!-- Module 2: Analyse Tentes -->
+            <div class="module-card">
+                <div class="module-icon">🎪</div>
+                <div class="module-title">Analyse Tentes</div>
+                <div class="module-desc">Gestion inventaire LOISIR. Quantités louées, durées moyennes, taux de panne.</div>
+                <a href="02_analyse_tentes.html" class="module-btn">→ Explorer</a>
+            </div>
+
+            <!-- Module 3: Météo du Patrimoine -->
+            <div class="module-card">
+                <div class="module-icon">🌍</div>
+                <div class="module-title">Météo du Patrimoine</div>
+                <div class="module-desc">Demandes de prêt. Saisonnalité, pics de charge, analyse comportement emprunteurs.</div>
+                <a href="03_meteo_patrimoine.html" class="module-btn">→ Explorer</a>
+            </div>
+
+            <!-- Module 4: Risque Panne -->
+            <div class="module-card">
+                <div class="module-icon">⚠️</div>
+                <div class="module-title">Risque Panne</div>
+                <div class="module-desc">RiskScore, défauts détectés, recommendations 2025, tendances capacité.</div>
+                <a href="04_risque_panne.html" class="module-btn">→ Explorer</a>
+            </div>
+
+            <!-- Module 5: Prédiction 2025 -->
+            <div class="module-card">
+                <div class="module-icon">🔮</div>
+                <div class="module-title">Prédiction 2025</div>
+                <div class="module-desc">Insights saisonniers, défauts détectés, recommendations 2025, tendances capacité.</div>
+                <a href="05_prediction_2025.html" class="module-btn">→ Explorer</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
