@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demande au CPM — Assistant</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Roboto', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+        button { font-family: inherit; }
+        input:focus { border-color: #D86F6F !important; }
+    </style>
+</head>
+<body>
+    <div style="background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%); color: white; padding: 15px 40px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+        <div style="font-size: 18px; font-weight: 700;">🏛️ CPM Horizon 2035</div>
+        <div style="display: flex; gap: 12px;">
+            <a href="../../index.html" style="padding: 8px 16px; background: rgba(255,255,255,0.15); color: white; text-decoration: none; border-radius: 4px; font-size: 12px; font-weight: 600; transition: all 0.2s; cursor: pointer; text-transform: uppercase; letter-spacing: 0.5px; border: none;" onmouseover="this.style.background='rgba(255,255,255,0.25)'" onmouseout="this.style.background='rgba(255,255,255,0.15)'">📋 SCHÉMA</a>
+            <a href="../../index.html" style="padding: 8px 16px; background: rgba(255,255,255,0.15); color: white; text-decoration: none; border-radius: 4px; font-size: 12px; font-weight: 600; transition: all 0.2s; cursor: pointer; text-transform: uppercase; letter-spacing: 0.5px; border: none;" onmouseover="this.style.background='rgba(255,255,255,0.25)'" onmouseout="this.style.background='rgba(255,255,255,0.15)'">🔧 OUTILS</a>
+            <a href="../../index.html" style="padding: 8px 16px; background: rgba(255,255,255,0.15); color: white; text-decoration: none; border-radius: 4px; font-size: 12px; font-weight: 600; transition: all 0.2s; cursor: pointer; text-transform: uppercase; letter-spacing: 0.5px; border: none;" onmouseover="this.style.background='rgba(255,255,255,0.25)'" onmouseout="this.style.background='rgba(255,255,255,0.15)'">📊 DATA</a>
+            <a href="../../index.html" style="padding: 8px 16px; background: rgba(255,255,255,0.15); color: white; text-decoration: none; border-radius: 4px; font-size: 12px; font-weight: 600; transition: all 0.2s; cursor: pointer; text-transform: uppercase; letter-spacing: 0.5px; border: none;" onmouseover="this.style.background='rgba(255,255,255,0.25)'" onmouseout="this.style.background='rgba(255,255,255,0.15)'">💬 COMM</a>
+            <button onclick="logout()" style="padding: 8px 16px; background: #e74c3c; color: white; border: none; border-radius: 4px; font-size: 12px; font-weight: 600; cursor: pointer; text-transform: uppercase; letter-spacing: 0.5px; transition: all 0.2s;" onmouseover="this.style.background='#c0392b'" onmouseout="this.style.background='#e74c3c'">🔴 DÉCONNEXION</button>
+        </div>
+    </div>
+    <script>
+        function logout() {
+            sessionStorage.removeItem('cpm_authenticated');
+            window.location.href = '../../login.html';
+        }
+        if (!sessionStorage.getItem('cpm_authenticated')) {
+            window.location.href = '../../login.html';
+        }
+    </script>
+    <div id="root"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
+    <script type="text/babel">
+const { useState, useRef, useEffect } = React;
+
+const C = {
+  corail: "#D86F6F", noir: "#1D1D1B", rose: "#E372A6",
+  fondClair: "#F9F5F4", fondRose: "#FDF0EE", white: "#FFFFFF",
+  text: "#2C2C2C", muted: "#8A7F7F", border: "#E8DEDD",
+  green: "#5BA67D", amber: "#D4A843", steel: "#6B7F94", violet: "#7C6BAA",
+};
+
+const KB = [
+  { keywords: ["combien", "disponible", "stock", "nombre", "tentes disponibles"],
+    response: "Le CPM dispose d'un parc de **2 277 tentes** :\n\n🏕️ **Tente Senior** — 1 322 unités (5,00 × 5,00 m · h 2,85 m · 8-10 pers. · ~45 kg)\n🏕️ **Tente Junior** — 905 unités (3 × 3,4 m · h 2,35 m · 6-8 pers. · ~35 kg)\n🏕️ **Tente Patrouille** — 50 unités (4 × 4 m · h 2,20 m · 4-6 pers. · ~25 kg)\n\nLes Senior et Junior sont **fabriquées à la main** par nos équipes. Le pic de prêt est en juillet. Contact : prets.cpm@cfwb.be." },
+  { keywords: ["monter", "montage", "installer", "planter"],
+    response: "**Montage d'une tente Senior** (~20 min, 2 pers. minimum) :\n\n**1. Déplier au sol** (2 min) — Terrain plat, entrée dos au vent.\n**2. Assembler les mâts** (3 min) — Insérer dans les fourreaux, vérifier les embouts.\n**3. Lever la structure** (5 min) — À deux, mât central puis haubans.\n**4. Fixer les sardines** (5 min) — À 45° vers l'extérieur, coins d'abord.\n**5. Tendre la toile** (3 min) — Pas de poche d'eau possible.\n**6. Vérification finale** (2 min) — Sardines, haubans, fermetures.\n\n📹 Tutoriel vidéo via le QR code sur votre tente !" },
+  { keywords: ["plier", "pliage", "ranger", "replier", "démonter"],
+    response: "**Pliage de votre tente** (~18 min) :\n\n**1. Retirer les sardines** (3 min) — Les rassembler dans le sac.\n**2. Détendre les haubans** (2 min) — Desserrer tous les tendeurs.\n**3. Baisser la structure** (3 min) — Retirer les mâts délicatement.\n**4. Plier la toile** (5 min) — En accordéon puis rouler serré.\n**5. Ranger les accessoires** (3 min) — Chaque élément dans son sac.\n**6. Sangler le tout** (2 min) — Sangles fournies.\n\n⚠️ **Ne jamais arracher la toile contre les entretoises** — cela provoque des déchirures !" },
+  { keywords: ["véhicule", "transport", "voiture", "camionnette", "poids"],
+    response: "**Véhicule recommandé** :\n\n🚗 **Patrouille** (~25 kg) — Coffre standard.\n🚐 **Junior** (~35 kg) — Break ou camionnette légère.\n🚛 **Senior** (~55 kg total) — Camionnette ou remorque. **2 personnes** pour le chargement.\n\nDimensions pliée (Senior) : ~150 × 40 × 40 cm." },
+  { keywords: ["déchir", "abîm", "cassé", "problème", "dégât", "panne", "signaler"],
+    response: "En cas de **problème** :\n\n1. **Ne réparez pas vous-même** — nos spécialistes s'en chargent.\n2. **Signalez** via le QR code ou à prets.cpm@cfwb.be.\n3. **Prenez une photo** si possible.\n4. **Au retour**, signalez au comptoir.\n\nNos tentes sont réparées en interne. Votre signalement améliore la durabilité pour tous ! 🙏" },
+  { keywords: ["prêt", "emprunter", "réserver", "demande", "comment faire", "procédure"],
+    response: "**Procédure de prêt** :\n\n1. **Demande en ligne** — Plateforme FWB.\n2. **Validation** — Vérification disponibilité.\n3. **Enlèvement** — Du lundi au vendredi (pic le vendredi !).\n4. **Utilisation** — Tutoriels via QR code.\n5. **Retour** — Checklist à la réception.\n\n📧 prets.cpm@cfwb.be\n\nEn 2025 : 2 911 demandes, **1 million de participants** servis !" },
+  { keywords: ["dimension", "taille", "mesure", "surface", "hauteur", "mètre"],
+    response: "**Dimensions des tentes** :\n\n🏕️ **Senior** — 5,00 × 5,00 m · h 2,85 m · 8-10 pers. · ~45 kg\n🏕️ **Junior** — 3,00 × 3,40 m · h 2,35 m · 6-8 pers. · ~35 kg\n🏕️ **Patrouille** — 4,00 × 4,00 m · h 2,20 m · 4-6 pers. · ~25 kg\n\nToile polyester enduite PU, fabriquées dans nos ateliers." },
+  { keywords: ["fabricat", "fabriqu", "atelier", "main", "artisan"],
+    response: "Nos tentes sont **fabriquées à la main** à Namur depuis 1948 ! Chaque tente est réalisée par un **binôme de fabricants** identifié.\n\nProcessus : coupe → assemblage → accessoires → contrôle qualité → plaquette Ertalon + QR code.\n\nEn 2025 : 342 interventions de maintenance sur les tentes. Nos équipes assurent fabrication ET réparation." },
+  { keywords: ["cpm", "centre", "qui", "quoi", "présent", "mission"],
+    response: "Le **CPM** (Centre de Prêt de Matériel) — FWB, depuis **1948**.\n\n**Mission** : matériel de qualité pour la jeunesse, la culture et la vie associative.\n\n**Chiffres 2025** :\n— 60 collaborateurs\n— 65 910 articles prêtés\n— 2 911 demandes\n— 1 million+ de participants\n— 2 277 tentes (majorité fabriquées en interne)" },
+  { keywords: ["pluie", "eau", "humide", "imperméab", "mouill"],
+    response: "**Conseils météo** :\n\n🌧️ **Avant** — Toile bien tendue, sardines enfoncées, pas de poches d'eau.\n💧 **Pendant** — Ne pas toucher les parois intérieures.\n☀️ **Après** — Sécher avant de plier si possible.\n\n⚠️ Si rendue humide, **signalez-le au retour** pour que nos équipes la traitent (risque de moisissure)." },
+];
+
+function findResponse(q) {
+  const qn = q.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  let best = null, bestScore = 0;
+  for (const e of KB) {
+    let score = 0;
+    for (const kw of e.keywords) {
+      if (qn.includes(kw.normalize("NFD").replace(/[\u0300-\u036f]/g, ""))) score += kw.length;
+    }
+    if (score > bestScore) { bestScore = score; best = e; }
+  }
+  return bestScore >= 3 ? best.response : "Merci pour votre question ! Je ne dispose pas d'une réponse précise sur ce sujet.\n\nContactez notre équipe : 📧 **prets.cpm@cfwb.be** 😊";
+}
+
+const suggestions = [
+  "Combien de tentes sont disponibles ?", "Comment monter une tente Senior ?",
+  "Comment plier correctement ma tente ?", "Quel véhicule pour une tente Junior ?",
+  "Que faire si ma tente est déchirée ?", "Comment fonctionne le prêt ?",
+  "Dimensions d'une tente Senior ?", "Comment sont fabriquées les tentes ?",
+  "Qu'est-ce que le CPM ?", "Que faire si ma tente est mouillée ?",
+];
+
+function Fmt({ text }) {
+  return text.split('\n').map((line, i) => {
+    if (line.trim() === '') return <br key={i} />;
+    const html = line.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+    return <div key={i} dangerouslySetInnerHTML={{ __html: html }} style={{ marginBottom: 2 }} />;
+  });
+}
+
+function AskCPM() {
+  const [msgs, setMsgs] = useState([]);
+  const [input, setInput] = useState("");
+  const [loading, setLoading] = useState(false);
+  const endRef = useRef(null);
+  useEffect(() => { endRef.current?.scrollIntoView({ behavior: "smooth" }); }, [msgs]);
+
+  const send = (text) => {
+    const q = text || input.trim();
+    if (!q) return;
+    const newMsgs = [...msgs, { role: "user", content: q }];
+    setMsgs(newMsgs); setInput(""); setLoading(true);
+
+    (async () => {
+      let answer;
+      try {
+        const res = await fetch("https://api.anthropic.com/v1/messages", {
+          method: "POST", headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ model: "claude-sonnet-4-6", max_tokens: 1000,
+            system: "Tu es l'assistant IA du CPM (Centre de Prêt de Matériel, FWB). Réponds en français. Parc: 2 277 tentes (1 322 Senior 5×5m, 905 Junior, 50 Patrouille). Fabriquées en interne depuis 1948. 60 collaborateurs. Contact: prets.cpm@cfwb.be.",
+            messages: newMsgs.map(m => ({ role: m.role, content: m.content })),
+          }),
+        });
+        if (!res.ok) throw new Error();
+        const data = await res.json();
+        answer = data.content?.filter(i => i.type === "text").map(i => i.text).join("\n");
+        if (!answer) throw new Error();
+      } catch { answer = findResponse(q); }
+      setTimeout(() => { setMsgs([...newMsgs, { role: "assistant", content: answer }]); setLoading(false); }, 600);
+    })();
+  };
+
+  return (
+    <div style={{ fontFamily: "'Roboto',system-ui,sans-serif", background: C.fondClair, minHeight: "100vh", display: "flex", flexDirection: "column", maxWidth: 680, margin: "0 auto" }}>
+      <div style={{ background: `linear-gradient(135deg, ${C.noir} 0%, #2C3E50 100%)`, padding: "20px 20px 16px", color: "#fff" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+          <div style={{ width: 44, height: 44, borderRadius: "50%", background: C.corail, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 22 }}>🤖</div>
+          <div style={{ flex: 1 }}>
+            <div style={{ fontSize: 20, fontWeight: 700, fontFamily: "'Poppins', sans-serif" }}>Demande au CPM</div>
+            <div style={{ fontSize: 12, opacity: 0.7 }}>Assistant IA · Centre de Prêt de Matériel · FWB</div>
+          </div>
+          {msgs.length > 0 && (
+            <button onClick={() => setMsgs([])} style={{ padding: "6px 14px", borderRadius: 20, border: "1px solid rgba(255,255,255,0.3)", background: "transparent", color: "#fff", fontSize: 13, cursor: "pointer", fontWeight: 600 }}>🏠 Accueil</button>
+          )}
+          <div style={{ padding: "4px 10px", borderRadius: 12, background: C.green + "30", fontSize: 10, fontWeight: 600, color: C.green }}>● En ligne</div>
+        </div>
+      </div>
+
+      <div style={{ flex: 1, padding: "16px 16px 8px", overflowY: "auto", display: "flex", flexDirection: "column", gap: 12 }}>
+        {msgs.length === 0 && (
+          <div>
+            <div style={{ background: C.white, borderRadius: "4px 16px 16px 16px", padding: 18, border: `1px solid ${C.border}`, marginBottom: 16 }}>
+              <div style={{ fontSize: 16, lineHeight: 1.7 }}>Bonjour ! 👋 Je suis l'assistant du <strong>Centre de Prêt de Matériel</strong>. Posez-moi vos questions sur les tentes, les prêts, le montage, le transport...</div>
+              <div style={{ marginTop: 10, padding: "8px 12px", borderRadius: 8, background: C.fondRose, fontSize: 13, color: C.corail, fontStyle: "italic" }}>
+                Nos tentes sont fabriquées à la main depuis 1948 — un savoir-faire unique en Belgique.
+              </div>
+            </div>
+            <div style={{ fontSize: 14, fontWeight: 700, color: C.muted, marginBottom: 10, fontFamily: "'Poppins', sans-serif" }}>Questions fréquentes</div>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+              {suggestions.map((q, i) => (
+                <button key={i} onClick={() => send(q)} style={{ padding: "9px 16px", borderRadius: 20, border: `1px solid ${C.corail}40`, background: C.white, cursor: "pointer", fontSize: 14, color: C.corail, fontWeight: 500 }}
+                  onMouseOver={e => e.currentTarget.style.background = C.corail + "10"}
+                  onMouseOut={e => e.currentTarget.style.background = C.white}
+                >{q}</button>
+              ))}
+            </div>
+          </div>
+        )}
+        {msgs.map((m, i) => (
+          <div key={i} style={{ display: "flex", justifyContent: m.role === "user" ? "flex-end" : "flex-start" }}>
+            <div style={{ maxWidth: "85%", padding: "14px 18px", borderRadius: m.role === "user" ? "16px 16px 4px 16px" : "4px 16px 16px 16px", background: m.role === "user" ? C.corail : C.white, color: m.role === "user" ? "#fff" : C.text, border: m.role === "user" ? "none" : `1px solid ${C.border}`, fontSize: 15, lineHeight: 1.7 }}>
+              {m.role === "user" ? m.content : <Fmt text={m.content} />}
+            </div>
+          </div>
+        ))}
+        {loading && (
+          <div style={{ display: "flex" }}>
+            <div style={{ background: C.white, border: `1px solid ${C.border}`, borderRadius: "4px 16px 16px 16px", padding: "14px 20px", display: "flex", alignItems: "center", gap: 6 }}>
+              {[0,1,2].map(j => <div key={j} style={{ width: 8, height: 8, borderRadius: "50%", background: C.corail, animation: `bounce 1.2s ease-in-out ${j*0.15}s infinite` }} />)}
+              <style>{`@keyframes bounce{0%,80%,100%{opacity:.3;transform:scale(.8)}40%{opacity:1;transform:scale(1.1)}}`}</style>
+              <span style={{ fontSize: 13, color: C.muted, marginLeft: 6 }}>L'assistant réfléchit...</span>
+            </div>
+          </div>
+        )}
+        <div ref={endRef} />
+      </div>
+
+      <div style={{ padding: "12px 16px 16px", background: C.white, borderTop: `1px solid ${C.border}` }}>
+        <div style={{ display: "flex", gap: 8 }}>
+          <input type="text" value={input} onChange={e => setInput(e.target.value)} onKeyDown={e => e.key === "Enter" && !loading && send()} placeholder="Posez votre question au CPM..." disabled={loading}
+            style={{ flex: 1, padding: "14px 18px", borderRadius: 24, border: `1px solid ${C.border}`, fontSize: 15, outline: "none", background: C.fondClair }} />
+          <button onClick={() => send()} disabled={loading || !input.trim()} style={{ width: 48, height: 48, borderRadius: "50%", border: "none", background: loading || !input.trim() ? C.border : C.corail, color: "#fff", fontSize: 20, cursor: loading ? "default" : "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}>↑</button>
+        </div>
+        <div style={{ textAlign: "center", marginTop: 8, fontSize: 11, color: C.border }}>
+          Fonctionne en ligne (IA Claude) et hors-ligne (base de connaissances CPM)
+        </div>
+      </div>
+    </div>
+  );
+}
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(React.createElement(AskCPM));
+    </script>
+</body>
+</html>
