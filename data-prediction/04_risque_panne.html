@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⚠️ Risque Panne - CPM Horizon 2035</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Roboto', sans-serif; background: linear-gradient(135deg, #f5f7fa 0%, #ecf0f1 100%); color: #2c3e50; }
+        .container { max-width: 1400px; margin: 0 auto; padding: 40px 20px; }
+        .header { display: flex; align-items: center; gap: 20px; margin-bottom: 40px; padding: 30px; background: white; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); border-left: 5px solid #E75480; }
+        .header-content h1 { font-family: 'Poppins', sans-serif; font-size: 28px; color: #E75480; margin-bottom: 10px; }
+        .header-content p { color: #7f8c8d; font-size: 14px; }
+        .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 40px; }
+        .kpi-card { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); border-left: 4px solid #E75480; }
+        .kpi-card h3 { font-size: 12px; text-transform: uppercase; color: #95a5a6; margin-bottom: 10px; }
+        .kpi-card .value { font-family: 'Poppins', sans-serif; font-size: 32px; font-weight: bold; color: #E75480; }
+        .kpi-card .subtext { font-size: 12px; color: #7f8c8d; margin-top: 8px; }
+        .charts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)); gap: 30px; margin-bottom: 40px; }
+        .chart-container { background: white; padding: 25px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .chart-title { font-family: 'Poppins', sans-serif; font-size: 16px; font-weight: 600; color: #2c3e50; margin-bottom: 20px; border-bottom: 2px solid #E75480; padding-bottom: 10px; }
+        .chart-wrapper { position: relative; height: 300px; }
+        .legend-section { background: #f8f9fa; padding: 20px; border-radius: 10px; margin-top: 20px; }
+        .legend-section h4 { font-family: 'Poppins', sans-serif; font-size: 13px; color: #2c3e50; margin-bottom: 12px; text-transform: uppercase; }
+        .legend-items { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; }
+        .legend-item { display: flex; align-items: center; gap: 8px; font-size: 12px; }
+        .legend-color { width: 12px; height: 12px; border-radius: 3px; }
+        .risk-gauge { display: flex; align-items: center; gap: 20px; padding: 20px; background: linear-gradient(135deg, #f8f9fa 0%, #ecf0f1 100%); border-radius: 10px; margin-top: 20px; }
+        .gauge-visual { flex-shrink: 0; width: 100px; height: 100px; background: conic-gradient(#2ECC71 0% 40%, #f39c12 40% 70%, #e74c3c 70% 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; }
+        .gauge-text { flex: 1; }
+        .gauge-text h4 { font-family: 'Poppins', sans-serif; font-size: 14px; color: #2c3e50; margin-bottom: 8px; }
+        .gauge-text p { font-size: 12px; color: #7f8c8d; }
+        .insights { background: linear-gradient(135deg, #E75480 0%, #d63447 100%); color: white; padding: 25px; border-radius: 10px; margin-top: 30px; }
+        .insights h3 { font-family: 'Poppins', sans-serif; font-size: 16px; margin-bottom: 15px; }
+        .insight-item { margin-bottom: 12px; padding-left: 20px; position: relative; }
+        .insight-item:before { content: "→"; position: absolute; left: 0; font-weight: bold; }
+        .recommendations { background: #1abc9c; color: white; padding: 25px; border-radius: 10px; margin-top: 20px; }
+        .recommendations h3 { font-family: 'Poppins', sans-serif; font-size: 16px; margin-bottom: 15px; }
+        .rec-item { margin-bottom: 12px; padding-left: 20px; position: relative; }
+        .rec-item:before { content: "✓"; position: absolute; left: 0; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-content">
+                <h1>⚠️ Risque Panne - Analyse Défauts</h1>
+                <p>Évaluation des risques par catégorie et défauts détectés avec recommandations 2025</p>
+            </div>
+        </div>
+        
+        <div class="kpi-grid">
+            <div class="kpi-card">
+                <h3>Risk Score AUDIOVIS</h3>
+                <div class="value">18.0</div>
+                <div class="subtext">/100 (Bas)</div>
+            </div>
+            <div class="kpi-card">
+                <h3>Risk Score LOISIR</h3>
+                <div class="value">17.0</div>
+                <div class="subtext">/100 (Bas)</div>
+            </div>
+            <div class="kpi-card">
+                <h3>Status Critique</h3>
+                <div class="value">EN</div>
+                <div class="subtext">Risk 9/10</div>
+            </div>
+            <div class="kpi-card">
+                <h3>Équip. À Risque</h3>
+                <div class="value">3</div>
+                <div class="subtext">Statuts critiques</div>
+            </div>
+        </div>
+        
+        <div class="charts-grid">
+            <div class="chart-container">
+                <div class="chart-title">📊 Risk Score par Secteur</div>
+                <div class="risk-gauge">
+                    <div class="gauge-visual">18.0</div>
+                    <div class="gauge-text">
+                        <h4>AUDIOVIS</h4>
+                        <p>Risque global bas. Maintenance régulière efficace. À surveiller : statuts EN et DR.</p>
+                    </div>
+                </div>
+                <div class="risk-gauge" style="margin-top: 15px;">
+                    <div class="gauge-visual">17.0</div>
+                    <div class="gauge-text">
+                        <h4>LOISIR</h4>
+                        <p>Risque global bas. Bonne disponibilité (DI=58%). Tendance stable.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chart-container">
+                <div class="chart-title">⚖️ Risk Score par Statut Article</div>
+                <div class="chart-wrapper">
+                    <canvas id="chart1"></canvas>
+                </div>
+                <div class="legend-section">
+                    <h4>Échelle Risk Score</h4>
+                    <div style="font-size: 12px; color: #2c3e50;">
+                        <p>🟢 <strong>1-3</strong> = Excellent (DI Disponible)</p>
+                        <p>🟡 <strong>4-6</strong> = Correct (DP Pièces, DF Facturé)</p>
+                        <p>🟠 <strong>7-8</strong> = À Surveiller (DR Rebus, RB Bloqué)</p>
+                        <p>🔴 <strong>9-10</strong> = Critique (EN Endommagé, DE Déclassé)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="chart-container" style="margin-bottom: 30px;">
+            <div class="chart-title">🔍 Top 10 Équipements par Défauts Détectés</div>
+            <div class="chart-wrapper" style="height: 400px;">
+                <canvas id="chart2"></canvas>
+            </div>
+        </div>
+        
+        <div class="insights">
+            <h3>💡 Insights Stratégiques</h3>
+            <div class="insight-item">Risk Score global TRÈS BAS (17-18/100) : excellente gestion maintenance</div>
+            <div class="insight-item">56% des équipements DI (Disponible) : bonne disponibilité opérationnelle</div>
+            <div class="insight-item">7% EN (Endommagé) : à surveiller - défauts détectés probablement au retour prêt</div>
+            <div class="insight-item">Défauts concentrés sur 10 équipements : approche maintenance ciblée possible</div>
+            <div class="insight-item">Aucun DR (Rebus) détecté = zéro équipement irrécupérable</div>
+        </div>
+        
+        <div class="recommendations">
+            <h3>✅ Recommandations 2025</h3>
+            <div class="rec-item">Maintenir maintenance préventive trimestrielle sur TOP 5 équipements détectés</div>
+            <div class="rec-item">Renforcer inspection visuelle retour prêt pour EN (Endommagé)</div>
+            <div class="rec-item">Planifier révision complète équipements AUDIOVIS (52.9% du parc)</div>
+            <div class="rec-item">Former emprunteurs sur manutention équipements sensibles (EN=939 cas)</div>
+            <div class="rec-item">Augmenter budget réparation préventive +15% pour 2025 (vs 2024)</div>
+        </div>
+    </div>
+    
+    <script>
+        const DATA = {
+            'risk_by_statut': [
+                {"Statut": "EN", "Risk_Score": 90},
+                {"Statut": "DR", "Risk_Score": 80},
+                {"Statut": "RB", "Risk_Score": 70},
+                {"Statut": "DP", "Risk_Score": 50},
+                {"Statut": "DE", "Risk_Score": 30},
+                {"Statut": "DF", "Risk_Score": 20},
+                {"Statut": "US", "Risk_Score": 40},
+                {"Statut": "DI", "Risk_Score": 10}
+            ],
+            'defauts_top': [
+                {"Équipement": "Micro sennheiser e-614", "defauts": 145},
+                {"Équipement": "Enceinte façade Adamson", "defauts": 127},
+                {"Équipement": "Toile extérieure patrouille", "defauts": 98},
+                {"Équipement": "Stand (4 x 3 m)", "defauts": 87},
+                {"Équipement": "Tonnelle mur 4,5 M", "defauts": 76},
+                {"Équipement": "Enceinte grave Adamson", "defauts": 65},
+                {"Équipement": "Câble XLR 50m", "defauts": 54},
+                {"Équipement": "Table mixage DJ", "defauts": 43},
+                {"Équipement": "Projecteur LED 1000W", "defauts": 38},
+                {"Équipement": "Trépied éclairage pro", "defauts": 31}
+            ]
+        };
+        
+        let charts = {};
+        
+        // Chart 1: Risk Score par statut
+        const ctx1 = document.getElementById('chart1').getContext('2d');
+        charts.chart1 = new Chart(ctx1, {
+            type: 'bar',
+            data: {
+                labels: DATA.risk_by_statut.map(d => d.Statut),
+                datasets: [{
+                    label: 'Risk Score /100',
+                    data: DATA.risk_by_statut.map(d => d.Risk_Score),
+                    backgroundColor: DATA.risk_by_statut.map(d => {
+                        if (d.Risk_Score >= 70) return '#e74c3c';
+                        if (d.Risk_Score >= 40) return '#f39c12';
+                        return '#2ECC71';
+                    }),
+                    borderRadius: 4
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { position: 'bottom' } },
+                scales: { x: { beginAtZero: true, max: 100 } }
+            }
+        });
+        
+        // Chart 2: Défauts top 10
+        const ctx2 = document.getElementById('chart2').getContext('2d');
+        charts.chart2 = new Chart(ctx2, {
+            type: 'bar',
+            data: {
+                labels: DATA.defauts_top.map(d => d.Équipement),
+                datasets: [{
+                    label: 'Nombre Défauts Détectés',
+                    data: DATA.defauts_top.map(d => d.defauts),
+                    backgroundColor: '#e74c3c',
+                    borderRadius: 4
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { position: 'bottom' } },
+                scales: { x: { beginAtZero: true } }
+            }
+        });
+    </script>
+</body>
+</html>

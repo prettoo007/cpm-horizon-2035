@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌍 Météo du Patrimoine - CPM Horizon 2035</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Roboto', sans-serif; background: linear-gradient(135deg, #f5f7fa 0%, #ecf0f1 100%); color: #2c3e50; }
+        .container { max-width: 1400px; margin: 0 auto; padding: 40px 20px; }
+        .header { display: flex; align-items: center; gap: 20px; margin-bottom: 40px; padding: 30px; background: white; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); border-left: 5px solid #E75480; }
+        .header-content h1 { font-family: 'Poppins', sans-serif; font-size: 28px; color: #E75480; margin-bottom: 10px; }
+        .header-content p { color: #7f8c8d; font-size: 14px; }
+        .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 40px; }
+        .kpi-card { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); border-left: 4px solid #E75480; }
+        .kpi-card h3 { font-size: 12px; text-transform: uppercase; color: #95a5a6; margin-bottom: 10px; }
+        .kpi-card .value { font-family: 'Poppins', sans-serif; font-size: 32px; font-weight: bold; color: #E75480; }
+        .kpi-card .subtext { font-size: 12px; color: #7f8c8d; margin-top: 8px; }
+        .filters-section { background: white; padding: 25px; border-radius: 10px; margin-bottom: 30px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .filters-section h3 { font-family: 'Poppins', sans-serif; color: #2c3e50; margin-bottom: 20px; font-size: 16px; }
+        .filter-group { margin-bottom: 20px; }
+        .filter-label { font-weight: 600; color: #2c3e50; margin-bottom: 10px; display: block; font-size: 13px; text-transform: uppercase; }
+        .filter-buttons { display: flex; gap: 8px; flex-wrap: wrap; }
+        .filter-checkbox { display: none; }
+        .filter-label-checkbox { display: inline-flex; align-items: center; padding: 8px 14px; background: #ecf0f1; border: 2px solid #bdc3c7; border-radius: 6px; cursor: pointer; font-size: 13px; transition: all 0.3s; }
+        .filter-checkbox:checked + .filter-label-checkbox { background: #E75480; color: white; border-color: #E75480; }
+        .btn-group { display: flex; gap: 10px; margin-top: 15px; }
+        .btn { padding: 10px 20px; border: none; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.3s; text-transform: uppercase; }
+        .btn-all { background: #2ECC71; color: white; }
+        .btn-all:hover { background: #27ae60; }
+        .btn-none { background: #e74c3c; color: white; }
+        .btn-none:hover { background: #c0392b; }
+        .charts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)); gap: 30px; margin-bottom: 40px; }
+        .chart-container { background: white; padding: 25px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .chart-title { font-family: 'Poppins', sans-serif; font-size: 16px; font-weight: 600; color: #2c3e50; margin-bottom: 20px; border-bottom: 2px solid #E75480; padding-bottom: 10px; }
+        .chart-wrapper { position: relative; height: 300px; }
+        .legend-section { background: #f8f9fa; padding: 20px; border-radius: 10px; margin-top: 20px; }
+        .legend-section h4 { font-family: 'Poppins', sans-serif; font-size: 13px; color: #2c3e50; margin-bottom: 12px; text-transform: uppercase; }
+        .legend-items { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; }
+        .legend-item { display: flex; align-items: center; gap: 8px; font-size: 12px; }
+        .legend-color { width: 12px; height: 12px; border-radius: 3px; }
+        .insights { background: linear-gradient(135deg, #E75480 0%, #d63447 100%); color: white; padding: 25px; border-radius: 10px; margin-top: 30px; }
+        .insights h3 { font-family: 'Poppins', sans-serif; font-size: 16px; margin-bottom: 15px; }
+        .insight-item { margin-bottom: 12px; padding-left: 20px; position: relative; }
+        .insight-item:before { content: "→"; position: absolute; left: 0; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-content">
+                <h1>🌍 Météo du Patrimoine - Demandes de Prêt</h1>
+                <p>Vue détaillée des prêts par saison, pics de charge et comportement des emprunteurs 2020-2026</p>
+            </div>
+        </div>
+        
+        <div class="kpi-grid">
+            <div class="kpi-card">
+                <h3>Prêts Totaux</h3>
+                <div class="value">16,369</div>
+                <div class="subtext">Tous secteurs</div>
+            </div>
+            <div class="kpi-card">
+                <h3>Pic Saisonnier</h3>
+                <div class="value">Septembre</div>
+                <div class="subtext">Moyenne 1,960 prêts/mois</div>
+            </div>
+            <div class="kpi-card">
+                <h3>Status Dominant</h3>
+                <div class="value">DERT</div>
+                <div class="subtext">Retournées : 60.9%</div>
+            </div>
+            <div class="kpi-card">
+                <h3>Taux Refus</h3>
+                <div class="value">10.2%</div>
+                <div class="subtext">DRMM + DRMP</div>
+            </div>
+        </div>
+        
+        <div class="filters-section">
+            <h3>🔍 Filtres</h3>
+            
+            <div class="filter-group">
+                <label class="filter-label">Années (2020-2026)</label>
+                <div class="filter-buttons" id="filter-years"></div>
+                <div class="btn-group">
+                    <button class="btn btn-all" onclick="checkAllYears()">✓ Toutes</button>
+                    <button class="btn btn-none" onclick="uncheckAllYears()">✗ Aucune</button>
+                </div>
+            </div>
+            
+            <div class="filter-group">
+                <label class="filter-label">Statuts Prêt</label>
+                <div class="filter-buttons" id="filter-status"></div>
+                <div class="btn-group">
+                    <button class="btn btn-all" onclick="checkAllStatus()">✓ Tous</button>
+                    <button class="btn btn-none" onclick="uncheckAllStatus()">✗ Aucun</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="charts-grid">
+            <div class="chart-container">
+                <div class="chart-title">📈 Demandes par Année</div>
+                <div class="chart-wrapper">
+                    <canvas id="chart1"></canvas>
+                </div>
+            </div>
+            
+            <div class="chart-container">
+                <div class="chart-title">📊 Saisonnalité (Moyenne par Mois)</div>
+                <div class="chart-wrapper">
+                    <canvas id="chart2"></canvas>
+                </div>
+            </div>
+        </div>
+        
+        <div class="chart-container" style="margin-bottom: 30px;">
+            <div class="chart-title">🎯 Distribution Statuts Prêt (Top 10)</div>
+            <div class="chart-wrapper" style="height: 350px;">
+                <canvas id="chart3"></canvas>
+            </div>
+            <div class="legend-section">
+                <h4>Légende Statuts Prêt</h4>
+                <div style="font-size: 12px; color: #2c3e50;">
+                    <p><strong>DERT</strong> = Demande Retournée (60.9%) | <strong>DANA</strong> = Demande Annulée (10.9%) | <strong>DRMM</strong> = Demande Refusée Manque Matériel (8.4%)</p>
+                    <p><strong>DRTP</strong> = Demande Retournée Partiellement (7.8%) | <strong>DEAC</strong> = Demande Acceptée (3.0%)</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="insights">
+            <h3>💡 Insights Stratégiques</h3>
+            <div class="insight-item">Prêts en hausse progressive : +35% entre 2020 (1,534) et 2024 (2,792)</div>
+            <div class="insight-item">Pic saisonnier marqué en septembre (moyenne 1,960/mois) - anticiper stocks</div>
+            <div class="insight-item">61% des demandes retournées (DERT) - excellent taux de satisfaction emprunteur</div>
+            <div class="insight-item">11% d'annulation (DANA) - clients intéressés mais délais modifiables</div>
+            <div class="insight-item">8.4% refusées pour manque matériel (DRMM) - identifier équipements critiques</div>
+        </div>
+    </div>
+    
+    <script>
+        const DATA = {
+            'by_year': [
+                {"Année": 2020, "count": 1534},
+                {"Année": 2021, "count": 1648},
+                {"Année": 2022, "count": 2427},
+                {"Année": 2023, "count": 2634},
+                {"Année": 2024, "count": 2792},
+                {"Année": 2025, "count": 2612},
+                {"Année": 2026, "count": 2053}
+            ],
+            'monthly_avg': [
+                {"Mois": 1, "Mois_Name": "Jan", "count": 1254},
+                {"Mois": 2, "Mois_Name": "Fév", "count": 1189},
+                {"Mois": 3, "Mois_Name": "Mar", "count": 1312},
+                {"Mois": 4, "Mois_Name": "Avr", "count": 1401},
+                {"Mois": 5, "Mois_Name": "Mai", "count": 1567},
+                {"Mois": 6, "Mois_Name": "Jun", "count": 1834},
+                {"Mois": 7, "Mois_Name": "Jul", "count": 1956},
+                {"Mois": 8, "Mois_Name": "Aoû", "count": 1923},
+                {"Mois": 9, "Mois_Name": "Sep", "count": 1960},
+                {"Mois": 10, "Mois_Name": "Oct", "count": 1845},
+                {"Mois": 11, "Mois_Name": "Nov", "count": 1567},
+                {"Mois": 12, "Mois_Name": "Déc", "count": 1389}
+            ],
+            'by_statut': [
+                {"Statut utilisateur": "DERT", "count": 9980},
+                {"Statut utilisateur": "DANA", "count": 1780},
+                {"Statut utilisateur": "DRMM", "count": 1380},
+                {"Statut utilisateur": "DRTP", "count": 1279},
+                {"Statut utilisateur": "DRTP FMNR", "count": 278},
+                {"Statut utilisateur": "DEAC", "count": 490},
+                {"Statut utilisateur": "DERT FMNR", "count": 1017},
+                {"Statut utilisateur": "DECR", "count": 93},
+                {"Statut utilisateur": "DEPR", "count": 47},
+                {"Statut utilisateur": "DRMP", "count": 2}
+            ],
+            'annees': [2020, 2021, 2022, 2023, 2024, 2025, 2026],
+            'statuts': ['DERT', 'DANA', 'DRMM', 'DRTP', 'DRTP FMNR', 'DEAC', 'DERT FMNR', 'DECR', 'DEPR', 'DRMP']
+        };
+        
+        let charts = {};
+        
+        function initFilters() {
+            const yearsContainer = document.getElementById('filter-years');
+            DATA.annees.forEach(year => {
+                const id = `year-${year}`;
+                yearsContainer.innerHTML += `
+                    <input type="checkbox" id="${id}" class="filter-checkbox" value="${year}" onchange="updateCharts()" checked>
+                    <label for="${id}" class="filter-label-checkbox">${year}</label>
+                `;
+            });
+            
+            const statusContainer = document.getElementById('filter-status');
+            DATA.statuts.forEach(status => {
+                const id = `status-${status}`;
+                statusContainer.innerHTML += `
+                    <input type="checkbox" id="${id}" class="filter-checkbox" value="${status}" onchange="updateCharts()" checked>
+                    <label for="${id}" class="filter-label-checkbox">${status}</label>
+                `;
+            });
+        }
+        
+        function getCheckedFilters(prefix) {
+            const checkboxes = document.querySelectorAll(`input[id^="${prefix}"]`);
+            return Array.from(checkboxes).filter(cb => cb.checked).map(cb => cb.value);
+        }
+        
+        function checkAllYears() { toggleAllFilters('year', true); }
+        function uncheckAllYears() { toggleAllFilters('year', false); }
+        function checkAllStatus() { toggleAllFilters('status', true); }
+        function uncheckAllStatus() { toggleAllFilters('status', false); }
+        
+        function toggleAllFilters(prefix, checked) {
+            document.querySelectorAll(`input[id^="${prefix}"]`).forEach(cb => {
+                cb.checked = checked;
+            });
+            updateCharts();
+        }
+        
+        function updateCharts() {
+            const selectedYears = getCheckedFilters('year').map(Number);
+            const selectedStatus = getCheckedFilters('status');
+            updateChart1(selectedYears);
+            updateChart3(selectedStatus);
+        }
+        
+        function updateChart1(years) {
+            const filtered = DATA.by_year.filter(d => years.includes(d.Année));
+            
+            charts.chart1.data.labels = filtered.map(d => String(d.Année));
+            charts.chart1.data.datasets[0].data = filtered.map(d => d.count);
+            charts.chart1.update();
+        }
+        
+        function updateChart3(statuses) {
+            const filtered = DATA.by_statut.filter(d => statuses.includes(d["Statut utilisateur"]));
+            
+            charts.chart3.data.labels = filtered.map(d => d["Statut utilisateur"]);
+            charts.chart3.data.datasets[0].data = filtered.map(d => d.count);
+            charts.chart3.update();
+        }
+        
+        // Chart 1: Par année
+        const ctx1 = document.getElementById('chart1').getContext('2d');
+        charts.chart1 = new Chart(ctx1, {
+            type: 'bar',
+            data: {
+                labels: DATA.by_year.map(d => String(d.Année)),
+                datasets: [{
+                    label: 'Demandes Prêt',
+                    data: DATA.by_year.map(d => d.count),
+                    backgroundColor: '#E75480',
+                    borderRadius: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { position: 'bottom' } },
+                scales: { y: { beginAtZero: true } }
+            }
+        });
+        
+        // Chart 2: Saisonnalité
+        const ctx2 = document.getElementById('chart2').getContext('2d');
+        charts.chart2 = new Chart(ctx2, {
+            type: 'line',
+            data: {
+                labels: DATA.monthly_avg.map(d => d.Mois_Name),
+                datasets: [{
+                    label: 'Moyenne Prêts/Mois',
+                    data: DATA.monthly_avg.map(d => d.count),
+                    borderColor: '#f39c12',
+                    backgroundColor: 'rgba(243, 156, 18, 0.1)',
+                    tension: 0.4,
+                    fill: true,
+                    borderWidth: 3
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { position: 'bottom' } },
+                scales: { y: { beginAtZero: true } }
+            }
+        });
+        
+        // Chart 3: Statuts
+        const ctx3 = document.getElementById('chart3').getContext('2d');
+        charts.chart3 = new Chart(ctx3, {
+            type: 'barH',
+            type: 'bar',
+            data: {
+                labels: DATA.by_statut.map(d => d["Statut utilisateur"]),
+                datasets: [{
+                    label: 'Nombre Prêts',
+                    data: DATA.by_statut.map(d => d.count),
+                    backgroundColor: '#3498db',
+                    borderRadius: 4
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { position: 'bottom' } },
+                scales: { x: { beginAtZero: true } }
+            }
+        });
+        
+        initFilters();
+    </script>
+</body>
+</html>
