@@ -3,203 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CPM Horizon 2035 — Présentation COPIL</title>
+    <title>Présentation COPIL</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'><circle cx='20' cy='20' r='20' fill='%23e74c3c'/><text x='20' y='28' font-size='28' font-weight='bold' fill='white' text-anchor='middle'>C</text></svg>">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #f5f5f5;
-        }
-
-        .header {
-            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-            color: white;
-            padding: 20px 40px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-
-        .header-title {
-            font-size: 20px;
-            font-weight: 700;
-        }
-
-        .nav-buttons {
-            display: flex;
-            gap: 12px;
-        }
-
-        .nav-btn {
-            padding: 10px 16px;
-            background: rgba(255,255,255,0.15);
-            color: white;
-            text-decoration: none;
-            border-radius: 4px;
-            font-size: 13px;
-            font-weight: 600;
-            transition: all 0.2s;
-            cursor: pointer;
-            border: none;
-            text-transform: uppercase;
-        }
-
-        .nav-btn:hover {
-            background: rgba(255,255,255,0.25);
-            transform: translateY(-2px);
-        }
-
-        .logout-btn {
-            background: #e74c3c;
-        }
-
-        .logout-btn:hover {
-            background: #c0392b;
-        }
-
-        .page-header {
-            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-            color: white;
-            padding: 40px;
-            text-align: center;
-            border-bottom: 4px solid #e74c3c;
-        }
-
-        .page-header h1 {
-            font-size: 36px;
-            margin-bottom: 8px;
-            font-weight: 700;
-        }
-
-        .page-header p {
-            font-size: 14px;
-            opacity: 0.9;
-        }
-
-        .content {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 60px 40px;
-            text-align: center;
-        }
-
-        .construction {
-            background: white;
-            border: 2px solid #e0e0e0;
-            border-left: 6px solid #e74c3c;
-            padding: 40px;
-            border-radius: 8px;
-            margin-bottom: 30px;
-        }
-
-        .construction-icon {
-            font-size: 64px;
-            margin-bottom: 20px;
-        }
-
-        .construction h2 {
-            font-size: 24px;
-            color: #2c3e50;
-            margin-bottom: 12px;
-        }
-
-        .construction p {
-            font-size: 14px;
-            color: #7f8c8d;
-            line-height: 1.7;
-            margin-bottom: 10px;
-        }
-
-        .description {
-            background: #f9f9f9;
-            border-left: 4px solid #e74c3c;
-            padding: 20px;
-            border-radius: 4px;
-            margin-bottom: 30px;
-            text-align: left;
-        }
-
-        .description p {
-            font-size: 13px;
-            color: #555;
-            line-height: 1.8;
-        }
-
-        .back-btn {
-            display: inline-block;
-            padding: 12px 24px;
-            background: #e74c3c;
-            color: white;
-            text-decoration: none;
-            border-radius: 4px;
-            font-weight: 600;
-            font-size: 13px;
-            text-transform: uppercase;
-            transition: all 0.3s;
-            border: none;
-            cursor: pointer;
-        }
-
-        .back-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; }
+        .header { background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%); color: white; padding: 20px 40px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 2px 8px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; }
+        .header-title { font-size: 20px; font-weight: 700; }
+        .nav-buttons { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+        .nav-btn { padding: 10px 16px; background: rgba(255,255,255,0.15); color: white; text-decoration: none; border: none; border-radius: 4px; font-size: 12px; font-weight: 600; cursor: pointer; text-transform: uppercase; transition: all 0.2s; }
+        .nav-btn:hover { background: rgba(255,255,255,0.25); }
+        .logout-btn { background: #e74c3c; }
+        .logout-btn:hover { background: #c0392b; }
+        .page-header { background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%); color: white; padding: 40px; text-align: center; border-bottom: 4px solid #e74c3c; }
+        .page-header h1 { font-size: 36px; margin-bottom: 12px; }
+        .content { max-width: 1200px; margin: 0 auto; padding: 40px; }
+        .viewer-container { background: white; border-radius: 6px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); text-align: center; min-height: 500px; display: flex; align-items: center; justify-content: center; }
+        .controls { margin-bottom: 20px; display: flex; gap: 10px; align-items: center; justify-content: center; background: white; padding: 15px; border-radius: 6px; }
+        .controls button { padding: 10px 20px; background: #2c3e50; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: 600; }
+        .controls button:hover { background: #34495e; }
+        .controls a { padding: 10px 20px; background: #e74c3c; color: white; text-decoration: none; border-radius: 4px; font-weight: 600; }
+        .controls a:hover { background: #c0392b; }
+        .message { text-align: center; color: #7f8c8d; font-size: 16px; margin: 20px 0; }
         @media (max-width: 768px) {
-            .header {
-                flex-direction: column;
-                gap: 12px;
-            }
-
-            .nav-buttons {
-                width: 100%;
-                flex-wrap: wrap;
-            }
-
-            .page-header h1 {
-                font-size: 24px;
-            }
-
-            .content {
-                padding: 40px 20px;
-            }
+            .header { flex-direction: column; gap: 12px; }
+            .nav-buttons { width: 100%; }
+            .controls { flex-direction: column; }
+            .content { padding: 20px; }
+            .page-header h1 { font-size: 24px; }
         }
     </style>
 </head>
 <body>
     <!-- HEADER -->
-    <div style="background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%); color: white; padding: 20px 40px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 2px 8px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100;">
-        <div style="font-size: 20px; font-weight: 700;">🏛️ CPM Horizon 2035</div>
-        <div style="display: flex; gap: 12px; align-items: center;">
-            <a href="../../index.html" style="padding: 10px 16px; background: rgba(255,255,255,0.15); color: white; text-decoration: none; border-radius: 4px; font-size: 13px; font-weight: 600; cursor: pointer; text-transform: uppercase;">🏠 ACCUEIL</a>
-            <button onclick="window.location.href='../../index.html#schema'" style="padding: 10px 16px; background: rgba(255,255,255,0.15); color: white; border: none; border-radius: 4px; font-size: 13px; font-weight: 600; cursor: pointer; text-transform: uppercase;">📋 SCHÉMA</button>
-            <button onclick="window.location.href='../../index.html#outils'" style="padding: 10px 16px; background: rgba(255,255,255,0.15); color: white; border: none; border-radius: 4px; font-size: 13px; font-weight: 600; cursor: pointer; text-transform: uppercase;">🔧 OUTILS</button>
-            <button onclick="window.location.href='../../index.html#data'" style="padding: 10px 16px; background: rgba(255,255,255,0.15); color: white; border: none; border-radius: 4px; font-size: 13px; font-weight: 600; cursor: pointer; text-transform: uppercase;">📊 DATA</button>
-            <button onclick="window.location.href='../../index.html#communication'" style="padding: 10px 16px; background: rgba(255,255,255,0.15); color: white; border: none; border-radius: 4px; font-size: 13px; font-weight: 600; cursor: pointer; text-transform: uppercase;">💬 COMM</button>
-            <button onclick="sessionStorage.removeItem('cpm_authenticated'); window.location.href='../../login.html';" style="padding: 10px 16px; background: #e74c3c; color: white; border: none; border-radius: 4px; font-size: 13px; font-weight: 600; cursor: pointer; text-transform: uppercase;">🔴 DÉCONNEXION</button>
+    <div class="header">
+        <div class="header-title">🏛️ CPM Horizon 2035</div>
+        <div class="nav-buttons">
+            <a href="../../index.html" class="nav-btn">🏠 ACCUEIL</a>
+            <button onclick="window.location.href='../../index.html#schema'" class="nav-btn">📋 SCHÉMA</button>
+            <button onclick="window.location.href='../../index.html#outils'" class="nav-btn">🔧 OUTILS</button>
+            <button onclick="window.location.href='../../index.html#data'" class="nav-btn">📊 DATA</button>
+            <button onclick="window.location.href='../../index.html#communication'" class="nav-btn">💬 COMM</button>
+            <button onclick="sessionStorage.removeItem('cpm_authenticated'); window.location.href='../../login.html';" class="nav-btn logout-btn">🔴 DÉCO</button>
         </div>
     </div>
-    <script>if (!sessionStorage.getItem('cpm_authenticated')) window.location.href = '../../login.html';</script>
 
-
-
+    <!-- PAGE HEADER -->
+    <div class="page-header">
+        <h1>👥 Présentation COPIL</h1>
+        <p>Slides de Gouvernance et Résultats d'Étapes</p>
     </div>
+
+    <!-- CONTENT -->
+    <div class="content">
+        <div class="controls">
+            <a href="presentation.pptx" download>📥 Télécharger la Présentation (PPTX)</a>
+            <span style="color: #7f8c8d;">|</span>
+            <a href="https://view.officeapps.live.com/op/view.aspx?src=https://prettoo007.github.io/cpm-horizon-2035/schema-directeur/presentation-copil/presentation.pptx" target="_blank">🌐 Ouvrir dans Office Online</a>
+        </div>
+
+        <div class="viewer-container">
+            <div class="message">
+                <p>📊 <strong>Présentation PowerPoint (PPTX)</strong></p>
+                <p style="margin-top: 10px; font-size: 14px;">La présentation contient 14 slides de gouvernance, résultats d'étapes et communications aux stakeholders.</p>
+                <p style="margin-top: 15px;">Utilisez les boutons ci-dessus pour:</p>
+                <p>✅ Télécharger le fichier PPTX</p>
+                <p>✅ Ouvrir dans Office 365 Online</p>
+            </div>
+        </div>
+
+        <div style="background: #f0f0f0; border-left: 4px solid #e74c3c; padding: 20px; margin-top: 30px; border-radius: 4px;">
+            <h3 style="color: #2c3e50; margin-bottom: 10px;">📋 Contenu de la Présentation:</h3>
+            <ul style="list-style: none; color: #555; font-size: 14px; line-height: 1.8;">
+                <li>✓ Slides de gouvernance et organisation du projet</li>
+                <li>✓ Résultats d'étapes et jalons clés</li>
+                <li>✓ Communications aux stakeholders</li>
+                <li>✓ Architecture technique et roadmap</li>
+                <li>✓ Budget et ressources</li>
+                <li>✓ Risques et mitigation</li>
+            </ul>
+        </div>
+    </div>
+
     <script>
-        function logout() {
-            sessionStorage.removeItem('cpm_authenticated');
-            window.location.href = '../../login.html';
-        }
-        if (!sessionStorage.getItem('cpm_authenticated')) {
-            window.location.href = '../../login.html';
-        }
+        if (!sessionStorage.getItem('cpm_authenticated')) window.location.href = '../../login.html';
     </script>
-    
 </body>
 </html>
