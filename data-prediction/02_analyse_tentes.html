@@ -17,20 +17,28 @@
         .kpi-card h3 { font-size: 12px; text-transform: uppercase; color: #95a5a6; margin-bottom: 10px; }
         .kpi-card .value { font-family: 'Poppins', sans-serif; font-size: 32px; font-weight: bold; color: #E75480; }
         .kpi-card .subtext { font-size: 12px; color: #7f8c8d; margin-top: 8px; }
-        .filters-section { background: white; padding: 25px; border-radius: 10px; margin-bottom: 30px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
-        .filters-section h3 { font-family: 'Poppins', sans-serif; color: #2c3e50; margin-bottom: 20px; font-size: 16px; }
-        .filter-group { margin-bottom: 20px; }
-        .filter-label { font-weight: 600; color: #2c3e50; margin-bottom: 10px; display: block; font-size: 13px; text-transform: uppercase; }
-        .filter-buttons { display: flex; gap: 8px; flex-wrap: wrap; }
+        .filters-section { background: white; padding: 15px; border-radius: 10px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .filters-section h3 { font-family: 'Poppins', sans-serif; color: #2c3e50; margin-bottom: 12px; font-size: 14px; }
+        .filter-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+        .filter-group { margin-bottom: 8px; }
+        .filter-label { font-weight: 600; color: #2c3e50; margin-bottom: 6px; display: block; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .filter-buttons { display: flex; gap: 4px; flex-wrap: wrap; }
         .filter-checkbox { display: none; }
-        .filter-label-checkbox { display: inline-flex; align-items: center; padding: 8px 14px; background: #ecf0f1; border: 2px solid #bdc3c7; border-radius: 6px; cursor: pointer; font-size: 13px; transition: all 0.3s; }
+        .filter-label-checkbox { display: inline-flex; align-items: center; padding: 6px 10px; background: #ecf0f1; border: 1px solid #bdc3c7; border-radius: 4px; cursor: pointer; font-size: 11px; transition: all 0.2s; }
         .filter-checkbox:checked + .filter-label-checkbox { background: #E75480; color: white; border-color: #E75480; }
-        .btn-group { display: flex; gap: 10px; margin-top: 15px; }
-        .btn { padding: 10px 20px; border: none; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.3s; text-transform: uppercase; }
+        .btn-group { display: flex; gap: 6px; margin-top: 8px; }
+        .btn { padding: 6px 12px; border: none; border-radius: 4px; font-size: 11px; font-weight: 600; cursor: pointer; transition: all 0.2s; text-transform: uppercase; }
         .btn-all { background: #2ECC71; color: white; }
         .btn-all:hover { background: #27ae60; }
         .btn-none { background: #e74c3c; color: white; }
         .btn-none:hover { background: #c0392b; }
+        
+        @media (max-width: 1024px) {
+            .filter-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 640px) {
+            .filter-grid { grid-template-columns: 1fr; }
+        }
         .charts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)); gap: 30px; margin-bottom: 40px; }
         .chart-container { background: white; padding: 25px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
         .chart-title { font-family: 'Poppins', sans-serif; font-size: 16px; font-weight: 600; color: #2c3e50; margin-bottom: 20px; border-bottom: 2px solid #E75480; padding-bottom: 10px; }
