@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CPM Horizon 2035 — Analyse SAP</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'><circle cx='20' cy='20' r='20' fill='%23e74c3c'/><text x='20' y='28' font-size='28' font-weight='bold' fill='white' text-anchor='middle'>C</text></svg>">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .nav-buttons { display: flex; gap: 12px; }
+        .nav-btn {
+            padding: 8px 16px;
+            background: rgba(255,255,255,0.15);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            transition: all 0.2s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .nav-btn:hover { background: rgba(255,255,255,0.25); }
+        .logout-btn { background: #e74c3c; }
+        .logout-btn:hover { background: #c0392b; }
+
+        .page-header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            border-bottom: 4px solid #9b59b6;
+        }
+
+        .page-header h1 { font-size: 36px; margin-bottom: 8px; }
+
+        .filters {
+            background: white;
+            padding: 20px 40px;
+            border-bottom: 1px solid #e0e0e0;
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .filter-group label {
+            font-size: 12px;
+            font-weight: 700;
+            color: #2c3e50;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .checkboxes { display: flex; gap: 12px; flex-wrap: wrap; }
+        .checkbox-item { display: flex; align-items: center; gap: 6px; }
+        .checkbox-item input { cursor: pointer; width: 16px; height: 16px; }
+        .checkbox-item label { font-size: 13px; color: #555; cursor: pointer; margin: 0; font-weight: normal; }
+
+        .content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px;
+        }
+
+        .module {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-left: 4px solid #9b59b6;
+            padding: 30px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+        }
+
+        .kpi-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .kpi-card {
+            background: #f9f9f9;
+            border-left: 4px solid #9b59b6;
+            padding: 20px;
+            border-radius: 4px;
+        }
+
+        .kpi-label { font-size: 12px; color: #7f8c8d; text-transform: uppercase; font-weight: 600; margin-bottom: 8px; }
+        .kpi-value { font-size: 28px; font-weight: 700; color: #2c3e50; }
+
+        .chart-container {
+            position: relative;
+            height: 300px;
+            margin-bottom: 30px;
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            padding: 15px;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .header { flex-direction: column; gap: 12px; }
+            .filters { flex-direction: column; }
+            .content { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div style="font-size: 20px; font-weight: 700;">🏛️ CPM Horizon 2035</div>
+        <div class="nav-buttons">
+            <a href="../../index.html" class="nav-btn">🏠 ACCUEIL</a>
+            <a href="../../index.html" class="nav-btn">📋 SCHÉMA DIRECTEUR</a>
+            <a href="../../index.html" class="nav-btn">🔧 OUTILS OPÉRATIONNELS</a>
+            <a href="../../index.html" class="nav-btn">📊 DATA & PRÉDICTION</a>
+            <a href="../../index.html" class="nav-btn">💬 COMMUNICATION</a>
+            <button class="nav-btn logout-btn" onclick="logout()">🔴 DÉCONNEXION</button>
+        </div>
+    </div>
+
+    <div class="page-header">
+        <h1>⛅ Météo du Patrimoine</h1>
+        <p>Demandes de prêt | 2020-2026</p>
+    </div>
+
+    <div class="filters">
+        <div class="filter-group">
+            <label>📅 Années</label>
+            <div class="checkboxes" id="yearFilters"></div>
+        </div>
+        <div class="filter-group">
+            <label>🏢 Secteurs</label>
+            <div class="checkboxes" id="sectorFilters"></div>
+        </div>
+        <div class="filter-group">
+            <label>📋 Statuts</label>
+            <div class="checkboxes" id="statusFilters"></div>
+        </div>
+    </div>
+
+    <div class="content" id="mainContent"></div>
+
+    <script>
+        if (!sessionStorage.getItem('cpm_authenticated')) {
+            window.location.href = '../../login.html';
+        }
+
+        const mockData = {
+            repairs: [
+                { year: 2024, sector: 'AUDIOVIS', status: 'DI', count: 120 },
+                { year: 2024, sector: 'AUDIOVIS', status: 'US', count: 80 },
+                { year: 2024, sector: 'AUDIOVIS', status: 'EN', count: 60 },
+                { year: 2024, sector: 'LOISIR', status: 'DI', count: 90 },
+                { year: 2024, sector: 'LOISIR', status: 'US', count: 70 },
+                { year: 2024, sector: 'LOISIR', status: 'EN', count: 50 },
+                { year: 2023, sector: 'AUDIOVIS', status: 'DI', count: 100 },
+                { year: 2023, sector: 'AUDIOVIS', status: 'US', count: 65 },
+                { year: 2023, sector: 'AUDIOVIS', status: 'EN', count: 55 },
+                { year: 2023, sector: 'LOISIR', status: 'DI', count: 80 },
+                { year: 2023, sector: 'LOISIR', status: 'US', count: 60 },
+                { year: 2023, sector: 'LOISIR', status: 'EN', count: 45 },
+                { year: 2022, sector: 'AUDIOVIS', status: 'DI', count: 110 },
+                { year: 2022, sector: 'AUDIOVIS', status: 'US', count: 70 },
+                { year: 2022, sector: 'AUDIOVIS', status: 'EN', count: 50 },
+                { year: 2022, sector: 'LOISIR', status: 'DI', count: 95 },
+                { year: 2022, sector: 'LOISIR', status: 'US', count: 65 },
+                { year: 2022, sector: 'LOISIR', status: 'EN', count: 48 },
+            ]
+        };
+
+        let currentChart = null;
+
+        function initializeFilters() {
+            const years = [2024, 2023, 2022, 2021, 2020];
+            const sectors = ['AUDIOVIS', 'LOISIR'];
+            const statuses = ['DI', 'US', 'EN'];
+
+            document.getElementById('yearFilters').innerHTML = years.map(year => `
+                <div class="checkbox-item">
+                    <input type="checkbox" id="year_${year}" value="${year}" class="year-filter" checked>
+                    <label for="year_${year}">${year}</label>
+                </div>
+            `).join('');
+
+            document.getElementById('sectorFilters').innerHTML = sectors.map(sector => `
+                <div class="checkbox-item">
+                    <input type="checkbox" id="sector_${sector}" value="${sector}" class="sector-filter" checked>
+                    <label for="sector_${sector}">${sector}</label>
+                </div>
+            `).join('');
+
+            document.getElementById('statusFilters').innerHTML = statuses.map(status => `
+                <div class="checkbox-item">
+                    <input type="checkbox" id="status_${status}" value="${status}" class="status-filter" checked>
+                    <label for="status_${status}">${status}</label>
+                </div>
+            `).join('');
+
+            document.querySelectorAll('.year-filter, .sector-filter, .status-filter').forEach(cb => {
+                cb.addEventListener('change', updateContent);
+            });
+        }
+
+        function getSelectedFilters() {
+            const years = Array.from(document.querySelectorAll('.year-filter:checked')).map(el => parseInt(el.value));
+            const sectors = Array.from(document.querySelectorAll('.sector-filter:checked')).map(el => el.value);
+            const statuses = Array.from(document.querySelectorAll('.status-filter:checked')).map(el => el.value);
+            return { years, sectors, statuses };
+        }
+
+        function updateContent() {
+            const { years, sectors, statuses } = getSelectedFilters();
+
+            if (years.length === 0 || sectors.length === 0 || statuses.length === 0) {
+                document.getElementById('mainContent').innerHTML = `
+                    <div class="empty-state">
+                        <div style="font-size: 48px; margin-bottom: 12px;">📋</div>
+                        <p>Veuillez sélectionner au moins une année, un secteur et un statut.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            const filtered = mockData.repairs.filter(r => 
+                years.includes(r.year) && sectors.includes(r.sector) && statuses.includes(r.status)
+            );
+            const total = filtered.reduce((s, r) => s + r.count, 0);
+            const byStatus = {};
+            filtered.forEach(r => {
+                byStatus[r.status] = (byStatus[r.status] || 0) + r.count;
+            });
+
+            document.getElementById('mainContent').innerHTML = `
+                <div class="module">
+                    <div class="kpi-container">
+                        <div class="kpi-card">
+                            <div class="kpi-label">Total Réparations</div>
+                            <div class="kpi-value">${total}</div>
+                        </div>
+                        ${Object.entries(byStatus).map(([status, count]) => `
+                            <div class="kpi-card">
+                                <div class="kpi-label">Status ${status}</div>
+                                <div class="kpi-value">${count}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="chart"></canvas>
+                    </div>
+                </div>
+            `;
+
+            renderChart(byStatus);
+        }
+
+        function renderChart(data) {
+            if (currentChart) currentChart.destroy();
+            
+            setTimeout(() => {
+                const ctx = document.getElementById('chart');
+                if (ctx) {
+                    currentChart = new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: Object.keys(data),
+                            datasets: [{
+                                label: 'Réparations par Status',
+                                data: Object.values(data),
+                                backgroundColor: '#9b59b6',
+                                borderColor: '#7d3c98',
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            plugins: { legend: { display: true } }
+                        }
+                    });
+                }
+            }, 0);
+        }
+
+        function logout() {
+            sessionStorage.removeItem('cpm_authenticated');
+            window.location.href = '../../login.html';
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            initializeFilters();
+            updateContent();
+        });
+    </script>
+</body>
+</html>
