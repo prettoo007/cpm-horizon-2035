@@ -337,52 +337,69 @@
     }
 
     function initializeCharts() {
-      // Chart 1: Tendance 2020-2026
-      const ctx1 = document.getElementById('chart1').getContext('2d');
-      new Chart(ctx1, {
-        type: 'line',
-        data: {
-          labels: ['2020', '2021', '2022', '2023', '2024', '2025', '2026 (F)'],
-          datasets: [{
-            label: 'Réparations (Historique)',
-            data: [1908, 1990, 2141, 2380, 2410, 2096, 2192],
-            borderColor: '#8e44ad',
-            backgroundColor: 'rgba(142, 68, 173, 0.1)',
-            tension: 0.4,
-            fill: true,
-            borderWidth: 3,
-            pointRadius: 6,
-            pointBackgroundColor: '#8e44ad'
-          }]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: { legend: { position: 'bottom' } },
-          scales: { y: { beginAtZero: true } }
+      // Attendre que Chart.js soit chargé
+      setTimeout(() => {
+        // Chart 1: Tendance 2020-2026
+        try {
+          const chartElement1 = document.getElementById('chart1');
+          if (chartElement1) {
+            const ctx1 = chartElement1.getContext('2d');
+            new Chart(ctx1, {
+              type: 'line',
+              data: {
+                labels: ['2020', '2021', '2022', '2023', '2024', '2025', '2026 (F)'],
+                datasets: [{
+                  label: 'Réparations (Historique)',
+                  data: [1908, 1990, 2141, 2380, 2410, 2096, 2192],
+                  borderColor: '#8e44ad',
+                  backgroundColor: 'rgba(142, 68, 173, 0.1)',
+                  tension: 0.4,
+                  fill: true,
+                  borderWidth: 3,
+                  pointRadius: 6,
+                  pointBackgroundColor: '#8e44ad'
+                }]
+              },
+              options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { position: 'bottom' } },
+                scales: { y: { beginAtZero: true } }
+              }
+            });
+          }
+        } catch (e) {
+          console.error('Erreur Chart 1:', e);
         }
-      });
 
-      // Chart 2: Saisonnalité
-      const ctx2 = document.getElementById('chart2').getContext('2d');
-      new Chart(ctx2, {
-        type: 'bar',
-        data: {
-          labels: ['Q1', 'Q2', 'Q3', 'Q4'],
-          datasets: [{
-            label: 'Moyenne par Trimestre',
-            data: [487, 521, 587, 495],
-            backgroundColor: ['#3498db', '#2ecc71', '#f39c12', '#e74c3c'],
-            borderRadius: 4
-          }]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: { legend: { position: 'bottom' } },
-          scales: { y: { beginAtZero: true } }
+        // Chart 2: Saisonnalité
+        try {
+          const chartElement2 = document.getElementById('chart2');
+          if (chartElement2) {
+            const ctx2 = chartElement2.getContext('2d');
+            new Chart(ctx2, {
+              type: 'bar',
+              data: {
+                labels: ['Q1', 'Q2', 'Q3', 'Q4'],
+                datasets: [{
+                  label: 'Moyenne par Trimestre',
+                  data: [487, 521, 587, 495],
+                  backgroundColor: ['#3498db', '#2ecc71', '#f39c12', '#e74c3c'],
+                  borderRadius: 4
+                }]
+              },
+              options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { position: 'bottom' } },
+                scales: { y: { beginAtZero: true } }
+              }
+            });
+          }
+        } catch (e) {
+          console.error('Erreur Chart 2:', e);
         }
-      });
+      }, 500); // Délai de 500ms pour laisser Chart.js se charger
     }
     </script>
 </body>
