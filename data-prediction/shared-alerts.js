@@ -137,7 +137,6 @@ class AlertManager {
       font-family: 'Roboto', sans-serif;
     `;
 
-const container = document.createElement('div');
 container.id = 'toast-container';
 container.style.position = 'fixed';
 container.style.bottom = '20px';
