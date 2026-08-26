@@ -328,19 +328,17 @@
 </head>
 <body>
     <!-- Header Navigation -->
-    <header>
-        <div class="header-content">
-            <div class="logo">🏛️ CPM Horizon 2035</div>
-            <nav>
-                <button onclick="navigateTo('accueil')">ACCUEIL</button>
-                <button onclick="navigateTo('schema')">SCHÉMA DIRECTEUR</button>
-                <button onclick="navigateTo('outils')">OUTILS</button>
-                <button onclick="navigateTo('data')" class="active">DATA & PRÉDICTION</button>
-                <button onclick="navigateTo('communication')">COMMUNICATION</button>
-                <button onclick="logout()">DÉCONNEXION</button>
-            </nav>
+        <div class="header">
+            <div style="font-size: 20px; font-weight: 700;">🏛️ CPM Horizon 2035</div>
+            <div class="nav-buttons">
+                <a href="../../index.html" class="nav-btn">🏠 ACCUEIL</a>
+                <a href="../../index.html" class="nav-btn">📋 SCHÉMA DIRECTEUR</a>
+                <a href="../../index.html" class="nav-btn">🔧 OUTILS</a>
+                <a href="../../data-prediction/" class="nav-btn" style="background: #E75480;">📊 DATA & PRÉDICTION</a>
+                <a href="../../index.html" class="nav-btn">💬 COMMUNICATION</a>
+                <button class="nav-btn logout-btn" onclick="logout()">🔴 DÉCONNEXION</button>
+            </div>
         </div>
-    </header>
 
     <main>
         <!-- Page Header -->
