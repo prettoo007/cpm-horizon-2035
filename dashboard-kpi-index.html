@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CPM Horizon 2035 - KPI Dashboard Exécutif</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #f5f5f5;
+            color: #333;
+        }
+        
+        header {
+            background: white;
+            border-bottom: 1px solid #ecf0f1;
+            padding: 16px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        nav {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        
+        nav button {
+            padding: 8px 16px;
+            border: none;
+            background: #f0f0f0;
+            color: #333;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        nav button:hover {
+            background: #e0e0e0;
+        }
+        
+        nav button.active {
+            background: #e75480;
+            color: white;
+        }
+        
+        main {
+            max-width: 1400px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        
+        .page-header {
+            margin-bottom: 40px;
+        }
+        
+        .page-header h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 32px;
+            margin-bottom: 8px;
+            color: #333;
+        }
+        
+        .page-header p {
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+        
+        /* KPI Grid */
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+        
+        .kpi-card {
+            background: white;
+            border-radius: 8px;
+            padding: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+            border-left: 4px solid #e75480;
+            transition: all 0.3s ease;
+        }
+        
+        .kpi-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+        }
+        
+        .kpi-card.critical {
+            border-left-color: #c0392b;
+            background: rgba(231, 76, 60, 0.02);
+        }
+        
+        .kpi-card.warning {
+            border-left-color: #f39c12;
+            background: rgba(243, 156, 18, 0.02);
+        }
+        
+        .kpi-card.success {
+            border-left-color: #2ecc71;
+            background: rgba(46, 204, 113, 0.02);
+        }
+        
+        .kpi-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 16px;
+        }
+        
+        .kpi-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            color: #2c3e50;
+            flex: 1;
+        }
+        
+        .alert-badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 3px;
+            font-size: 11px;
+            font-weight: bold;
+            white-space: nowrap;
+            margin-left: 8px;
+        }
+        
+        .alert-badge.critical {
+            background: rgba(192, 57, 43, 0.2);
+            color: #c0392b;
+        }
+        
+        .alert-badge.warning {
+            background: rgba(230, 126, 34, 0.2);
+            color: #d68910;
+        }
+        
+        .alert-badge.ok {
+            background: rgba(39, 174, 96, 0.2);
+            color: #27ae60;
+        }
+        
+        .kpi-value {
+            font-family: 'Poppins', sans-serif;
+            font-size: 36px;
+            font-weight: 700;
+            margin: 16px 0;
+            color: #2c3e50;
+        }
+        
+        .kpi-target {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 16px;
+            font-size: 13px;
+        }
+        
+        .kpi-target span {
+            color: #7f8c8d;
+        }
+        
+        .kpi-target .actual {
+            color: #2c3e50;
+            font-weight: 600;
+        }
+        
+        .kpi-chart-container {
+            height: 50px;
+            margin-bottom: 16px;
+            position: relative;
+        }
+        
+        .kpi-chart-canvas {
+            width: 100% !important;
+            height: 100% !important;
+        }
+        
+        .kpi-trend {
+            display: flex;
+            align-items: center;
+            font-size: 13px;
+            margin-bottom: 12px;
+        }
+        
+        .kpi-trend-icon {
+            font-size: 18px;
+            margin-right: 6px;
+        }
+        
+        .kpi-trend.up .kpi-trend-icon {
+            color: #e74c3c;
+        }
+        
+        .kpi-trend.down .kpi-trend-icon {
+            color: #2ecc71;
+        }
+        
+        .kpi-trend.neutral .kpi-trend-icon {
+            color: #95a5a6;
+        }
+        
+        .recommendation {
+            padding: 12px 14px;
+            background: rgba(231, 84, 128, 0.08);
+            border-left: 3px solid #e75480;
+            border-radius: 2px;
+            font-size: 12px;
+            line-height: 1.6;
+            color: #2c3e50;
+        }
+        
+        .recommendation.critical {
+            border-left-color: #c0392b;
+            background: rgba(192, 57, 43, 0.08);
+        }
+        
+        .recommendation.warning {
+            border-left-color: #f39c12;
+            background: rgba(243, 156, 18, 0.08);
+        }
+        
+        /* Summary Section */
+        .kpi-summary {
+            background: linear-gradient(135deg, #e75480 0%, #d63a4d 100%);
+            color: white;
+            padding: 32px;
+            border-radius: 8px;
+            margin-top: 40px;
+        }
+        
+        .kpi-summary h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .kpi-summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        .summary-item {
+            padding: 16px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 4px;
+        }
+        
+        .summary-item-label {
+            font-size: 12px;
+            opacity: 0.9;
+            margin-bottom: 8px;
+        }
+        
+        .summary-item-value {
+            font-family: 'Poppins', sans-serif;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        /* Export Section */
+        .export-section {
+            display: flex;
+            gap: 12px;
+            margin-top: 32px;
+            flex-wrap: wrap;
+        }
+        
+        .export-section button {
+            padding: 10px 20px;
+            background: #e75480;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .export-section button:hover {
+            background: #d63a4d;
+        }
+        
+        @media (max-width: 768px) {
+            .kpi-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .kpi-value {
+                font-size: 28px;
+            }
+            
+            nav button {
+                padding: 6px 12px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Navigation -->
+    <header>
+        <div class="header-content">
+            <div class="logo">🏛️ CPM Horizon 2035</div>
+            <nav>
+                <button onclick="navigateTo('accueil')">ACCUEIL</button>
+                <button onclick="navigateTo('schema')">SCHÉMA DIRECTEUR</button>
+                <button onclick="navigateTo('outils')">OUTILS</button>
+                <button onclick="navigateTo('data')" class="active">DATA & PRÉDICTION</button>
+                <button onclick="navigateTo('communication')">COMMUNICATION</button>
+                <button onclick="logout()">DÉCONNEXION</button>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1>📊 KPI Dashboard Exécutif</h1>
+            <p>Synthèse des 6 indicateurs clés | Mise à jour : <span id="update-time"></span></p>
+        </div>
+
+        <!-- KPI Grid -->
+        <div class="kpi-grid" id="kpi-container">
+            <!-- KPIs dynamiques seront insérées ici -->
+        </div>
+
+        <!-- Summary Section -->
+        <div class="kpi-summary">
+            <h2>🎯 Résumé Exécutif</h2>
+            <div class="kpi-summary-grid">
+                <div class="summary-item">
+                    <div class="summary-item-label">Alertes Critiques</div>
+                    <div class="summary-item-value" id="summary-critical">0</div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-item-label">Alertes Avertissement</div>
+                    <div class="summary-item-value" id="summary-warning">0</div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-item-label">KPIs en Cible</div>
+                    <div class="summary-item-value" id="summary-ok">6</div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-item-label">Santé Globale</div>
+                    <div class="summary-item-value" id="summary-health">100%</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Export Section -->
+        <div class="export-section">
+            <button onclick="exportPDF()">📥 Télécharger PDF</button>
+            <button onclick="exportCSV()">📊 Exporter CSV</button>
+            <button onclick="printDashboard()">🖨️ Imprimer</button>
+        </div>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script>
+        /**
+         * KPI Configuration & Data
+         */
+        const kpiConfig = [
+            {
+                id: 'kpi-1',
+                title: 'Disponibilité Équipement',
+                target: 90,
+                actual: 87,
+                unit: '%',
+                trend: { direction: 'up', value: -2, label: '2% depuis 6M' },
+                sparkData: [85, 84, 85, 86, 86, 87],
+                recommendation: 'Amélioration requise : augmenter inspections préventives LOISIR',
+                formula: '(1 - (EN + US + DR) / Total) * 100'
+            },
+            {
+                id: 'kpi-2',
+                title: 'Coûts Réparation/Mois',
+                target: 12000,
+                actual: 12450,
+                unit: '€',
+                trend: { direction: 'down', value: -5, label: '5% depuis 6M' },
+                sparkData: [13200, 13100, 12800, 12600, 12500, 12450],
+                recommendation: 'Tendance positive : maintenance préventive réduit les coûts',
+                formula: 'SUM(prix_réparation) / 6'
+            },
+            {
+                id: 'kpi-3',
+                title: 'Temps Moyen Réparation',
+                target: 3.5,
+                actual: 4.2,
+                unit: 'j',
+                trend: { direction: 'down', value: -0.3, label: '0.3j depuis 6M' },
+                sparkData: [4.6, 4.5, 4.4, 4.3, 4.2, 4.2],
+                recommendation: 'Planifier ressources : délai respectable mais optimisable',
+                formula: 'SUM(durée_réparation) / COUNT(rép.)'
+            },
+            {
+                id: 'kpi-4',
+                title: 'Taux Refus Prêts',
+                target: 10,
+                actual: 12.1,
+                unit: '%',
+                trend: { direction: 'up', value: 1.5, label: '+1.5% depuis 6M' },
+                sparkData: [10.2, 10.5, 11.0, 11.5, 11.8, 12.1],
+                sparkData: [10.2, 10.5, 11.0, 11.5, 11.8, 12.1],
+                recommendation: 'À investiguer : qualité équipements ou politique stricte?',
+                formula: '(DRMM + DRMP) / Total'
+            },
+            {
+                id: 'kpi-5',
+                title: 'Taux Panne Prévention',
+                target: 45,
+                actual: 46.3,
+                unit: '%',
+                trend: { direction: 'up', value: 8, label: '+8% depuis 6M' },
+                sparkData: [38, 40, 42, 44, 45, 46.3],
+                recommendation: '✅ Excellent : programme maintenance préventive = ROI positif',
+                formula: 'Pannes détectées avant / Total'
+            },
+            {
+                id: 'kpi-6',
+                title: 'Prédiction Capacité 2026',
+                target: 2100,
+                actual: 2192,
+                unit: 'rép.',
+                trend: { direction: 'up', value: 4.6, label: '+4.6% vs 2025' },
+                sparkData: [2050, 2080, 2120, 2150, 2170, 2192],
+                recommendation: 'Stabilisation après ralentissement : capacité suffisante',
+                formula: 'Forecast modèle + ±10%'
+            }
+        ];
+
+        /**
+         * Alert Thresholds
+         */
+        const alertThresholds = {
+            'kpi-1': { critical: 75, warning: 85 }, // Disponibilité
+            'kpi-2': { critical: 14000, warning: 13000 }, // Coûts
+            'kpi-3': { critical: 5, warning: 4.5 }, // Temps
+            'kpi-4': { critical: 20, warning: 15 }, // Taux refus
+            'kpi-5': { critical: 30, warning: 40 }, // Taux panne
+            'kpi-6': { critical: 2400, warning: 2250 } // Prédiction
+        };
+
+        /**
+         * Évalue l'alerte pour un KPI
+         */
+        function evaluateAlert(kpiId, actual) {
+            const thresholds = alertThresholds[kpiId];
+            if (!thresholds) return 'ok';
+            
+            // Logique inverse pour les KPIs où "bas = bon"
+            const invertedKpis = ['kpi-2', 'kpi-3', 'kpi-4']; // Coûts, Temps, Taux refus
+            
+            if (invertedKpis.includes(kpiId)) {
+                if (actual > thresholds.critical) return 'critical';
+                if (actual > thresholds.warning) return 'warning';
+            } else {
+                if (actual < thresholds.critical) return 'critical';
+                if (actual < thresholds.warning) return 'warning';
+            }
+            
+            return 'ok';
+        }
+
+        /**
+         * Crée le HTML d'une KPI Card
+         */
+        function createKpiCard(kpi) {
+            const alertStatus = evaluateAlert(kpi.id, kpi.actual);
+            const badgeText = {
+                critical: '🔴 CRITIQUE',
+                warning: '🟡 ALERTE',
+                ok: '🟢 OK'
+            }[alertStatus];
+            
+            const trendIcon = {
+                up: '↗️',
+                down: '↘️',
+                neutral: '→'
+            }[kpi.trend.direction];
+            
+            const trendClass = kpi.trend.direction === 'up' && 
+                             !['kpi-1', 'kpi-5'].includes(kpi.id) ? 'up' :
+                             kpi.trend.direction === 'down' && 
+                             ['kpi-1', 'kpi-5'].includes(kpi.id) ? 'down' : 'neutral';
+            
+            return `
+                <div class="kpi-card ${alertStatus}">
+                    <div class="kpi-header">
+                        <div class="kpi-title">${kpi.title}</div>
+                        <span class="alert-badge ${alertStatus}">${badgeText}</span>
+                    </div>
+                    
+                    <div class="kpi-target">
+                        <span>Cible : ${kpi.target}${kpi.unit}</span>
+                        <span class="actual">Réel : ${kpi.actual}${kpi.unit}</span>
+                    </div>
+                    
+                    <div class="kpi-value">${kpi.actual}${kpi.unit}</div>
+                    
+                    <div class="kpi-chart-container">
+                        <canvas class="kpi-chart-canvas" data-kpi-id="${kpi.id}"></canvas>
+                    </div>
+                    
+                    <div class="kpi-trend ${trendClass}">
+                        <span class="kpi-trend-icon">${trendIcon}</span>
+                        <span>${kpi.trend.label}</span>
+                    </div>
+                    
+                    <div class="recommendation ${alertStatus}">
+                        ${kpi.recommendation}
+                    </div>
+                </div>
+            `;
+        }
+
+        /**
+         * Initialise les sparklines
+         */
+        function initializeSparklines() {
+            kpiConfig.forEach(kpi => {
+                const canvas = document.querySelector(`[data-kpi-id="${kpi.id}"]`);
+                if (!canvas) return;
+                
+                const ctx = canvas.getContext('2d');
+                const color = {
+                    'kpi-1': '#e75480',
+                    'kpi-2': '#f39c12',
+                    'kpi-3': '#3498db',
+                    'kpi-4': '#e74c3c',
+                    'kpi-5': '#2ecc71',
+                    'kpi-6': '#9b59b6'
+                }[kpi.id] || '#e75480';
+                
+                new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: ['M-6', 'M-5', 'M-4', 'M-3', 'M-2', 'M-1'],
+                        datasets: [{
+                            data: kpi.sparkData,
+                            borderColor: color,
+                            backgroundColor: color + '20',
+                            fill: true,
+                            tension: 0.4,
+                            pointRadius: 0,
+                            borderWidth: 2
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: { legend: { display: false } },
+                        scales: {
+                            x: { display: false },
+                            y: { display: false }
+                        }
+                    }
+                });
+            });
+        }
+
+        /**
+         * Calcule le résumé global
+         */
+        function updateSummary() {
+            const alerts = kpiConfig.map(k => ({
+                id: k.id,
+                status: evaluateAlert(k.id, k.actual)
+            }));
+            
+            const critical = alerts.filter(a => a.status === 'critical').length;
+            const warning = alerts.filter(a => a.status === 'warning').length;
+            const ok = alerts.filter(a => a.status === 'ok').length;
+            const health = Math.round((ok / (ok + warning + critical)) * 100);
+            
+            document.getElementById('summary-critical').textContent = critical;
+            document.getElementById('summary-warning').textContent = warning;
+            document.getElementById('summary-ok').textContent = ok;
+            document.getElementById('summary-health').textContent = health + '%';
+        }
+
+        /**
+         * Initialise le dashboard
+         */
+        function initializeDashboard() {
+            const container = document.getElementById('kpi-container');
+            container.innerHTML = kpiConfig.map(kpi => createKpiCard(kpi)).join('');
+            
+            setTimeout(initializeSparklines, 0);
+            updateSummary();
+            
+            // Update timestamp
+            const now = new Date().toLocaleString('fr-FR');
+            document.getElementById('update-time').textContent = now;
+        }
+
+        /**
+         * Export PDF
+         */
+        function exportPDF() {
+            const element = document.querySelector('main');
+            const opt = {
+                margin: 10,
+                filename: `cpm-kpi-dashboard-${new Date().toISOString().split('T')[0]}.pdf`,
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { orientation: 'portrait', unit: 'mm', format: 'a4' }
+            };
+            html2pdf().set(opt).from(element).save();
+        }
+
+        /**
+         * Export CSV
+         */
+        function exportCSV() {
+            let csv = 'KPI,Cible,Réel,Unité,Tendance,Statut\n';
+            
+            kpiConfig.forEach(kpi => {
+                const status = evaluateAlert(kpi.id, kpi.actual);
+                csv += `"${kpi.title}","${kpi.target}","${kpi.actual}","${kpi.unit}","${kpi.trend.label}","${status}"\n`;
+            });
+            
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `cpm-kpi-dashboard-${new Date().toISOString().split('T')[0]}.csv`;
+            a.click();
+        }
+
+        /**
+         * Imprimer
+         */
+        function printDashboard() {
+            window.print();
+        }
+
+        /**
+         * Navigation
+         */
+        function navigateTo(section) {
+            // À implémenter selon votre app
+            console.log('Navigation vers:', section);
+        }
+
+        function logout() {
+            if (confirm('Êtes-vous sûr de vouloir vous déconnecter?')) {
+                // À implémenter
+                console.log('Logout');
+            }
+        }
+
+        // Initialize on load
+        window.addEventListener('DOMContentLoaded', initializeDashboard);
+    </script>
+</body>
+</html>
