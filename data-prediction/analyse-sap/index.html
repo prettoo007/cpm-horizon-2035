@@ -752,129 +752,880 @@
         initFilters();
     </script>
 
-// ===== INITIALIZATION ANALYSE-SAP =====
+<!DOCTYPE html> 
+<html lang="fr">
+<script src="../shared-filters.js"></script>
+<script src="../shared-alerts.js"></script>    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📊 Analyse SAP - CPM Horizon 2035</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #ecf0f1 100%);
+            color: #2c3e50;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        /* HEADER */
+        .header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-left: 5px solid #E75480;
+        }
+        
+        .header-content h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 28px;
+            color: #E75480;
+            margin-bottom: 10px;
+        }
+        
+        .header-content p {
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+        
+        /* KPI CARDS */
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .kpi-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-left: 4px solid #E75480;
+        }
+        
+        .kpi-card h3 {
+            font-size: 12px;
+            text-transform: uppercase;
+            color: #95a5a6;
+            margin-bottom: 10px;
+        }
+        
+        .kpi-card .value {
+            font-family: 'Poppins', sans-serif;
+            font-size: 32px;
+            font-weight: bold;
+            color: #E75480;
+        }
+        
+        .kpi-card .subtext {
+            font-size: 12px;
+            color: #7f8c8d;
+            margin-top: 8px;
+        }
+        
+        /* FILTRES */
+        .filters-section { background: white; padding: 15px; border-radius: 10px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .filters-section h3 { font-family: 'Poppins', sans-serif; color: #2c3e50; margin-bottom: 12px; font-size: 14px; }
+        .filter-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+        .filter-group { margin-bottom: 8px; }
+        .filter-label { font-weight: 600; color: #2c3e50; margin-bottom: 6px; display: block; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .filter-buttons { display: flex; gap: 4px; flex-wrap: wrap; }
+        .filter-checkbox { display: none; }
+        .filter-label-checkbox { display: inline-flex; align-items: center; padding: 6px 10px; background: #ecf0f1; border: 1px solid #bdc3c7; border-radius: 4px; cursor: pointer; font-size: 11px; transition: all 0.2s; }
+        .filter-checkbox:checked + .filter-label-checkbox { background: #E75480; color: white; border-color: #E75480; }
+        .btn-group { display: flex; gap: 6px; margin-top: 8px; }
+        .btn { padding: 6px 12px; border: none; border-radius: 4px; font-size: 11px; font-weight: 600; cursor: pointer; transition: all 0.2s; text-transform: uppercase; }
+        .btn-all { background: #2ECC71; color: white; }
+        .btn-all:hover { background: #27ae60; }
+        .btn-none { background: #e74c3c; color: white; }
+        .btn-none:hover { background: #c0392b; }
+        
+        @media (max-width: 1024px) {
+            .filter-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 640px) {
+            .filter-grid { grid-template-columns: 1fr; }
+        }
+        
+        /* CHARTS */
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .chart-container {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .chart-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #E75480;
+            padding-bottom: 10px;
+        }
+        
+        .chart-wrapper {
+            position: relative;
+            height: 300px;
+        }
+        
+        /* LÉGENDE */
+        .legend-section {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        
+        .legend-section h4 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 13px;
+            color: #2c3e50;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+        
+        .legend-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 12px;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+        }
+        
+        .legend-color {
+            width: 12px;
+            height: 12px;
+            border-radius: 3px;
+        }
+        
+        /* INSIGHTS */
+        .insights {
+            background: linear-gradient(135deg, #E75480 0%, #d63447 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 30px;
+        }
+        
+        .insights h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+        
+        .insight-item {
+            margin-bottom: 12px;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .insight-item:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
 
-let filterManager;
-let currentFilters = {};
+/* Filter Actions */
+.filter-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #ecf0f1;
+  flex-wrap: wrap;
+}
 
-document.addEventListener('DOMContentLoaded', function() {
-  filterManager = new FilterManager('analyse-sap');
-  currentFilters = filterManager.restoreFilters();
-  applyFiltersToUI(currentFilters);
-  updateAllCharts();
-  updatePresetDropdown();
-  alertManager.injectAnimations();
-});
+.btn-preset, .btn-reset {
+  padding: 8px 16px;
+  border: none;
+  background: #e75480;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
 
-function applyFiltersToUI(filters) {
-  if (filters.years) {
-    document.querySelectorAll('input[name="year"]').forEach(checkbox => {
-      checkbox.checked = filters.years.includes(parseInt(checkbox.value));
+.btn-preset:hover, .btn-reset:hover {
+  background: #d63a4d;
+  transform: translateY(-1px);
+}
+
+.preset-dropdown {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background: white;
+  cursor: pointer;
+  font-size: 13px;
+  flex: 1;
+  min-width: 200px;
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  padding: 24px;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  max-width: 400px;
+  width: 90%;
+}
+
+.modal-content h3 {
+  margin-bottom: 16px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.modal-content input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 16px;
+  font-size: 13px;
+  box-sizing: border-box;
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.modal-buttons button {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.modal-buttons button:first-child {
+  background: #2ecc71;
+  color: white;
+}
+
+.modal-buttons button:last-child {
+  background: #ecf0f1;
+  color: #333;
+}
+
+@media (max-width: 768px) {
+  .filter-actions {
+    flex-direction: column;
+  }
+  
+  .preset-dropdown {
+    min-width: auto;
+  }
+}    
+    
+    </style>
+</head>
+<body>
+                    <!-- CPM HEADER -->
+        <header style="position: relative; z-index: 100; background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%); width: 100%; margin: 0 0 30px 0; padding: 0;">
+            <nav style="display: flex; align-items: center; justify-content: space-between; padding: 15px 40px; width: 100%; background: #2c3e50;">
+                <div style="display: flex; align-items: center; gap: 20px;">
+                    <span style="font-size: 24px; font-weight: 700; color: white;">🏛️ CPM Horizon 2035</span>
+                </div>
+                <div style="display: flex; gap: 15px; align-items: center;">
+                    <a href="../../" style="padding: 8px 16px; background: #3d5a6c; color: white; text-decoration: none; border-radius: 4px; font-size: 12px; font-weight: 600; text-align: center;">📌 ACCUEIL</a>
+                    <a href="../../" style="padding: 8px 16px; background: #3d5a6c; color: white; text-decoration: none; border-radius: 4px; font-size: 12px; font-weight: 600; text-align: center;">📊 SCHÉMA DIRECTEUR</a>
+                    <a href="../../" style="padding: 8px 16px; background: #3d5a6c; color: white; text-decoration: none; border-radius: 4px; font-size: 12px; font-weight: 600; text-align: center;">⚙️ OUTILS</a>
+                    <a href="../../data-prediction/" style="padding: 8px 16px; background: #E75480; color: white; text-decoration: none; border-radius: 4px; font-size: 12px; font-weight: 600; text-align: center;">📈 DATA & PRÉDICTION</a>
+                    <a href="../../" style="padding: 8px 16px; background: #3d5a6c; color: white; text-decoration: none; border-radius: 4px; font-size: 12px; font-weight: 600; text-align: center;">💬 COMMUNICATION</a>
+                    <button onclick="alert('Déconnexion')" style="padding: 8px 16px; background: #e74c3c; color: white; border: none; border-radius: 4px; font-size: 12px; font-weight: 600; cursor: pointer;">🔓 DÉCONNEXION</button>
+                </div>
+            </nav>
+        </header>
+        <!-- FIN HEADER -->
+
+
+    <div class="container">
+        <!-- HEADER -->
+        <div class="header">
+            <div class="header-content">
+                <h1>📊 Analyse SAP - Réparations</h1>
+                <p>Vue détaillée des réparations par secteur, statut et tendances 2020-2026</p>
+            </div>
+        </div>
+        
+        <!-- KPI CARDS -->
+        <div class="kpi-grid">
+            <div class="kpi-card">
+                <h3>Réparations Totales</h3>
+                <div class="value">12,586</div>
+                <div class="subtext">Tous secteurs confondus</div>
+            </div>
+            <div class="kpi-card">
+                <h3>AUDIOVIS</h3>
+                <div class="value">6,663</div>
+                <div class="subtext">52.9% du total</div>
+            </div>
+            <div class="kpi-card">
+                <h3>LOISIR</h3>
+                <div class="value">5,923</div>
+                <div class="subtext">47.1% du total</div>
+            </div>
+            <div class="kpi-card">
+                <h3>Équip. Disponibles</h3>
+                <div class="value">56.0%</div>
+                <div class="subtext">Statut DI</div>
+            </div>
+        </div>
+        
+        <!-- FILTRES -->
+        <div class="filters-section">
+            <h3>🔍 Filtres Dynamiques</h3>
+            <div class="filter-grid">
+                <div>
+                    <div class="filter-label">Années</div>
+                    <div class="filter-buttons" id="filter-years"></div>
+                    <div class="btn-group">
+                        <button class="btn btn-all" onclick="checkAllYears()">Toutes</button>
+                        <button class="btn btn-none" onclick="uncheckAllYears()">Aucune</button>
+                    </div>
+                </div>
+                <div>
+                    <div class="filter-label">Secteurs</div>
+                    <div class="filter-buttons" id="filter-sectors"></div>
+                    <div class="btn-group">
+                        <button class="btn btn-all" onclick="checkAllSectors()">Tous</button>
+                        <button class="btn btn-none" onclick="uncheckAllSectors()">Aucun</button>
+                    </div>
+                </div>
+                <div>
+                    <div class="filter-label">Statuts</div>
+                    <div class="filter-buttons" id="filter-status"></div>
+                    <div class="btn-group">
+                        <button class="btn btn-all" onclick="checkAllStatus()">Tous</button>
+                        <button class="btn btn-none" onclick="uncheckAllStatus()">Aucun</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    <!-- NOUVELLE SECTION : Contrôles Preset -->
+    <div class="filter-actions">
+      <button id="preset-save-btn" class="btn-preset" onclick="openPresetModal()">
+        💾 Enregistrer Preset
+      </button>
+      <select id="preset-load-select" class="preset-dropdown" onchange="loadPresetFromSelect()">
+        <option value="">📂 Charger un preset...</option>
+      </select>
+      <button id="filter-reset-btn" class="btn-reset" onclick="resetAllFilters()">
+        🔄 Réinitialiser
+      </button>
+    </div>
+
+<!-- Modal Enregistrement Preset -->
+<div id="preset-modal" class="modal" style="display: none;">
+  <div class="modal-content">
+    <h3>Enregistrer un Preset</h3>
+    <input type="text" id="preset-name-input" placeholder="Nom du preset (ex: Mon profil de travail)">
+    <div class="modal-buttons">
+      <button onclick="savePresetNow()">✅ Enregistrer</button>
+      <button onclick="closePresetModal()">❌ Annuler</button>
+    </div>
+  </div>
+</div>
+    
+           
+        <!-- CHARTS -->
+        <div class="charts-grid">
+            <!-- Chart 1: Volume par année -->
+            <div class="chart-container">
+                <div class="chart-title">📈 Volume de Réparations par Année</div>
+                <div class="chart-wrapper">
+                    <canvas id="chart1"></canvas>
+                </div>
+                <div class="legend-section">
+                    <h4>Légende</h4>
+                    <div class="legend-items">
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: #E75480;"></div>
+                            <span>AUDIOVIS</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: #3498db;"></div>
+                            <span>LOISIR</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Chart 2: Distribution par statut -->
+            <div class="chart-container">
+                <div class="chart-title">🎯 Distribution par Statut Article</div>
+                <div class="chart-wrapper">
+                    <canvas id="chart2"></canvas>
+                </div>
+                <div class="legend-section">
+                    <h4>Légende Statuts</h4>
+                    <div class="legend-items">
+                        <div class="legend-item"><div class="legend-color" style="background: #2ECC71;"></div><span>DI=Disponible</span></div>
+                        <div class="legend-item"><div class="legend-color" style="background: #e74c3c;"></div><span>EN=Endommagé</span></div>
+                        <div class="legend-item"><div class="legend-color" style="background: #f39c12;"></div><span>US=Usagé</span></div>
+                        <div class="legend-item"><div class="legend-color" style="background: #9b59b6;"></div><span>DE=Déclassé</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Chart 3: Timeline statuts critiques -->
+        <div class="chart-container" style="margin-bottom: 30px;">
+            <div class="chart-title">📊 Tendance Statuts Critiques (DI vs EN vs US)</div>
+            <div class="chart-wrapper" style="height: 350px;">
+                <canvas id="chart3"></canvas>
+            </div>
+        </div>
+        
+        <!-- INSIGHTS -->
+        <div class="insights">
+            <h3>💡 Insights Stratégiques</h3>
+            <div class="insight-item">Réparations en croissance constante : +60% entre 2020 (928) et 2024 (2,493)</div>
+            <div class="insight-item">AUDIOVIS légèrement dominant : 52.9% vs LOISIR 47.1%</div>
+            <div class="insight-item">56% des équipements en statut DI (Disponible) - bon indicateur de disponibilité</div>
+            <div class="insight-item">7% des équipements EN (Endommagé) - à surveiller pour maintenance préventive</div>
+            <div class="insight-item">Tendance 2025 : ralentissement possible (-15.7% vs 2024) - prévoir budget maintenance</div>
+        </div>
+    </div>
+    
+    <script>
+        // Données (à remplacer par fetch du JSON)
+        const DATA = {
+            'by_year_sector': [
+                {"Année": 2020, "Groupe de codes": "AUDIOVIS", "count": 469},
+                {"Année": 2020, "Groupe de codes": "LOISIR", "count": 459},
+                {"Année": 2021, "Groupe de codes": "AUDIOVIS", "count": 732},
+                {"Année": 2021, "Groupe de codes": "LOISIR", "count": 676},
+                {"Année": 2022, "Groupe de codes": "AUDIOVIS", "count": 971},
+                {"Année": 2022, "Groupe de codes": "LOISIR", "count": 881},
+                {"Année": 2023, "Groupe de codes": "AUDIOVIS", "count": 1214},
+                {"Année": 2023, "Groupe de codes": "LOISIR", "count": 1112},
+                {"Année": 2024, "Groupe de codes": "AUDIOVIS", "count": 1303},
+                {"Année": 2024, "Groupe de codes": "LOISIR", "count": 1190},
+                {"Année": 2025, "Groupe de codes": "AUDIOVIS", "count": 1113},
+                {"Année": 2025, "Groupe de codes": "LOISIR", "count": 983},
+                {"Année": 2026, "Groupe de codes": "AUDIOVIS", "count": 792},
+                {"Année": 2026, "Groupe de codes": "LOISIR", "count": 691}
+            ],
+            'by_statut': [
+                {"Eq.Statut Utilisateur": "DI", "count": 7038},
+                {"Eq.Statut Utilisateur": "EN", "count": 939},
+                {"Eq.Statut Utilisateur": "DE", "count": 661},
+                {"Eq.Statut Utilisateur": "DF", "count": 397},
+                {"Eq.Statut Utilisateur": "US", "count": 203},
+                {"Eq.Statut Utilisateur": "DP", "count": 73},
+                {"Eq.Statut Utilisateur": "DR", "count": 8},
+                {"Eq.Statut Utilisateur": "RB", "count": 2}
+            ],
+            'timeline_diu': [
+                {"Année": 2020, "Eq.Statut Utilisateur": "DI", "count": 522},
+                {"Année": 2020, "Eq.Statut Utilisateur": "EN", "count": 89},
+                {"Année": 2020, "Eq.Statut Utilisateur": "US", "count": 31},
+                {"Année": 2021, "Eq.Statut Utilisateur": "DI", "count": 822},
+                {"Année": 2021, "Eq.Statut Utilisateur": "EN", "count": 153},
+                {"Année": 2021, "Eq.Statut Utilisateur": "US", "count": 41},
+                {"Année": 2022, "Eq.Statut Utilisateur": "DI", "count": 1098},
+                {"Année": 2022, "Eq.Statut Utilisateur": "EN", "count": 234},
+                {"Année": 2022, "Eq.Statut Utilisateur": "US", "count": 52},
+                {"Année": 2023, "Eq.Statut Utilisateur": "DI", "count": 1428},
+                {"Année": 2023, "Eq.Statut Utilisateur": "EN", "count": 289},
+                {"Année": 2023, "Eq.Statut Utilisateur": "US", "count": 63},
+                {"Année": 2024, "Eq.Statut Utilisateur": "DI", "count": 1563},
+                {"Année": 2024, "Eq.Statut Utilisateur": "EN", "count": 312},
+                {"Année": 2024, "Eq.Statut Utilisateur": "US", "count": 71},
+                {"Année": 2025, "Eq.Statut Utilisateur": "DI", "count": 1342},
+                {"Année": 2025, "Eq.Statut Utilisateur": "EN", "count": 267},
+                {"Année": 2025, "Eq.Statut Utilisateur": "US", "count": 61},
+                {"Année": 2026, "Eq.Statut Utilisateur": "DI", "count": 935},
+                {"Année": 2026, "Eq.Statut Utilisateur": "EN", "count": 186},
+                {"Année": 2026, "Eq.Statut Utilisateur": "US", "count": 42}
+            ],
+            'annees': [2020, 2021, 2022, 2023, 2024, 2025, 2026],
+            'secteurs': ['AUDIOVIS', 'LOISIR'],
+            'statuts': ['DE', 'DF', 'DI', 'DP', 'DR', 'EN', 'RB', 'US']
+        };
+        
+        let charts = {};
+        
+        // Initialiser filtres
+        function initFilters() {
+            const yearsContainer = document.getElementById('filter-years');
+            DATA.annees.forEach(year => {
+                const id = `year-${year}`;
+                yearsContainer.innerHTML += `
+                    <input type="checkbox" id="${id}" class="filter-checkbox" value="${year}" onchange="updateCharts()" checked>
+                    <label for="${id}" class="filter-label-checkbox">${year}</label>
+                `;
+            });
+            
+            const sectorsContainer = document.getElementById('filter-sectors');
+            DATA.secteurs.forEach(sector => {
+                const id = `sector-${sector}`;
+                sectorsContainer.innerHTML += `
+                    <input type="checkbox" id="${id}" class="filter-checkbox" value="${sector}" onchange="updateCharts()" checked>
+                    <label for="${id}" class="filter-label-checkbox">${sector}</label>
+                `;
+            });
+            
+            const statusContainer = document.getElementById('filter-status');
+            DATA.statuts.forEach(status => {
+                const id = `status-${status}`;
+                statusContainer.innerHTML += `
+                    <input type="checkbox" id="${id}" class="filter-checkbox" value="${status}" onchange="updateCharts()" checked>
+                    <label for="${id}" class="filter-label-checkbox">${status}</label>
+                `;
+            });
+        }
+        
+        function getCheckedFilters(prefix) {
+            const checkboxes = document.querySelectorAll(`input[id^="${prefix}"]`);
+            return Array.from(checkboxes).filter(cb => cb.checked).map(cb => cb.value);
+        }
+        
+        function checkAllYears() { toggleAllFilters('year', true); }
+        function uncheckAllYears() { toggleAllFilters('year', false); }
+        function checkAllSectors() { toggleAllFilters('sector', true); }
+        function uncheckAllSectors() { toggleAllFilters('sector', false); }
+        function checkAllStatus() { toggleAllFilters('status', true); }
+        function uncheckAllStatus() { toggleAllFilters('status', false); }
+        
+        function toggleAllFilters(prefix, checked) {
+            document.querySelectorAll(`input[id^="${prefix}"]`).forEach(cb => {
+                cb.checked = checked;
+            });
+            updateCharts();
+        }
+        
+        function updateCharts() {
+            const selectedYears = getCheckedFilters('year').map(Number);
+            const selectedSectors = getCheckedFilters('sector');
+            const selectedStatus = getCheckedFilters('status');
+            
+            updateChart1(selectedYears, selectedSectors);
+            updateChart2(selectedStatus);
+            updateChart3(selectedYears);
+        }
+        
+        function updateChart1(years, sectors) {
+            const filtered = DATA.by_year_sector.filter(d => 
+                years.includes(d.Année) && sectors.includes(d["Groupe de codes"])
+            );
+            
+            const audiovisData = {};
+            const loisirData = {};
+            
+            years.forEach(y => {
+                audiovisData[y] = 0;
+                loisirData[y] = 0;
+            });
+            
+            filtered.forEach(d => {
+                if (d["Groupe de codes"] === "AUDIOVIS") audiovisData[d.Année] = d.count;
+                else loisirData[d.Année] = d.count;
+            });
+            
+            charts.chart1.data.labels = years.map(String);
+            charts.chart1.data.datasets[0].data = years.map(y => audiovisData[y]);
+            charts.chart1.data.datasets[1].data = years.map(y => loisirData[y]);
+            charts.chart1.update();
+        }
+        
+        function updateChart2(statuses) {
+            const filtered = DATA.by_statut.filter(d => statuses.includes(d["Eq.Statut Utilisateur"]));
+            
+            charts.chart2.data.labels = filtered.map(d => d["Eq.Statut Utilisateur"]);
+            charts.chart2.data.datasets[0].data = filtered.map(d => d.count);
+            charts.chart2.update();
+        }
+        
+        function updateChart3(years) {
+            const filtered = DATA.timeline_diu.filter(d => years.includes(d.Année));
+            
+            const diData = {}, enData = {}, usData = {};
+            years.forEach(y => { diData[y] = 0; enData[y] = 0; usData[y] = 0; });
+            
+            filtered.forEach(d => {
+                if (d["Eq.Statut Utilisateur"] === "DI") diData[d.Année] = d.count;
+                if (d["Eq.Statut Utilisateur"] === "EN") enData[d.Année] = d.count;
+                if (d["Eq.Statut Utilisateur"] === "US") usData[d.Année] = d.count;
+            });
+            
+            charts.chart3.data.labels = years.map(String);
+            charts.chart3.data.datasets[0].data = years.map(y => diData[y]);
+            charts.chart3.data.datasets[1].data = years.map(y => enData[y]);
+            charts.chart3.data.datasets[2].data = years.map(y => usData[y]);
+            charts.chart3.update();
+        }
+        
+        // Chart 1: Volume par année
+        const ctx1 = document.getElementById('chart1').getContext('2d');
+        charts.chart1 = new Chart(ctx1, {
+            type: 'bar',
+            data: {
+                labels: DATA.annees.map(String),
+                datasets: [
+                    {
+                        label: 'AUDIOVIS',
+                        data: [469, 732, 971, 1214, 1303, 1113, 792],
+                        backgroundColor: '#E75480',
+                        borderRadius: 4
+                    },
+                    {
+                        label: 'LOISIR',
+                        data: [459, 676, 881, 1112, 1190, 983, 691],
+                        backgroundColor: '#3498db',
+                        borderRadius: 4
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { position: 'bottom' } },
+                scales: { y: { beginAtZero: true } }
+            }
+        });
+        
+        // Chart 2: Distribution par statut
+        const ctx2 = document.getElementById('chart2').getContext('2d');
+        charts.chart2 = new Chart(ctx2, {
+            type: 'doughnut',
+            data: {
+                labels: ['DI', 'EN', 'DE', 'DF', 'US', 'DP', 'DR', 'RB'],
+                datasets: [{
+                    data: [7038, 939, 661, 397, 203, 73, 8, 2],
+                    backgroundColor: ['#2ECC71', '#e74c3c', '#f39c12', '#9b59b6', '#e67e22', '#1abc9c', '#34495e', '#95a5a6'],
+                    borderRadius: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { position: 'bottom' } }
+            }
+        });
+        
+        // Chart 3: Timeline statuts critiques
+        const ctx3 = document.getElementById('chart3').getContext('2d');
+        charts.chart3 = new Chart(ctx3, {
+            type: 'line',
+            data: {
+                labels: DATA.annees.map(String),
+                datasets: [
+                    {
+                        label: 'DI (Disponible)',
+                        data: [522, 822, 1098, 1428, 1563, 1342, 935],
+                        borderColor: '#2ECC71',
+                        backgroundColor: 'rgba(46, 204, 113, 0.1)',
+                        tension: 0.4,
+                        fill: true,
+                        borderWidth: 2
+                    },
+                    {
+                        label: 'EN (Endommagé)',
+                        data: [89, 153, 234, 289, 312, 267, 186],
+                        borderColor: '#e74c3c',
+                        backgroundColor: 'rgba(231, 76, 60, 0.1)',
+                        tension: 0.4,
+                        fill: true,
+                        borderWidth: 2
+                    },
+                    {
+                        label: 'US (Usagé)',
+                        data: [31, 41, 52, 63, 71, 61, 42],
+                        borderColor: '#f39c12',
+                        backgroundColor: 'rgba(243, 156, 18, 0.1)',
+                        tension: 0.4,
+                        fill: true,
+                        borderWidth: 2
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { position: 'bottom' } },
+                scales: { y: { beginAtZero: true } }
+            }
+        });
+        
+        // Initialiser
+        initFilters();
+
+    </script>
+    
+    <script>
+    // ===== INITIALIZATION ANALYSE-SAP =====
+    let filterManager;
+    let currentFilters = {};
+    
+    document.addEventListener('DOMContentLoaded', function() {
+      filterManager = new FilterManager('analyse-sap');
+      currentFilters = filterManager.restoreFilters();
+      applyFiltersToUI(currentFilters);
+      updateAllCharts();
+      updatePresetDropdown();
+      alertManager.injectAnimations();
     });
-  }
-  
-  if (filters.sectors) {
-    document.querySelectorAll('input[name="sector"]').forEach(checkbox => {
-      checkbox.checked = filters.sectors.includes(checkbox.value);
-    });
-  }
-  
-  if (filters.status) {
-    document.querySelectorAll('input[name="status"]').forEach(checkbox => {
-      checkbox.checked = filters.status.includes(checkbox.value);
-    });
-  }
-}
+    
+    function applyFiltersToUI(filters) {
+      if (filters.years) {
+        document.querySelectorAll('input[name="year"]').forEach(checkbox => {
+          checkbox.checked = filters.years.includes(parseInt(checkbox.value));
+        });
+      }
+      
+      if (filters.sectors) {
+        document.querySelectorAll('input[name="sector"]').forEach(checkbox => {
+          checkbox.checked = filters.sectors.includes(checkbox.value);
+        });
+      }
+      
+      if (filters.status) {
+        document.querySelectorAll('input[name="status"]').forEach(checkbox => {
+          checkbox.checked = filters.status.includes(checkbox.value);
+        });
+      }
+    }
 
-function getFiltersFromUI() {
-  const filters = {
-    years: Array.from(document.querySelectorAll('input[name="year"]:checked'))
-      .map(cb => parseInt(cb.value)),
-    sectors: Array.from(document.querySelectorAll('input[name="sector"]:checked'))
-      .map(cb => cb.value),
-    status: Array.from(document.querySelectorAll('input[name="status"]:checked'))
-      .map(cb => cb.value)
-  };
-  return filters;
-}
+    function getFiltersFromUI() {
+      const filters = {
+        years: Array.from(document.querySelectorAll('input[name="year"]:checked'))
+          .map(cb => parseInt(cb.value)),
+        sectors: Array.from(document.querySelectorAll('input[name="sector"]:checked'))
+          .map(cb => cb.value),
+        status: Array.from(document.querySelectorAll('input[name="status"]:checked'))
+          .map(cb => cb.value)
+      };
+      return filters;
+    }
 
-function onFilterChange() {
-  // Ajouter CES 2 LIGNES au DÉBUT :
-  currentFilters = getFiltersFromUI();
-  filterManager.saveFilters(currentFilters);
-  
-  // Garder le reste du code existant
-  updateAllCharts();  // ← Ceci est probablement déjà là
-}
+    function onFilterChange() {
+      currentFilters = getFiltersFromUI();
+      filterManager.saveFilters(currentFilters);
+      updateAllCharts();
+    }
 
-function openPresetModal() {
-  document.getElementById('preset-modal').style.display = 'flex';
-  document.getElementById('preset-name-input').focus();
-}
+    function openPresetModal() {
+      document.getElementById('preset-modal').style.display = 'flex';
+      document.getElementById('preset-name-input').focus();
+    }
 
-function closePresetModal() {
-  document.getElementById('preset-modal').style.display = 'none';
-  document.getElementById('preset-name-input').value = '';
-}
+    function closePresetModal() {
+      document.getElementById('preset-modal').style.display = 'none';
+      document.getElementById('preset-name-input').value = '';
+    }
 
-function savePresetNow() {
-  const name = document.getElementById('preset-name-input').value.trim();
-  if (!name) {
-    alertManager.showToast('Veuillez entrer un nom pour le preset', 'warning');
-    return;
-  }
-  
-  currentFilters = getFiltersFromUI();
-  const presetId = filterManager.savePreset(name, currentFilters);
-  
-  if (presetId) {
-    alertManager.showToast(`✅ Preset "${name}" enregistré`, 'success', 3000);
-    closePresetModal();
-    updatePresetDropdown();
-  } else {
-    alertManager.showToast('❌ Impossible d\'enregistrer (max 5 presets)', 'warning');
-  }
-}
+    function savePresetNow() {
+      const name = document.getElementById('preset-name-input').value.trim();
+      if (!name) {
+        alertManager.showToast('Veuillez entrer un nom pour le preset', 'warning');
+        return;
+      }
+      
+      currentFilters = getFiltersFromUI();
+      const presetId = filterManager.savePreset(name, currentFilters);
+      
+      if (presetId) {
+        alertManager.showToast(`✅ Preset "${name}" enregistré`, 'success', 3000);
+        closePresetModal();
+        updatePresetDropdown();
+      } else {
+        alertManager.showToast('❌ Impossible d\'enregistrer (max 5 presets)', 'warning');
+      }
+    }
 
-function loadPresetFromSelect() {
-  const select = document.getElementById('preset-load-select');
-  const presetId = select.value;
-  
-  if (!presetId) return;
-  
-  const filters = filterManager.loadPreset(presetId);
-  if (filters) {
-    currentFilters = filters;
-    applyFiltersToUI(filters);
-    updateAllCharts();
-    select.value = '';
-  }
-}
+    function loadPresetFromSelect() {
+      const select = document.getElementById('preset-load-select');
+      const presetId = select.value;
+      
+      if (!presetId) return;
+      
+      const filters = filterManager.loadPreset(presetId);
+      if (filters) {
+        currentFilters = filters;
+        applyFiltersToUI(filters);
+        updateAllCharts();
+        select.value = '';
+      }
+    }
 
-function resetAllFilters() {
-  if (confirm('Réinitialiser tous les filtres aux paramètres par défaut?')) {
-    currentFilters = filterManager.resetFilters();
-    applyFiltersToUI(currentFilters);
-    updateAllCharts();
-    updatePresetDropdown();
-    alertManager.showToast('✅ Filtres réinitialisés', 'success', 2000);
-  }
-}
+    function resetAllFilters() {
+      if (confirm('Réinitialiser tous les filtres aux paramètres par défaut?')) {
+        currentFilters = filterManager.resetFilters();
+        applyFiltersToUI(currentFilters);
+        updateAllCharts();
+        updatePresetDropdown();
+        alertManager.showToast('✅ Filtres réinitialisés', 'success', 2000);
+      }
+    }
 
-function updatePresetDropdown() {
-  const select = document.getElementById('preset-load-select');
-  const presets = filterManager.getModulePresets();
-  
-  select.innerHTML = '<option value="">📂 Charger un preset...</option>';
-  
-  presets.forEach(preset => {
-    const option = document.createElement('option');
-    option.value = preset.id;
-    option.textContent = preset.name;
-    select.appendChild(option);
-  });
-}
-
-
+    function updatePresetDropdown() {
+      const select = document.getElementById('preset-load-select');
+      const presets = filterManager.getModulePresets();
+      
+      select.innerHTML = '<option value="">📂 Charger un preset...</option>';
+      
+      presets.forEach(preset => {
+        const option = document.createElement('option');
+        option.value = preset.id;
+        option.textContent = preset.name;
+        select.appendChild(option);
+      });
+    }
+    </script>
 </body>
-</html>
+</html>        
