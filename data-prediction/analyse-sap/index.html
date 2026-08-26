@@ -799,9 +799,12 @@ function getFiltersFromUI() {
 }
 
 function onFilterChange() {
+  // Ajouter CES 2 LIGNES au DÉBUT :
   currentFilters = getFiltersFromUI();
   filterManager.saveFilters(currentFilters);
-  updateAllCharts();
+  
+  // Garder le reste du code existant
+  updateAllCharts();  // ← Ceci est probablement déjà là
 }
 
 function openPresetModal() {
