@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="fr">
+<script src="../shared-filters.js"></script>
+<script src="../shared-alerts.js"></script>
+    
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -52,6 +55,117 @@
         .insights h3 { font-family: 'Poppins', sans-serif; font-size: 16px; margin-bottom: 15px; }
         .insight-item { margin-bottom: 12px; padding-left: 20px; position: relative; }
         .insight-item:before { content: "→"; position: absolute; left: 0; font-weight: bold; }
+
+    /* Filter Actions */
+.filter-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #ecf0f1;
+  flex-wrap: wrap;
+}
+
+.btn-preset, .btn-reset {
+  padding: 8px 16px;
+  border: none;
+  background: #e75480;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn-preset:hover, .btn-reset:hover {
+  background: #d63a4d;
+  transform: translateY(-1px);
+}
+
+.preset-dropdown {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background: white;
+  cursor: pointer;
+  font-size: 13px;
+  flex: 1;
+  min-width: 200px;
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  padding: 24px;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  max-width: 400px;
+  width: 90%;
+}
+
+.modal-content h3 {
+  margin-bottom: 16px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.modal-content input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 16px;
+  font-size: 13px;
+  box-sizing: border-box;
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.modal-buttons button {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.modal-buttons button:first-child {
+  background: #2ecc71;
+  color: white;
+}
+
+.modal-buttons button:last-child {
+  background: #ecf0f1;
+  color: #333;
+}
+
+@media (max-width: 768px) {
+  .filter-actions {
+    flex-direction: column;
+  }
+  
+  .preset-dropdown {
+    min-width: auto;
+  }
+}
+        
     </style>
 </head>
 <body>
@@ -126,6 +240,31 @@
                 </div>
             </div>
         </div>
+
+<!-- NOUVELLE SECTION : Contrôles Preset -->
+<div class="filter-actions">
+  <button id="preset-save-btn" class="btn-preset" onclick="openPresetModal()">
+    💾 Enregistrer Preset
+  </button>
+  <select id="preset-load-select" class="preset-dropdown" onchange="loadPresetFromSelect()">
+    <option value="">📂 Charger un preset...</option>
+  </select>
+  <button id="filter-reset-btn" class="btn-reset" onclick="resetAllFilters()">
+    🔄 Réinitialiser
+  </button>
+</div>
+
+<!-- Modal Enregistrement Preset -->
+<div id="preset-modal" class="modal" style="display: none;">
+  <div class="modal-content">
+    <h3>Enregistrer un Preset</h3>
+    <input type="text" id="preset-name-input" placeholder="Nom du preset (ex: Mon profil de travail)">
+    <div class="modal-buttons">
+      <button onclick="savePresetNow()">✅ Enregistrer</button>
+      <button onclick="closePresetModal()">❌ Annuler</button>
+    </div>
+  </div>
+</div>
         
         <div class="charts-grid">
             <div class="chart-container">
@@ -340,5 +479,126 @@
         
         initFilters();
     </script>
+
+// ===== INITIALIZATION ANALYSE-Météo-Patrimoine =====
+
+let filterManager;
+let currentFilters = {};
+
+document.addEventListener('DOMContentLoaded', function() {
+  filterManager = new FilterManager('meteo-patrimoin');
+  currentFilters = filterManager.restoreFilters();
+  applyFiltersToUI(currentFilters);
+  updateAllCharts();
+  updatePresetDropdown();
+  alertManager.injectAnimations();
+});
+
+function applyFiltersToUI(filters) {
+  if (filters.years) {
+    document.querySelectorAll('input[name="year"]').forEach(checkbox => {
+      checkbox.checked = filters.years.includes(parseInt(checkbox.value));
+    });
+  }
+  
+  if (filters.sectors) {
+    document.querySelectorAll('input[name="sector"]').forEach(checkbox => {
+      checkbox.checked = filters.sectors.includes(checkbox.value);
+    });
+  }
+  
+  if (filters.status) {
+    document.querySelectorAll('input[name="status"]').forEach(checkbox => {
+      checkbox.checked = filters.status.includes(checkbox.value);
+    });
+  }
+}
+
+function getFiltersFromUI() {
+  const filters = {
+    years: Array.from(document.querySelectorAll('input[name="year"]:checked'))
+      .map(cb => parseInt(cb.value)),
+    sectors: Array.from(document.querySelectorAll('input[name="sector"]:checked'))
+      .map(cb => cb.value),
+    status: Array.from(document.querySelectorAll('input[name="status"]:checked'))
+      .map(cb => cb.value)
+  };
+  return filters;
+}
+
+function onFilterChange() {
+  currentFilters = getFiltersFromUI();
+  filterManager.saveFilters(currentFilters);
+  updateAllCharts();
+}
+
+function openPresetModal() {
+  document.getElementById('preset-modal').style.display = 'flex';
+  document.getElementById('preset-name-input').focus();
+}
+
+function closePresetModal() {
+  document.getElementById('preset-modal').style.display = 'none';
+  document.getElementById('preset-name-input').value = '';
+}
+
+function savePresetNow() {
+  const name = document.getElementById('preset-name-input').value.trim();
+  if (!name) {
+    alertManager.showToast('Veuillez entrer un nom pour le preset', 'warning');
+    return;
+  }
+  
+  currentFilters = getFiltersFromUI();
+  const presetId = filterManager.savePreset(name, currentFilters);
+  
+  if (presetId) {
+    alertManager.showToast(`✅ Preset "${name}" enregistré`, 'success', 3000);
+    closePresetModal();
+    updatePresetDropdown();
+  } else {
+    alertManager.showToast('❌ Impossible d\'enregistrer (max 5 presets)', 'warning');
+  }
+}
+
+function loadPresetFromSelect() {
+  const select = document.getElementById('preset-load-select');
+  const presetId = select.value;
+  
+  if (!presetId) return;
+  
+  const filters = filterManager.loadPreset(presetId);
+  if (filters) {
+    currentFilters = filters;
+    applyFiltersToUI(filters);
+    updateAllCharts();
+    select.value = '';
+  }
+}
+
+function resetAllFilters() {
+  if (confirm('Réinitialiser tous les filtres aux paramètres par défaut?')) {
+    currentFilters = filterManager.resetFilters();
+    applyFiltersToUI(currentFilters);
+    updateAllCharts();
+    updatePresetDropdown();
+    alertManager.showToast('✅ Filtres réinitialisés', 'success', 2000);
+  }
+}
+
+function updatePresetDropdown() {
+  const select = document.getElementById('preset-load-select');
+  const presets = filterManager.getModulePresets();
+  
+  select.innerHTML = '<option value="">📂 Charger un preset...</option>';
+  
+  presets.forEach(preset => {
+    const option = document.createElement('option');
+    option.value = preset.id;
+    option.textContent = preset.name;
+    select.appendChild(option);
+  });
+}
+
 </body>
 </html>
