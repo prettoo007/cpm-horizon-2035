@@ -136,7 +136,20 @@ class AlertManager {
       max-width: 400px;
       font-family: 'Roboto', sans-serif;
     `;
+
+const container = document.createElement('div');
+container.id = 'toast-container';
+container.style.position = 'fixed';
+container.style.bottom = '20px';
+container.style.right = '20px';
+container.style.zIndex = '9999';
+container.style.display = 'flex';
+container.style.flexDirection = 'column';
+container.style.gap = '10px';
+    
+   if (container) {
     document.body.appendChild(container);
+}
     this.toastContainer = container;
   }
 
